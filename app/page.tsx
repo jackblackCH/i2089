@@ -1,7 +1,10 @@
+import Logo2089 from "@/components/logo-2089";
+
 export default function Home() {
   return (
-    <main className="flex h-svh flex-col items-center justify-center p-24">
-      <div className="text-3xl">i2089</div>
+    <main className="">
+      <h1 className="sr-only text-3xl">i2089</h1>
+      <Logo2089 />
     </main>
   );
 }
