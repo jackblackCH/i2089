@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title:
-    "i2089 - High quality design and web and 3D experiences made in Zurich",
+    "i2089 - Marc Illien - High quality frontend development made in Zurich",
   description:
-    "i2089 - High quality design and web and 3D experiences made in Zurich",
+    "Frontend Development with React, Frontend Architecture, Consulting, Prototypes & MVP's, Motion Design 3D, Design Systems, Living Styleguides, Micro Frontend Applications, Code- and tech stack reviews.",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-svh">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
