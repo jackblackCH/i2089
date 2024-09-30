@@ -85,4 +85,10 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Add text selection styles */
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--secondary));
+  }
 }
