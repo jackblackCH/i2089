@@ -119,9 +119,9 @@ function CombinedPage() {
                 I also do
               </h3>
               <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-3/4 md:text-5xl lg:text-6xl">
-                Frontend Consulting, Prototypes & MVP's, Motion Design 3D,
-                Design Systems, Living Styleguides, Micro Frontend Applications,
-                Code- and tech stack reviews.
+                Frontend Consulting, Prototypes &amp; MVP&apos;s, Motion Design
+                3D, Design Systems, Living Styleguides, Micro Frontend
+                Applications, Code- and tech stack reviews.
               </h2>
             </div>
           </div>
