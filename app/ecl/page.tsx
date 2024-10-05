@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import io from "socket.io-client";
 
 const CELL_SIZE = 20;
 const GRID_WIDTH = 20;
@@ -13,6 +14,8 @@ type Player = {
   position: Position;
   direction: string;
   score: number;
+  name: string;
+  color: string;
 };
 
 function RetroNeonLogo() {
@@ -70,14 +73,19 @@ function RetroNeonSvg() {
 function NeonButton({
   onClick,
   children,
+  disabled,
 }: {
   onClick: () => void;
   children: React.ReactNode;
+  disabled?: boolean;
 }) {
   return (
     <button
       onClick={onClick}
-      className="text-neon-yellow neon-glow hover:bg-neon-yellow rounded bg-transparent px-4 py-2 text-xl font-bold transition-all duration-300 hover:text-black sm:text-2xl"
+      disabled={disabled}
+      className={`text-neon-yellow neon-glow hover:bg-neon-yellow rounded bg-transparent px-4 py-2 text-xl font-bold transition-all duration-300 hover:text-black sm:text-2xl ${
+        disabled ? "cursor-not-allowed opacity-50" : ""
+      }`}
     >
       {children}
     </button>
@@ -90,27 +98,172 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
   const [cheeses, setCheeses] = useState<Position[]>([]);
   const [playerId] = useState<string>(uuidv4());
   const [gameWon, setGameWon] = useState<boolean>(false);
+  const [gameStarted, setGameStarted] = useState<boolean>(false);
+  const [socket, setSocket] = useState<any>(null);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [gameInProgress, setGameInProgress] = useState<boolean>(false);
+  const [reconnecting, setReconnecting] = useState<boolean>(false);
+  const [connectionError, setConnectionError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+    let pingInterval: NodeJS.Timeout;
+
+    const newSocket = io(
+      process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:3001",
+      {
+        withCredentials: true,
+        transports: ["websocket", "polling"],
+        reconnection: true,
+        reconnectionAttempts: maxReconnectAttempts,
+        reconnectionDelay: 1000,
+        timeout: 10000, // 10 seconds timeout
+      },
+    );
+    setSocket(newSocket);
+
+    newSocket.on("connect", () => {
+      console.log("Socket connected successfully");
+      setIsConnected(true);
+      setReconnecting(false);
+      setConnectionError(null);
+      newSocket.emit("playerJoined", { id: playerId });
+
+      // Start sending ping messages to keep the connection alive
+      pingInterval = setInterval(() => {
+        newSocket.emit("ping", { playerId });
+      }, 5000); // Send ping every 5 seconds
+    });
+
+    newSocket.on("connect_error", (error) => {
+      console.error("Socket connection error:", error);
+      setReconnecting(true);
+      setConnectionError(`Connection error: ${error.message}`);
+      reconnectAttempts++;
+      if (reconnectAttempts >= maxReconnectAttempts) {
+        setReconnecting(false);
+        setConnectionError(
+          "Max reconnection attempts reached. Please refresh the page.",
+        );
+      }
+    });
+
+    newSocket.on("disconnect", (reason) => {
+      console.log("Socket disconnected:", reason);
+      setIsConnected(false);
+      setReconnecting(true);
+      clearInterval(pingInterval);
+      if (reason === "io server disconnect") {
+        setConnectionError(
+          "Disconnected by the server. Please refresh the page.",
+        );
+      } else {
+        setConnectionError("Connection lost. Attempting to reconnect...");
+      }
+    });
+
+    newSocket.on("reconnect", (attemptNumber) => {
+      console.log(`Reconnected after ${attemptNumber} attempts`);
+      setIsConnected(true);
+      setReconnecting(false);
+      setConnectionError(null);
+      newSocket.emit("playerJoined", { id: playerId });
+    });
+
+    newSocket.on("reconnect_error", (error) => {
+      console.error("Reconnection error:", error);
+      setConnectionError(`Reconnection error: ${error.message}`);
+    });
+
+    newSocket.on("reconnect_failed", () => {
+      setReconnecting(false);
+      setConnectionError("Failed to reconnect. Please refresh the page.");
+    });
+
+    newSocket.on("reconnected", (player: Player) => {
+      console.log("Reconnected to existing session");
+      setReconnecting(false);
+    });
+
+    newSocket.on("playerDisconnected", (disconnectedPlayerId: string) => {
+      setPlayers((prevPlayers) =>
+        prevPlayers.filter((p) => p.id !== disconnectedPlayerId),
+      );
+      if (disconnectedPlayerId === playerId) {
+        setGameStarted(false);
+        setGameWon(false);
+        setGameInProgress(false);
+      }
+    });
+
+    newSocket.on(
+      "updateGame",
+      (gameState: { players: Player[]; cheeses: Position[] }) => {
+        setPlayers(gameState.players);
+        setCheeses(gameState.cheeses);
+      },
+    );
+
+    newSocket.on("gameWon", (winnerId: string) => {
+      setGameWon(true);
+      // You might want to show who won the game here
+    });
+
+    newSocket.on("updatePlayers", (updatedPlayers: Player[]) => {
+      setPlayers(updatedPlayers);
+    });
+
+    newSocket.on("playerConnected", (connectedPlayers: Player[]) => {
+      setPlayers(connectedPlayers);
+    });
+
+    newSocket.on(
+      "gameState",
+      (state: {
+        gameInProgress: boolean;
+        players: Player[];
+        cheeses: Position[];
+      }) => {
+        setGameInProgress(state.gameInProgress);
+        setPlayers(state.players);
+        setCheeses(state.cheeses);
+        if (state.gameInProgress) {
+          setGameStarted(true);
+        }
+      },
+    );
+
+    newSocket.on(
+      "gameStarted",
+      (gameState: { players: Player[]; cheeses: Position[] }) => {
+        setPlayers(gameState.players);
+        setCheeses(gameState.cheeses);
+        setGameStarted(true);
+        setGameInProgress(true);
+      },
+    );
+
+    newSocket.on(
+      "updateGame",
+      (gameState: { players: Player[]; cheeses: Position[] }) => {
+        setPlayers(gameState.players);
+        setCheeses(gameState.cheeses);
+      },
+    );
+
+    return () => {
+      newSocket.disconnect();
+      clearInterval(pingInterval);
+    };
+  }, [playerId]);
 
   const initializeGame = () => {
-    const initialCheese: Position = {
-      x: Math.floor(Math.random() * GRID_WIDTH),
-      y: Math.floor(Math.random() * GRID_HEIGHT),
-    };
-    setCheeses([initialCheese]);
-
-    setPlayers([
-      {
-        id: playerId,
-        position: {
-          x: Math.floor(Math.random() * GRID_WIDTH),
-          y: Math.floor(Math.random() * GRID_HEIGHT),
-        },
-        direction: "right",
-        score: 0,
-      },
-    ]);
-
-    setGameWon(false);
+    if (socket && isConnected) {
+      socket.emit("startGame");
+    } else {
+      setConnectionError("Cannot start game: Socket not connected");
+    }
   };
 
   useEffect(() => {
@@ -120,36 +273,22 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    initializeGame();
-    draw(ctx);
-  }, [playerId]);
+    if (gameStarted) {
+      draw(ctx);
+    }
+  }, [players, cheeses, gameStarted]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (!gameWon) {
-        setPlayers((prevPlayers) =>
-          prevPlayers.map((player) =>
-            player.id === playerId
-              ? { ...player, direction: getDirectionFromKey(e.key) }
-              : player,
-          ),
-        );
+      if (gameStarted && !gameWon && socket && isConnected) {
+        const direction = getDirectionFromKey(e.key);
+        socket.emit("changeDirection", { playerId, direction });
       }
     };
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [playerId, gameWon]);
-
-  useEffect(() => {
-    if (gameWon) return;
-
-    const gameLoop = setInterval(() => {
-      movePlayers();
-    }, 200);
-
-    return () => clearInterval(gameLoop);
-  }, [players, cheeses, gameWon]);
+  }, [gameStarted, gameWon, socket, isConnected, playerId]);
 
   const getDirectionFromKey = (key: string): string => {
     switch (key.toLowerCase()) {
@@ -167,51 +306,6 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
         return "right";
       default:
         return "right";
-    }
-  };
-
-  const movePlayers = () => {
-    setPlayers((prevPlayers) =>
-      prevPlayers.map((player) => {
-        let newX = player.position.x;
-        let newY = player.position.y;
-
-        switch (player.direction) {
-          case "up":
-            newY = (newY - 1 + GRID_HEIGHT) % GRID_HEIGHT;
-            break;
-          case "down":
-            newY = (newY + 1) % GRID_HEIGHT;
-            break;
-          case "left":
-            newX = (newX - 1 + GRID_WIDTH) % GRID_WIDTH;
-            break;
-          case "right":
-            newX = (newX + 1) % GRID_WIDTH;
-            break;
-        }
-
-        const newPosition = { x: newX, y: newY };
-        const cheeseIndex = cheeses.findIndex(
-          (cheese) => cheese.x === newX && cheese.y === newY,
-        );
-
-        if (cheeseIndex !== -1) {
-          setCheeses([]);
-          setGameWon(true);
-          return { ...player, position: newPosition, score: player.score + 10 };
-        }
-
-        return { ...player, position: newPosition };
-      }),
-    );
-
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        draw(ctx);
-      }
     }
   };
 
@@ -237,6 +331,7 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
         player.position.x * CELL_SIZE,
         player.position.y * CELL_SIZE,
         player.direction,
+        player.color,
       );
     });
 
@@ -270,9 +365,10 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
     x: number,
     y: number,
     direction: string,
+    color: string,
   ) => {
-    ctx.fillStyle = "#FF69B4";
-    ctx.shadowColor = "#FF69B4";
+    ctx.fillStyle = color;
+    ctx.shadowColor = color;
     ctx.shadowBlur = 10;
     ctx.beginPath();
     ctx.arc(
@@ -284,7 +380,7 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
     );
     ctx.fill();
 
-    ctx.fillStyle = "#FFC0CB";
+    ctx.fillStyle = lightenColor(color, 20);
     for (let i = 0; i < 8; i++) {
       const angle = (i * Math.PI) / 4;
       const fluffX = x + CELL_SIZE / 2 + (Math.cos(angle) * CELL_SIZE) / 2;
@@ -333,6 +429,25 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
     ctx.shadowBlur = 0;
   };
 
+  const lightenColor = (color: string, percent: number): string => {
+    const num = parseInt(color.replace("#", ""), 16),
+      amt = Math.round(2.55 * percent),
+      R = (num >> 16) + amt,
+      G = ((num >> 8) & 0x00ff) + amt,
+      B = (num & 0x0000ff) + amt;
+    return (
+      "#" +
+      (
+        0x1000000 +
+        (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+        (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+        (B < 255 ? (B < 1 ? 0 : B) : 255)
+      )
+        .toString(16)
+        .slice(1)
+    );
+  };
+
   const drawWinMessage = (ctx: CanvasRenderingContext2D) => {
     const width = GRID_WIDTH * CELL_SIZE;
     const height = GRID_HEIGHT * CELL_SIZE;
@@ -349,11 +464,11 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
     // Outer glow
     ctx.strokeStyle = "#FFFF00";
     ctx.lineWidth = 8;
-    ctx.strokeText("YOU WIN!", width / 2, height / 2 - 20);
+    ctx.strokeText("GAME OVER!", width / 2, height / 2 - 20);
 
     // Inner text
     ctx.fillStyle = "#FFFF00";
-    ctx.fillText("YOU WIN!", width / 2, height / 2 - 20);
+    ctx.fillText("GAME OVER!", width / 2, height / 2 - 20);
 
     // Subtext
     ctx.font = "18px Audiowide, cursive";
@@ -392,13 +507,9 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
             ? "down"
             : "up";
 
-      setPlayers((prevPlayers) =>
-        prevPlayers.map((player) =>
-          player.id === playerId
-            ? { ...player, direction: newDirection }
-            : player,
-        ),
-      );
+      if (socket && isConnected) {
+        socket.emit("changeDirection", { playerId, direction: newDirection });
+      }
     }
   };
 
@@ -429,35 +540,91 @@ export default function MultiplayerRetroNeonElectricCheeseGame() {
       `}</style>
       <RetroNeonLogo />
       <RetroNeonSvg />
-      <div className="text-neon-yellow neon-glow mb-4 text-sm sm:text-base">
-        Connected Players: {players.length}
-      </div>
-      <div className="relative">
-        <canvas
-          ref={canvasRef}
-          width={GRID_WIDTH * CELL_SIZE}
-          height={GRID_HEIGHT * CELL_SIZE}
-          className="border-neon-yellow neon-glow cursor-pointer rounded-lg border-4 shadow-lg"
-          onTouchStart={handleTouchStart}
-          onClick={handleCanvasClick}
-        />
-        {gameWon && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="text-neon-yellow neon-glow mb-4 text-4xl font-bold">
-              WIN!
+      {!gameStarted ? (
+        <div className="flex flex-col items-center">
+          {players.length === 0 && isConnected ? (
+            <div className="text-neon-yellow neon-glow mb-4 text-xl sm:text-2xl">
+              Waiting for players...
             </div>
-            <NeonButton onClick={initializeGame}>Play Again</NeonButton>
-          </div>
-        )}
-      </div>
-      <div className="text-neon-yellow neon-glow mt-4 text-xl font-bold sm:text-2xl">
-        SCORE: {players.find((p) => p.id === playerId)?.score || 0}
-      </div>
-      {!gameWon && (
+          ) : (
+            <>
+              <div className="text-neon-yellow neon-glow mb-4 text-xl sm:text-2xl">
+                Connected Players: {players.length}
+              </div>
+              <div className="text-neon-yellow neon-glow mb-4 text-lg sm:text-xl">
+                Players:
+                {players.map((player, index) => (
+                  <div key={player.id} style={{ color: player.color }}>
+                    Player {index + 1} {player.id === playerId ? "(You)" : ""} -
+                    {index === 0
+                      ? " Top-left"
+                      : index === 1
+                        ? " Top-right"
+                        : index === 2
+                          ? " Bottom-left"
+                          : index === 3
+                            ? " Bottom-right"
+                            : ""}
+                  </div>
+                ))}
+                {!players.some((player) => player.id === playerId) && (
+                  <div>You (Connecting...)</div>
+                )}
+              </div>
+            </>
+          )}
+          <NeonButton
+            onClick={initializeGame}
+            disabled={gameInProgress || players.length === 0}
+          >
+            {gameInProgress ? "Game in Progress" : "Start Game"}
+          </NeonButton>
+        </div>
+      ) : (
+        <div className="relative">
+          <canvas
+            ref={canvasRef}
+            width={GRID_WIDTH * CELL_SIZE}
+            height={GRID_HEIGHT * CELL_SIZE}
+            className="border-neon-yellow neon-glow cursor-pointer rounded-lg border-4 shadow-lg"
+            onTouchStart={handleTouchStart}
+            onClick={handleCanvasClick}
+          />
+          {gameWon && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className="text-neon-yellow neon-glow mb-4 text-4xl font-bold">
+                GAME OVER!
+              </div>
+              <NeonButton onClick={initializeGame}>Play Again</NeonButton>
+            </div>
+          )}
+        </div>
+      )}
+      {gameStarted && (
+        <div className="text-neon-yellow neon-glow mt-4 text-xl font-bold sm:text-2xl">
+          SCORE: {players.find((p) => p.id === playerId)?.score || 0}
+        </div>
+      )}
+      {gameStarted && !gameWon && (
         <div className="text-neon-yellow neon-glow mt-2 text-center text-xs sm:text-sm">
           USE ARROW KEYS OR WASD TO MOVE
           <br />
           ON MOBILE, TAP THE SCREEN TO CHANGE DIRECTION
+        </div>
+      )}
+      {connectionError && (
+        <div className="text-neon-yellow neon-glow mt-4 text-xl">
+          {connectionError}
+        </div>
+      )}
+      {reconnecting && !connectionError && (
+        <div className="text-neon-yellow neon-glow mt-4 text-xl">
+          Reconnecting...
+        </div>
+      )}
+      {!isConnected && !reconnecting && !connectionError && (
+        <div className="text-neon-yellow neon-glow mt-4 text-xl">
+          Connection lost. Please refresh the page.
         </div>
       )}
     </div>
