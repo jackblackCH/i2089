@@ -1,17 +1,24 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const CELL_SIZE = 20;
 const GRID_WIDTH = 20;
 const GRID_HEIGHT = 15;
 
 type Position = { x: number; y: number };
+type Player = {
+  id: string;
+  position: Position;
+  direction: string;
+  score: number;
+};
 
 function RetroNeonLogo() {
   return (
-    <div className="mb-8 w-full text-center">
-      <h1 className="text-5xl font-extrabold leading-none tracking-tighter">
+    <div className="mb-4 w-full text-center sm:mb-8">
+      <h1 className="text-3xl font-extrabold leading-none tracking-tighter sm:text-5xl">
         <span className="text-neon-yellow neon-glow inline-block animate-pulse">
           ELECTRIC
         </span>{" "}
@@ -28,7 +35,12 @@ function RetroNeonLogo() {
 
 function RetroNeonSvg() {
   return (
-    <svg width="200" height="200" viewBox="0 0 200 200" className="mb-8">
+    <svg
+      width="150"
+      height="150"
+      viewBox="0 0 200 200"
+      className="mb-4 sm:mb-8"
+    >
       <defs>
         <filter id="enhanced-neon-glow">
           <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
@@ -55,12 +67,51 @@ function RetroNeonSvg() {
   );
 }
 
-export default function RetroNeonElectricCheeseGame() {
+function NeonButton({
+  onClick,
+  children,
+}: {
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="text-neon-yellow neon-glow hover:bg-neon-yellow rounded bg-transparent px-4 py-2 text-xl font-bold transition-all duration-300 hover:text-black sm:text-2xl"
+    >
+      {children}
+    </button>
+  );
+}
+
+export default function MultiplayerRetroNeonElectricCheeseGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [panther, setPanther] = useState<Position>({ x: 10, y: 7 });
+  const [players, setPlayers] = useState<Player[]>([]);
   const [cheeses, setCheeses] = useState<Position[]>([]);
-  const [direction, setDirection] = useState<string>("right");
-  const [score, setScore] = useState<number>(0);
+  const [playerId] = useState<string>(uuidv4());
+  const [gameWon, setGameWon] = useState<boolean>(false);
+
+  const initializeGame = () => {
+    const initialCheese: Position = {
+      x: Math.floor(Math.random() * GRID_WIDTH),
+      y: Math.floor(Math.random() * GRID_HEIGHT),
+    };
+    setCheeses([initialCheese]);
+
+    setPlayers([
+      {
+        id: playerId,
+        position: {
+          x: Math.floor(Math.random() * GRID_WIDTH),
+          y: Math.floor(Math.random() * GRID_HEIGHT),
+        },
+        direction: "right",
+        score: 0,
+      },
+    ]);
+
+    setGameWon(false);
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -69,81 +120,91 @@ export default function RetroNeonElectricCheeseGame() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const initialCheeses: Position[] = [];
-    for (let x = 0; x < GRID_WIDTH; x++) {
-      for (let y = 0; y < GRID_HEIGHT; y++) {
-        if (Math.random() < 0.1) {
-          initialCheeses.push({ x, y });
-        }
-      }
-    }
-    setCheeses(initialCheeses);
-
+    initializeGame();
     draw(ctx);
-  }, []);
+  }, [playerId]);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      switch (e.key.toLowerCase()) {
-        case "arrowup":
-        case "w":
-          setDirection("up");
-          break;
-        case "arrowdown":
-        case "s":
-          setDirection("down");
-          break;
-        case "arrowleft":
-        case "a":
-          setDirection("left");
-          break;
-        case "arrowright":
-        case "d":
-          setDirection("right");
-          break;
+      if (!gameWon) {
+        setPlayers((prevPlayers) =>
+          prevPlayers.map((player) =>
+            player.id === playerId
+              ? { ...player, direction: getDirectionFromKey(e.key) }
+              : player,
+          ),
+        );
       }
     };
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, []);
+  }, [playerId, gameWon]);
 
   useEffect(() => {
+    if (gameWon) return;
+
     const gameLoop = setInterval(() => {
-      movePanther();
+      movePlayers();
     }, 200);
 
     return () => clearInterval(gameLoop);
-  }, [panther, direction, cheeses]);
+  }, [players, cheeses, gameWon]);
 
-  const movePanther = () => {
-    let newX = panther.x;
-    let newY = panther.y;
-
-    switch (direction) {
-      case "up":
-        newY = (newY - 1 + GRID_HEIGHT) % GRID_HEIGHT;
-        break;
-      case "down":
-        newY = (newY + 1) % GRID_HEIGHT;
-        break;
-      case "left":
-        newX = (newX - 1 + GRID_WIDTH) % GRID_WIDTH;
-        break;
-      case "right":
-        newX = (newX + 1) % GRID_WIDTH;
-        break;
+  const getDirectionFromKey = (key: string): string => {
+    switch (key.toLowerCase()) {
+      case "arrowup":
+      case "w":
+        return "up";
+      case "arrowdown":
+      case "s":
+        return "down";
+      case "arrowleft":
+      case "a":
+        return "left";
+      case "arrowright":
+      case "d":
+        return "right";
+      default:
+        return "right";
     }
+  };
 
-    setPanther({ x: newX, y: newY });
+  const movePlayers = () => {
+    setPlayers((prevPlayers) =>
+      prevPlayers.map((player) => {
+        let newX = player.position.x;
+        let newY = player.position.y;
 
-    const cheeseIndex = cheeses.findIndex(
-      (cheese) => cheese.x === newX && cheese.y === newY,
+        switch (player.direction) {
+          case "up":
+            newY = (newY - 1 + GRID_HEIGHT) % GRID_HEIGHT;
+            break;
+          case "down":
+            newY = (newY + 1) % GRID_HEIGHT;
+            break;
+          case "left":
+            newX = (newX - 1 + GRID_WIDTH) % GRID_WIDTH;
+            break;
+          case "right":
+            newX = (newX + 1) % GRID_WIDTH;
+            break;
+        }
+
+        const newPosition = { x: newX, y: newY };
+        const cheeseIndex = cheeses.findIndex(
+          (cheese) => cheese.x === newX && cheese.y === newY,
+        );
+
+        if (cheeseIndex !== -1) {
+          setCheeses([]);
+          setGameWon(true);
+          return { ...player, position: newPosition, score: player.score + 10 };
+        }
+
+        return { ...player, position: newPosition };
+      }),
     );
-    if (cheeseIndex !== -1) {
-      setCheeses(cheeses.filter((_, index) => index !== cheeseIndex));
-      setScore((prevScore) => prevScore + 10);
-    }
 
     const canvas = canvasRef.current;
     if (canvas) {
@@ -170,12 +231,18 @@ export default function RetroNeonElectricCheeseGame() {
       drawNeonCheeseBlock(ctx, cheese.x * CELL_SIZE, cheese.y * CELL_SIZE);
     });
 
-    drawNeonPanther(
-      ctx,
-      panther.x * CELL_SIZE,
-      panther.y * CELL_SIZE,
-      direction,
-    );
+    players.forEach((player) => {
+      drawNeonPinkPanther(
+        ctx,
+        player.position.x * CELL_SIZE,
+        player.position.y * CELL_SIZE,
+        player.direction,
+      );
+    });
+
+    if (gameWon) {
+      drawWinMessage(ctx);
+    }
   };
 
   const drawNeonCheeseBlock = (
@@ -198,38 +265,141 @@ export default function RetroNeonElectricCheeseGame() {
     ctx.shadowBlur = 0;
   };
 
-  const drawNeonPanther = (
+  const drawNeonPinkPanther = (
     ctx: CanvasRenderingContext2D,
     x: number,
     y: number,
     direction: string,
   ) => {
-    ctx.fillStyle = "#FF00FF";
-    ctx.shadowColor = "#FF00FF";
+    ctx.fillStyle = "#FF69B4";
+    ctx.shadowColor = "#FF69B4";
     ctx.shadowBlur = 10;
-    ctx.fillRect(x, y, CELL_SIZE, CELL_SIZE);
+    ctx.beginPath();
+    ctx.arc(
+      x + CELL_SIZE / 2,
+      y + CELL_SIZE / 2,
+      CELL_SIZE / 2,
+      0,
+      Math.PI * 2,
+    );
+    ctx.fill();
+
+    ctx.fillStyle = "#FFC0CB";
+    for (let i = 0; i < 8; i++) {
+      const angle = (i * Math.PI) / 4;
+      const fluffX = x + CELL_SIZE / 2 + (Math.cos(angle) * CELL_SIZE) / 2;
+      const fluffY = y + CELL_SIZE / 2 + (Math.sin(angle) * CELL_SIZE) / 2;
+      ctx.beginPath();
+      ctx.arc(fluffX, fluffY, CELL_SIZE / 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     ctx.fillStyle = "#FFFFFF";
     ctx.shadowColor = "#FFFFFF";
+    const eyeOffset = CELL_SIZE / 6;
+    let eyeX, eyeY;
     switch (direction) {
       case "up":
-        ctx.fillRect(x + 4, y + 2, 4, 4);
-        ctx.fillRect(x + CELL_SIZE - 8, y + 2, 4, 4);
+        eyeX = x + CELL_SIZE / 2;
+        eyeY = y + eyeOffset;
         break;
       case "down":
-        ctx.fillRect(x + 4, y + CELL_SIZE - 6, 4, 4);
-        ctx.fillRect(x + CELL_SIZE - 8, y + CELL_SIZE - 6, 4, 4);
+        eyeX = x + CELL_SIZE / 2;
+        eyeY = y + CELL_SIZE - eyeOffset;
         break;
       case "left":
-        ctx.fillRect(x + 2, y + 4, 4, 4);
-        ctx.fillRect(x + 2, y + CELL_SIZE - 8, 4, 4);
+        eyeX = x + eyeOffset;
+        eyeY = y + CELL_SIZE / 2;
         break;
       case "right":
-        ctx.fillRect(x + CELL_SIZE - 6, y + 4, 4, 4);
-        ctx.fillRect(x + CELL_SIZE - 6, y + CELL_SIZE - 8, 4, 4);
+        eyeX = x + CELL_SIZE - eyeOffset;
+        eyeY = y + CELL_SIZE / 2;
         break;
+      default:
+        eyeX = x + CELL_SIZE / 2;
+        eyeY = y + CELL_SIZE / 2;
     }
+    ctx.beginPath();
+    ctx.arc(eyeX - eyeOffset, eyeY, CELL_SIZE / 8, 0, Math.PI * 2);
+    ctx.arc(eyeX + eyeOffset, eyeY, CELL_SIZE / 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(eyeX - eyeOffset, eyeY, CELL_SIZE / 16, 0, Math.PI * 2);
+    ctx.arc(eyeX + eyeOffset, eyeY, CELL_SIZE / 16, 0, Math.PI * 2);
+    ctx.fill();
+
     ctx.shadowBlur = 0;
+  };
+
+  const drawWinMessage = (ctx: CanvasRenderingContext2D) => {
+    const width = GRID_WIDTH * CELL_SIZE;
+    const height = GRID_HEIGHT * CELL_SIZE;
+
+    // Draw semi-transparent overlay
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.fillRect(0, 0, width, height);
+
+    // Draw win message
+    ctx.font = "bold 36px Audiowide, cursive";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    // Outer glow
+    ctx.strokeStyle = "#FFFF00";
+    ctx.lineWidth = 8;
+    ctx.strokeText("YOU WIN!", width / 2, height / 2 - 20);
+
+    // Inner text
+    ctx.fillStyle = "#FFFF00";
+    ctx.fillText("YOU WIN!", width / 2, height / 2 - 20);
+
+    // Subtext
+    ctx.font = "18px Audiowide, cursive";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillText("Click to play again", width / 2, height / 2 + 20);
+  };
+
+  const handleCanvasClick = () => {
+    if (gameWon) {
+      initializeGame();
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    if (gameWon) {
+      initializeGame();
+      return;
+    }
+
+    const touch = e.touches[0];
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      const newDirection =
+        Math.abs(x - centerX) > Math.abs(y - centerY)
+          ? x > centerX
+            ? "right"
+            : "left"
+          : y > centerY
+            ? "down"
+            : "up";
+
+      setPlayers((prevPlayers) =>
+        prevPlayers.map((player) =>
+          player.id === playerId
+            ? { ...player, direction: newDirection }
+            : player,
+        ),
+      );
+    }
   };
 
   return (
@@ -259,18 +429,37 @@ export default function RetroNeonElectricCheeseGame() {
       `}</style>
       <RetroNeonLogo />
       <RetroNeonSvg />
-      <canvas
-        ref={canvasRef}
-        width={GRID_WIDTH * CELL_SIZE}
-        height={GRID_HEIGHT * CELL_SIZE}
-        className="border-neon-yellow neon-glow rounded-lg border-4 shadow-lg"
-      />
-      <div className="text-neon-yellow neon-glow mt-4 text-2xl font-bold">
-        SCORE: {score}
+      <div className="text-neon-yellow neon-glow mb-4 text-sm sm:text-base">
+        Connected Players: {players.length}
       </div>
-      <div className="text-neon-yellow neon-glow mt-2 text-sm">
-        USE ARROW KEYS OR WASD TO MOVE
+      <div className="relative">
+        <canvas
+          ref={canvasRef}
+          width={GRID_WIDTH * CELL_SIZE}
+          height={GRID_HEIGHT * CELL_SIZE}
+          className="border-neon-yellow neon-glow cursor-pointer rounded-lg border-4 shadow-lg"
+          onTouchStart={handleTouchStart}
+          onClick={handleCanvasClick}
+        />
+        {gameWon && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="text-neon-yellow neon-glow mb-4 text-4xl font-bold">
+              WIN!
+            </div>
+            <NeonButton onClick={initializeGame}>Play Again</NeonButton>
+          </div>
+        )}
       </div>
+      <div className="text-neon-yellow neon-glow mt-4 text-xl font-bold sm:text-2xl">
+        SCORE: {players.find((p) => p.id === playerId)?.score || 0}
+      </div>
+      {!gameWon && (
+        <div className="text-neon-yellow neon-glow mt-2 text-center text-xs sm:text-sm">
+          USE ARROW KEYS OR WASD TO MOVE
+          <br />
+          ON MOBILE, TAP THE SCREEN TO CHANGE DIRECTION
+        </div>
+      )}
     </div>
   );
 }
