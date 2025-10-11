@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
-const font = Space_Grotesk({ subsets: ["latin"] });
+const font = GeistSans;
 
 export const metadata: Metadata = {
   title:
