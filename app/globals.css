@@ -83,7 +83,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #f1f1f1;
+    color: #222;
   }
 
   /* Add text selection styles */

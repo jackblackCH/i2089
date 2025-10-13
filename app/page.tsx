@@ -12,7 +12,7 @@ export default function Home() {
 function CombinedPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col">
-      <div className="relative w-full flex-grow overflow-hidden bg-white">
+      <div className="relative w-full flex-grow overflow-hidden bg-[#f1f1f1]">
         <div className="absolute inset-0 z-0">
           <svg className="h-full w-full" preserveAspectRatio="xMidYMid slice">
             <defs>

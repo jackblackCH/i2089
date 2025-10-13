@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import { PostHogProvider } from "../components/PostHogProvider";
 
 const font = GeistSans;
 
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-svh">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }
