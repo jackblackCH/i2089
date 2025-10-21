@@ -82,14 +82,10 @@
   * {
     @apply border-border;
   }
-  body {
-    background-color: #f1f1f1;
-    color: #222;
-  }
 
   /* Add text selection styles */
-  ::selection {
+  body::selection {
     background-color: #222;
-    color: white;
+    color: #ffffff;
   }
 }
