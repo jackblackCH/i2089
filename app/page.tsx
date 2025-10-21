@@ -10,6 +10,10 @@ export default function Home() {
 }
 
 function CombinedPage() {
+  // Simple email obfuscation by splitting and reversing
+  const emailParts = ["com", "i2089", "hi"].reverse();
+  const emailAddress = `${emailParts[0]}@${emailParts[1]}.${emailParts[2]}`;
+
   return (
     <div className="relative flex min-h-screen w-full flex-col">
       <div className="relative w-full flex-grow overflow-hidden text-balance">
@@ -22,7 +26,7 @@ function CombinedPage() {
               <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-[61.80339887498948%] md:text-5xl">
                 Marc Illien, a Fullstack and Frontend Developer from Zurich.{" "}
                 <a
-                  href="mailto:hi@i2089.com"
+                  href={`mailto:${emailAddress}`}
                   className="underline transition-colors duration-200 hover:no-underline"
                   target="_blank"
                   rel="noopener noreferrer"
