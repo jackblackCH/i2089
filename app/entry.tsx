@@ -42,7 +42,7 @@ export function Entry({
         </div>
       )}
 
-      <h2 className="text-40 col-span-full whitespace-break-spaces font-sans font-medium leading-snug tracking-[-0.04em]">
+      <h2 className="text-40 col-span-full mb-0.5 whitespace-break-spaces font-sans font-medium leading-snug tracking-[-0.04em]">
         {title}
       </h2>
 
