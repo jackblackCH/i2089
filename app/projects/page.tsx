@@ -5,7 +5,7 @@ import { Header } from "../header";
 export const metadata: Metadata = {
   title: "Projects // i2089 — Marc Illien",
   description:
-    "Selected work by Marc Illien — Eckert Branded Goods (Saleor · Next.js) and AXA Switzerland. Frontend engineering and headless commerce.",
+    "Selected work by Marc Illien — Eckert Branded Goods (Saleor · Next.js) and AXA Switzerland. Frontend consulting, engineering and headless commerce.",
 };
 
 const projects: EntryProps[] = [
@@ -20,7 +20,7 @@ const projects: EntryProps[] = [
     eyebrow: "Jun 2025 — Mar 2026",
     title: "Eckert Branded Goods",
     description:
-      "Frontend Development with Next.js for branded-goods.ch, a Swiss e-commerce platform, developed with Headless Saleor, an AI-ready, open-source e-commerce platform.",
+      "Frontend Development with Next.js and Tailwind CSS for branded-goods.ch. Developed as business partner of Avolut.ch. Technology: and Saleor.io, an AI-ready, open-source e-commerce platform.",
     link: { name: "branded-goods.ch", href: "https://branded-goods.ch" },
   },
   {
