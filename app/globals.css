@@ -7,17 +7,17 @@
   --radius: 0.5rem;
 
   /* /new playground tokens — kept global so the v4 engine emits utilities */
-  --color-frame: #050505;
+  --color-frame: #222222;
   --color-ink: #1a1a1a;
   --color-paper: #ededed;
-  --color-mute: #6b6b6b;
-  --color-faint: #2a2a2a;
+  --color-mute: #8a8a8a;
+  --color-faint: #222222;
 
   /* fluid type scale via clamp() — utilities text-10/20/40/80/200.
      Defaults (10/20/40/80/200 px) sit in the middle of each clamp range.
      `cqi` scales with the nearest container; outside container context it
      falls back to viewport, so the scale stays alive everywhere. */
-  --text-10: clamp(0.55rem, 1.2cqi, 0.85rem);
+  --text-10: clamp(0.64rem, 1.2cqi, 0.85rem);
   --text-10--line-height: 1.4;
   --text-15: clamp(0.765rem, 2.505cqi, 1.275rem);
   --text-15--line-height: 1.35;
@@ -51,11 +51,16 @@
 
 /* Trim the font's leading whitespace on every headline so optical alignment
    matches visual alignment. Modern browsers only; legacy ones ignore safely. */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-box: trim-both cap alphabetic;
 }
 
 body::selection {
-  background-color: #222;
+  background-color: #222222;
   color: #ffffff;
 }

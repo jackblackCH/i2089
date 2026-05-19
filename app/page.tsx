@@ -1,70 +1,89 @@
+import type { Metadata } from "next";
+import { Header } from "./header";
+import OrientationInfo from "./orientation-info";
+import { TypewriterSwap } from "./typewriter-swap";
+
+export const metadata: Metadata = {
+  title: "i2089 // Agentic. Coding. Engineering.",
+  description:
+    "i2089 — the independent web engineering studio of Marc Illien in Zürich. High-quality Frontend- and Agentic Engineering, LLMs, production code.",
+};
+
 export default function Home() {
   return (
-    <main className="">
-      <h1 className="sr-only text-3xl">
-        i2089 - Marc Illien - High quality frontend development, made in Zurich
-      </h1>
-      <CombinedPage />
-    </main>
-  );
-}
+    <main className="text-20 gap-x-(--fluid-gutter) p-(--space-pad) grid h-full grid-cols-12 grid-rows-[auto_minmax(0,1fr)_auto] font-sans">
+      <OrientationInfo />
+      <Header
+        nav={[
+          { href: "/projects", label: "Projects →" },
+          { href: "/services", label: "Services →" },
+        ]}
+      />
 
-function CombinedPage() {
-  // Simple email obfuscation by splitting and reversing
-  const emailParts = ["com", "i2089", "hi"].reverse();
-  const emailAddress = `${emailParts[0]}@${emailParts[1]}.${emailParts[2]}`;
-
-  return (
-    <div className="relative flex min-h-screen w-full flex-col">
-      <div className="relative w-full flex-grow overflow-hidden text-balance">
-        <div className="relative z-20 flex min-h-screen flex-col justify-between px-8 py-8 md:px-16 md:py-16 lg:py-24">
-          <div className="mx-auto flex h-full w-full max-w-7xl flex-1 flex-col justify-between">
-            <div className="mb-8 md:mb-12 md:flex md:items-start md:space-x-8 lg:space-x-16">
-              <h3 className="mb-2 text-lg font-bold uppercase tracking-wide text-[#222] sm:text-xl md:mb-0 md:w-[38.196601125010515%] md:text-2xl">
-                I am
-              </h3>
-              <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-[61.80339887498948%] md:text-5xl">
-                Marc Illien, a Fullstack and Frontend Developer from Zurich.{" "}
-                <a
-                  href={`mailto:${emailAddress}`}
-                  className="underline transition-colors duration-200 hover:no-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Contact Me
-                </a>
-                .
-              </h2>
-            </div>
-            <div className="mb-8 md:mb-12 md:flex md:items-start md:space-x-8 lg:space-x-16">
-              <h3 className="mb-2 text-lg font-bold uppercase tracking-wide text-[#222] sm:text-xl md:mb-0 md:w-[38.196601125010515%] md:text-2xl">
-                I love
-              </h3>
-              <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-[61.80339887498948%] md:text-5xl">
-                Excellent user experience and Design.
-              </h2>
-            </div>
-            <div className="mb-8 md:mb-12 md:flex md:items-start md:space-x-8 lg:space-x-16">
-              <h3 className="mb-2 text-lg font-bold uppercase tracking-wide text-[#222] sm:text-xl md:mb-0 md:w-[38.196601125010515%] md:text-2xl">
-                I create
-              </h3>
-              <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-[61.80339887498948%] md:text-5xl">
-                High-quality, modern web and mobile applications.
-              </h2>
-            </div>
-            <div className="md:flex md:items-start md:space-x-8 lg:space-x-16">
-              <h3 className="mb-2 text-lg font-bold uppercase tracking-wide text-[#222] sm:text-xl md:mb-0 md:w-[38.196601125010515%] md:text-2xl">
-                I also do
-              </h3>
-              <h2 className="text-3xl font-bold uppercase tracking-tighter text-gray-700 [text-shadow:0_0_80px_rgba(0,0,0,0.22)] sm:text-4xl md:w-[61.80339887498948%] md:text-5xl">
-                Frontend Consulting, Prototypes &amp; MVP&apos;s, Motion Design
-                3D, Design Systems, Living Styleguides, Micro Frontend
-                Applications, Code- and tech stack reviews.
-              </h2>
-            </div>
-          </div>
+      {/* centered fat triangle with i2089 logo */}
+      <section
+        className="reveal-bloom col-span-full row-start-2 grid place-items-center"
+        style={{ ["--i" as never]: 2 }}
+      >
+        <div className="new-aura-wrap relative grid w-[min(60cqi,70%)] place-items-center">
+          <div className="new-aura" aria-hidden />
+          <svg
+            viewBox="0 0 100 86.6"
+            aria-label="i2089"
+            className="new-glow relative z-10 block h-auto w-full"
+          >
+            <polygon
+              points="50,0 100,86.6 0,86.6"
+              fill="none"
+              stroke="var(--sheet-mute)"
+              strokeWidth={1}
+              vectorEffect="non-scaling-stroke"
+              opacity={0.45}
+            />
+            <text
+              x="50"
+              y="62"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill="none"
+              stroke="var(--sheet-mute)"
+              strokeWidth={1}
+              vectorEffect="non-scaling-stroke"
+              fontFamily="var(--font-sans)"
+              fontWeight={500}
+              fontSize={24}
+              letterSpacing="-0.111em"
+              paintOrder="stroke"
+              opacity={0.95}
+            >
+              i2089
+            </text>
+          </svg>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* display title */}
+      <section className="col-span-full row-start-3 grid items-end">
+        <h1 className="text-80 font-sans font-medium tracking-[-0.04em]">
+          <a
+            href="/services"
+            className="block transition-opacity hover:opacity-80"
+            aria-label="Services — Agentic, Coding, Engineering"
+          >
+            <span className="reveal block" style={{ ["--i" as never]: 3 }}>
+              Agentic.
+            </span>
+            <span className="reveal block" style={{ ["--i" as never]: 4 }}>
+              <span className="strike" style={{ ["--i" as never]: 4 }}>
+                Coding.
+              </span>
+            </span>
+            <span className="reveal block" style={{ ["--i" as never]: 5 }}>
+              <TypewriterSwap words={["Engineering.", "Design."]} />
+            </span>
+          </a>
+        </h1>
+      </section>
+    </main>
   );
 }
