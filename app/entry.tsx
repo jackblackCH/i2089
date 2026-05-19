@@ -69,7 +69,7 @@ function LinkBlock({ link, external }: { link: EntryLink; external: boolean }) {
       href={link.href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="text-15 text-(--sheet-mute) hover:text-(--sheet-fg) col-span-4 self-end text-right transition-colors"
+      className="text-15 text-(--sheet-mute) hover:text-(--sheet-fg) focus-visible:text-(--sheet-fg) focus-visible:outline-none col-span-4 self-end text-right transition-colors"
     >
       {head && <>{head} </>}
       <span className="whitespace-nowrap">{tail} ↗</span>

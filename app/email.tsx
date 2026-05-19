@@ -3,17 +3,21 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Bot-resistant mailto link.
+ * Bot-resistant mailto link — user-friendly: select, copy/paste and
+ * screen-readers all work like a plain email.
  *
- * Source HTML contains only the reversed string ("moc.9802i@ih") — no `@`
- * adjacent to a domain, so naive email regex scrapers miss it. CSS
- * `direction: rtl; unicode-bidi: bidi-override` flips it visually so humans
- * still read "hi@i2089.com". The `mailto:` href is attached on the client.
- *
- * Only the inner <span> uses RTL — the outer <a> stays LTR so it aligns
- * normally inside its grid cell.
+ * Strategy (two cheap, layered defenses):
+ *   1. The visible text ships with the `@` encoded as the HTML entity
+ *      `&#64;`. Naive scrapers that grep raw HTML for `name@domain` miss
+ *      it. The browser decodes the entity when parsing, so the DOM text
+ *      is "hi@i2089.com" — users see and copy it normally.
+ *   2. The `href` is `#` in the SSR markup so bots can't grep for
+ *      `mailto:` either. `useEffect` swaps in the real mailto URL on
+ *      hydration. A click before hydration is silently prevented; once
+ *      hydrated, clicking opens the user's mail client.
  */
-const REVERSED = "moc.9802i@ih";
+const NAME = "hi";
+const HOST = "i2089.com";
 
 type Props = {
   className?: string;
@@ -25,9 +29,9 @@ export function ObfuscatedEmail({ className, style }: Props) {
 
   useEffect(() => {
     if (!ref.current) return;
-    const decoded = REVERSED.split("").reverse().join("");
-    ref.current.href = `mailto:${decoded}`;
-    ref.current.setAttribute("aria-label", `Email ${decoded}`);
+    const email = `${NAME}@${HOST}`;
+    ref.current.href = `mailto:${email}`;
+    ref.current.setAttribute("aria-label", `Email ${email}`);
   }, []);
 
   return (
@@ -39,16 +43,7 @@ export function ObfuscatedEmail({ className, style }: Props) {
       }}
       className={className}
       style={style}
-    >
-      <span
-        style={{
-          unicodeBidi: "bidi-override",
-          direction: "rtl",
-          display: "inline-block",
-        }}
-      >
-        {REVERSED}
-      </span>
-    </a>
+      dangerouslySetInnerHTML={{ __html: `${NAME}&#64;${HOST}` }}
+    />
   );
 }

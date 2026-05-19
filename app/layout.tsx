@@ -8,14 +8,15 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeToggle } from "./theme-toggle";
 
 export const metadata: Metadata = {
-  title:
-    "i2089 // Marc Illien // Frontend Engineering // Agentic Engineering // Zürich",
+  metadataBase: new URL("https://i2089.com"),
+  title: "i2089 // Marc Illien — Frontend & Agentic Engineering, Zürich",
   description:
-    "i2089 — the independent engineering studio of Marc Illien in Zurich. Agentic Engineering, Fullstack & Frontend Development, UX/UI prototyping.",
+    "Independent web engineering studio of Marc Illien in Zurich. Agentic Engineering, Fullstack Frontend Development, UX/UI prototypes and MVPs.",
 };
 
-// Runs before paint to apply the persisted theme so the canvas doesn't flash.
-const THEME_BOOT = `try{var t=localStorage.getItem('i2089-new-theme');var f=document.currentScript.parentElement;if(t==='light'||t==='dark')f.dataset.theme=t;}catch(e){}`;
+// Runs before paint to apply the persisted theme — or fall back to the
+// visitor's OS color-scheme preference — so the canvas doesn't flash.
+const THEME_BOOT = `try{var t=localStorage.getItem('i2089-new-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';var f=document.currentScript.parentElement;if(t==='light'||t==='dark')f.dataset.theme=t;}catch(e){}`;
 
 export default function RootLayout({
   children,

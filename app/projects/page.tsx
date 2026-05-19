@@ -5,17 +5,17 @@ import { Header } from "../header";
 export const metadata: Metadata = {
   title: "Projects // i2089 — Marc Illien",
   description:
-    "Selected work by Marc Illien — Personal Magic, Eckert Branded Goods, and AXA. Frontend engineering, headless commerce and agentic tooling.",
+    "Selected work by Marc Illien — Eckert Branded Goods (Saleor · Next.js) and AXA Switzerland. Frontend engineering and headless commerce.",
 };
 
 const projects: EntryProps[] = [
-  {
-    eyebrow: "2026 — In Progress",
-    title: "Personal Magic",
-    description:
-      "Agentic workflows, tooling and engineering practice from first principles.",
-    link: { name: "Personal Magic", href: "#" },
-  },
+  // {
+  //   eyebrow: "2026 — In Progress",
+  //   title: "Personal Magic",
+  //   description:
+  //     "Agentic workflows, tooling and engineering practice from first principles.",
+  //   link: { name: "Personal Magic", href: "#" },
+  // },
   {
     eyebrow: "Jun 2025 — Mar 2026",
     title: "Eckert Branded Goods",

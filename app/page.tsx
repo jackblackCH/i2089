@@ -5,7 +5,7 @@ import { TypewriterSwap } from "./typewriter-swap";
 export const metadata: Metadata = {
   title: "i2089 // Agentic. Coding. Engineering.",
   description:
-    "i2089 — the independent web engineering studio of Marc Illien in Zürich. High-quality Frontend- and Agentic Engineering, LLMs, production code.",
+    "i2089 — the independent web engineering studio of Marc Illien in Zurich. High-quality Frontend- and Agentic Engineering, LLMs, production code.",
 };
 
 export default function Home() {
@@ -33,10 +33,10 @@ export default function Home() {
             <polygon
               points="50,0 100,86.6 0,86.6"
               fill="none"
-              stroke="var(--sheet-mute)"
-              strokeWidth={1}
+              stroke="var(--mark-stroke)"
+              strokeWidth={0.8}
               vectorEffect="non-scaling-stroke"
-              opacity={0.45}
+              opacity={0.22}
             />
             <text
               x="50"
@@ -44,14 +44,14 @@ export default function Home() {
               textAnchor="middle"
               dominantBaseline="middle"
               fill="none"
-              stroke="var(--sheet-mute)"
-              strokeWidth={1}
+              stroke="var(--mark-stroke)"
+              strokeWidth={0.8}
               vectorEffect="non-scaling-stroke"
               fontFamily="var(--font-sans)"
               fontWeight={500}
-              fontSize={24}
-              letterSpacing="-0.111em"
+              fontSize={22}
               paintOrder="stroke"
+              letterSpacing="-0.09em"
               opacity={0.95}
             >
               i2089
@@ -65,7 +65,7 @@ export default function Home() {
         <h1 className="text-80 font-sans font-medium tracking-[-0.04em]">
           <a
             href="/services"
-            className="block transition-opacity hover:opacity-80"
+            className="block transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
             aria-label="Services — Agentic, Coding, Engineering"
           >
             <span className="reveal block" style={{ ["--i" as never]: 3 }}>

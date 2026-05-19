@@ -5,23 +5,23 @@ import { Header } from "../header";
 export const metadata: Metadata = {
   title: "Services // i2089 — Marc Illien",
   description:
-    "Services by Marc Illien — Agentic Engineering for corporates and startups, fullstack & frontend development, UX/UI design and MVP development.",
+    "Services by Marc Illien — Agentic Engineering for corporates and startups, Fullstack Frontend Development & consulting, UX/UI design with prototypes and MVPs.",
 };
 
 const primary: EntryProps[] = [
   {
     title: "Agentic Engineering for Corporates and Startups.",
     description:
-      "Consulting and coaching for teams in corporate companies and startups. We teach how to effectively make use of LLMs (e.g. Claude Code or Codex).",
+      "Consulting and coaching for teams in corporate companies and startups. We teach teams how to effectively use LLMs, such as Claude Code and Codex.",
   },
   {
     title: "Fullstack Frontend Development & Consulting.",
     description:
-      "High quality Frontend Development and consulting for modern and performant web applications. Code that is maintainable and not overengineered.",
+      "High-quality frontend development and consulting for modern, performant web applications. Maintainable code that is not overengineered.",
   },
   {
     title: "UX/UI Design, Prototypes and MVP's.",
-    description: "Efficient development of high quality prototypes and MVPs.",
+    description: "High-quality design & development of prototypes and MVPs.",
   },
 ];
 

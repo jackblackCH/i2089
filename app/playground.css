@@ -5,6 +5,9 @@
   --sheet-bg: linear-gradient(180deg, #222 0%, #1a1a1a 18%, #111 45%);
   --sheet-fg: var(--color-paper);
   --sheet-mute: var(--color-mute);
+  /* dedicated softer mute for the brand mark (triangle + i2089) — same
+     in dark mode, lighter in light mode so the mark doesn't read too heavy */
+  --mark-stroke: var(--color-mute);
 
   --fluid-gutter: clamp(1rem, 2.5cqi, 2rem);
   --sheet-ratio: 1 / 1.4142;
@@ -39,6 +42,7 @@
   --sheet-bg: #fafafa;
   --sheet-fg: #222222;
   --sheet-mute: #666666;
+  --mark-stroke: #bbbbbb;
 
   /* Softer shadows on the light frame so the surface lifts subtly without
      bruising the white page. Inner highlight is brighter (real white) so the
