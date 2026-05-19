@@ -8,9 +8,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeToggle } from "./theme-toggle";
 
 export const metadata: Metadata = {
-  title: "i2089 // Marc Illien — Agentic Engineering",
+  title:
+    "i2089 // Marc Illien // Frontend Engineering // Agentic Engineering // Zürich",
   description:
-    "i2089 — the independent engineering practice of Marc Illien in Zürich. Agentic systems, fullstack & frontend development, UX/UI prototyping.",
+    "i2089 — the independent engineering studio of Marc Illien in Zurich. Agentic Engineering, Fullstack & Frontend Development, UX/UI prototyping.",
 };
 
 // Runs before paint to apply the persisted theme so the canvas doesn't flash.

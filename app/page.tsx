@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "./header";
-import OrientationInfo from "./orientation-info";
 import { TypewriterSwap } from "./typewriter-swap";
 
 export const metadata: Metadata = {
@@ -12,11 +11,10 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="text-20 gap-x-(--fluid-gutter) p-(--space-pad) grid h-full grid-cols-12 grid-rows-[auto_minmax(0,1fr)_auto] font-sans">
-      <OrientationInfo />
       <Header
         nav={[
-          { href: "/projects", label: "Projects →" },
-          { href: "/services", label: "Services →" },
+          { href: "/projects", label: "Projects" },
+          { href: "/services", label: "Services" },
         ]}
       />
 

@@ -57,13 +57,7 @@ export function Entry({
   );
 }
 
-function LinkBlock({
-  link,
-  external,
-}: {
-  link: EntryLink;
-  external: boolean;
-}) {
+function LinkBlock({ link, external }: { link: EntryLink; external: boolean }) {
   // Tie the arrow to the last word with a non-breaking space so it never
   // wraps to its own line; only the head of the name may break onto a line above.
   const words = link.name.trim().split(/\s+/);

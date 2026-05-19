@@ -22,17 +22,18 @@ export function Header({ nav }: { nav: NavLink[] }) {
 
       {/* nav — top right */}
       <nav
-        className="reveal text-10 text-(--sheet-mute) col-span-3 col-start-10 row-start-1 grid gap-1 text-right font-mono uppercase tracking-[0.02em]"
+        className="reveal text-10 text-(--sheet-mute) col-span-3 col-start-10 row-start-1 text-right font-mono uppercase tracking-[0.02em]"
         style={{ ["--i" as never]: 1 }}
       >
-        {nav.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="hover:text-(--sheet-fg) transition-colors"
-          >
-            {item.label}
-          </a>
+        {nav.map((item, idx) => (
+          <div key={item.href} className={idx === 0 ? "mb-[3px]" : undefined}>
+            <a
+              href={item.href}
+              className="hover:text-(--sheet-fg) transition-colors"
+            >
+              {item.label}
+            </a>
+          </div>
         ))}
       </nav>
     </>

@@ -35,7 +35,7 @@ const projects: EntryProps[] = [
 export default function ProjectsPage() {
   return (
     <main className="text-20 gap-x-(--fluid-gutter) gap-y-(--space-pad) p-(--space-pad) grid h-full grid-cols-12 grid-rows-[auto_minmax(0,1fr)] font-sans">
-      <Header nav={[{ href: "/services", label: "Services →" }]} />
+      <Header nav={[{ href: "/services", label: "Services" }]} />
 
       <section className="gap-y-(--space-pad) col-span-full row-start-2 mt-auto grid min-h-0 content-center overflow-y-auto">
         {projects.map((p, idx) => (
