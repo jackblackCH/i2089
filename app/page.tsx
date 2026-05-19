@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "./header";
-import { TypewriterSwap } from "./typewriter-swap";
+import { BrandLineSwap } from "./brand-line-swap";
 
 export const metadata: Metadata = {
   title: "i2089 // Agentic. Coding. Engineering.",
@@ -68,17 +68,10 @@ export default function Home() {
             className="block transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
             aria-label="Services — Agentic, Coding, Engineering"
           >
-            <span className="reveal block" style={{ ["--i" as never]: 3 }}>
-              Agentic.
-            </span>
-            <span className="reveal block" style={{ ["--i" as never]: 4 }}>
-              <span className="strike" style={{ ["--i" as never]: 4 }}>
-                Coding.
-              </span>
-            </span>
-            <span className="reveal block" style={{ ["--i" as never]: 5 }}>
-              <TypewriterSwap words={["Engineering.", "Design."]} />
-            </span>
+            <BrandLineSwap
+              beforeLines={["Vibe.", "Coding."]}
+              afterLines={["Agentic.", "Engineering."]}
+            />
           </a>
         </h1>
       </section>

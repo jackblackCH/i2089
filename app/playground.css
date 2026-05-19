@@ -176,6 +176,25 @@
   }
 }
 
+/* strike line that draws the moment .strike-now is applied */
+.strike-now {
+  position: relative;
+  display: inline-block;
+}
+.strike-now::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  top: 58%;
+  height: 0.08em;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: new-strike 700ms cubic-bezier(0.7, 0, 0.2, 1) forwards;
+  border-radius: 999px;
+}
+
 .reveal {
   opacity: 0;
   animation: new-rise 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -187,26 +206,6 @@
   transform-origin: 50% 60%;
   animation: new-bloom 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
   animation-delay: calc(var(--i, 0) * 90ms + 120ms);
-}
-
-/* strike-through line animated in after the word is on screen */
-.strike {
-  position: relative;
-  display: inline-block;
-}
-.strike::after {
-  content: "";
-  position: absolute;
-  left: -0.04em;
-  right: -0.04em;
-  top: 58%;
-  height: 0.08em;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: new-strike 700ms cubic-bezier(0.7, 0, 0.2, 1) forwards;
-  animation-delay: calc(var(--i, 0) * 90ms + 900ms);
-  border-radius: 999px;
 }
 
 /* triangle + logo soft glow — single wide drop-shadow.
@@ -260,6 +259,16 @@
     opacity: 0.7;
     transform: none;
   }
+}
+
+/* Imprint: the mark is decorative — not selectable, not interactive.
+   pointer-events: none also disables the hover rules below by design. */
+.new-aura-wrap {
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 /* group hover — soft intensification of the mark.
@@ -322,7 +331,7 @@
     transform: none;
     filter: none;
   }
-  .strike::after {
+  .strike-now::after {
     animation: none;
     transform: scaleX(1);
   }
