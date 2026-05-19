@@ -29,7 +29,7 @@ export function Entry({
   index = 0,
 }: EntryProps) {
   const isExternal = link?.href.startsWith("http") ?? false;
-  const descSpan = link ? "col-span-8" : "col-span-full md:col-span-8";
+  const descSpan = link ? "col-span-8" : "col-span-full md:col-span-11";
 
   return (
     <article
@@ -69,7 +69,7 @@ function LinkBlock({ link, external }: { link: EntryLink; external: boolean }) {
       href={link.href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="text-15 text-(--sheet-mute) hover:text-(--sheet-fg) focus-visible:text-(--sheet-fg) focus-visible:outline-none col-span-4 self-end text-right transition-colors"
+      className="text-15 text-(--sheet-mute) hover:text-(--sheet-fg) focus-visible:text-(--sheet-fg) col-span-4 self-end text-right transition-colors focus-visible:outline-none"
     >
       {head && <>{head} </>}
       <span className="whitespace-nowrap">{tail} ↗</span>

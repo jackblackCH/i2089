@@ -5,23 +5,24 @@ import { Header } from "../header";
 export const metadata: Metadata = {
   title: "Services // i2089 — Marc Illien",
   description:
-    "Services by Marc Illien — Agentic Engineering for corporates and startups, Fullstack Frontend Development & consulting, UX/UI design with prototypes and MVPs.",
+    "Agentic engineering with the discipline of regular engineering. Daily-driving Claude Code since launch. For corporate teams and startups — coaching, embedded engineering, advisory.",
 };
 
 const primary: EntryProps[] = [
   {
-    title: "Agentic Engineering for Corporates and Startups.",
+    title: "Agentic Engineering.",
     description:
-      "Consulting and coaching for teams in corporate companies and startups. We teach teams how to effectively use LLMs, such as Claude Code and Codex.",
+      "Same discipline I bring to code, applied to agents. Most leadership teams want to know where agents pay off and where they don't — that's where I start. Daily-driving Claude Code since it launched, with two projects designed and developed around agents from the ground up. The learning curve is behind me. Coaching, embedded engineering, advisory, or a contained build — whichever fits.",
   },
   {
-    title: "Fullstack Frontend Development & Consulting.",
+    title: "Frontend Engineering.",
     description:
-      "High-quality frontend development and consulting for modern, performant web applications. Maintainable code that is not overengineered.",
+      "Long enough in enterprise frontend to know the difference between code that ages well and code that doesn't. I build web apps that don't need a rewrite a year in — modern stack, fast by default, maintainable without the overengineering tax. I tend to leave the codebase better than I found it. There's one version I do — the version that lasts.",
   },
   {
-    title: "UX/UI Design, Prototypes and MVP's.",
-    description: "High-quality design & development of prototypes and MVPs.",
+    title: "Prototypes and MVPs.",
+    description:
+      "From idea to working build, fast — and built like it's going to production. Design, architecture and code that hold up the moment someone says ship it. Some prototypes are worth keeping, some aren't — I'll tell you which up front.",
   },
 ];
 
