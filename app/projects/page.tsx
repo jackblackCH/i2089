@@ -5,7 +5,7 @@ import { Header } from "../header";
 export const metadata: Metadata = {
   title: "Projects // i2089 — Marc Illien",
   description:
-    "Selected work by Marc Illien — Eckert Branded Goods (Saleor · Next.js) and AXA Switzerland. Frontend consulting, engineering and headless commerce.",
+    "Selected work by Marc Illien — Eckert Branded Goods (Saleor · Next.js) and air up® (Shopify · Next.js). Frontend consulting, engineering and headless commerce.",
 };
 
 const projects: EntryProps[] = [
@@ -24,18 +24,28 @@ const projects: EntryProps[] = [
     link: { name: "branded-goods.ch", href: "https://branded-goods.ch" },
   },
   {
-    eyebrow: "2019 — 2024",
-    title: "AXA",
+    eyebrow: "May 2023 — May 2024",
+    title: "air up®",
     description:
-      "Lead frontend engineer for many projects within the AXA Switzerland ecosystem.",
-    link: { name: "axa.ch", href: "https://axa.ch" },
+      "Headless e-commerce on Next.js and Shopify. Tailwind with Shadcn/ui, end-to-end design system, trunk-based delivery. Frontend consulting and technical leadership across the team.",
+    link: { name: "air-up.com", href: "https://air-up.com" },
   },
+  // {
+  //   title: "More Clients",
+  //   description:
+  //     "AXA Switzerland (2019—2024) — Lead frontend engineer across many projects in the AXA ecosystem.",
+  // },
 ];
 
 export default function ProjectsPage() {
   return (
     <main className="text-20 gap-x-(--fluid-gutter) gap-y-(--space-pad) p-(--space-pad) grid h-full grid-cols-12 grid-rows-[auto_minmax(0,1fr)] font-sans">
-      <Header nav={[{ href: "/services", label: "Services" }]} />
+      <Header
+        nav={[
+          { href: "/projects", label: "Projects" },
+          { href: "/services", label: "Services" },
+        ]}
+      />
 
       <section className="gap-y-(--space-pad) col-span-full row-start-2 mt-auto grid min-h-0 content-center overflow-y-auto">
         {projects.map((p, idx) => (
