@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "./header";
 
 export default function NotFound() {
@@ -17,12 +18,12 @@ export default function NotFound() {
         <h1 className="text-40 col-span-full whitespace-break-spaces font-sans font-medium leading-snug tracking-[-0.04em]">
           This page doesn&apos;t exist.
         </h1>
-        <a
+        <Link
           href="/"
           className="text-15 text-(--sheet-mute) hover:text-(--sheet-fg) col-span-full transition-colors"
         >
           ← Back to start
-        </a>
+        </Link>
       </section>
     </main>
   );

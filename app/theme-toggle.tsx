@@ -1,34 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type Theme = "dark" | "light";
 
 const STORAGE_KEY = "i2089-new-theme";
 
+// The pre-hydration script in layout.tsx sets data-theme on `.new-frame`
+// before React runs, so reading from the DOM gives the correct initial value
+// with no flash.
+function subscribe(cb: () => void) {
+  window.addEventListener("storage", cb);
+  return () => window.removeEventListener("storage", cb);
+}
+
+function getSnapshot(): Theme {
+  const frame = document.querySelector<HTMLElement>(".new-frame");
+  const t = frame?.dataset.theme;
+  return t === "light" ? "light" : "dark";
+}
+
+function getServerSnapshot(): Theme {
+  return "dark";
+}
+
+function setTheme(t: Theme) {
+  const frame = document.querySelector<HTMLElement>(".new-frame");
+  if (frame) frame.dataset.theme = t;
+  localStorage.setItem(STORAGE_KEY, t);
+  // storage event doesn't fire in the same tab; nudge subscribers manually.
+  window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
+}
+
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (stored === "light" || stored === "dark") setTheme(stored);
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const frame = document.querySelector<HTMLElement>(".new-frame");
-    if (!frame) return;
-    frame.dataset.theme = theme;
-    if (mounted) localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme, mounted]);
-
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const next: Theme = theme === "dark" ? "light" : "dark";
 
   return (
     <button
       type="button"
       onClick={() => setTheme(next)}
+      suppressHydrationWarning
       className="new-toggle"
       aria-label={`Switch to ${next} mode`}
       title={`Switch to ${next} mode`}

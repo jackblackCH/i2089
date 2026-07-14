@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ObfuscatedEmail } from "./email";
 
@@ -18,7 +19,7 @@ export function Header({ nav }: { nav: NavLink[] }) {
         className="reveal col-span-5 row-start-1 grid grid-cols-[auto_1fr] items-center gap-x-2 gap-y-1"
         style={{ ["--i" as never]: 0 }}
       >
-        <a
+        <Link
           href="/"
           aria-label="Home"
           className="text-10 text-(--sheet-mute) hover:text-(--sheet-fg) focus-visible:text-(--sheet-fg) focus-visible:outline-none row-span-2 inline-flex items-center transition-colors"
@@ -37,7 +38,7 @@ export function Header({ nav }: { nav: NavLink[] }) {
               strokeLinejoin="round"
             />
           </svg>
-        </a>
+        </Link>
         <span className={META_CLASS}>Marc Illien | Zurich</span>
         <ObfuscatedEmail className={META_CLASS} />
       </div>
@@ -50,14 +51,14 @@ export function Header({ nav }: { nav: NavLink[] }) {
         {nav.map((item) => {
           const isActive = pathname === item.href;
           return (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               className={`${isActive ? "text-(--sheet-fg)" : ""} hover:text-(--sheet-fg) focus-visible:text-(--sheet-fg) focus-visible:outline-none transition-colors`}
             >
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </nav>
