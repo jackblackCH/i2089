@@ -32,7 +32,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
     <div className="grid min-h-0 content-start gap-y-[clamp(16px,1.6vw,28px)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
       <ul
         ref={ref}
-        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] carousel:flex carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
+        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] carousel:flex carousel:gap-x-[clamp(24px,3vw,64px)] carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
       >
         {projects.map((p) => (
           <li
