@@ -80,7 +80,7 @@ export const projects: Project[] = [
   {
     title: "AXA Switzerland",
     period: "since 2018 — ongoing",
-    text: "Recurring frontend contracts at Switzerland's largest insurer, placed through a headhunter — a new project most years since 2018.",
+    text: "Recurring frontend contracts at Switzerland's largest insurer, a new project most years. Custom React apps — an SME calculator and an internal-agent customer-communication tool — and component library design in 2019.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
     image: "/projects/axa.jpg",
