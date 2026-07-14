@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services } from "./new/content";
+import { services } from "./_shared/content";
 
 const BASE_URL = "https://i2089.com";
 

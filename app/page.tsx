@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { TypeCycle } from "./new/type-cycle";
-import { OutlineToggle } from "./new/outline-toggle";
-import { bands } from "./new/content";
-import { Text } from "./new/text";
-import { Footer } from "./new/footer";
-import "./new/new.css";
+import { TypeCycle } from "./_shared/type-cycle";
+import { OutlineToggle } from "./_shared/outline-toggle";
+import { bands } from "./_shared/content";
+import { Text } from "./_shared/text";
+import { Footer } from "./_shared/footer";
+import "./_shared/shared.css";
 
 export const metadata: Metadata = {
   title: "Agentic Consulting, Frontend Software Engineering",

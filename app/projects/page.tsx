@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "../new/content";
-import { Text } from "../new/text";
-import { Footer } from "../new/footer";
-import "../new/new.css";
+import { projects } from "../_shared/content";
+import { Text } from "../_shared/text";
+import { Footer } from "../_shared/footer";
+import "../_shared/shared.css";
 
 export const metadata: Metadata = {
   title: "Projects / Clients",

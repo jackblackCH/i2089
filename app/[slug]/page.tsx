@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { services, bySlug } from "../new/content";
-import { Text } from "../new/text";
-import { Footer } from "../new/footer";
-import "../new/new.css";
+import { services, bySlug } from "../_shared/content";
+import { Text } from "../_shared/text";
+import { Footer } from "../_shared/footer";
+import "../_shared/shared.css";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
