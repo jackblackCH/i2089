@@ -1,80 +1,56 @@
 import type { Metadata } from "next";
-import { Header } from "./header";
-import { BrandLineSwap } from "./brand-line-swap";
+import { TypeCycle } from "./new/type-cycle";
+import { OutlineToggle } from "./new/outline-toggle";
+import { bands } from "./new/content";
+import { Text } from "./new/text";
+import { Footer } from "./new/footer";
+import "./new/new.css";
 
 export const metadata: Metadata = {
-  title: "i2089 // Agentic. Coding. Engineering.",
+  title: "Agentic Consulting, Frontend Software Engineering",
   description:
-    "i2089 — the independent web engineering studio of Marc Illien in Zurich. High-quality Frontend- and Agentic Engineering, LLMs, production code.",
+    "Agentic Consulting, Frontend and Software Engineering, and digital products for startups, SMEs, and corporates. Zürich, Switzerland.",
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="text-20 gap-x-(--fluid-gutter) p-(--space-pad) grid h-full grid-cols-12 grid-rows-[auto_minmax(0,1fr)_auto] font-sans">
-      <Header
-        nav={[
-          { href: "/projects", label: "Projects" },
-          { href: "/services", label: "Services" },
-        ]}
-      />
-
-      {/* centered fat triangle with i2089 logo */}
-      <section
-        className="reveal-bloom col-span-full row-start-2 grid place-items-center"
-        style={{ ["--i" as never]: 2 }}
-      >
-        <div className="new-aura-wrap relative grid w-[min(60cqi,70%)] place-items-center">
-          <div className="new-aura" aria-hidden />
-          <svg
-            viewBox="0 0 100 86.6"
-            aria-label="i2089"
-            className="new-glow relative z-10 block h-auto w-full"
-          >
-            <polygon
-              points="50,0 100,86.6 0,86.6"
-              fill="none"
-              stroke="var(--mark-stroke)"
-              strokeWidth={0.8}
-              vectorEffect="non-scaling-stroke"
-              opacity={0.22}
-            />
-            <text
-              x="50"
-              y="62"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="none"
-              stroke="var(--mark-stroke)"
-              strokeWidth={0.8}
-              vectorEffect="non-scaling-stroke"
-              fontFamily="var(--font-sans)"
-              fontWeight={500}
-              fontSize={22}
-              paintOrder="stroke"
-              letterSpacing="-0.09em"
-              opacity={0.95}
-            >
-              i2089
-            </text>
-          </svg>
-        </div>
+    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[auto_1fr_auto] overflow-y-auto md:grid-cols-2 md:grid-rows-[minmax(0,1fr)_auto]">
+      {/* wordmark — mobile: first row full width; desktop: left half,
+          invisible 3x3 subgrid with the mark centered in the middle row */}
+      <section className="grid min-h-[38svh] grid-cols-3 grid-rows-3 p-[clamp(24px,3vw,64px)] md:min-h-0">
+        <Text
+          as="h1"
+          variant="logo"
+          className="col-span-full row-start-2 place-self-center"
+        >
+          i2089
+        </Text>
       </section>
 
-      {/* display title */}
-      <section className="col-span-full row-start-3 grid items-end">
-        <h1 className="text-80 font-sans font-medium tracking-[-0.04em]">
-          <a
-            href="/services"
-            className="block transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
-            aria-label="Services — Agentic, Coding, Engineering"
+      {/* content — mobile: stacked below; desktop: right half, 3 bands:
+          the two offers (typewriter cycles names for the same thing,
+          never a new concept) and the static audience line */}
+      <section className="grid grid-rows-3 border-t border-(--np-rule) md:border-l md:border-t-0">
+        {bands.map((band, i) => (
+          <Text
+            key={band.words[0]}
+            as="h2"
+            variant="title"
+            className={`np-line grid content-center p-[clamp(24px,3vw,64px)] ${
+              i > 0 ? "border-t border-(--np-rule)" : ""
+            }`}
           >
-            <BrandLineSwap
-              beforeLines={["Vibe.", "Coding."]}
-              afterLines={["Agentic.", "Engineering."]}
+            <TypeCycle
+              words={band.words}
+              hrefs={band.slugs.map((slug) => `/${slug}`)}
             />
-          </a>
-        </h1>
+          </Text>
+        ))}
       </section>
+
+      <Footer />
+
+      <OutlineToggle />
     </main>
   );
 }

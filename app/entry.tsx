@@ -47,9 +47,13 @@ export function Entry({
       </h2>
 
       {description && (
-        <p className={`text-15 text-(--sheet-mute) ${descSpan} leading-[1.45]`}>
-          {description}
-        </p>
+        <div
+          className={`text-15 text-(--sheet-mute) ${descSpan} flex flex-col gap-3 leading-[1.45]`}
+        >
+          {description.split(/\n\n+/).map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
       )}
 
       {link && <LinkBlock link={link} external={isExternal} />}

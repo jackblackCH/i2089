@@ -1,0 +1,56 @@
+/* /new — minimal display layout.
+   Helvetica Neue LT Pro (falls back to system Helvetica Neue).
+
+   Color system built on 222 — hue 222, saturation 22%, and only the
+   lightness moves. Surface sits at 2.2%, foreground at 92.2%; mutes
+   and rules are transparent mixes of the foreground, so the whole
+   palette follows the two anchors. */
+
+.np {
+  --np-h: 222;
+  --np-s: 22%;
+  --np-surface: hsl(var(--np-h) var(--np-s) 2.2%);
+  --np-fg: hsl(var(--np-h) var(--np-s) 92.2%);
+  --np-mute: color-mix(in srgb, var(--np-fg) 50%, transparent);
+  --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
+
+  font-family:
+    "Helvetica Neue LT Pro",
+    "HelveticaNeueLTPro-Dsp",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  background: var(--np-surface);
+  color: var(--np-fg);
+}
+
+/* outline-only wordmark — transparent fill, hairline-proportioned stroke */
+.np-outline {
+  color: transparent;
+  /* em-based stroke so it scales with each element's own font size */
+  -webkit-text-stroke: max(1px, 0.016em) var(--np-fg);
+  paint-order: stroke;
+}
+
+/* outlined typewriter variant — toggled via data-outline on .np */
+.np[data-outline] .np-line {
+  color: transparent;
+  -webkit-text-stroke: max(1px, 0.022em) var(--np-fg);
+  paint-order: stroke;
+}
+
+/* caret paints with currentColor, which is transparent in outline
+   mode — pin it to the foreground so it stays visible */
+.np[data-outline] .np-line .new-caret {
+  background: var(--np-fg);
+}
+
+/* highlight items render as "selected text" (fg background) — actual
+   selection inverts back to surface-on-fg so the act of selecting is
+   visible. Unlayered on purpose: it must beat the sitewide
+   .new-root ::selection rule from playground.css by source order. */
+.np-invert::selection {
+  background: var(--np-surface);
+  color: var(--np-fg);
+}

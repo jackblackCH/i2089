@@ -9,7 +9,10 @@ import { ThemeToggle } from "./theme-toggle";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
-  title: "i2089 // Marc Illien — Frontend & Agentic Engineering, Zürich",
+  title: {
+    template: "i2089 :: Marc Illien :: %s",
+    default: "i2089 :: Marc Illien",
+  },
   description:
     "Independent web engineering studio of Marc Illien in Zurich. Agentic Engineering, Fullstack Frontend Development, UX/UI prototypes and MVPs.",
 };

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { services } from "./new/content";
 
 const BASE_URL = "https://i2089.com";
 
@@ -9,20 +10,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}/`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 1,
     },
     {
       url: `${BASE_URL}/projects`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
-    {
-      url: `${BASE_URL}/services`,
+    ...services.map((s) => ({
+      url: `${BASE_URL}/${s.slug}`,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+      changeFrequency: "monthly" as const,
+      priority: s.slug === "about" ? 0.9 : 0.8,
+    })),
   ];
 }

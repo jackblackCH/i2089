@@ -44,14 +44,25 @@
   text-wrap: balance;
 }
 
-/* Trim the font's leading whitespace on every headline so optical alignment
-   matches visual alignment. Modern browsers only; legacy ones ignore safely. */
+/* opt-in utility for elements outside the base selector list below
+   (list items, spans, links) — same trim, composable in className */
+@utility text-trim {
+  text-box: trim-both cap alphabetic;
+}
+
+/* Trim the font's leading whitespace on headlines, paragraphs and
+   buttons so optical alignment matches visual alignment and height
+   calculations are consistent across elements (cap height to
+   alphabetic baseline, no font-side padding). Modern browsers only;
+   legacy ones ignore safely. */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+button {
   text-box: trim-both cap alphabetic;
 }
 
