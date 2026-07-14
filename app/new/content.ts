@@ -83,7 +83,7 @@ export const projects: Project[] = [
     text: "Frontend for branded-goods.ch in Next.js and Tailwind, on Saleor open-source e-commerce. Built as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
-    image: "/projects/branded-goods.png",
+    image: "/projects/branded-goods.jpg",
   },
   {
     title: "air up®",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     text: "Headless e-commerce on Next.js and Shopify. Design system with Tailwind and shadcn/ui, trunk-based delivery, frontend leadership across the team.",
     href: "https://air-up.com",
     linkLabel: "air-up.com",
-    image: "/projects/air-up.png",
+    image: "/projects/air-up.jpg",
   },
 ];
 

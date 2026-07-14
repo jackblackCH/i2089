@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "../new/content";
 import { Text } from "../new/text";
@@ -50,10 +51,12 @@ export default function ProjectsPage() {
                 rel="noopener noreferrer"
                 className="grid gap-y-[0.6em] transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={p.image}
                   alt={`${p.title} — screenshot`}
+                  width={1200}
+                  height={750}
+                  sizes="(min-width: 768px) 40vw, 90vw"
                   className="aspect-[16/10] w-full border border-(--np-rule) object-cover"
                 />
                 <span className="grid grid-cols-[1fr_auto] items-baseline gap-x-[1em]">
