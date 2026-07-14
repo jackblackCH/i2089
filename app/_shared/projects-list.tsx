@@ -53,7 +53,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
                 sizes="(min-width: 1024px) 40vw, (min-width: 768px) 40vw, 90vw"
                 className="aspect-[16/10] w-full border border-(--np-rule) object-cover"
               />
-              <span className="grid grid-cols-[1fr_auto] items-baseline gap-x-[1em]">
+              <span className="grid gap-y-[0.15em] @[560px]/projects:grid-cols-[1fr_auto] @[560px]/projects:items-baseline @[560px]/projects:gap-x-[1em] @[560px]/projects:gap-y-0">
                 <span>{p.title}</span>
                 <span className="text-(--np-mute)">{p.linkLabel} ↗</span>
               </span>
