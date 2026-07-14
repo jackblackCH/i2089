@@ -10,25 +10,27 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const service = bySlug[params.slug];
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = bySlug[slug];
   if (!service) return {};
   return {
-    title: params.slug === "about" ? "About" : service.title,
+    title: slug === "about" ? "About" : service.title,
     description: `${service.title} — i2089, Marc Illien. Zürich, Switzerland.`,
   };
 }
 
-export default function ContentPage({
+export default async function ContentPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const service = bySlug[params.slug];
+  const { slug } = await params;
+  const service = bySlug[slug];
   if (!service) notFound();
 
   return (
@@ -97,7 +99,7 @@ export default function ContentPage({
           variant="body"
           className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
         >
-          {params.slug === "about" && (
+          {slug === "about" && (
             <a
               href="https://www.linkedin.com/in/REPLACE-WITH-PROFILE"
               target="_blank"
