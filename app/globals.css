@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Projects list flips to a scroll-snap carousel only when there's not
+   enough vertical room for a comfortable 2-column grid. Tall lg viewports
+   keep the grid. */
+@custom-variant carousel (@media (min-width: 1024px) and (max-height: 820px));
+
 @theme {
   /* Site tokens — kept in @theme so the v4 engine emits matching utilities */
   --color-frame: #222222;

@@ -5,9 +5,11 @@ import Image from "next/image";
 import { Text } from "./text";
 import type { Project } from "./content";
 
-// Below lg the list stacks (mobile) then splits into two columns (md).
-// On lg it becomes a horizontal scroll-snap carousel — CSS handles the
-// snap; the buttons just call scrollBy on the container.
+// Layout: mobile stacks, md+ splits into a 2-column grid. When the
+// viewport is wide (>=lg) AND short (<=820px tall) the grid would push
+// content off-screen, so we switch to a horizontal scroll-snap carousel
+// via the `carousel:` custom variant defined in globals.css. Buttons only
+// appear when the carousel is active.
 export function ProjectsList({ projects }: { projects: Project[] }) {
   const ref = useRef<HTMLUListElement>(null);
 
@@ -28,12 +30,12 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
     <div className="grid min-h-0 content-start gap-y-[clamp(16px,1.6vw,28px)] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]">
       <ul
         ref={ref}
-        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] lg:flex lg:snap-x lg:snap-mandatory lg:overflow-x-auto lg:overscroll-x-contain lg:pb-2 lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden"
+        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] carousel:flex carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
       >
         {projects.map((p) => (
           <li
             key={p.title}
-            className="grid gap-y-[0.6em] lg:min-w-0 lg:shrink-0 lg:snap-start lg:basis-[calc(50%-(clamp(24px,3vw,64px)/2))]"
+            className="grid gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(clamp(24px,3vw,64px)/2))]"
           >
             <a
               href={p.href}
@@ -62,7 +64,7 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
 
       <nav
         aria-label="Projects carousel"
-        className="text-10 hidden justify-self-end gap-4 font-mono uppercase tracking-[0.02em] text-(--np-mute) lg:flex"
+        className="text-10 hidden justify-self-end gap-4 font-mono uppercase tracking-[0.02em] text-(--np-mute) carousel:flex"
       >
         <button
           type="button"
