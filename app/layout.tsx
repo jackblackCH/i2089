@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" className="h-svh">
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <PostHogProvider>
-          <div className="new-frame" data-theme="dark">
+          <div className="new-frame" data-theme="dark" suppressHydrationWarning>
             <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
             <ThemeToggle />
             <div className="new-root">{children}</div>
