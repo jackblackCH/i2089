@@ -37,13 +37,13 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
         {projects.map((p) => (
           <li
             key={p.title}
-            className="grid gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(clamp(24px,3vw,64px)/2))]"
+            className="grid content-start gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(clamp(24px,3vw,64px)/2))]"
           >
             <a
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid gap-y-[0.6em] transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
+              className="grid content-start gap-y-[0.6em] self-start transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
             >
               <Image
                 src={p.image}

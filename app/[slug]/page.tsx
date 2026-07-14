@@ -101,7 +101,7 @@ export default async function ContentPage({
         >
           {slug === "about" && (
             <a
-              href="https://www.linkedin.com/in/REPLACE-WITH-PROFILE"
+              href="https://www.linkedin.com/in/marcillien/"
               target="_blank"
               rel="noopener noreferrer"
               className="grid w-max grid-flow-col items-center gap-x-[0.5em] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
