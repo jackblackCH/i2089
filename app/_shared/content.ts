@@ -60,6 +60,30 @@ export const services: Service[] = [
     title: "Marc Illien",
     items: [
       "Software engineer from Zürich, making shiny digital products with precision and taste, and teaching teams to build with AI.",
+      {
+        term: "since 2023",
+        text: "i2089 — AI consulting, AI design, and Agentic Engineering. Self-employed, Zürich.",
+      },
+      {
+        term: "since 2014",
+        text: "Lecturer, Frontend Engineering (CAS Frontend Engineering). OST — Eastern Switzerland University of Applied Sciences, Rapperswil.",
+      },
+      {
+        term: "2025 — 2026",
+        text: "Frontend Software Engineer, AXA Switzerland (WebHub). Contract, Zürich.",
+      },
+      {
+        term: "2024",
+        text: "Frontend Architect and Lead, AXA Switzerland. SME multi-step wizard and calculator in React, published on axa.ch as a microfrontend. Contract, Zürich.",
+      },
+      {
+        term: "2023 — 2024",
+        text: "Frontend Consulting and Development, air up®. Headless e-commerce on Next.js and Shopify, design system in Tailwind and shadcn/ui. Freelance, Munich.",
+      },
+      {
+        term: "2022 — 2023",
+        text: "Frontend Architect and Fullstack Engineer, AXA. Consultant-communication messenger in TypeScript and React. Contract, Winterthur.",
+      },
     ],
   },
 ];
