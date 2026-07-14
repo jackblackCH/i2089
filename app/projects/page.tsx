@@ -9,7 +9,7 @@ import "../_shared/shared.css";
 export const metadata: Metadata = {
   title: "Projects / Clients",
   description:
-    "Selected work — Eckert Branded Goods (Saleor, Next.js) and air up® (Shopify, Next.js). Frontend engineering and headless commerce. Zürich, Switzerland.",
+    "Selected work — Branded Goods by Eckert (Saleor, Next.js) and air up® (Shopify, Next.js). Frontend engineering and headless commerce. Zürich, Switzerland.",
 };
 
 export default function ProjectsPage() {

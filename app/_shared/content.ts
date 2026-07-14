@@ -78,9 +78,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Eckert Branded Goods",
+    title: "AXA Switzerland",
+    period: "since 2018 — ongoing",
+    text: "Long-standing partnership — recurring frontend engineering engagements at Switzerland's largest insurer, a new project most years.",
+    href: "https://axa.ch",
+    linkLabel: "axa.ch",
+    image: "/projects/axa.jpg",
+  },
+  {
+    title: "Branded Goods",
     period: "2025 — 2026",
-    text: "Frontend for branded-goods.ch in Next.js and Tailwind, on Saleor open-source e-commerce. Built as a partner of Avolut.",
+    text: "Frontend and partial UI design for branded-goods.ch in Next.js and Tailwind, on Saleor open-source e-commerce. Built as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
     image: "/projects/branded-goods.jpg",
