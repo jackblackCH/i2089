@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { projects } from "../_shared/content";
 import { Text } from "../_shared/text";
 import { Footer } from "../_shared/footer";
+import { ProjectsList } from "../_shared/projects-list";
 import "../_shared/shared.css";
 
 export const metadata: Metadata = {
@@ -37,38 +37,7 @@ export default function ProjectsPage() {
           <span className="text-trim block">Projects / Clients</span>
         </Text>
 
-        {/* 4:4 split — two equal columns, one project per half */}
-        <Text
-          as="ul"
-          variant="body"
-          className="grid min-h-0 content-start gap-x-[clamp(24px,3vw,64px)] gap-y-[2em] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] md:grid-cols-2"
-        >
-          {projects.map((p) => (
-            <li key={p.title} className="grid gap-y-[0.6em]">
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="grid gap-y-[0.6em] transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
-              >
-                <Image
-                  src={p.image}
-                  alt={`${p.title} — screenshot`}
-                  width={1200}
-                  height={750}
-                  sizes="(min-width: 768px) 40vw, 90vw"
-                  className="aspect-[16/10] w-full border border-(--np-rule) object-cover"
-                />
-                <span className="grid grid-cols-[1fr_auto] items-baseline gap-x-[1em]">
-                  <span>{p.title}</span>
-                  <span className="text-(--np-mute)">{p.linkLabel} ↗</span>
-                </span>
-              </a>
-              <span className="text-(--np-mute)">{p.text}</span>
-              <Text variant="footer">{p.period}</Text>
-            </li>
-          ))}
-        </Text>
+        <ProjectsList projects={projects} />
 
         <Text
           as="div"
