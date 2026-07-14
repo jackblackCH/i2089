@@ -93,6 +93,14 @@ export const projects: Project[] = [
     linkLabel: "air-up.com",
     image: "/projects/air-up.jpg",
   },
+  {
+    title: "Talentir",
+    period: "2024",
+    text: "Frontend for talentir.com, the payout infrastructure for agencies, brands, labels and platforms. Marketing site and product UI in Next.js and Tailwind.",
+    href: "https://talentir.com",
+    linkLabel: "talentir.com",
+    image: "/projects/talentir.jpg",
+  },
 ];
 
 /* the home typewriter — bands only clarify, never introduce new
