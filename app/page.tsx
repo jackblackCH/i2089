@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { TypeCycle } from "./_shared/type-cycle";
 import { bands } from "./_shared/content";
 import { Text } from "./_shared/text";
+import { Copyright } from "./_shared/copyright";
 import "./_shared/shared.css";
 
 export const metadata: Metadata = {
@@ -47,12 +48,7 @@ export default function HomePage() {
             />
           </Text>
         ))}
-        <Text
-          variant="footer"
-          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
-        >
-          ©2026 i2089 :: Marc Illien :: Zürich
-        </Text>
+        <Copyright />
       </section>
     </main>
   );

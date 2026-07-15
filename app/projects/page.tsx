@@ -3,6 +3,7 @@ import Link from "next/link";
 import { contracts, projects } from "../_shared/content";
 import { Text } from "../_shared/text";
 import { ProjectsList } from "../_shared/projects-list";
+import { Copyright } from "../_shared/copyright";
 import "../_shared/shared.css";
 
 export const metadata: Metadata = {
@@ -59,12 +60,7 @@ export default function ProjectsPage() {
           </a>
         </Text>
 
-        <Text
-          variant="footer"
-          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
-        >
-          ©2026 i2089 :: Marc Illien :: Zürich
-        </Text>
+        <Copyright />
       </section>
     </main>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
 import { Text } from "../_shared/text";
+import { Copyright } from "../_shared/copyright";
 import "../_shared/shared.css";
 
 export function generateStaticParams() {
@@ -131,12 +132,7 @@ export default async function ContentPage({
           </a>
         </Text>
 
-        <Text
-          variant="footer"
-          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
-        >
-          ©2026 i2089 :: Marc Illien :: Zürich
-        </Text>
+        <Copyright />
       </section>
     </main>
   );
