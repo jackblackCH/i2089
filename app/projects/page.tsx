@@ -33,10 +33,11 @@ export default function ProjectsPage() {
         </Link>
       </section>
 
-      {/* Same fictive band rhythm as [slug]: 4 equal-weight rows
-          (title / projects / contracts / contact) + copyright, no
-          visible dividers between them. */}
-      <section className="grid grid-rows-[repeat(4,minmax(0,0.35fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Band rhythm without visible dividers. Title / contact size to
+          content; the two lists take at-least-their-content and share
+          leftover 1fr so cards never get squeezed below their natural
+          height. Copyright auto at the bottom. */}
+      <section className="grid grid-rows-[auto_minmax(min-content,1fr)_minmax(min-content,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"

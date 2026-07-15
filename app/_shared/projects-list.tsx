@@ -35,7 +35,7 @@ export function ProjectsList({
   };
 
   return (
-    <div className="grid min-h-0 content-center gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto p-pad [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
+    <div className="grid content-center gap-y-[clamp(12px,1.2vw,20px)] p-pad [container-name:projects] [container-type:size] carousel:overflow-hidden">
       {label && (
         <Text variant="footer" className="justify-self-start">
           {label}
