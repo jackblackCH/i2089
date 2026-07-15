@@ -78,9 +78,7 @@ export default async function ContentPage({
           {service.items.map((item) =>
             typeof item === "string" ? (
               <li key={item} className="grid content-center md:col-span-2">
-                <span className="np-invert w-fit bg-(--np-fg) box-decoration-clone leading-[1.45] text-(--np-surface)">
-                  {item}
-                </span>
+                <span className="leading-[1.45]">{item}</span>
               </li>
             ) : (
               <li
