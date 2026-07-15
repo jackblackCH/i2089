@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
 import { Text } from "../_shared/text";
-import { Footer } from "../_shared/footer";
 import "../_shared/shared.css";
 
 export function generateStaticParams() {
@@ -34,23 +33,22 @@ export default async function ContentPage({
   if (!service) notFound();
 
   return (
-    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[auto_1fr_auto] overflow-y-auto md:grid-cols-2 md:grid-rows-[minmax(0,1fr)_auto]">
-      {/* wordmark — links back home */}
-      <section className="grid min-h-[38svh] grid-cols-3 grid-rows-3 p-[clamp(24px,3vw,64px)] md:min-h-0">
+    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
+      {/* wordmark — full height of the left column, links back home */}
+      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
         <Text
           as={Link}
           href="/"
           variant="logo"
-          className="col-span-full row-start-2 place-self-center transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
+          className="transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
         >
           i2089
         </Text>
       </section>
 
-      {/* content — three bands: title / items / contact.
-          auto / 1fr / auto: title and contact size to their content,
-          the rows take the remaining space and scroll internally */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* content — title / items / contact / copyright. Copyright pinned
+          bottom-right to match the homepage footer treatment. */}
+      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         {/* the h1 is a grid container, so text-box can't trim it — the
             inner span carries the trim and gets centered as a clean
             cap-to-baseline box */}
@@ -134,9 +132,14 @@ export default async function ContentPage({
             hi@i2089.com
           </a>
         </Text>
-      </section>
 
-      <Footer />
+        <Text
+          variant="footer"
+          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+        >
+          ©2026 i2089 :: i2089 :: Zürich :: 2026
+        </Text>
+      </section>
     </main>
   );
 }

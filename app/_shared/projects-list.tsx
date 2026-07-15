@@ -12,7 +12,13 @@ import type { Project } from "./content";
 // div is a named `size` container so the query reads its actual height;
 // this only works because the wrapper sits in a `minmax(0,1fr)` grid row,
 // giving it a size independent of its content.
-export function ProjectsList({ projects }: { projects: Project[] }) {
+export function ProjectsList({
+  projects,
+  label,
+}: {
+  projects: Project[];
+  label?: string;
+}) {
   const ref = useRef<HTMLUListElement>(null);
 
   const scroll = (direction: 1 | -1) => {
@@ -29,7 +35,12 @@ export function ProjectsList({ projects }: { projects: Project[] }) {
   };
 
   return (
-    <div className="grid min-h-0 content-start gap-y-[clamp(16px,1.6vw,28px)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
+    <div className="grid min-h-0 content-start gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] pb-[clamp(24px,3vw,64px)] pt-[clamp(12px,1.5vw,24px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
+      {label && (
+        <Text variant="footer" className="justify-self-start">
+          {label}
+        </Text>
+      )}
       <ul
         ref={ref}
         className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] carousel:flex carousel:gap-x-[clamp(24px,3vw,64px)] carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"

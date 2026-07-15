@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { projects } from "../_shared/content";
+import { contracts, projects } from "../_shared/content";
 import { Text } from "../_shared/text";
-import { Footer } from "../_shared/footer";
 import { ProjectsList } from "../_shared/projects-list";
 import "../_shared/shared.css";
 
 export const metadata: Metadata = {
   title: "Projects / Clients",
   description:
-    "Selected work — Branded Goods by Eckert (Saleor, Next.js) and air up® (Shopify, Next.js). Frontend engineering and headless commerce. Zürich, Switzerland.",
+    "Selected projects — Branded Goods (Saleor, Next.js), air up® (Shopify, Next.js), Talentir. Recurring contracts at AXA Switzerland since 2018.",
 };
 
 export default function ProjectsPage() {
   return (
-    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[auto_1fr_auto] overflow-y-auto md:grid-cols-2 md:grid-rows-[minmax(0,1fr)_auto]">
-      {/* wordmark — links back home */}
-      <section className="grid min-h-[38svh] grid-cols-3 grid-rows-3 p-[clamp(24px,3vw,64px)] md:min-h-0">
+    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
+      {/* wordmark — full height of the left column, links back home */}
+      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
         <Text
           as={Link}
           href="/"
           variant="logo"
-          className="col-span-full row-start-2 place-self-center transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
+          className="transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
         >
           i2089
         </Text>
       </section>
 
-      {/* title / showcase / contact — same band model as detail pages */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* title / projects / contracts / contact / copyright */}
+      <section className="grid grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
@@ -37,7 +36,8 @@ export default function ProjectsPage() {
           <span className="text-trim block">Projects / Clients</span>
         </Text>
 
-        <ProjectsList projects={projects} />
+        <ProjectsList projects={projects} label="Projects" />
+        <ProjectsList projects={contracts} label="Contracts" />
 
         <Text
           as="div"
@@ -45,7 +45,6 @@ export default function ProjectsPage() {
           className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
         >
           <span className="text-(--np-mute)">Open for new projects.</span>
-          {/* self-link omitted on this page — already here */}
           <a
             href="mailto:hi@i2089.com"
             className="w-max transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
@@ -53,9 +52,15 @@ export default function ProjectsPage() {
             hi@i2089.com
           </a>
         </Text>
-      </section>
 
-      <Footer />
+        <Text
+          variant="footer"
+          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+        >
+          ©2026 i2089 :: i2089 :: Zürich :: 2026
+        </Text>
+      </section>
     </main>
   );
 }
+

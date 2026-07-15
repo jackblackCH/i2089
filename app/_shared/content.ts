@@ -100,7 +100,7 @@ export type Project = {
   image: string;
 };
 
-export const projects: Project[] = [
+export const contracts: Project[] = [
   {
     title: "AXA Switzerland",
     period: "since 2018 — ongoing",
@@ -109,6 +109,9 @@ export const projects: Project[] = [
     linkLabel: "axa.ch",
     image: "/projects/axa.jpg",
   },
+];
+
+export const projects: Project[] = [
   {
     title: "Branded Goods",
     period: "2025 — 2026",
