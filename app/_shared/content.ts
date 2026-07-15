@@ -16,20 +16,20 @@ export const services: Service[] = [
     title: "Consulting",
     items: [
       {
-        term: "Workflows",
-        text: "Cut delivery from weeks to days with LLM workflows.",
+        term: "Ship",
+        text: "I get your work done, quickly, with the right use of Claude Code, Codex, or your company's LLM.",
       },
       {
-        term: "Teams",
-        text: "Get your whole team working with AI: 1:1 sessions, workshops, pair programming.",
+        term: "Team",
+        text: "1:1 sessions, workshops, pair programming. Your team learns agentic engineering by shipping with me.",
       },
       {
-        term: "Performance",
-        text: "Increase team performance by 10x.",
+        term: "Speed",
+        text: "A day of work in place of a sprint on the tasks I take on — code review, tests, and handover unchanged.",
       },
       {
         term: "Transition",
-        text: "Switch to AI-supported development without halting delivery.",
+        text: "Fold agentic workflows into your existing delivery. No pause, no retooling week.",
       },
     ],
   },
