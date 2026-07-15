@@ -19,7 +19,7 @@ export default function HomePage() {
           <Text as="h1" variant="logo">
             i2089
           </Text>
-          <span className="text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] text-(--np-mute) md:text-[clamp(14px,2.25vw,45px)]">
+          <span className="np-outline text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] md:text-[clamp(14px,2.25vw,45px)]">
             Marc Illien
           </span>
         </div>
