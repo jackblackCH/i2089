@@ -31,7 +31,7 @@ export default function HomePage() {
       </section>
 
       {/* right column: three bands, then the copyright pinned bottom-right */}
-      <section className="grid grid-rows-[repeat(3,minmax(0,1fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      <section className="grid grid-rows-[repeat(3,minmax(0,0.35fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         {bands.map((band, i) => (
           <Text
             key={band.words[0]}

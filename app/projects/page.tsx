@@ -33,7 +33,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* title / projects / contracts / contact / copyright */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      <section className="grid grid-rows-[auto_minmax(0,0.35fr)_minmax(0,0.35fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"

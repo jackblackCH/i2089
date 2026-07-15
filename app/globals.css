@@ -36,7 +36,7 @@
        page (title / bands / items / contact / wordmark section)
      - pad-tight: slim vertical padding used by the footer/copyright row
    */
-  --spacing-pad: clamp(24px, 6.6vw, 64px);
+  --spacing-pad: clamp(48px, 12vw, 96px);
   --spacing-pad-tight: clamp(10px, 0.9vw, 16px);
 }
 

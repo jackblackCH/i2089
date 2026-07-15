@@ -56,7 +56,7 @@ export default async function ContentPage({
           shape as the homepage bands, but no visible dividers between
           them — each block owns 1fr and vertically centers its content.
           Only the copyright keeps its border. */}
-      <section className="grid grid-rows-[repeat(3,minmax(0,1fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      <section className="grid grid-rows-[repeat(3,minmax(0,0.35fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
