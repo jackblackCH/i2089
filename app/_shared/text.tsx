@@ -16,6 +16,9 @@ const variants = {
   /* footer / colophon */
   footer:
     "text-[clamp(9px,0.65vw,11px)] uppercase tracking-[0.08em] text-(--np-mute)",
+  /* subline under the wordmark — small caps, tight vertical rhythm */
+  signature:
+    "text-[clamp(7px,0.725vw,22px)] font-bold uppercase leading-none tracking-[0.06em] text-(--np-fg)",
 } as const;
 
 type Variant = keyof typeof variants;
