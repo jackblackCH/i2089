@@ -59,7 +59,7 @@ export const services: Service[] = [
     slug: "about",
     title: "Marc Illien",
     items: [
-      "I am a Frontend Software engineer from Zürich. I like making shiny digital products with precision and taste. I am immersed in learning and working with AI and teaching teams to use it within their teams.",
+      "I am a Frontend Software engineer from Zurich, Switzerland. I like making shiny digital products with precision and taste. I am deeply immersed in learning and working with AI and teaching others to use it within their teams.",
       {
         term: "since 2023",
         text: "i2089 — AI consulting, AI design, and Agentic Engineering. Self-employed, Zürich.",
