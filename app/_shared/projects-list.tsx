@@ -50,34 +50,39 @@ export function ProjectsList({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${p.title} — ${p.linkLabel}`}
-              className="group relative block aspect-[16/10] w-full overflow-hidden border border-(--np-rule)"
+              className="group block w-full"
             >
-              <Image
-                src={p.image}
-                alt={`${p.title} — screenshot`}
-                fill
-                sizes="(min-width: 1024px) 40vw, (min-width: 768px) 40vw, 90vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
+              {/* padding-bottom holds the 16:10 aspect regardless of
+                  parent stretch. inset-0 children fill it. */}
+              <div className="relative w-full overflow-hidden border border-(--np-rule) pb-[62.5%]">
+                <Image
+                  src={p.image}
+                  alt={`${p.title} — screenshot`}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, (min-width: 768px) 40vw, 90vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
 
-              {/* legibility scrim — only strong at the bottom where text sits */}
-              <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
-              />
+                {/* legibility scrim — heavy at the bottom where text sits */}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                />
 
-              {/* title + date, overlaid bottom-left. Link label sits
-                  bottom-right as a small monospace echo of the URL. */}
-              <div className="text-15 absolute inset-0 flex items-end justify-between gap-4 p-[clamp(16px,1.6vw,28px)] text-white">
-                <div className="grid gap-y-[0.2em]">
-                  <span className="font-medium leading-tight">{p.title}</span>
+                {/* title + date bottom-left, link label bottom-right */}
+                <div className="text-15 absolute inset-0 flex items-end justify-between gap-4 p-[clamp(16px,1.6vw,28px)] text-white">
+                  <div className="grid gap-y-[0.2em]">
+                    <span className="font-medium leading-tight">
+                      {p.title}
+                    </span>
+                    <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
+                      {p.period}
+                    </span>
+                  </div>
                   <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
-                    {p.period}
+                    {p.linkLabel} ↗
                   </span>
                 </div>
-                <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
-                  {p.linkLabel} ↗
-                </span>
               </div>
             </a>
           </li>
