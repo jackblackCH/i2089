@@ -17,15 +17,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Ship",
-        text: "I get your work done, quickly, with the right use of Claude Code, Codex, or your company's LLM.",
+        text: "Get your backlog moving. The right LLM for the job — Claude Code, Codex, or your company's stack.",
       },
       {
         term: "Team",
-        text: "1:1 sessions, workshops, pair programming. Your team learns agentic engineering by shipping with me.",
+        text: "Your team catches up on AI by using it on real work — 1:1 sessions, workshops, pair programming.",
       },
       {
         term: "Speed",
-        text: "A day of work in place of a sprint on the tasks I take on — code review, tests, and handover unchanged.",
+        text: "Days of work in place of sprints. Code review, tests, and handover unchanged.",
       },
       {
         term: "Transition",
