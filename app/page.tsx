@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { TypeCycle } from "./_shared/type-cycle";
-import { OutlineToggle } from "./_shared/outline-toggle";
 import { bands } from "./_shared/content";
 import { Text } from "./_shared/text";
-import { Footer } from "./_shared/footer";
 import "./_shared/shared.css";
 
 export const metadata: Metadata = {
@@ -14,23 +12,16 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[auto_1fr_auto] overflow-y-auto md:grid-cols-2 md:grid-rows-[minmax(0,1fr)_auto]">
-      {/* wordmark — mobile: first row full width; desktop: left half,
-          invisible 3x3 subgrid with the mark centered in the middle row */}
-      <section className="grid min-h-[38svh] grid-cols-3 grid-rows-3 p-[clamp(24px,3vw,64px)] md:min-h-0">
-        <Text
-          as="h1"
-          variant="logo"
-          className="col-span-full row-start-2 place-self-center"
-        >
+    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
+      {/* wordmark — takes the full height of the left column */}
+      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
+        <Text as="h1" variant="logo">
           i2089
         </Text>
       </section>
 
-      {/* content — mobile: stacked below; desktop: right half, 3 bands:
-          the two offers (typewriter cycles names for the same thing,
-          never a new concept) and the static audience line */}
-      <section className="grid grid-rows-3 border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* right column: three bands, then the copyright pinned bottom-right */}
+      <section className="grid grid-rows-[repeat(3,minmax(0,1fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         {bands.map((band, i) => (
           <Text
             key={band.words[0]}
@@ -46,11 +37,13 @@ export default function HomePage() {
             />
           </Text>
         ))}
+        <Text
+          variant="footer"
+          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+        >
+          ©2026 i2089 :: i2089 :: Zürich :: 2026
+        </Text>
       </section>
-
-      <Footer />
-
-      <OutlineToggle />
     </main>
   );
 }
