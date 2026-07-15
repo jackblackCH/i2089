@@ -16,14 +16,15 @@ export default function ProjectsPage() {
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
       {/* wordmark — full height of the left column, links back home */}
       <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
-        <Text
-          as={Link}
+        <Link
           href="/"
-          variant="logo"
-          className="transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
+          className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
         >
-          i2089
-        </Text>
+          <Text variant="logo">i2089</Text>
+          <span className="text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] text-(--np-mute) md:text-[clamp(14px,2.25vw,45px)]">
+            Marc Illien
+          </span>
+        </Link>
       </section>
 
       {/* title / projects / contracts / contact / copyright */}

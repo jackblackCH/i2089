@@ -104,7 +104,7 @@ export const contracts: Project[] = [
   {
     title: "AXA Switzerland",
     period: "since 2018 — ongoing",
-    text: "Recurring frontend contracts at Switzerland's largest insurer, a new project most years. Custom React apps — an SME calculator and an internal-agent customer-communication tool — and component library design in 2019.",
+    text: "Recurring frontend contracts at Switzerland's largest insurer. Custom React apps: - an SME calculator \n - internal-agent customer-communication tool - pattern library design.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
     image: "/projects/axa.jpg",
@@ -143,7 +143,7 @@ export const projects: Project[] = [
    is the static audience line. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
-    words: ["Consulting", "AI Workflows", "Workshops"],
+    words: ["Consulting", "AI Workshops", ""],
     slugs: ["ai", "ai", "ai"],
   },
   {
