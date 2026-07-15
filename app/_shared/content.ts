@@ -12,7 +12,7 @@ export type Service = {
    complete sentences, concrete and checkable, no sales adjectives. */
 export const services: Service[] = [
   {
-    slug: "ai",
+    slug: "consulting",
     title: "Consulting",
     items: [
       {
@@ -144,7 +144,7 @@ export const projects: Project[] = [
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
     words: ["Agentic Consulting", "AI Workflows", "AI Workshops"],
-    slugs: ["ai", "ai", "ai"],
+    slugs: ["consulting", "consulting", "consulting"],
   },
   {
     words: ["Frontend Engineering", "Software Engineering", "Digital Experiences"],
