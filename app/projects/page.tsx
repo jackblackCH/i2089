@@ -63,7 +63,7 @@ export default function ProjectsPage() {
           variant="footer"
           className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
         >
-          ©2026 i2089 :: i2089 :: Zürich :: 2026
+          ©2026 i2089 :: Marc Illien :: Zürich
         </Text>
       </section>
     </main>
