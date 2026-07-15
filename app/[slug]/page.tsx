@@ -52,42 +52,35 @@ export default async function ContentPage({
         </Link>
       </section>
 
-      {/* content — title / items / contact / copyright. Copyright pinned
-          bottom-right to match the homepage footer treatment. */}
+      {/* title / items / contact / copyright — all blocks share the same
+          padding token and left edge, so the type column is one straight
+          line down the page. Copyright pinned bottom-right. */}
       <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
-        {/* the h1 is a grid container, so text-box can't trim it — the
-            inner span carries the trim and gets centered as a clean
-            cap-to-baseline box */}
         <Text
           as="h1"
           variant="title"
-          className="grid content-center p-[clamp(24px,3vw,64px)]"
+          className="p-[clamp(24px,3vw,64px)]"
         >
           <span className="text-trim block">{service.title}</span>
         </Text>
 
-        {/* two shared columns (term / description) via subgrid so every
-            description starts at the same x. Row dividers are painted
-            in the surface color: rhythm without visible lines. Plain
-            sentences render as selection-style highlights that wrap
-            per line. */}
-        {/* strict 2-col grid, rows split the band into equal heights
-            (auto-rows-fr); every row centers its content vertically,
-            terms and descriptions share the two subgrid columns */}
+        {/* items — packed from the top with a proportional row gap.
+            Term/description columns use subgrid so every row's baseline
+            and column x line up perfectly. */}
         <Text
           as="ul"
           variant="body"
-          className="grid min-h-0 auto-rows-[minmax(max-content,1fr)] gap-x-[1.5em] overflow-y-auto border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(12px,1.5vw,32px)] md:grid-cols-[max-content_1fr]"
+          className="grid min-h-0 auto-rows-min gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] md:grid-cols-[max-content_1fr]"
         >
           {service.items.map((item) =>
             typeof item === "string" ? (
-              <li key={item} className="grid content-center md:col-span-2">
-                <span className="leading-[1.45]">{item}</span>
+              <li key={item} className="leading-[1.45] md:col-span-2">
+                {item}
               </li>
             ) : (
               <li
                 key={item.term}
-                className="grid grid-cols-1 content-center items-baseline gap-y-[0.3em] md:col-span-2 md:grid-cols-subgrid"
+                className="grid grid-cols-1 gap-y-[0.3em] md:col-span-2 md:grid-cols-subgrid md:items-baseline"
               >
                 <span>{item.term}</span>
                 <span className="text-(--np-mute)">{item.text}</span>
@@ -99,7 +92,7 @@ export default async function ContentPage({
         <Text
           as="div"
           variant="body"
-          className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
+          className="grid gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
         >
           {slug === "about" && (
             <a
