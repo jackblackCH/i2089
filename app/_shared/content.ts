@@ -12,25 +12,21 @@ export type Service = {
    complete sentences, concrete and checkable, no sales adjectives. */
 export const services: Service[] = [
   {
-    slug: "consulting",
-    title: "Consulting",
+    slug: "ai-llm-agentic-engineering",
+    title: "AI, LLM, and Agentic Engineering - Claude Code in your company!",
     items: [
-      "Get the full leverage of LLMs and their harnesses — Claude Code, Codex, or your company's stack.",
-      {
-        term: "Ship",
-        text: "Features live in days, not sprints.",
+      "Introduce modern AI tooling and workflows to your team to get the full leverage and boost your productivity.",
+      { 
+        term: "How to use AI for Planning",
+        text: "Learn how to use AI for planning tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
       },
       {
-        term: "Team",
-        text: "Your team learns agentic engineering in weeks, not quarters. 1:1 sessions, workshops, pair programming on real tickets — not slides.",
+        term: "How to use AI for Design",
+        text: "Learn how to use AI for design tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
       },
       {
-        term: "Speed",
-        text: "A feature in a day, a rewrite in a week. Code review, tests, and handover unchanged.",
-      },
-      {
-        term: "Rollout",
-        text: "Agentic workflows into your existing delivery in weeks, not months. Delivery doesn't pause.",
+        term: "How to use AI for Development",
+        text: "Learn how to use AI for development tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
       },
     ],
   },
@@ -40,19 +36,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Frontend",
-        text: "Ship fast, maintainable web apps in TypeScript, React, Next.js, and Tailwind.",
+        text: "High quality, fast & maintainable web apps in TypeScript, React, Next.js or ViteJS and Tailwind.",
       },
       {
-        term: "Software",
-        text: "Build architecture and APIs that survive handovers.",
+        term: "Backend",
+        text: "Build necessary architecture and APIs for your frontend to work.",
       },
       {
-        term: "Design",
-        text: "See your interface working in code, not in mockups.",
-      },
-      {
-        term: "Products",
-        text: "Launch your product, end to end. From prototype to production.",
+        term: "UI/UX Design",
+        text: "Create beautiful, functional and accessible interfaces",
       },
     ],
   },
@@ -145,7 +137,11 @@ export const projects: Project[] = [
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
     words: ["Agentic Consulting", "AI Workflows", "AI Workshops"],
-    slugs: ["consulting", "consulting", "consulting"],
+    slugs: [
+      "ai-llm-agentic-engineering",
+      "ai-llm-agentic-engineering",
+      "ai-llm-agentic-engineering",
+    ],
   },
   {
     words: ["Frontend Engineering", "Software Engineering", "Digital Experiences"],
