@@ -6,9 +6,9 @@ import { Copyright } from "./_shared/copyright";
 import "./_shared/shared.css";
 
 export const metadata: Metadata = {
-  title: "Agentic Consulting, Frontend Software Engineering",
+  title: "Consulting, Frontend Software Engineering",
   description:
-    "Agentic Consulting, Frontend and Software Engineering, and digital experiences for startups, SMEs, and corporates. Zürich, Switzerland.",
+    "Consulting for AI introduction, AI design, and Agentic Engineering, and Frontend and Software Engineering, and digital experiences for startups, SMEs, and corporates. Zürich, Switzerland.",
 };
 
 export default function HomePage() {
