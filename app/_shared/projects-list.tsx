@@ -35,7 +35,7 @@ export function ProjectsList({
   };
 
   return (
-    <div className="grid min-h-0 content-start gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] pb-[clamp(24px,3vw,64px)] pt-[clamp(12px,1.5vw,24px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
+    <div className="grid min-h-0 content-start gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
       {label && (
         <Text variant="footer" className="justify-self-start">
           {label}
