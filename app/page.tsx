@@ -19,7 +19,7 @@ export default function HomePage() {
           <Text as="h1" variant="logo">
             i2089
           </Text>
-          <span className="np-outline grid justify-items-center gap-y-[0.15em] text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] md:text-[clamp(14px,2.25vw,45px)]">
+          <span className="grid justify-items-center gap-y-[0.15em] text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] text-(--np-fg) md:text-[clamp(14px,2.25vw,45px)]">
             <span>Design &amp; Development</span>
             <span>by Marc Illien</span>
           </span>

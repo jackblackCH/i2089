@@ -41,7 +41,7 @@ export default async function ContentPage({
           className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
         >
           <Text variant="logo">i2089</Text>
-          <span className="np-outline grid justify-items-center gap-y-[0.15em] text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] md:text-[clamp(14px,2.25vw,45px)]">
+          <span className="grid justify-items-center gap-y-[0.15em] text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] text-(--np-fg) md:text-[clamp(14px,2.25vw,45px)]">
             <span>Design &amp; Development</span>
             <span>by Marc Illien</span>
           </span>
