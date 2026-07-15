@@ -10,6 +10,11 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
+// Only render the slugs from generateStaticParams — otherwise /favicon.ico,
+// /robots.txt lookups, and any random path get routed through this catch-all
+// and crash Turbopack in dev.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
