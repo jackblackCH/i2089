@@ -20,7 +20,7 @@ export default function HomePage() {
             i2089
           </Text>
           <span className="grid justify-items-center gap-y-[0.35em] text-[clamp(9px,2vw,22px)] font-bold uppercase leading-none tracking-[0.06em] text-(--np-fg) md:text-[clamp(7px,1.125vw,22px)]">
-            <span>Design &amp; Development</span>
+            <span>Digital Experiences</span>
             <span>by Marc Illien</span>
           </span>
         </div>
