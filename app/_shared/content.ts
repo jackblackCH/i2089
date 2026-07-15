@@ -143,7 +143,7 @@ export const projects: Project[] = [
    is the static audience line. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
-    words: ["Consulting", "AI Workshops", ""],
+    words: ["Agentic Consulting", "AI Workflows", "AI Workshops"],
     slugs: ["ai", "ai", "ai"],
   },
   {
