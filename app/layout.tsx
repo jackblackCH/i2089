@@ -21,6 +21,60 @@ export const metadata: Metadata = {
 // visitor's OS color-scheme preference — so the canvas doesn't flash.
 const THEME_BOOT = `try{var t=localStorage.getItem('i2089-new-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';var f=document.currentScript.parentElement;if(t==='light'||t==='dark')f.dataset.theme=t;}catch(e){}`;
 
+// Schema.org JSON-LD so search engines and LLMs can identify the entity
+// behind the site without guessing from prose.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://i2089.com/#marc",
+      name: "Marc Illien",
+      url: "https://i2089.com",
+      email: "hi@i2089.com",
+      jobTitle: "Independent Software Engineer",
+      description:
+        "Independent software engineer in Zürich. Agentic Engineering, frontend and software engineering, and digital products.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Zürich",
+        addressCountry: "CH",
+      },
+      sameAs: ["https://www.linkedin.com/in/marcillien/"],
+      knowsAbout: [
+        "Agentic Engineering",
+        "Large Language Models",
+        "Frontend Engineering",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      worksFor: { "@id": "https://i2089.com/#org" },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://i2089.com/#org",
+      name: "i2089",
+      url: "https://i2089.com",
+      founder: { "@id": "https://i2089.com/#marc" },
+      areaServed: "Worldwide",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Zürich",
+        addressCountry: "CH",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://i2089.com/#site",
+      url: "https://i2089.com",
+      name: "i2089",
+      publisher: { "@id": "https://i2089.com/#org" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,6 +82,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-svh">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
+      </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <PostHogProvider>
           <div className="new-frame" data-theme="dark" suppressHydrationWarning>
