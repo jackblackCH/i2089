@@ -17,19 +17,19 @@ export const services: Service[] = [
     items: [
       {
         term: "Ship",
-        text: "Get your backlog moving. The right LLM for the job — Claude Code, Codex, or your company's stack.",
+        text: "Features live in days, not sprints. Claude Code, Codex, or your company's LLM — the right tool for each task.",
       },
       {
         term: "Team",
-        text: "Your team catches up on AI by using it on real work — 1:1 sessions, workshops, pair programming.",
+        text: "Your team learns agentic engineering in weeks, not quarters. 1:1 sessions, workshops, pair programming on real tickets — not slides.",
       },
       {
         term: "Speed",
-        text: "Days of work in place of sprints. Code review, tests, and handover unchanged.",
+        text: "A feature in a day, a rewrite in a week. Code review, tests, and handover unchanged.",
       },
       {
-        term: "Transition",
-        text: "Fold agentic workflows into your existing delivery. No pause, no retooling week.",
+        term: "Rollout",
+        text: "Agentic workflows into your existing delivery in weeks, not months. Delivery doesn't pause.",
       },
     ],
   },
