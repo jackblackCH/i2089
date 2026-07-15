@@ -33,8 +33,10 @@ export default function ProjectsPage() {
         </Link>
       </section>
 
-      {/* title / projects / contracts / contact / copyright */}
-      <section className="grid grid-rows-[auto_minmax(0,0.35fr)_minmax(0,0.35fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Same fictive band rhythm as [slug]: 4 equal-weight rows
+          (title / projects / contracts / contact) + copyright, no
+          visible dividers between them. */}
+      <section className="grid grid-rows-[repeat(4,minmax(0,0.35fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
@@ -49,7 +51,7 @@ export default function ProjectsPage() {
         <Text
           as="div"
           variant="body"
-          className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-pad"
+          className="grid content-center gap-y-[0.6em] p-pad"
         >
           <span className="text-(--np-mute)">Open for new projects.</span>
           <a
