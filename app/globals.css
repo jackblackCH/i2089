@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* Projects list flips to a scroll-snap carousel only when its own
-   container is too short for a comfortable 2-column grid. Tall
-   containers keep the grid regardless of viewport. */
-@custom-variant carousel (@container projects (max-height: 600px));
-
 @theme {
   /* Site tokens — kept in @theme so the v4 engine emits matching utilities */
   --color-frame: #222222;
