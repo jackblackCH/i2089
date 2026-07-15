@@ -21,7 +21,7 @@ export default function ProjectsPage() {
           className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
         >
           <Text variant="logo">i2089</Text>
-          <span className="grid justify-items-center gap-y-[0.15em] text-[clamp(18px,4vw,45px)] font-bold leading-none tracking-[-0.04em] text-(--np-fg) md:text-[clamp(14px,2.25vw,45px)]">
+          <span className="grid justify-items-center gap-y-[0.35em] text-[clamp(9px,2vw,22px)] font-bold uppercase leading-none tracking-[0.06em] text-(--np-fg) md:text-[clamp(7px,1.125vw,22px)]">
             <span>Design &amp; Development</span>
             <span>by Marc Illien</span>
           </span>

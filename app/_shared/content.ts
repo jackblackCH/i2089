@@ -147,7 +147,7 @@ export const bands: { words: string[]; slugs: string[] }[] = [
     slugs: ["ai", "ai", "ai"],
   },
   {
-    words: ["Frontend Engineering", "Software Engineering", "Digital Products"],
+    words: ["Frontend Engineering", "Software Engineering", "Digital Experiences"],
     slugs: ["engineering", "engineering", "engineering"],
   },
   {
