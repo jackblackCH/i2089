@@ -33,11 +33,10 @@ export default function ProjectsPage() {
         </Link>
       </section>
 
-      {/* Band rhythm without visible dividers. Title / contact size to
-          content; the two lists take at-least-their-content and share
-          leftover 1fr so cards never get squeezed below their natural
-          height. Copyright auto at the bottom. */}
-      <section className="grid grid-rows-[auto_minmax(min-content,1fr)_minmax(min-content,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Title / projects / contact / copyright. Projects row takes 1fr
+          leftover; the others size to content. Section fills the column
+          height exactly. */}
+      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
@@ -47,7 +46,8 @@ export default function ProjectsPage() {
         </Text>
 
         <ProjectsList projects={projects} label="Projects" />
-        <ProjectsList projects={contracts} label="Contracts" />
+        {/* Contracts section hidden for now — re-enable when ready:
+        <ProjectsList projects={contracts} label="Contracts" /> */}
 
         <Text
           as="div"

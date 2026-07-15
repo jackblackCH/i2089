@@ -20,9 +20,9 @@ export function ProjectsList({
           {label}
         </Text>
       )}
-      <ul className="grid gap-[clamp(16px,1.6vw,28px)] md:grid-cols-2">
+      <ul className="grid min-w-0 gap-[clamp(16px,1.6vw,28px)] md:grid-cols-2">
         {projects.map((p) => (
-          <li key={p.title}>
+          <li key={p.title} className="min-w-0">
             <a
               href={p.href}
               target="_blank"
