@@ -52,25 +52,26 @@ export default async function ContentPage({
         </Link>
       </section>
 
-      {/* title / items / contact / copyright — all blocks share the same
-          padding token and left edge, so the type column is one straight
-          line down the page. Copyright pinned bottom-right. */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Fictive 3-row rhythm (title / items / contact) with the same
+          shape as the homepage bands, but no visible dividers between
+          them — each block owns 1fr and vertically centers its content.
+          Only the copyright keeps its border. */}
+      <section className="grid grid-rows-[repeat(3,minmax(0,1fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
-          className="p-[clamp(24px,3vw,64px)]"
+          className="grid content-center p-[clamp(24px,3vw,64px)]"
         >
           <span className="text-trim block">{service.title}</span>
         </Text>
 
-        {/* items — packed from the top with a proportional row gap.
+        {/* items — packed rows, vertically centered inside the band.
             Term/description columns use subgrid so every row's baseline
             and column x line up perfectly. */}
         <Text
           as="ul"
           variant="body"
-          className="grid min-h-0 auto-rows-min gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] md:grid-cols-[max-content_1fr]"
+          className="grid min-h-0 auto-rows-min content-center gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto p-[clamp(24px,3vw,64px)] md:grid-cols-[max-content_1fr]"
         >
           {service.items.map((item) =>
             typeof item === "string" ? (
@@ -92,7 +93,7 @@ export default async function ContentPage({
         <Text
           as="div"
           variant="body"
-          className="grid gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
+          className="grid content-center gap-y-[0.6em] p-[clamp(24px,3vw,64px)]"
         >
           {slug === "about" && (
             <a
