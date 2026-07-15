@@ -35,7 +35,7 @@ export default async function ContentPage({
   return (
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
       {/* wordmark — full height of the left column, links back home */}
-      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
+      <section className="grid place-items-center p-pad">
         <Link
           href="/"
           className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
@@ -60,7 +60,7 @@ export default async function ContentPage({
         <Text
           as="h1"
           variant="title"
-          className="grid content-center p-[clamp(24px,3vw,64px)]"
+          className="grid content-center p-pad"
         >
           <span className="text-trim block">{service.title}</span>
         </Text>
@@ -71,7 +71,7 @@ export default async function ContentPage({
         <Text
           as="ul"
           variant="body"
-          className="grid min-h-0 auto-rows-min content-center gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto p-[clamp(24px,3vw,64px)] md:grid-cols-[max-content_1fr]"
+          className="grid min-h-0 auto-rows-min content-center gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto p-pad md:grid-cols-[max-content_1fr]"
         >
           {service.items.map((item) =>
             typeof item === "string" ? (
@@ -93,7 +93,7 @@ export default async function ContentPage({
         <Text
           as="div"
           variant="body"
-          className="grid content-center gap-y-[0.6em] p-[clamp(24px,3vw,64px)]"
+          className="grid content-center gap-y-[0.6em] p-pad"
         >
           {slug === "about" && (
             <a
@@ -133,7 +133,7 @@ export default async function ContentPage({
 
         <Text
           variant="footer"
-          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
         >
           ©2026 i2089 :: i2089 :: Zürich :: 2026
         </Text>

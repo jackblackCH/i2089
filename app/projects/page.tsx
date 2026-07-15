@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
       {/* wordmark — full height of the left column, links back home */}
-      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
+      <section className="grid place-items-center p-pad">
         <Link
           href="/"
           className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)] transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
         <Text
           as="h1"
           variant="title"
-          className="grid content-center p-[clamp(24px,3vw,64px)]"
+          className="grid content-center p-pad"
         >
           <span className="text-trim block">Projects / Clients</span>
         </Text>
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
         <Text
           as="div"
           variant="body"
-          className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-[clamp(24px,3vw,64px)]"
+          className="grid content-center gap-y-[0.6em] border-t border-(--np-rule) p-pad"
         >
           <span className="text-(--np-mute)">Open for new projects.</span>
           <a
@@ -61,7 +61,7 @@ export default function ProjectsPage() {
 
         <Text
           variant="footer"
-          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
         >
           ©2026 i2089 :: i2089 :: Zürich :: 2026
         </Text>

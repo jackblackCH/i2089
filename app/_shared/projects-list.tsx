@@ -35,7 +35,7 @@ export function ProjectsList({
   };
 
   return (
-    <div className="grid min-h-0 content-start gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto border-t border-(--np-rule) p-[clamp(24px,3vw,64px)] [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
+    <div className="grid min-h-0 content-start gap-y-[clamp(12px,1.2vw,20px)] overflow-y-auto border-t border-(--np-rule) p-pad [container-name:projects] [container-type:size] carousel:overflow-y-hidden">
       {label && (
         <Text variant="footer" className="justify-self-start">
           {label}
@@ -43,12 +43,12 @@ export function ProjectsList({
       )}
       <ul
         ref={ref}
-        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-[clamp(24px,3vw,64px)] carousel:flex carousel:gap-x-[clamp(24px,3vw,64px)] carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
+        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-pad carousel:flex carousel:gap-x-pad carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
       >
         {projects.map((p) => (
           <li
             key={p.title}
-            className="grid content-start gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(clamp(24px,3vw,64px)/2))]"
+            className="grid content-start gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(var(--spacing-pad)/2))]"
           >
             <a
               href={p.href}

@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
       {/* wordmark — takes the full height of the left column */}
-      <section className="grid place-items-center p-[clamp(24px,3vw,64px)]">
+      <section className="grid place-items-center p-pad">
         <div className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)]">
           <Text as="h1" variant="logo">
             i2089
@@ -37,7 +37,7 @@ export default function HomePage() {
             key={band.words[0]}
             as="h2"
             variant="title"
-            className={`np-line grid content-center p-[clamp(24px,3vw,64px)] ${
+            className={`np-line grid content-center p-pad ${
               i > 0 ? "border-t border-(--np-rule)" : ""
             }`}
           >
@@ -49,7 +49,7 @@ export default function HomePage() {
         ))}
         <Text
           variant="footer"
-          className="border-t border-(--np-rule) px-[clamp(24px,3vw,64px)] py-[clamp(10px,0.9vw,16px)] text-right"
+          className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
         >
           ©2026 i2089 :: i2089 :: Zürich :: 2026
         </Text>

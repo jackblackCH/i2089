@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="col-span-full grid grid-cols-1 border-t border-(--np-rule) md:grid-cols-2">
       <Text
         variant="footer"
-        className="px-[clamp(24px,3vw,64px)] pt-[clamp(10px,0.9vw,16px)] md:py-[clamp(10px,0.9vw,16px)]"
+        className="px-pad pt-pad-tight md:py-pad-tight"
       >
         ©2026 i2089 ::{" "}
         <Link
@@ -18,7 +18,7 @@ export function Footer() {
       </Text>
       <Text
         variant="footer"
-        className="border-(--np-rule) px-[clamp(24px,3vw,64px)] pb-[clamp(10px,0.9vw,16px)] md:border-l md:py-[clamp(10px,0.9vw,16px)]"
+        className="border-(--np-rule) px-pad pb-pad-tight md:border-l md:py-pad-tight"
       >
         <Link
           href="/projects"

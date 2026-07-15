@@ -29,6 +29,15 @@
   --text-80--line-height: 0.95;
   --text-200: clamp(6rem, 24cqi, 16rem);
   --text-200--line-height: 1;
+
+  /* Layout padding tokens — feed into every p-*, px-*, py-*, gap-*,
+     m-*, etc. utility. Change once here, everywhere follows.
+     - pad: the standard block padding shared by every section on every
+       page (title / bands / items / contact / wordmark section)
+     - pad-tight: slim vertical padding used by the footer/copyright row
+   */
+  --spacing-pad: clamp(24px, 3vw, 64px);
+  --spacing-pad-tight: clamp(10px, 0.9vw, 16px);
 }
 
 :root {
