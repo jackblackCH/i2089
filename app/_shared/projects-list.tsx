@@ -5,13 +5,10 @@ import Image from "next/image";
 import { Text } from "./text";
 import type { Project } from "./content";
 
-// Layout: mobile stacks, md+ splits into a 2-column grid. When the
-// LIST'S OWN container is too short (<=460px tall) the grid would push
-// content off-screen, so we switch to a horizontal scroll-snap carousel
-// via the `carousel:` custom variant defined in globals.css. The wrapping
-// div is a named `size` container so the query reads its actual height;
-// this only works because the wrapper sits in a `minmax(0,1fr)` grid row,
-// giving it a size independent of its content.
+// Each card is just the screenshot with a title + date overlaid at the
+// bottom, over a gradient scrim so the text stays legible on any image.
+// Mobile stacks; md+ shows a 2-column grid; short containers flip to a
+// horizontal scroll-snap carousel via the `carousel:` variant.
 export function ProjectsList({
   projects,
   label,
@@ -24,8 +21,6 @@ export function ProjectsList({
   const scroll = (direction: 1 | -1) => {
     const el = ref.current;
     if (!el) return;
-    // Scroll by one card width including the gap, so each click advances
-    // to the next snap point instead of drifting.
     const first = el.firstElementChild as HTMLElement | null;
     const step = first
       ? first.getBoundingClientRect().width +
@@ -43,34 +38,48 @@ export function ProjectsList({
       )}
       <ul
         ref={ref}
-        className="text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)] grid gap-y-[2em] md:grid-cols-2 md:gap-x-pad carousel:flex carousel:gap-x-pad carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
+        className="grid gap-y-[clamp(16px,1.6vw,28px)] md:grid-cols-2 md:gap-x-pad carousel:flex carousel:gap-x-pad carousel:snap-x carousel:snap-mandatory carousel:overflow-x-auto carousel:overscroll-x-contain carousel:pb-2 carousel:[scrollbar-width:none] carousel:[&::-webkit-scrollbar]:hidden"
       >
         {projects.map((p) => (
           <li
             key={p.title}
-            className="grid content-start gap-y-[0.6em] carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(var(--spacing-pad)/2))]"
+            className="carousel:min-w-0 carousel:shrink-0 carousel:snap-start carousel:basis-[calc(50%-(var(--spacing-pad)/2))]"
           >
             <a
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="grid content-start gap-y-[0.6em] self-start transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none"
+              aria-label={`${p.title} — ${p.linkLabel}`}
+              className="group relative block aspect-[16/10] w-full overflow-hidden border border-(--np-rule)"
             >
               <Image
                 src={p.image}
                 alt={`${p.title} — screenshot`}
-                width={1200}
-                height={750}
+                fill
                 sizes="(min-width: 1024px) 40vw, (min-width: 768px) 40vw, 90vw"
-                className="aspect-[16/10] w-full border border-(--np-rule) object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
-              <span className="grid gap-y-[0.15em] @[560px]/projects:grid-cols-[1fr_auto] @[560px]/projects:items-baseline @[560px]/projects:gap-x-[1em] @[560px]/projects:gap-y-0">
-                <span>{p.title}</span>
-                <span className="text-(--np-mute)">{p.linkLabel} ↗</span>
-              </span>
+
+              {/* legibility scrim — only strong at the bottom where text sits */}
+              <div
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+              />
+
+              {/* title + date, overlaid bottom-left. Link label sits
+                  bottom-right as a small monospace echo of the URL. */}
+              <div className="text-15 absolute inset-0 flex items-end justify-between gap-4 p-[clamp(16px,1.6vw,28px)] text-white">
+                <div className="grid gap-y-[0.2em]">
+                  <span className="font-medium leading-tight">{p.title}</span>
+                  <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
+                    {p.period}
+                  </span>
+                </div>
+                <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
+                  {p.linkLabel} ↗
+                </span>
+              </div>
             </a>
-            <span className="text-(--np-mute)">{p.text}</span>
-            <Text variant="footer">{p.period}</Text>
           </li>
         ))}
       </ul>
