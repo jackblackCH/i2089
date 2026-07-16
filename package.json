@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --port 8008",
+    "dev": "next dev --port 2222",
     "build": "next build",
     "start": "next start",
     "lint": "eslint app components"
