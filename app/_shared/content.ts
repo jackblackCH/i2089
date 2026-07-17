@@ -15,7 +15,7 @@ export const services: Service[] = [
     slug: "ai-llm-agentic-engineering",
     title: "AI, LLM, and Agentic Engineering - Claude Code in your company!",
     items: [
-      "Introduce modern AI tooling and workflows to your team to get the full leverage and boost your productivity.",
+      "A backlog that used to take the team weeks becomes one engineer's afternoon of orchestration.",
       {
         term: "AI Adoption",
         text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Close that gap — the whole team past adoption, not just the early adopter.",
