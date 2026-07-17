@@ -70,25 +70,24 @@ export default async function ContentPage({
           <span className="text-trim block">{service.title}</span>
         </Text>
 
-        {/* items — packed rows, vertically centered inside the band.
-            Term/description columns use subgrid so every row's baseline
-            and column x line up perfectly. */}
+        {/* items — each row stacks: small mono label on top, body text
+            below. No 2-column split so long descriptions have the full
+            column width to breathe. */}
         <Text
           as="ul"
           variant="body"
-          className="grid min-h-0 auto-rows-min content-center gap-x-[clamp(1.5em,2vw,3em)] gap-y-[clamp(0.9em,1.4vw,1.6em)] overflow-y-auto p-pad md:grid-cols-[max-content_1fr]"
+          className="grid min-h-0 auto-rows-min content-center gap-y-[clamp(1em,1.6vw,1.8em)] overflow-y-auto p-pad"
         >
           {service.items.map((item) =>
             typeof item === "string" ? (
-              <li key={item} className="leading-[1.45] md:col-span-2">
+              <li key={item} className="leading-[1.45]">
                 {item}
               </li>
             ) : (
-              <li
-                key={item.term}
-                className="grid grid-cols-1 gap-y-[0.3em] md:col-span-2 md:grid-cols-subgrid md:items-baseline"
-              >
-                <span>{item.term}</span>
+              <li key={item.term} className="grid gap-y-[0.4em]">
+                <Text variant="footer" as="span">
+                  {item.term}
+                </Text>
                 <span className="text-(--np-mute)">{item.text}</span>
               </li>
             ),
