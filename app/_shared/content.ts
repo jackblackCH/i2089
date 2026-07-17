@@ -16,7 +16,11 @@ export const services: Service[] = [
     title: "AI, LLM, and Agentic Engineering - Claude Code in your company!",
     items: [
       "Introduce modern AI tooling and workflows to your team to get the full leverage and boost your productivity.",
-      { 
+      {
+        term: "AI Adoption",
+        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Close that gap — the whole team past adoption, not just the early adopter.",
+      },
+      {
         term: "How to use AI for Planning",
         text: "Learn how to use AI for planning tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
       },
