@@ -76,7 +76,7 @@ export default async function ContentPage({
         <Text
           as="ul"
           variant="body"
-          className="grid min-h-0 auto-rows-min content-center gap-y-[clamp(1em,1.6vw,1.8em)] overflow-y-auto p-pad"
+          className="grid min-h-0 auto-rows-min content-start gap-y-[clamp(1em,1.6vw,1.8em)] overflow-y-auto p-pad"
         >
           {service.items.map((item) =>
             typeof item === "string" ? (
