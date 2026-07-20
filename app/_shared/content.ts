@@ -18,19 +18,19 @@ export const services: Service[] = [
       "A backlog that used to take the team weeks becomes one engineer's afternoon of orchestration.",
       {
         term: "AI Adoption",
-        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Close that gap — the whole team past adoption, not just the early adopter.",
+        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Get the whole team past adoption, not just the early adopter.",
       },
       {
-        term: "How to use AI for Planning",
-        text: "Learn how to use AI for planning tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
+        term: "AI for Planning",
+        text: "Turn specs into agentic workflows an LLM can execute. Ship the plan, not just the sprint.",
       },
       {
-        term: "How to use AI for Design",
-        text: "Learn how to use AI for design tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
+        term: "AI for Design",
+        text: "Design systems and prototypes translated into shippable code — Claude Code, Codex, or your company's stack.",
       },
       {
-        term: "How to use AI for Development",
-        text: "Learn how to use AI for development tasks. Design agentic workflows and workflows for your team to the full leverage of LLMs and their harnesses.",
+        term: "AI for Development",
+        text: "Agentic workflows that write, test, and review code. Human in the loop, quality unchanged.",
       },
     ],
   },
@@ -40,15 +40,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Frontend",
-        text: "High quality, fast & maintainable web apps in TypeScript, React, Next.js or ViteJS and Tailwind.",
+        text: "Fast, maintainable web apps in TypeScript, React (Next.js or Vite), and Tailwind.",
       },
       {
         term: "Backend",
-        text: "Build necessary architecture and APIs for your frontend to work.",
+        text: "Architecture and APIs the frontend can rely on.",
       },
       {
         term: "UI/UX Design",
-        text: "Create beautiful, functional and accessible interfaces",
+        text: "Interfaces designed in code. Accessible, tested, shipped.",
       },
     ],
   },
@@ -56,7 +56,7 @@ export const services: Service[] = [
     slug: "about",
     title: "Marc Illien",
     items: [
-      "I am a Frontend Software engineer from Zurich, Switzerland. I like making shiny digital products with precision and taste. I am deeply immersed in learning and working with AI and teaching others to use it within their teams.",
+      "Frontend software engineer from Zürich. I build precise, tasteful digital products, and teach teams to work with AI every day.",
       {
         term: "since 2023",
         text: "i2089 — Consulting for AI introduction, AI design, and Agentic Engineering. Self-employed, Zürich.",
@@ -101,7 +101,7 @@ export const contracts: Project[] = [
   {
     title: "AXA Switzerland",
     period: "since 2018 — ongoing",
-    text: "Recurring frontend contracts at Switzerland's largest insurer. Custom React apps: - an SME calculator \n - internal-agent customer-communication tool - pattern library design.",
+    text: "Recurring frontend contracts at Switzerland's largest insurer since 2018. Custom React apps: an SME calculator, an internal-agent communication tool, and pattern library design.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
     image: "/projects/axa.jpg",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
    is the static audience line. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
-    words: ["Agentic Consulting", "AI Workflows", "AI Workshops"],
+    words: ["AI Solutions", "AI Workflows", "AI Workshops"],
     slugs: [
       "ai-solutions",
       "ai-solutions",
