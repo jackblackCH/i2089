@@ -15,26 +15,26 @@ export const services: Service[] = [
     slug: "ai-solutions",
     title: "Consulting & AI Solutions",
     items: [
-      "A backlog that took the team weeks becomes one engineer's afternoon of orchestration. The offer: get the whole team to that shift — not just the early adopter.",
+      "A week of team backlog cleared in one engineer's afternoon. Whole team, not one enthusiast.",
       {
         term: "The gap",
-        text: "One engineer 10x-ing with Claude while the rest of the team is 1x — the pattern in almost every team. Adoption stalls at the enthusiast.",
+        text: "One engineer ships 10x with Claude. The rest of the team ships at 1x. The gap holds until someone closes it.",
       },
       {
         term: "Team enablement",
-        text: "1:1 sessions, workshops, pair programming — on real tickets, not slides. Your whole team using AI in weeks, not quarters.",
+        text: "1:1 sessions, workshops, pair programming. Your own tickets, not slides. Whole team ships with AI in weeks, not quarters.",
       },
       {
         term: "Agentic workflows",
-        text: "Workflows that plan, code, test, and review — with a human in the loop. Claude Code, Codex, or your company's stack: the right tool for each task.",
+        text: "Workflows that plan, code, test, and review. You keep the final call. Claude Code, Codex, or your company's stack.",
       },
       {
         term: "Hands-on delivery",
-        text: "Real engineering alongside your team. A feature in a day, a rewrite in a week. Code review, tests, and handover unchanged.",
+        text: "Engineering next to your team. A feature in a day, a rewrite in a week. Code review, tests, handover: unchanged.",
       },
       {
         term: "No disruption",
-        text: "Your compliance rules, your LLM, your codebase. Rollout in weeks, not months. Delivery doesn't pause.",
+        text: "Your compliance rules, your LLM, your codebase. Rollout in weeks, not months. Delivery keeps running.",
       },
     ],
   },
