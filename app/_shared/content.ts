@@ -18,7 +18,7 @@ export const services: Service[] = [
       "A backlog that used to take the team weeks becomes one engineer's afternoon of orchestration.",
       {
         term: "AI Adoption",
-        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Get the whole team past adoption, not just the early adopter.",
+        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Close that gap across the whole team, not just the early adopter.",
       },
       {
         term: "AI for Planning",
@@ -26,7 +26,7 @@ export const services: Service[] = [
       },
       {
         term: "AI for Design",
-        text: "Design systems and prototypes translated into shippable code — Claude Code, Codex, or your company's stack.",
+        text: "Turn design systems and prototypes into shippable code — Claude Code, Codex, or your company's stack.",
       },
       {
         term: "AI for Development",
