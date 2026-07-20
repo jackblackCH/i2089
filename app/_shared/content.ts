@@ -13,24 +13,28 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-solutions",
-    title: "AI Solutions",
+    title: "Consulting & AI Solutions",
     items: [
-      "A backlog that used to take the team weeks becomes one engineer's afternoon of orchestration.",
+      "A backlog that took the team weeks becomes one engineer's afternoon of orchestration. The offer: get the whole team to that shift — not just the early adopter.",
       {
-        term: "AI Adoption",
-        text: "One engineer 10x-ing with Claude while the rest of the team is 1x is the common pattern. Close that gap across the whole team, not just the early adopter.",
+        term: "The gap",
+        text: "One engineer 10x-ing with Claude while the rest of the team is 1x — the pattern in almost every team. Adoption stalls at the enthusiast.",
       },
       {
-        term: "AI for Planning",
-        text: "Turn specs into agentic workflows an LLM can execute. Ship the plan, not just the sprint.",
+        term: "Team enablement",
+        text: "1:1 sessions, workshops, pair programming — on real tickets, not slides. Your whole team using AI in weeks, not quarters.",
       },
       {
-        term: "AI for Design",
-        text: "Turn design systems and prototypes into shippable code — Claude Code, Codex, or your company's stack.",
+        term: "Agentic workflows",
+        text: "Workflows that plan, code, test, and review — with a human in the loop. Claude Code, Codex, or your company's stack: the right tool for each task.",
       },
       {
-        term: "AI for Development",
-        text: "Agentic workflows that write, test, and review code. Human in the loop, quality unchanged.",
+        term: "Hands-on delivery",
+        text: "Real engineering alongside your team. A feature in a day, a rewrite in a week. Code review, tests, and handover unchanged.",
+      },
+      {
+        term: "No disruption",
+        text: "Your compliance rules, your LLM, your codebase. Rollout in weeks, not months. Delivery doesn't pause.",
       },
     ],
   },
@@ -140,7 +144,7 @@ export const projects: Project[] = [
    is the static audience line. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
-    words: ["AI Solutions", "AI Workflows", "AI Workshops"],
+    words: ["Consulting", "AI Solutions", "AI Workshops"],
     slugs: [
       "ai-solutions",
       "ai-solutions",
