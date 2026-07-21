@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { helveticaNeue } from "./fonts";
 import "./globals.css";
 import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
@@ -81,14 +82,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-svh">
+    <html
+      lang="en"
+      className={`h-svh ${GeistSans.variable} ${GeistMono.variable} ${helveticaNeue.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
       </head>
-      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
         <PostHogProvider>
           <div className="new-frame" data-theme="dark" suppressHydrationWarning>
             <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />

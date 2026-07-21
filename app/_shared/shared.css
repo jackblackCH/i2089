@@ -15,8 +15,8 @@
   --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
 
   font-family:
+    var(--font-helvetica-neue),
     "Helvetica Neue LT Pro",
-    "HelveticaNeueLTPro-Dsp",
     "Helvetica Neue",
     Helvetica,
     Arial,
