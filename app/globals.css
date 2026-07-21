@@ -1,14 +1,15 @@
 @import "tailwindcss";
+@import "./fonts-inline.css";
 
 @theme {
   /* Site tokens — kept in @theme so the v4 engine emits matching utilities */
 
-  /* Helvetica Neue LT Pro Extended (self-hosted via next/font, see
-     app/fonts.ts) is the site default: overriding --font-sans here makes
-     the `font-sans` utility and every var(--font-sans) reference use it.
-     Weights: 100 Thin, 300 Light, 400 Regular, 700 Bold, 900 Black. */
+  /* Helvetica Neue LT Pro Extended (base64-inlined in fonts-inline.css)
+     is the site default: overriding --font-sans here makes the
+     `font-sans` utility and every var(--font-sans) reference use it.
+     Inlined weights: 400 (53 Ex) and 700 (73 BdEx). */
   --font-sans:
-    var(--font-helvetica-neue), "Helvetica Neue", Helvetica, Arial, sans-serif;
+    "Helvetica Neue LT Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --color-frame: #222222;
   --color-ink: #1a1a1a;

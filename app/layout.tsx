@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { helveticaNeue } from "./fonts";
 import "./globals.css";
 import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
@@ -84,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-svh ${GeistSans.variable} ${GeistMono.variable} ${helveticaNeue.variable}`}
+      className="h-svh"
     >
       <head>
         <script
