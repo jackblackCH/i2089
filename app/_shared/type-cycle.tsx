@@ -89,19 +89,30 @@ export function TypeCycle({
     };
   }, [words, cycleMs, typeMs, eraseMs, initialHoldMs]);
 
+  // the animated text is empty mid-erase and partial mid-type, so assistive
+  // tech reads the full current word instead of the animation frames
+  const label = words[index];
   const content = (
-    <span className="text-trim block min-h-[1.05em]">
+    <span aria-hidden className="text-trim block min-h-[1.05em]">
       {text}
-      {animating && <span aria-hidden className="new-caret" />}
+      {animating && <span className="new-caret" />}
     </span>
   );
 
   const href = hrefs?.[index];
-  if (!href) return content;
+  if (!href) {
+    return (
+      <>
+        <span className="sr-only">{label}</span>
+        {content}
+      </>
+    );
+  }
 
   return (
     <Link
       href={href}
+      aria-label={label}
       className="transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
     >
       {content}
