@@ -26,6 +26,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
           ui_host: "https://eu.posthog.com",
           defaults: "2025-05-24",
           capture_exceptions: true,
+          // skip the side-loaded recorder (~53 KiB) and surveys (~32 KiB)
+          // bundles — neither feature is used on this site
+          disable_session_recording: true,
+          disable_surveys: true,
         });
       });
     };
