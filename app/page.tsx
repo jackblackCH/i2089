@@ -14,16 +14,19 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
-      {/* wordmark — takes the full height of the left column */}
+      {/* wordmark — takes the full height of the left column. The subline is
+          hung off the wordmark's baseline out of flow, so place-items-center
+          sees the wordmark alone and lands it on the frame's midline; in flow
+          it would drag the pair's center up by half the subline's height. */}
       <section className="grid place-items-center p-pad">
-        <div className="grid justify-items-center gap-y-[clamp(6px,0.9vw,18px)]">
+        <div className="relative grid justify-items-center">
           <Text as="h1" variant="logo">
             i2089
           </Text>
           <Text
             as="div"
             variant="signature"
-            className="grid justify-items-center gap-y-[0.35em]"
+            className="absolute left-1/2 top-full grid w-max -translate-x-1/2 justify-items-center gap-y-[0.35em] mt-[clamp(6px,0.9vw,18px)]"
           >
             <span>Digital Experiences</span>
             <span>by Marc Illien</span>
