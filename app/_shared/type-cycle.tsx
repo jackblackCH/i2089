@@ -93,8 +93,11 @@ export function TypeCycle({
   // tech reads the full current word instead of the animation frames
   const label = words[index];
   const content = (
-    <span aria-hidden className="text-trim block min-h-[1.05em]">
-      {text}
+    // text-box trim makes a one-line box exactly cap-height tall, so a fixed
+    // min-height would pad dead space below the text and break content-center.
+    // A zero-width space keeps the line alive mid-erase at the natural height.
+    <span aria-hidden className="text-trim block">
+      {text || "\u200B"}
       {animating && <span className="new-caret" />}
     </span>
   );
