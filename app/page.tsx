@@ -34,8 +34,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* right column: three bands, then the copyright pinned bottom-right */}
-      <section className="grid grid-rows-[repeat(3,minmax(0,0.35fr))_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* right column: three bands filling the full column height */}
+      <section className="grid grid-rows-[repeat(3,minmax(0,0.35fr))] border-t border-(--np-rule) md:border-l md:border-t-0">
         {bands.map((band, i) => (
           <Text
             key={band.words[0]}
@@ -51,8 +51,9 @@ export default function HomePage() {
             />
           </Text>
         ))}
-        <Copyright />
       </section>
+
+      <Copyright />
     </main>
   );
 }

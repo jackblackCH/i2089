@@ -1,12 +1,12 @@
 import { Text } from "./text";
 
-// Single bottom row shared by every page — right-aligned, slim padding,
-// hairline top border. One source of truth for the copyright line.
+// Pinned to the bottom-left of the frame on every page. Deliberately out of
+// flow — no column reserves a row for it, so it costs the layout nothing.
 export function Copyright() {
   return (
     <Text
       variant="footer"
-      className="border-t border-(--np-rule) px-pad py-pad-tight text-right"
+      className="fixed bottom-0 left-0 z-50 p-pad-tight"
     >
       ©2026 Marc Illien :: i2089 :: Zürich
     </Text>

@@ -60,10 +60,10 @@ export default async function ContentPage({
         </Link>
       </section>
 
-      {/* Title / items / contact / copyright. Title and contact size
-          to content; items takes all leftover so a long list never
-          gets clipped at the ends. */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Title / items / contact. Title and contact size to content;
+          items takes all leftover so a long list never gets clipped
+          at the ends. */}
+      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
@@ -136,9 +136,9 @@ export default async function ContentPage({
             hi@i2089.com
           </a>
         </Text>
-
-        <Copyright />
       </section>
+
+      <Copyright />
     </main>
   );
 }

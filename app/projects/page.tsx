@@ -35,10 +35,10 @@ export default function ProjectsPage() {
         </Link>
       </section>
 
-      {/* Title / projects / contact / copyright. Projects row takes 1fr
-          leftover; the others size to content. Section fills the column
-          height exactly. */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
+      {/* Title / projects / contact. Projects row takes 1fr leftover;
+          the others size to content. Section fills the column height
+          exactly. */}
+      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
         <Text
           as="h1"
           variant="title"
@@ -64,9 +64,9 @@ export default function ProjectsPage() {
             hi@i2089.com
           </a>
         </Text>
-
-        <Copyright />
       </section>
+
+      <Copyright />
     </main>
   );
 }
