@@ -11,7 +11,8 @@
   --np-s: 22%;
   --np-surface: hsl(var(--np-h) var(--np-s) 2.2%);
   --np-fg: hsl(var(--np-h) var(--np-s) 92.2%);
-  --np-mute: color-mix(in srgb, var(--np-fg) 50%, transparent);
+  /* 75%, not lower — the small labels must stay easy to read */
+  --np-mute: color-mix(in srgb, var(--np-fg) 75%, transparent);
   --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
 
   font-family:

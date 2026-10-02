@@ -45,7 +45,7 @@ export function GET() {
   lines.push("");
   for (const p of projects) {
     lines.push(
-      `- [${p.title}](${p.href}) — ${p.period}. ${p.text}`,
+      `- [${p.title}](${BASE_URL}/projects/${p.slug}) — ${p.period}. ${p.role}. ${p.text} Live: ${p.href}`,
     );
   }
   lines.push("");

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { contracts, projects } from "../_shared/content";
 import { Text } from "../_shared/text";
 import { ProjectsList } from "../_shared/projects-list";
+import { Wordmark } from "../_shared/wordmark";
 import { Copyright } from "../_shared/copyright";
 import "../_shared/shared.css";
 
@@ -15,25 +15,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
-      {/* wordmark — full height of the left column, links back home. The
-          subline is hung off the wordmark's baseline out of flow so the
-          wordmark itself lands on the frame's midline. */}
-      <section className="grid place-items-center p-pad">
-        <Link
-          href="/"
-          className="relative grid justify-items-center transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
-        >
-          <Text variant="logo">i2089</Text>
-          <Text
-            as="div"
-            variant="signature"
-            className="absolute left-1/2 top-full grid w-max -translate-x-1/2 justify-items-center gap-y-[0.35em] mt-[clamp(6px,0.9vw,18px)]"
-          >
-            <span>Digital Experiences</span>
-            <span>by Marc Illien</span>
-          </Text>
-        </Link>
-      </section>
+      <Wordmark />
 
       {/* Title / projects / contact. Projects row takes 1fr leftover;
           the others size to content. Section fills the column height
@@ -56,7 +38,7 @@ export default function ProjectsPage() {
           variant="body"
           className="grid content-center gap-y-[0.6em] p-pad"
         >
-          <span className="text-(--np-mute)">Open for new projects.</span>
+          <span>Open for new projects.</span>
           <a
             href="mailto:hi@i2089.com"
             className="w-max transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"

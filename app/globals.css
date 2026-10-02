@@ -42,6 +42,17 @@
    */
   --spacing-pad: clamp(48px, 12vw, 96px);
   --spacing-pad-tight: clamp(10px, 0.9vw, 16px);
+
+  /* Content rhythm — one 0.6em unit, doubled per level, in em so it
+     scales with the body text it spaces. Use on body-sized containers
+     with trimmed text (text-trim), so each gap is the visible gap.
+     - label: a label to its content
+     - item:  sibling items in a list (wider than the line gap, so
+              items read as separate)
+     - group: one block to the next (title, image, sections) */
+  --spacing-label: 0.6em;
+  --spacing-item: 1.2em;
+  --spacing-group: 2.4em;
 }
 
 :root {

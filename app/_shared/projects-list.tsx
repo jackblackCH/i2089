@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Text } from "./text";
 import type { Project } from "./content";
 
@@ -23,11 +24,9 @@ export function ProjectsList({
       <ul className="grid min-w-0 gap-[clamp(16px,1.6vw,28px)] md:grid-cols-2">
         {projects.map((p) => (
           <li key={p.title} className="min-w-0">
-            <a
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${p.title} — ${p.linkLabel}`}
+            <Link
+              href={`/projects/${p.slug}`}
+              aria-label={`${p.title}, ${p.period}`}
               className="group block w-full"
             >
               <div className="relative w-full overflow-hidden border border-(--np-rule) pb-[62.5%]">
@@ -49,16 +48,19 @@ export function ProjectsList({
                     <span className="font-medium leading-tight">
                       {p.title}
                     </span>
-                    <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
+                    <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-90">
                       {p.period}
                     </span>
                   </div>
-                  <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-70">
-                    {p.linkLabel} ↗
+                  <span
+                    aria-hidden
+                    className="text-10 font-mono opacity-90 transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

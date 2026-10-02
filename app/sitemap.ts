@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services } from "./_shared/content";
+import { projects, services } from "./_shared/content";
 
 const BASE_URL = "https://i2089.com";
 
@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    ...projects.map((p) => ({
+      url: `${BASE_URL}/projects/${p.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     ...services.map((s) => ({
       url: `${BASE_URL}/${s.slug}`,
       lastModified,
