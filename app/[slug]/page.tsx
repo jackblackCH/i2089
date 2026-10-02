@@ -103,7 +103,7 @@ export default async function ContentPage({
             </a>
           )}
           <span>
-            Open for new{" "}
+            Keen to work together? Open to new{" "}
             <Link
               href="/projects"
               className="underline underline-offset-4 transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"

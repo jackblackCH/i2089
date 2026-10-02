@@ -145,7 +145,7 @@ export default async function ProjectPage({
           variant="body"
           className="mt-auto grid content-center gap-y-[0.6em] p-pad"
         >
-          <span>Open for new projects.</span>
+          <span>Keen to work together? Open to new projects.</span>
           <a
             href="mailto:hi@i2089.com"
             className="w-max transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
