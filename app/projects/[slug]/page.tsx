@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects, projectBySlug } from "../../_shared/content";
 import { Text } from "../../_shared/text";
 import { Frame } from "../../_shared/frame";
 import { Column } from "../../_shared/column";
+import { Shot } from "../../_shared/shot";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -72,13 +72,10 @@ export default async function ProjectPage({
 
         {/* full bleed — only the text needs the side padding */}
         <div className="relative overflow-hidden border-y border-(--np-rule) pb-[50%]">
-          <Image
-            src={project.image}
-            alt={`${project.title} — screenshot`}
-            fill
+          <Shot
+            project={project}
             priority
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
           />
         </div>
 

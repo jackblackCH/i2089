@@ -41,6 +41,9 @@ const nextConfig = {
   // HMR speed while the server is running is unaffected.
   experimental: {
     turbopackFileSystemCacheForDev: false,
+    // React <ViewTransition>: the project screenshot morphs from its card
+    // into the detail page and back
+    viewTransition: true,
   },
 };
 

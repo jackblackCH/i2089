@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Text } from "./text";
+import { Shot } from "./shot";
 import type { Project } from "./content";
 
 // One column of large cards: the screenshot with title + date overlaid
@@ -30,12 +30,10 @@ export function ProjectsList({
               className="group block w-full outline-offset-4 focus-visible:outline-1 focus-visible:outline-(--np-fg)"
             >
               <div className="relative w-full overflow-hidden border border-(--np-rule) pb-[62.5%]">
-                <Image
-                  src={p.image}
-                  alt={`${p.title} — screenshot`}
-                  fill
-                  sizes="(min-width: 768px) 40vw, 90vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                <Shot
+                  project={p}
+                  sizes="(min-width: 768px) 45vw, 90vw"
+                  className="transition-transform duration-500 group-hover:scale-[1.02]"
                 />
 
                 <div

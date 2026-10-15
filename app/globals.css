@@ -114,6 +114,27 @@
   }
 }
 
+/* Project screenshot morph (see _shared/shot.tsx). The card and the
+   detail image differ in aspect, so both snapshots fill the moving box
+   and crop like object-cover instead of stretching. */
+::view-transition-group(.shot) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+::view-transition-old(.shot),
+::view-transition-new(.shot) {
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* opt-in utility for elements outside the base selector list below
    (list items, spans, links) — same trim, composable in className */
 @utility text-trim {
