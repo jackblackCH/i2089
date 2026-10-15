@@ -116,7 +116,7 @@
 
 /* Project screenshot morph (see _shared/shot.tsx). The card and the
    detail image differ in aspect, so both snapshots fill the moving box
-   and crop like object-cover instead of stretching. */
+   and crop like the images (cover, from the top) instead of stretching. */
 ::view-transition-group(.shot) {
   animation-duration: 420ms;
   animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
@@ -125,6 +125,7 @@
 ::view-transition-new(.shot) {
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 @media (prefers-reduced-motion: reduce) {
