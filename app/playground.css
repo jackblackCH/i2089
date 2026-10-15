@@ -34,7 +34,6 @@
   grid-template-rows: 1fr;
   padding: 0;
   position: relative;
-  transition: background 240ms ease;
 }
 
 .new-root {
@@ -59,10 +58,6 @@
   box-shadow:
     var(--surface-shadow),
     inset 0 1px 0 var(--surface-highlight);
-  transition:
-    background 240ms ease,
-    color 240ms ease,
-    box-shadow 240ms ease;
 }
 
 @media (min-width: 760px) {
@@ -84,173 +79,6 @@
   color: #222;
 }
 
-/* ── entrance choreography ─────────────────────────────────── */
-
-/* soft rise: 8px lift + fade, generous duration, decelerating ease */
-@keyframes new-rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-    filter: blur(2px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-}
-
-@keyframes new-bloom {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes new-strike {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-/* strike line that draws the moment .strike-now is applied */
-.strike-now {
-  position: relative;
-  display: inline-block;
-}
-.strike-now::after {
-  content: "";
-  position: absolute;
-  left: -0.04em;
-  right: -0.04em;
-  top: 58%;
-  height: 0.08em;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: new-strike 700ms cubic-bezier(0.7, 0, 0.2, 1) forwards;
-  border-radius: 999px;
-}
-
-.reveal {
-  opacity: 0;
-  animation: new-rise 800ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
-}
-
-.reveal-bloom {
-  opacity: 0;
-  transform-origin: 50% 60%;
-  animation: new-bloom 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
-}
-
-/* triangle + logo soft glow — single wide drop-shadow.
-   Stacking multiple shadow layers around a hairline stroke produces visible
-   concentric rings (each shadow rasterizes its own blur). One soft shadow +
-   the radial .new-aura backdrop gives a smooth halo without the banding. */
-.new-glow {
-  filter: drop-shadow(
-    0 0 32px color-mix(in srgb, var(--sheet-fg) 22%, transparent)
-  );
-}
-
-/* Lit-from-behind radial backdrop. Lives as a sibling of the SVG, sits
-   behind it via z-index, and breathes via opacity+transform — both run on
-   the GPU compositor so there's no paint flicker. */
-.new-aura {
-  position: absolute;
-  inset: -25% -15%;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    55% 50% at 50% 58%,
-    color-mix(in srgb, var(--sheet-fg) 9%, transparent) 0%,
-    color-mix(in srgb, var(--sheet-fg) 3%, transparent) 35%,
-    transparent 72%
-  );
-  filter: blur(28px);
-  transform-origin: 50% 58%;
-  animation: new-aura-breath 8s ease-in-out infinite;
-  transition:
-    opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-@keyframes new-aura-breath {
-  0%,
-  100% {
-    opacity: 0.85;
-    transform: scale(1.02);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .new-aura {
-    animation: none;
-    opacity: 0.7;
-    transform: none;
-  }
-}
-
-/* Imprint: the mark is decorative — not selectable, not interactive.
-   pointer-events: none also disables the hover rules below by design. */
-.new-aura-wrap {
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: none;
-  -webkit-user-drag: none;
-  -webkit-touch-callout: none;
-}
-
-/* group hover — soft intensification of the mark.
-   Pauses the breath, bumps aura + stroke opacity, tightens the drop-shadow. */
-.new-aura-wrap .new-glow,
-.new-aura-wrap polygon,
-.new-aura-wrap text {
-  transition:
-    opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    filter 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.new-aura-wrap:hover .new-aura {
-  animation-play-state: paused;
-  opacity: 1;
-  transform: scale(1.16);
-}
-
-.new-aura-wrap:hover polygon {
-  opacity: 0.75;
-}
-
-.new-aura-wrap:hover text {
-  opacity: 1;
-}
-
-.new-aura-wrap:hover .new-glow {
-  filter: drop-shadow(
-    0 0 44px color-mix(in srgb, var(--sheet-fg) 32%, transparent)
-  );
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .new-aura-wrap:hover .new-aura {
-    transform: none;
-  }
-}
-
 /* typewriter caret */
 .new-caret {
   display: inline-block;
@@ -268,21 +96,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-bloom {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-  .strike-now::after {
-    animation: none;
-    transform: scaleX(1);
-  }
-  .new-frame,
-  .new-root {
-    transition: none;
-  }
   .new-caret {
     animation: none;
     opacity: 0;

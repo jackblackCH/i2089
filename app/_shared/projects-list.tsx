@@ -33,7 +33,7 @@ export function ProjectsList({
                 <Shot
                   project={p}
                   sizes="(min-width: 768px) 45vw, 90vw"
-                  className="transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
 
                 <div

@@ -53,6 +53,13 @@
   --spacing-label: 0.6em;
   --spacing-item: 1.2em;
   --spacing-group: 2.4em;
+
+  /* Motion — two curves for the whole site. They replace Tailwind's
+     built-in ease-out / ease-in-out, so `ease-out` utilities pick them up.
+     - ease-out: things entering or responding (strong start, soft land)
+     - ease-in-out: things moving across the screen (the screenshot morph) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 :root {
@@ -133,7 +140,7 @@
    and crop like the images (cover, from the top) instead of stretching. */
 ::view-transition-group(.shot) {
   animation-duration: 420ms;
-  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-timing-function: var(--ease-in-out);
 }
 ::view-transition-old(.shot),
 ::view-transition-new(.shot) {
