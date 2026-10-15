@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { contracts, projects } from "../_shared/content";
-import { Text } from "../_shared/text";
 import { ProjectsList } from "../_shared/projects-list";
-import { Wordmark } from "../_shared/wordmark";
-import { Copyright } from "../_shared/copyright";
-import "../_shared/shared.css";
+import { Frame } from "../_shared/frame";
+import { Column } from "../_shared/column";
 
 export const metadata: Metadata = {
   title: "Projects / Clients",
@@ -14,42 +12,12 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
-      <Wordmark />
-
-      {/* Title / projects / contact. Projects row takes 1fr leftover;
-          the others size to content. Section fills the column height
-          exactly. */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
-        <Text
-          as="h1"
-          variant="title"
-          className="grid content-center p-pad"
-        >
-          <span className="text-trim block">Projects / Clients</span>
-        </Text>
-
+    <Frame>
+      <Column title="Projects / Clients">
         <ProjectsList projects={projects} label="Projects" />
         {/* Contracts section hidden for now — re-enable when ready:
         <ProjectsList projects={contracts} label="Contracts" /> */}
-
-        <Text
-          as="div"
-          variant="body"
-          className="grid content-center gap-y-[0.6em] p-pad"
-        >
-          <span>Keen to work together? Open to new projects.</span>
-          <a
-            href="mailto:hi@i2089.com"
-            className="w-max transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
-          >
-            hi@i2089.com
-          </a>
-        </Text>
-      </section>
-
-      <Copyright />
-    </main>
+      </Column>
+    </Frame>
   );
 }
-

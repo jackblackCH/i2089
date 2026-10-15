@@ -27,7 +27,7 @@ export function ProjectsList({
             <Link
               href={`/projects/${p.slug}`}
               aria-label={`${p.title}, ${p.period}`}
-              className="group block w-full"
+              className="group block w-full outline-offset-4 focus-visible:outline-1 focus-visible:outline-(--np-fg)"
             >
               <div className="relative w-full overflow-hidden border border-(--np-rule) pb-[62.5%]">
                 <Image

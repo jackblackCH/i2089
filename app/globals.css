@@ -73,6 +73,47 @@
   text-wrap: balance;
 }
 
+/* Link states — one pair for the whole site. Hover dims or brightens;
+   keyboard focus underlines, so focus is visible without an outline box. */
+@utility link-quiet {
+  transition: opacity 160ms ease;
+  &:hover {
+    opacity: 0.6;
+  }
+  &:focus-visible {
+    outline: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+}
+
+/* for links set in the label colour — brighten to the foreground */
+@utility link-label {
+  transition: color 160ms ease;
+  &:hover,
+  &:focus-visible {
+    color: var(--np-fg);
+  }
+  &:focus-visible {
+    outline: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+}
+
+/* invisible tap area around small text links — at least 24px tall
+   (WCAG 2.5.8) without changing how the link looks or sits */
+@utility hit-area {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -0.75em -0.5em;
+  }
+}
+
 /* opt-in utility for elements outside the base selector list below
    (list items, spans, links) — same trim, composable in className */
 @utility text-trim {

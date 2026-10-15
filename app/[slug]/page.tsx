@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
 import { Text } from "../_shared/text";
-import { Wordmark } from "../_shared/wordmark";
-import { Copyright } from "../_shared/copyright";
-import "../_shared/shared.css";
+import { Frame } from "../_shared/frame";
+import { Column } from "../_shared/column";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -40,88 +38,27 @@ export default async function ContentPage({
   if (!service) notFound();
 
   return (
-    <main className="np fixed inset-0 z-50 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
-      <Wordmark />
-
-      {/* Title / items / contact. Title and contact size to content;
-          items takes all leftover so a long list never gets clipped
-          at the ends. */}
-      <section className="grid grid-rows-[auto_minmax(0,1fr)_auto] border-t border-(--np-rule) md:border-l md:border-t-0">
-        <Text
-          as="h1"
-          variant="title"
-          className="grid content-center p-pad"
-        >
-          <span className="text-trim block">{service.title}</span>
-        </Text>
-
-        {/* items — each row stacks: small mono label on top, body text
-            below. No 2-column split so long descriptions have the full
-            column width to breathe. */}
-        <Text
-          as="ul"
-          variant="body"
-          className="grid min-h-0 auto-rows-min content-center-safe gap-y-[clamp(1em,1.6vw,1.8em)] overflow-y-auto px-pad"
-        >
+    <Frame>
+      <Column title={service.title} linkedin={slug === "about"}>
+        {/* each entry is a label over its text, one label-step apart;
+            entries are a group-step apart, like sections on a project */}
+        <ul className="grid gap-y-group px-pad">
           {service.items.map((item) =>
             typeof item === "string" ? (
-              <li key={item} className="leading-[1.45]">
+              <li key={item} className="text-trim">
                 {item}
               </li>
             ) : (
-              <li key={item.term} className="grid gap-y-[0.4em]">
-                <Text variant="footer" as="span">
+              <li key={item.term} className="grid gap-y-label">
+                <Text variant="footer" className="text-trim">
                   {item.term}
                 </Text>
-                <span>{item.text}</span>
+                <p>{item.text}</p>
               </li>
             ),
           )}
-        </Text>
-
-        <Text
-          as="div"
-          variant="body"
-          className="grid content-center gap-y-[0.6em] p-pad"
-        >
-          {slug === "about" && (
-            <a
-              href="https://www.linkedin.com/in/marcillien/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-max items-center gap-x-[0.5em] leading-none transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-                className="h-[0.95em] w-[0.95em] translate-y-[0.03em]"
-              >
-                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
-              </svg>
-              LinkedIn
-            </a>
-          )}
-          <span>
-            Keen to work together? Open to new{" "}
-            <Link
-              href="/projects"
-              className="underline underline-offset-4 transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
-            >
-              projects
-            </Link>
-            .
-          </span>
-          <a
-            href="mailto:hi@i2089.com"
-            className="w-max transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
-          >
-            hi@i2089.com
-          </a>
-        </Text>
-      </section>
-
-      <Copyright />
-    </main>
+        </ul>
+      </Column>
+    </Frame>
   );
 }

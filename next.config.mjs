@@ -4,6 +4,17 @@ const nextConfig = {
   ...(process.env.BUILD_STATIC
     ? { output: "export", images: { unoptimized: true }, trailingSlash: true }
     : {
+        // /services was the old-design services page; its content now
+        // lives on /ai-solutions
+        async redirects() {
+          return [
+            {
+              source: "/services",
+              destination: "/ai-solutions",
+              permanent: true,
+            },
+          ];
+        },
         async rewrites() {
           return [
             {

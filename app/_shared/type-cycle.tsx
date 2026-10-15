@@ -116,7 +116,7 @@ export function TypeCycle({
     <Link
       href={href}
       aria-label={label}
-      className="transition-opacity hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
+      className="link-quiet"
     >
       {content}
     </Link>

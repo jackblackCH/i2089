@@ -37,23 +37,6 @@
   transition: background 240ms ease;
 }
 
-.new-frame[data-theme="light"] {
-  --frame-bg: #ffffff;
-  --sheet-bg: #fafafa;
-  --sheet-fg: #222222;
-  --sheet-mute: #666666;
-  --mark-stroke: #bbbbbb;
-
-  /* Softer shadows on the light frame so the surface lifts subtly without
-     bruising the white page. Inner highlight is brighter (real white) so the
-     top edge still catches a hint of light against #fafafa. */
-  --surface-border: color-mix(in srgb, #000 2%, transparent);
-  --surface-highlight: color-mix(in srgb, #ffffff 2%, transparent);
-  --surface-shadow:
-    0 4px 24px rgb(0 0 0 / 0.004),
-    0 30px 100px rgb(0 0 0 / 0.002);
-}
-
 .new-root {
   background: var(--sheet-bg);
   color: var(--sheet-fg);
@@ -99,45 +82,6 @@
 .new-root ::selection {
   background: var(--sheet-fg);
   color: #222;
-}
-
-.new-frame[data-theme="light"] .new-root ::selection {
-  background: var(--sheet-fg);
-  color: #fafafa;
-}
-
-/* theme toggle button — fixed bottom-right, icon only */
-.new-toggle {
-  position: fixed;
-  bottom: 12px;
-  right: 12px;
-  z-index: 10;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: transparent;
-  color: var(--sheet-mute);
-  border: 1px solid color-mix(in srgb, var(--sheet-mute) 35%, transparent);
-  border-radius: 50%;
-  cursor: pointer;
-  transition:
-    color 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease;
-}
-
-.new-toggle:hover {
-  color: var(--sheet-fg);
-  border-color: var(--sheet-fg);
-}
-
-.new-toggle:focus-visible {
-  outline: none;
-  color: var(--sheet-fg);
-  border-color: var(--sheet-fg);
 }
 
 /* ── entrance choreography ─────────────────────────────────── */
@@ -335,7 +279,6 @@
     animation: none;
     transform: scaleX(1);
   }
-  .new-toggle,
   .new-frame,
   .new-root {
     transition: none;
