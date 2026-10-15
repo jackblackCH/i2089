@@ -54,7 +54,7 @@ export const services: Service[] = [
     items: [
       {
         term: "Custom business software",
-        text: "My specialty. I build software tailored to how your business works, from internal tools to customer portals, built to last. Like the SME calculator on axa.ch or AXA's consultant messenger.",
+        text: "My specialty. I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like the SME calculator on axa.ch or AXA's consultant messenger.",
       },
       {
         term: "Frontend",
@@ -66,7 +66,7 @@ export const services: Service[] = [
       },
       {
         term: "UI/UX design",
-        text: "I know how to design in code. When it helps, I use Claude Design or Figma with Claude via MCP. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
+        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
       },
     ],
   },
