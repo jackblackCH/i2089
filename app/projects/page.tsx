@@ -7,7 +7,7 @@ import { Column } from "../_shared/column";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Selected projects — Branded Goods (Saleor, Next.js), air up® (Shopify, Next.js), Talentir. Recurring contracts at AXA Switzerland since 2018.",
+    "Selected projects: Branded Goods (Saleor, Next.js), air up® (Shopify, Next.js) and Talentir. Recurring contracts at AXA Switzerland since 2018.",
 };
 
 export default function ProjectsPage() {

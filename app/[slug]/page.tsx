@@ -24,7 +24,7 @@ export async function generateMetadata({
   if (!service) return {};
   return {
     title: slug === "about" ? "About" : service.title,
-    description: `${service.title} — i2089, Marc Illien. Zürich, Switzerland.`,
+    description: `${service.title}. i2089, Marc Illien, Zürich.`,
   };
 }
 

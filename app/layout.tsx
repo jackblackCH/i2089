@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: "i2089 :: Marc Illien",
   },
   description:
-    "Independent web engineering studio of Marc Illien in Zurich. Agentic Engineering, Fullstack Frontend Development, UX/UI prototypes and MVPs.",
+    "Marc Illien runs i2089, an independent software studio in Zürich. He works on Agentic Engineering, frontend development, UX/UI prototypes and MVPs.",
 };
 
 // Schema.org JSON-LD so search engines and LLMs can identify the entity
@@ -27,7 +27,7 @@ const JSON_LD = {
       email: "hi@i2089.com",
       jobTitle: "Independent Software Engineer",
       description:
-        "Independent software engineer in Zürich. Agentic Engineering, frontend and software engineering, and digital products.",
+        "Independent software engineer in Zürich, working on Agentic Engineering, frontend engineering and digital products.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Zürich",

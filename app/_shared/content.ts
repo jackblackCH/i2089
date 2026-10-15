@@ -13,46 +13,46 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-solutions",
-    title: "Consulting & AI Solutions",
+    title: "Consulting & AI solutions",
     items: [
-      "A week of team backlog cleared in one engineer's afternoon. Whole team, not one enthusiast.",
+      "With AI tools, one engineer can clear a week of team backlog in an afternoon. I help the whole team work that way.",
       {
-        term: "The gap",
-        text: "One engineer ships 10x with Claude. The rest of the team ships at 1x. The gap holds until someone closes it.",
+        term: "AI done right",
+        text: "Used well, AI makes an engineer 10x more efficient. With agents that plan, write and test code in parallel, 50x is possible. Getting there takes practice with the tools. Without it, AI mostly produces slop.",
       },
       {
         term: "Team enablement",
-        text: "1:1 sessions, workshops, pair programming. Your own tickets, not slides. Whole team ships with AI in weeks, not quarters.",
+        text: "I run 1:1 sessions, workshops and pair programming on your team's real tickets. Within a few weeks, the whole team works with AI.",
       },
       {
         term: "Agentic workflows",
-        text: "Workflows that plan, code, test, and review. You keep the final call. Claude Code, Codex, or your company's stack.",
+        text: "I set up AI workflows that plan, write, test and review code. Your team reviews the result and makes the final decision. They run on Claude Code, Codex or the tools your company already uses.",
       },
       {
         term: "Hands-on delivery",
-        text: "Engineering next to your team. A feature in a day, a rewrite in a week. Code review, tests, handover: unchanged.",
+        text: "I also work as an engineer in your team. With AI, a feature can take a day and a rewrite a week. Your code review, tests and handover stay the same.",
       },
       {
         term: "No disruption",
-        text: "Your compliance rules, your LLM, your codebase. Rollout in weeks, not months. Delivery keeps running.",
+        text: "I work within your compliance rules, with your LLM and in your codebase. Rollout takes weeks, and your team keeps delivering during it.",
       },
     ],
   },
   {
     slug: "engineering",
-    title: "Frontend Software Engineering",
+    title: "Frontend software engineering",
     items: [
       {
         term: "Frontend",
-        text: "Fast, maintainable web apps in TypeScript, React (Next.js or Vite), and Tailwind.",
+        text: "I build fast, maintainable web apps in TypeScript, React (with Next.js or Vite) and Tailwind.",
       },
       {
         term: "Backend",
-        text: "Architecture and APIs the frontend can rely on.",
+        text: "I design the architecture and APIs that the frontend depends on.",
       },
       {
-        term: "UI/UX Design",
-        text: "Interfaces designed in code. Accessible, tested, shipped.",
+        term: "UI/UX design",
+        text: "I design interfaces directly in code, with accessibility and tests built in.",
       },
     ],
   },
@@ -60,14 +60,14 @@ export const services: Service[] = [
     slug: "about",
     title: "Marc Illien",
     items: [
-      "Frontend software engineer from Zürich. I build precise, tasteful digital products, and teach teams to work with AI every day.",
+      "I'm a frontend software engineer in Zürich. I build web products and teach teams to use AI in their daily work.",
       {
         term: "since 2023",
-        text: "i2089 — Consulting for AI introduction, AI design, and Agentic Engineering. Self-employed, Zürich.",
+        text: "i2089. Consulting on AI adoption, AI design and Agentic Engineering. Self-employed, Zürich.",
       },
       {
         term: "since 2014",
-        text: "Lecturer, Frontend Engineering (CAS Frontend Engineering). OST — Eastern Switzerland University of Applied Sciences, Rapperswil.",
+        text: "Lecturer, Frontend Engineering (CAS Frontend Engineering). OST, Eastern Switzerland University of Applied Sciences, Rapperswil.",
       },
       {
         term: "2025 — 2026",
@@ -83,7 +83,7 @@ export const services: Service[] = [
       },
       {
         term: "2022 — 2023",
-        text: "Frontend Architect and Fullstack Engineer, AXA. Consultant-communication messenger in TypeScript and React. Contract, Winterthur.",
+        text: "Frontend Architect and Fullstack Engineer, AXA. Messenger for consultants to talk with their clients, in TypeScript and React. Contract, Winterthur.",
       },
     ],
   },
@@ -113,14 +113,13 @@ export const contracts: Project[] = [
   {
     slug: "axa",
     title: "AXA Switzerland",
-    period: "since 2018 — ongoing",
+    period: "since 2018",
     text: "Recurring frontend contracts at Switzerland's largest insurer since 2018. Custom React apps: an SME calculator, an internal-agent communication tool, and pattern library design.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
     image: "/projects/axa.jpg",
     role: "Frontend Architect and Engineer",
-    intro:
-      "Recurring contracts at Switzerland's largest insurer since 2018.",
+    intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
       "Led the frontend for an SME wizard and calculator, published on axa.ch as a microfrontend.",
       "Built a messenger that lets agents talk with their clients, in TypeScript and React.",
@@ -138,7 +137,7 @@ export const projects: Project[] = [
     slug: "branded-goods",
     title: "Branded Goods",
     period: "2025 — 2026",
-    text: "Frontend and partial UI design for branded-goods.ch in Next.js and Tailwind, on Saleor open-source e-commerce. Built as a partner of Avolut.",
+    text: "I built the frontend and designed parts of the UI for branded-goods.ch, using Next.js and Tailwind on Saleor, an open-source e-commerce platform. I worked as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
     image: "/projects/branded-goods.jpg",
@@ -155,7 +154,7 @@ export const projects: Project[] = [
     slug: "air-up",
     title: "air up®",
     period: "2023 — 2024",
-    text: "Headless e-commerce on Next.js and Shopify. Design system with Tailwind and shadcn/ui, trunk-based delivery, frontend leadership across the team.",
+    text: "I built headless e-commerce on Next.js and Shopify, set up a design system with Tailwind and shadcn/ui, moved the team to trunk-based delivery and led the frontend.",
     href: "https://air-up.com",
     linkLabel: "air-up.com",
     image: "/projects/air-up.jpg",
@@ -166,7 +165,7 @@ export const projects: Project[] = [
       "Built the headless shop on Next.js, with Shopify behind it.",
       "Set up a design system with Tailwind and shadcn/ui, so the team works from one set of components.",
       "Added 3D and motion to the shop.",
-      "Moved the team to trunk-based delivery: small changes, merged straight into the main branch.",
+      "Moved the team to trunk-based delivery, where small changes go straight into the main branch.",
       "Led the frontend work across the team.",
     ],
     stack: ["Next.js", "Shopify", "Tailwind", "shadcn/ui", "TypeScript"],
@@ -175,7 +174,7 @@ export const projects: Project[] = [
     slug: "talentir",
     title: "Talentir",
     period: "2024",
-    text: "UX/UI design and frontend for Talentir, the payout infrastructure for agencies, brands, labels and platforms. Product UI in Next.js and Tailwind, built with modern development methods for speed.",
+    text: "I designed the UX and UI for Talentir, which handles payouts for agencies, brands, labels and platforms, and built the product in Next.js and Tailwind with modern development methods.",
     href: "https://talentir.com",
     linkLabel: "talentir.com",
     image: "/projects/talentir.jpg",
@@ -183,7 +182,7 @@ export const projects: Project[] = [
     intro:
       "Talentir handles payouts for agencies, brands, labels and platforms. I designed and built the product that its customers work in.",
     highlights: [
-      "Designed the product's UX and UI: how it works, and how it looks.",
+      "Designed how the product works and how it looks.",
       "Built the frontend in Next.js and Tailwind.",
       "Brought modern development methods into the project, so the team could move faster.",
     ],
@@ -200,19 +199,19 @@ export const projectBySlug = Object.fromEntries(
    is the static audience line. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   {
-    words: ["Consulting", "AI Solutions", "AI Workshops"],
-    slugs: [
-      "ai-solutions",
-      "ai-solutions",
-      "ai-solutions",
-    ],
+    words: ["Consulting", "AI solutions", "AI workshops"],
+    slugs: ["ai-solutions", "ai-solutions", "ai-solutions"],
   },
   {
-    words: ["Frontend Engineering", "Software Engineering", "Digital Experiences"],
+    words: [
+      "Frontend engineering",
+      "Software engineering",
+      "Digital experiences",
+    ],
     slugs: ["engineering", "engineering", "engineering"],
   },
   {
-    words: ["for Startups, SMEs and Corporates"],
+    words: ["for startups, SMEs and corporates"],
     slugs: [],
   },
 ];
