@@ -13,9 +13,10 @@ const variants = {
   /* mobile middle = 8vw × (1.22 / 3.4) so the title:body ratio matches
      the md/lg proportion (~2.8:1) at every viewport */
   body: "text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)]",
-  /* footer / colophon */
+  /* labels, small links and the colophon — 11px floor so uppercase
+     tracking stays legible */
   footer:
-    "text-[clamp(9px,0.65vw,11px)] uppercase tracking-[0.08em] text-(--np-mute)",
+    "text-[clamp(11px,0.8vw,13px)] uppercase tracking-[0.08em] text-(--np-mute)",
   /* subline under the wordmark — small caps, tight vertical rhythm */
   signature:
     "text-[clamp(7px,0.725vw,22px)] font-bold uppercase leading-none tracking-[0.06em] text-(--np-fg)",

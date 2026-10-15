@@ -55,8 +55,23 @@ export default async function ProjectPage({
         title={project.title}
         back={{ href: "/projects", label: "All projects" }}
       >
+        {/* role and period first — they answer "what did he do?" before
+            the screenshot takes the fold */}
+        <div className="px-pad">
+          {/* role takes what's left, period only its own width, so a
+              narrow column wraps the role, not the year */}
+          <div className="gap-x-group grid grid-cols-[minmax(0,1fr)_auto]">
+            <Field label="Role">
+              <p>{project.role}</p>
+            </Field>
+            <Field label="Period">
+              <p>{project.period}</p>
+            </Field>
+          </div>
+        </div>
+
         {/* full bleed — only the text needs the side padding */}
-        <div className="relative overflow-hidden border-y border-(--np-rule) pb-[62.5%]">
+        <div className="relative overflow-hidden border-y border-(--np-rule) pb-[50%]">
           <Image
             src={project.image}
             alt={`${project.title} — screenshot`}
@@ -68,17 +83,6 @@ export default async function ProjectPage({
         </div>
 
         <div className="gap-y-group px-pad grid">
-          {/* role takes what's left, period only its own width, so a
-                narrow column wraps the role, not the year */}
-          <div className="gap-x-group grid grid-cols-[minmax(0,1fr)_auto]">
-            <Field label="Role">
-              <p>{project.role}</p>
-            </Field>
-            <Field label="Period">
-              <p>{project.period}</p>
-            </Field>
-          </div>
-
           <p>{project.intro}</p>
 
           <Field label="What I did">

@@ -15,7 +15,13 @@ export function Frame({
   children: ReactNode;
 }) {
   return (
-    <main className="np fixed inset-0 grid grid-cols-1 grid-rows-[38svh_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
+    // on mobile the wordmark row is shorter on subpages, so their
+    // content starts higher; home keeps the full stage
+    <main
+      className={`np fixed inset-0 grid grid-cols-1 overflow-y-auto md:grid-cols-2 md:grid-rows-1 ${
+        home ? "grid-rows-[38svh_1fr]" : "grid-rows-[24svh_1fr]"
+      }`}
+    >
       <Nav />
       <Wordmark home={home} />
       {children}

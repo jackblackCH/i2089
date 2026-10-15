@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Text } from "./text";
 import type { Project } from "./content";
 
-// Each card is the screenshot with title + date overlaid on a bottom
-// gradient scrim. Mobile stacks; md+ shows a 2-column grid. Card height
-// is locked by pb-[62.5%] (10/16) so images always render at full
-// aspect regardless of parent height.
+// One column of large cards: the screenshot with title + date overlaid
+// on a bottom gradient scrim. Cards are a group-step apart, like every
+// other block in the column. Card height is locked by pb-[62.5%] (10/16)
+// so images always render at full aspect regardless of parent height.
 export function ProjectsList({
   projects,
   label,
@@ -15,15 +15,15 @@ export function ProjectsList({
   label?: string;
 }) {
   return (
-    <div className="grid content-center gap-y-[clamp(12px,1.2vw,20px)] p-pad">
+    <div className="gap-y-label px-pad grid">
       {label && (
-        <Text variant="footer" className="justify-self-start">
+        <Text variant="footer" as="h2" className="text-trim">
           {label}
         </Text>
       )}
-      <ul className="grid min-w-0 gap-[clamp(16px,1.6vw,28px)] md:grid-cols-2">
+      <ul className="gap-y-group grid min-w-0">
         {projects.map((p) => (
-          <li key={p.title} className="min-w-0">
+          <li key={p.slug} className="min-w-0">
             <Link
               href={`/projects/${p.slug}`}
               aria-label={`${p.title}, ${p.period}`}
@@ -43,18 +43,18 @@ export function ProjectsList({
                   className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                 />
 
-                <div className="text-15 absolute inset-0 flex items-end justify-between gap-4 p-[clamp(16px,1.6vw,28px)] text-white">
-                  <div className="grid gap-y-[0.2em]">
-                    <span className="font-medium leading-tight">
-                      {p.title}
-                    </span>
-                    <span className="text-10 font-mono uppercase tracking-[0.06em] opacity-90">
+                {/* white, not the label colour — the text sits on the
+                    dark scrim, not on the page */}
+                <div className="p-item absolute inset-0 flex items-end justify-between gap-4 text-white">
+                  <div className="gap-y-label grid">
+                    <span className="text-trim font-medium">{p.title}</span>
+                    <Text variant="footer" className="text-trim text-white/80!">
                       {p.period}
-                    </span>
+                    </Text>
                   </div>
                   <span
                     aria-hidden
-                    className="text-10 font-mono opacity-90 transition-transform duration-300 group-hover:translate-x-1"
+                    className="text-trim transition-transform duration-300 group-hover:translate-x-1"
                   >
                     →
                   </span>
