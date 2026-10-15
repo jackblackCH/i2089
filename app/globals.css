@@ -179,11 +179,50 @@
   }
 }
 
+/* Page change: the whole page cross-fades in 180ms ease-out. A 2px blur
+   at the overlap hides the moment both titles are on screen at once
+   (the browser default is a plain 250ms fade). */
+::view-transition-old(root) {
+  animation: 180ms var(--ease-out) both page-out;
+}
+::view-transition-new(root) {
+  animation: 180ms var(--ease-out) both page-in;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+/* Reduced motion: nothing moves or blurs, but pages still cross-fade in
+   150ms so a change of page doesn't cut. The screenshot fades instead of
+   travelling. */
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
+  ::view-transition-group(*) {
     animation: none !important;
+  }
+  ::view-transition-old(*) {
+    animation: 150ms ease both fade-out !important;
+  }
+  ::view-transition-new(*) {
+    animation: 150ms ease both fade-in !important;
   }
 }
 
