@@ -53,6 +53,23 @@
   }
 }
 
+/* First impression: the subline draws in left to right under the logo,
+   700ms ease-in-out after a 250ms beat — once per session (layout.tsx
+   sets data-signature-seen). Off under reduced motion. */
+@keyframes signature-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-signature-seen]) .np-signature {
+    animation: signature-reveal 700ms var(--ease-in-out) 250ms both;
+  }
+}
+
 /* outline-only wordmark — transparent fill, hairline-proportioned stroke */
 .np-outline {
   color: transparent;

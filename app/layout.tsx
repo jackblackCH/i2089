@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     "Marc Illien runs i2089, an independent software studio in Zürich. He works on Agentic Engineering, frontend development, UX/UI prototypes and MVPs.",
 };
 
+// The wordmark subline reveals once per session (see .np-signature in
+// shared.css). Runs before paint: if the reveal already played, mark the
+// root so CSS skips it; otherwise remember it and mark the root after the
+// reveal has finished, so later navigations show the line at rest.
+const SIGNATURE_ONCE = `try{var k='i2089-signature',d=document.documentElement;if(sessionStorage.getItem(k)){d.dataset.signatureSeen=''}else{sessionStorage.setItem(k,'1');setTimeout(function(){d.dataset.signatureSeen=''},1200)}}catch(e){document.documentElement.dataset.signatureSeen=''}`;
+
 // Schema.org JSON-LD so search engines and LLMs can identify the entity
 // behind the site without guessing from prose.
 const JSON_LD = {
@@ -77,8 +83,10 @@ export default function RootLayout({
     <html
       lang="en"
       className="h-svh"
+      suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: SIGNATURE_ONCE }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
