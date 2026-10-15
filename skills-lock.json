@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "bencium-controlled-ux-designer": {
+      "source": "bencium/bencium-marketplace",
+      "sourceType": "github",
+      "skillPath": "bencium-controlled-ux-designer/skills/bencium-controlled-ux-designer/SKILL.md",
+      "computedHash": "4aacbb29e05d9e45600105fbdcb24b38fa7de40d29db025f05a1b121308afc5c"
+    },
     "design-audit": {
       "source": "bencium/bencium-marketplace",
       "sourceType": "github",
@@ -12,6 +18,13 @@
       "sourceType": "github",
       "skillPath": "skills/improve-react/SKILL.md",
       "computedHash": "0f763a1d7752989f45494837a46a8cea70b0048d141fc696b6846f829bef5407"
+    },
+    "unslop": {
+      "source": "cursor/plugins",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "pstack/skills/unslop/SKILL.md",
+      "computedHash": "eca0ad9fa3a3867c83f3aaf3a058e247a569c8976a68ca423a569b93eb86de5d"
     },
     "writing-clearly-and-concisely": {
       "source": "softaworks/agent-toolkit",
