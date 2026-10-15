@@ -14,6 +14,9 @@
   /* 75%, not lower — the small labels must stay easy to read */
   --np-mute: color-mix(in srgb, var(--np-fg) 75%, transparent);
   --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
+  /* the i2089 logo size — one source for the logo text variant and the
+     subline's tracking (.np-signature) */
+  --logo: clamp(72px, 16vw, 180px);
 
   font-family:
     "Helvetica Neue LT Pro",
@@ -24,11 +27,16 @@
   background: var(--np-surface);
   color: var(--np-fg);
 }
+@media (width >= 48rem) {
+  .np {
+    --logo: clamp(56px, 9vw, 180px);
+  }
+}
 
 /* Wordmark subline, set to the full width of i2089. Letter spacing is
    computed from the logo size, not fixed: the text keeps a 9px floor, so
-   a fixed tracking would overflow the logo on small screens. --logo
-   mirrors the logo sizes in text.tsx (logo variant) — change both.
+   a fixed tracking would overflow the logo on small screens. --logo is
+   the logo's own size (set on .np).
    The constants are measured on Helvetica Neue LT Pro Extended: i2089
    (Bold) is 3.36em of the logo wide (3.3 keeps a safety margin), and
    the 34-character subline (Regular) is 21.4em of its own size at zero
@@ -36,7 +44,6 @@
    fills what is left across 33 gaps; text-align-last: justify absorbs
    the rounding. Change the subline's weight and this must be remeasured. */
 .np-signature {
-  --logo: clamp(72px, 16vw, 180px);
   --sig: clamp(9px, 1.37vw, 15px);
   --track: max(0px, calc((var(--logo) * 3.3 - var(--sig) * 22.3) / 33));
   font-size: var(--sig);
@@ -48,7 +55,6 @@
 }
 @media (width >= 48rem) {
   .np-signature {
-    --logo: clamp(56px, 9vw, 180px);
     --sig: clamp(9px, 0.77vw, 15px);
   }
 }

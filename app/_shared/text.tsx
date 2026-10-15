@@ -4,8 +4,10 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
    never as a separate prop — so every occurrence of a role is
    identical across pages. */
 const variants = {
-  /* outlined display wordmark (i2089) */
-  logo: "np-outline text-trim text-[clamp(72px,16vw,180px)] font-bold leading-none tracking-[-0.04em] md:text-[clamp(56px,9vw,180px)]",
+  /* outlined display wordmark (i2089). Size comes from --logo
+     (shared.css), which the subline's tracking also reads, so the two
+     can't drift apart */
+  logo: "np-outline text-trim text-(length:--logo) font-bold leading-none tracking-[-0.04em]",
   /* page titles and homepage bands */
   title:
     "text-[clamp(30px,6.6vw,72px)] font-medium leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,44px)]",
