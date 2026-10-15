@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { contracts, projects } from "../_shared/content";
+import { pageMeta } from "../_shared/seo";
 import { ProjectsList } from "../_shared/projects-list";
 import { Column } from "../_shared/column";
 
-export const metadata: Metadata = {
-  title: "Projects",
+export const metadata: Metadata = pageMeta({
+  title: "Projects: Next.js, Shopify & Saleor work",
   description:
-    "Selected projects: Branded Goods (Saleor, Next.js), air up® (Shopify, Next.js) and Talentir. Recurring contracts at AXA Switzerland since 2018.",
-};
+    "My work: Branded Goods on Saleor, air up® on Shopify and Talentir's product UI, all on Next.js. What I did, my role and the stack.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

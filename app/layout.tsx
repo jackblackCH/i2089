@@ -7,12 +7,13 @@ import { Frame } from "./_shared/frame";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
+  // keywords first, name last — Google shows ~60 characters
   title: {
-    template: "i2089 :: Marc Illien :: %s",
-    default: "i2089 :: Marc Illien",
+    template: "%s · Marc Illien",
+    default: "Marc Illien · AI consulting & frontend engineering, Zürich",
   },
   description:
-    "Marc Illien runs i2089, an independent software studio in Zürich. He works on Agentic Engineering, frontend development, UX/UI prototypes and MVPs.",
+    "I help make dev teams 10x faster with AI, and build fast web apps in React and Next.js. AI consulting, coaching and frontend engineering, Zürich.",
 };
 
 // The wordmark subline reveals once per session (see .np-signature in

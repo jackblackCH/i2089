@@ -12,6 +12,14 @@ export function Wordmark({ home = false }: { home?: boolean }) {
     <>
       <Text as={home ? "h1" : "span"} variant="logo">
         i2089
+        {/* on home the logo is the h1; the hidden suffix gives search
+            engines and screen readers the words the bands show */}
+        {home && (
+          <span className="sr-only">
+            {" "}
+            · AI consulting & frontend engineering by Marc Illien
+          </span>
+        )}
       </Text>
       {/* one line from the stem of the "i" to the edge of the "9"
           (inset-x-[0.45em] skips the glyphs' side bearings) */}
@@ -26,7 +34,7 @@ export function Wordmark({ home = false }: { home?: boolean }) {
   );
 
   return (
-    <section className="relative grid place-items-center p-pad">
+    <section className="p-pad relative grid place-items-center">
       <Nav />
       {home ? (
         <div className="relative grid">{mark}</div>

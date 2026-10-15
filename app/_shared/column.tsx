@@ -73,7 +73,7 @@ function Contact({ linkedin }: { linkedin: boolean }) {
           LinkedIn
         </a>
       )}
-      <p>Keen to work together? Open to new projects.</p>
+      <p>I help make your team 10x faster. Let&apos;s talk.</p>
       <a href="mailto:hi@i2089.com" className="link-quiet text-trim">
         hi@i2089.com
       </a>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
+import { pageMeta } from "../_shared/seo";
 import { Text } from "../_shared/text";
 import { Column } from "../_shared/column";
 
@@ -21,10 +22,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = bySlug[slug];
   if (!service) return {};
-  return {
-    title: slug === "about" ? "About" : service.title,
-    description: `${service.title}. i2089, Marc Illien, Zürich.`,
-  };
+  // About carries the name in its own title, so it skips the
+  // "· Marc Illien" suffix
+  return pageMeta({
+    title: service.seoTitle,
+    description: service.description,
+    path: `/${slug}`,
+    absolute: slug === "about",
+  });
 }
 
 export default async function ContentPage({

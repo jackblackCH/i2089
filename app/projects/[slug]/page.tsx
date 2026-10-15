@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { projects, projectBySlug } from "../../_shared/content";
+import { pageMeta } from "../../_shared/seo";
 import { Text } from "../../_shared/text";
 import { Column } from "../../_shared/column";
 import { Shot } from "../../_shared/shot";
@@ -20,10 +21,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = projectBySlug[slug];
   if (!project) return {};
-  return {
-    title: project.title,
-    description: `${project.title}, ${project.period}. ${project.role}. ${project.intro}`,
-  };
+  // lead with the role when the snippet still fits Google's ~158
+  // characters; otherwise the intro alone
+  const withRole = `${project.role}. ${project.intro}`;
+  return pageMeta({
+    title: `${project.title} case study: ${project.stack.slice(0, 2).join(" & ")}`,
+    description: withRole.length <= 158 ? withRole : project.intro,
+    path: `/projects/${slug}`,
+  });
 }
 
 // A label over its content, one label-step apart. Both are trimmed to

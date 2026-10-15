@@ -4,7 +4,12 @@ export type Item = string | { term: string; text: string };
 
 export type Service = {
   slug: string;
+  /** the page's H1 */
   title: string;
+  /** <title>, keywords first; the layout adds "· Marc Illien" */
+  seoTitle: string;
+  /** search snippet, ~150 characters */
+  description: string;
   items: Item[];
 };
 
@@ -13,77 +18,89 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-solutions",
-    title: "Consulting & AI solutions",
+    title: "AI consulting & coaching",
+    seoTitle: "AI consulting & coaching for dev teams, Zürich",
+    description:
+      "I help make your dev team 10x faster with AI. Hands-on coaching with Claude Code, Codex and agentic workflows, on your real tickets.",
     items: [
-      "With AI tools, one engineer can clear a week of team backlog in an afternoon. I help the whole team work that way.",
       {
-        term: "AI done right",
-        text: "Used well, AI makes an engineer 10x more efficient. With agents that plan, write and test code in parallel, 50x is possible. Getting there takes practice with the tools. Without it, AI mostly produces slop.",
+        term: "AI & LLMs since day one",
+        text: "I help your team and engineers work 10x faster with Claude Code and modern agentic workflows. With agents running in parallel, it's up to 50x. I've done the practice, so your team skips the slop.",
       },
       {
         term: "Team enablement",
-        text: "I run 1:1 sessions, workshops and pair programming on your team's real tickets. Within a few weeks, the whole team works with AI.",
+        text: "I coach your team on its real tickets, in 1:1s, workshops and pair programming. In a few weeks, everyone ships 5x to 10x and your backlog melts.",
       },
       {
         term: "Agentic workflows",
-        text: "I set up AI workflows that plan, write, test and review code. Your team reviews the result and makes the final decision. They run on Claude Code, Codex or the tools your company already uses.",
+        text: "I set up AI workflows that plan, write, test and review code. Your team stays in charge and makes the final call. I build them on Claude Code, Codex or whatever your company already uses. Boring tickets are yesterday.",
       },
       {
         term: "Hands-on delivery",
-        text: "I also work as an engineer in your team. With AI, a feature can take a day and a rewrite a week. Your code review, tests and handover stay the same.",
+        text: "I also join your team as an engineer. We ship in a day. Your reviews, tests and handover stay as they are.",
       },
       {
         term: "No disruption",
-        text: "I work within your compliance rules, with your LLM and in your codebase. Rollout takes weeks, and your team keeps delivering during it.",
+        text: "I work inside your compliance rules, LLM and codebase. I roll out in weeks, and your team keeps shipping.",
       },
     ],
   },
   {
     slug: "engineering",
-    title: "Frontend software engineering",
+    title: "Frontend engineering",
+    seoTitle: "Frontend engineer for React & Next.js, Zürich",
+    description:
+      "I design and build fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. Frontend engineering from Zürich.",
     items: [
       {
-        term: "Frontend",
-        text: "I build fast, maintainable web apps in TypeScript, React (with Next.js or Vite) and Tailwind.",
+        term: "Custom business software",
+        text: "My specialty. I build software tailored to how your business works, from internal tools to customer portals, built to last. Like the SME calculator on axa.ch or AXA's consultant messenger.",
       },
       {
-        term: "Backend",
-        text: "I design the architecture and APIs that the frontend depends on.",
+        term: "Frontend",
+        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind.",
+      },
+      {
+        term: "Backend and DevOps",
+        text: "My backends are usually small and run on Node.js. With my DevOps skills, they're easy to run and deploy anywhere.",
       },
       {
         term: "UI/UX design",
-        text: "I design interfaces directly in code, with accessibility and tests built in.",
+        text: "I know how to design in code. When it helps, I use Claude Design or Figma with Claude via MCP. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
       },
     ],
   },
   {
     slug: "about",
     title: "Marc Illien",
+    seoTitle: "Marc Illien, frontend engineer & AI coach in Zürich",
+    description:
+      "I'm a frontend engineer and AI coach in Zürich. I've taught at OST since 2014 and worked with AXA Switzerland, air up® and more.",
     items: [
-      "I'm a frontend software engineer in Zürich. I build web products and teach teams to use AI in their daily work.",
+      "Hi, I'm Marc, a frontend engineer in Zürich. I build web products and help make teams 10x faster with AI.",
       {
         term: "since 2023",
-        text: "i2089. Consulting on AI adoption, AI design and Agentic Engineering. Self-employed, Zürich.",
+        text: "I run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
       },
       {
         term: "since 2014",
-        text: "Lecturer, Frontend Engineering (CAS Frontend Engineering). OST, Eastern Switzerland University of Applied Sciences, Rapperswil.",
+        text: "I teach Frontend Engineering (CAS) at OST in Rapperswil.",
       },
       {
         term: "2025 — 2026",
-        text: "Frontend Software Engineer, AXA Switzerland (WebHub). Contract, Zürich.",
+        text: "I build frontends for AXA Switzerland's WebHub. Contract, Zürich.",
       },
       {
         term: "2024",
-        text: "Frontend Architect and Lead, AXA Switzerland. SME multi-step wizard and calculator in React, published on axa.ch as a microfrontend. Contract, Zürich.",
+        text: "I led the frontend for AXA's SME wizard and calculator, a React microfrontend on axa.ch. Contract, Zürich.",
       },
       {
         term: "2023 — 2024",
-        text: "Frontend Consulting and Development, air up®. Headless e-commerce on Next.js and Shopify, design system in Tailwind and shadcn/ui. Freelance, Munich.",
+        text: "I built air up®'s headless shop on Next.js and Shopify, plus its design system. Freelance, Munich.",
       },
       {
         term: "2022 — 2023",
-        text: "Frontend Architect and Fullstack Engineer, AXA. Messenger for consultants to talk with their clients, in TypeScript and React. Contract, Winterthur.",
+        text: "I architected AXA's consultant messenger in TypeScript and React. Contract, Winterthur.",
       },
     ],
   },
@@ -121,9 +138,9 @@ export const contracts: Project[] = [
     role: "Frontend Architect and Engineer",
     intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
-      "Led the frontend for an SME wizard and calculator, published on axa.ch as a microfrontend.",
-      "Built a messenger that lets agents talk with their clients, in TypeScript and React.",
-      "Worked on the design of the pattern library.",
+      "I led the frontend for an SME wizard and calculator, published on axa.ch as a microfrontend.",
+      "I built a messenger that lets agents talk with their clients, in TypeScript and React.",
+      "I worked on the design of the pattern library.",
     ],
     stack: ["TypeScript", "React"],
   },
@@ -145,10 +162,10 @@ export const projects: Project[] = [
     intro:
       "branded-goods.ch is an online shop built on Saleor, an open-source e-commerce platform. I worked on it as a partner of Avolut.",
     highlights: [
-      "Built the shop's frontend in Next.js and Tailwind, on top of Saleor's API.",
-      "Designed parts of the interface myself, straight in code.",
+      "I built the frontend in Next.js and Tailwind, on Saleor's API.",
+      "I designed parts of the interface, right in code.",
     ],
-    stack: ["Next.js", "Tailwind", "Saleor", "TypeScript"],
+    stack: ["Next.js", "Saleor", "Tailwind", "TypeScript"],
   },
   {
     slug: "air-up",
@@ -162,11 +179,11 @@ export const projects: Project[] = [
     intro:
       "air up® sells its scent-flavoured drinking bottles online. I joined the team in Munich as a freelance frontend consultant.",
     highlights: [
-      "Built the headless shop on Next.js, with Shopify behind it.",
-      "Set up a design system with Tailwind and shadcn/ui, so the team works from one set of components.",
-      "Added 3D and motion to the shop.",
-      "Moved the team to trunk-based delivery, where small changes go straight into the main branch.",
-      "Led the frontend work across the team.",
+      "I built the headless shop on Next.js and Shopify.",
+      "I set up a design system, so the team builds from one set of components.",
+      "I added 3D and motion.",
+      "I moved the team to trunk-based delivery, with small changes going straight to main.",
+      "I led the frontend across the team.",
     ],
     stack: ["Next.js", "Shopify", "Tailwind", "shadcn/ui", "TypeScript"],
   },
@@ -182,9 +199,9 @@ export const projects: Project[] = [
     intro:
       "Talentir handles payouts for agencies, brands, labels and platforms. I designed and built the product that its customers work in.",
     highlights: [
-      "Designed how the product works and how it looks.",
-      "Built the frontend in Next.js and Tailwind.",
-      "Brought modern development methods into the project, so the team could move faster.",
+      "I designed how the product works and looks.",
+      "I built the frontend in Next.js and Tailwind.",
+      "I brought in modern dev methods, so the team moved faster.",
     ],
     stack: ["Next.js", "Tailwind", "TypeScript"],
   },

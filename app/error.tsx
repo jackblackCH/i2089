@@ -7,7 +7,7 @@ export default function Error({ reset }: { reset: () => void }) {
   return (
     <Column title="Something broke">
       <div className="gap-y-item px-pad grid justify-items-start">
-        <p>This page didn&apos;t load properly.</p>
+        <p>Something broke on my side while loading this page.</p>
         <button
           type="button"
           onClick={reset}
