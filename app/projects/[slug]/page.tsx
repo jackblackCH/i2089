@@ -74,7 +74,7 @@ export default async function ProjectPage({
       </div>
 
       {/* full bleed — only the text needs the side padding */}
-      <div className="relative overflow-hidden border-y border-(--np-rule) pb-[50%]">
+      <div className="np-card overflow-hidden pb-[50%]">
         <Shot
           project={project}
           priority

@@ -17,14 +17,14 @@ export const metadata: Metadata = pageMeta({
 // as the clickable ones.
 export default function HomePage() {
   return (
-    <section className="grid grid-rows-[repeat(3,minmax(0,0.35fr))] border-t border-(--np-rule) md:border-t-0 md:border-l">
+    <section className="np-panel grid grid-rows-[repeat(3,minmax(0,0.35fr))]">
       {bands.map((band, i) => (
         <Text
           key={band.words[0]}
           as="h2"
           variant="title"
           className={`np-line p-pad grid content-center ${
-            i > 0 ? "border-t border-(--np-rule)" : ""
+            i > 0 ? "np-groove-t" : ""
           } ${band.slugs.length ? "" : "text-(--np-mute)"}`}
         >
           <TypeCycle

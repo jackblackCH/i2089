@@ -24,13 +24,95 @@
     Helvetica,
     Arial,
     sans-serif;
-  background: var(--np-surface);
+  /* light and shade for the surface treatment below — derived from the
+     same hue so they never read as a different colour */
+  --np-light: color-mix(in srgb, var(--np-fg) 7%, transparent);
+  --np-light-strong: color-mix(in srgb, var(--np-fg) 14%, transparent);
+  --np-shade: hsl(var(--np-h) 40% 1% / 0.75);
+
+  /* Lit surface: a soft glow from the top-left (where the light sits)
+     and a cooler echo bottom-right, over the flat base. Kept within ~4%
+     lightness so it reads as material, not as a gradient. */
+  background:
+    radial-gradient(
+      140% 90% at 0% 0%,
+      hsl(var(--np-h) var(--np-s) 6.5%) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 80% at 100% 100%,
+      hsl(var(--np-h) 30% 4.5%) 0%,
+      transparent 60%
+    ),
+    var(--np-surface);
   color: var(--np-fg);
 }
 @media (width >= 48rem) {
   .np {
     --logo: clamp(56px, 9vw, 180px);
   }
+}
+
+/* Grain: a few percent of fine noise over everything. Dark gradients band
+   into visible steps on most screens; noise dithers them smooth. Fixed and
+   click-through, so it costs nothing to layout or input. */
+.np::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* The content column as an inset panel: a dark groove line against the
+   wordmark column, a 1px highlight just inside it, and a soft shadow that
+   falls into the panel from that edge, as if it sat a hair lower. On
+   mobile the same groove runs along the top. */
+.np-panel {
+  border-top: 1px solid var(--np-shade);
+  box-shadow:
+    inset 0 1px 0 var(--np-light),
+    inset 0 40px 56px -48px var(--np-shade);
+}
+@media (width >= 48rem) {
+  .np-panel {
+    border-top: 0;
+    border-left: 1px solid var(--np-shade);
+    box-shadow:
+      inset 1px 0 0 var(--np-light),
+      inset 40px 0 56px -48px var(--np-shade);
+  }
+}
+
+/* Groove between stacked bands: dark line, highlight under it */
+.np-groove-t {
+  border-top: 1px solid var(--np-shade);
+  box-shadow: inset 0 1px 0 var(--np-light);
+}
+
+/* Screenshots as lifted objects, in layers: a dark outer ring separates
+   them from the surface, a soft two-step drop shadow lifts them, and an
+   overlay draws a light inner hairline with a brighter top edge (light
+   from above). The overlay is a pseudo-element because an inset shadow on
+   the frame itself would sit under the image. */
+.np-card {
+  position: relative;
+  box-shadow:
+    0 0 0 1px var(--np-shade),
+    0 1px 2px hsl(var(--np-h) 40% 1% / 0.5),
+    0 16px 40px -16px hsl(var(--np-h) 40% 1% / 0.8);
+}
+.np-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px var(--np-light),
+    inset 0 1px 0 var(--np-light-strong);
 }
 
 /* Wordmark subline, set to the full width of i2089. Letter spacing is

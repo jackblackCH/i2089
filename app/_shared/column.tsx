@@ -20,7 +20,7 @@ export function Column({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative flex flex-col border-t border-(--np-rule) md:overflow-y-auto md:border-l md:border-t-0">
+    <section className="np-panel relative flex flex-col md:overflow-y-auto">
       {back && (
         <Text
           variant="footer"
