@@ -30,11 +30,7 @@ export function ProjectsList({
               className="group block w-full outline-offset-4 transition-transform duration-160 ease-out focus-visible:outline-1 focus-visible:outline-(--np-fg) active:scale-[0.98] motion-reduce:active:scale-100"
             >
               <div className="relative w-full overflow-hidden border border-(--np-rule) pb-[62.5%]">
-                <Shot
-                  project={p}
-                  sizes="(min-width: 768px) 45vw, 90vw"
-                  className="transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
+                <Shot project={p} sizes="(min-width: 768px) 45vw, 90vw" />
 
                 <div
                   aria-hidden
