@@ -153,9 +153,10 @@
    from 8px below, 50ms apart, 300ms ease-out. @starting-style applies
    whenever an element first renders, so it runs on load and on every
    navigation; transitions (not keyframes) retarget if you click on
-   quickly. Blocks holding a project screenshot are skipped, because the
-   screenshot arrives through its own morph. Reduced motion: fade only. */
-.enter > :not(:has(img[data-shot])) {
+   quickly. A project screenshot inside a fading block still morphs at
+   full opacity: the browser draws the named element on its own, without
+   its parents' opacity. Reduced motion: fade only. */
+.enter > * {
   transition:
     opacity 300ms var(--ease-out),
     translate 300ms var(--ease-out);
@@ -167,13 +168,13 @@
 .enter > :nth-child(5) { --enter-delay: 200ms; }
 .enter > :nth-child(n + 6) { --enter-delay: 250ms; }
 @starting-style {
-  .enter > :not(:has(img[data-shot])) {
+  .enter > * {
     opacity: 0;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
   @starting-style {
-    .enter > :not(:has(img[data-shot])) {
+    .enter > * {
       translate: 0 8px;
     }
   }

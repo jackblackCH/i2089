@@ -24,7 +24,6 @@ export function Shot({
         src={project.image}
         alt={`${project.title} — screenshot`}
         fill
-        data-shot
         priority={priority}
         sizes={sizes}
         className={`object-cover object-top ${className}`}
