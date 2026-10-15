@@ -3,6 +3,7 @@ import "./globals.css";
 import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
 import { Analytics } from "@vercel/analytics/next";
+import { Frame } from "./_shared/frame";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
@@ -80,11 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-svh"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="h-svh" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: SIGNATURE_ONCE }} />
         <script
@@ -95,7 +92,9 @@ export default function RootLayout({
       <body>
         <PostHogProvider>
           <div className="new-frame">
-            <div className="new-root">{children}</div>
+            <div className="new-root">
+              <Frame>{children}</Frame>
+            </div>
           </div>
         </PostHogProvider>
         <Analytics />

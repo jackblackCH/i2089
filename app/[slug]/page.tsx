@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
 import { Text } from "../_shared/text";
-import { Frame } from "../_shared/frame";
 import { Column } from "../_shared/column";
 
 export function generateStaticParams() {
@@ -38,27 +37,25 @@ export default async function ContentPage({
   if (!service) notFound();
 
   return (
-    <Frame>
-      <Column title={service.title} linkedin={slug === "about"}>
-        {/* each entry is a label over its text, one label-step apart;
+    <Column title={service.title} linkedin={slug === "about"}>
+      {/* each entry is a label over its text, one label-step apart;
             entries are a group-step apart, like sections on a project */}
-        <ul className="grid gap-y-group px-pad">
-          {service.items.map((item) =>
-            typeof item === "string" ? (
-              <li key={item} className="text-trim">
-                {item}
-              </li>
-            ) : (
-              <li key={item.term} className="grid gap-y-label">
-                <Text variant="footer" className="text-trim">
-                  {item.term}
-                </Text>
-                <p>{item.text}</p>
-              </li>
-            ),
-          )}
-        </ul>
-      </Column>
-    </Frame>
+      <ul className="gap-y-group px-pad grid">
+        {service.items.map((item) =>
+          typeof item === "string" ? (
+            <li key={item} className="text-trim">
+              {item}
+            </li>
+          ) : (
+            <li key={item.term} className="gap-y-label grid">
+              <Text variant="footer" className="text-trim">
+                {item.term}
+              </Text>
+              <p>{item.text}</p>
+            </li>
+          ),
+        )}
+      </ul>
+    </Column>
   );
 }

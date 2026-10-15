@@ -179,13 +179,21 @@
   }
 }
 
-/* Page change: the whole page cross-fades in 180ms ease-out. A 2px blur
-   at the overlap hides the moment both titles are on screen at once
-   (the browser default is a plain 250ms fade). */
-::view-transition-old(root) {
+/* Page change: only the content column (the .page boundary in Frame)
+   cross-fades, 180ms ease-out, with a 2px blur at the overlap so the two
+   titles never read on top of each other. The frame around it is the same
+   before and after, so the root doesn't animate at all. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition-group(.page) {
+  animation-duration: 180ms;
+}
+::view-transition-old(.page) {
   animation: 180ms var(--ease-out) both page-out;
 }
-::view-transition-new(root) {
+::view-transition-new(.page) {
   animation: 180ms var(--ease-out) both page-in;
 }
 @keyframes page-out {

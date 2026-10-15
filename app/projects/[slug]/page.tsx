@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { projects, projectBySlug } from "../../_shared/content";
 import { Text } from "../../_shared/text";
-import { Frame } from "../../_shared/frame";
 import { Column } from "../../_shared/column";
 import { Shot } from "../../_shared/shot";
 
@@ -50,68 +49,63 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <Frame>
-      <Column
-        title={project.title}
-        back={{ href: "/projects", label: "All projects" }}
-      >
-        {/* role and period first — they answer "what did he do?" before
+    <Column
+      title={project.title}
+      back={{ href: "/projects", label: "All projects" }}
+    >
+      {/* role and period first — they answer "what did he do?" before
             the screenshot takes the fold */}
-        <div className="px-pad">
-          {/* role takes what's left, period only its own width, so a
+      <div className="px-pad">
+        {/* role takes what's left, period only its own width, so a
               narrow column wraps the role, not the year */}
-          <div className="gap-x-group grid grid-cols-[minmax(0,1fr)_auto]">
-            <Field label="Role">
-              <p>{project.role}</p>
-            </Field>
-            <Field label="Period">
-              <p>{project.period}</p>
-            </Field>
-          </div>
-        </div>
-
-        {/* full bleed — only the text needs the side padding */}
-        <div className="relative overflow-hidden border-y border-(--np-rule) pb-[50%]">
-          <Shot
-            project={project}
-            priority
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
-        </div>
-
-        <div className="gap-y-group px-pad grid">
-          <p>{project.intro}</p>
-
-          <Field label="What I did">
-            <ul className="gap-y-item grid">
-              {project.highlights.map((h) => (
-                <li key={h} className="text-trim relative pl-[1.4em]">
-                  <span
-                    aria-hidden
-                    className="absolute left-0 text-(--np-mute)"
-                  >
-                    →
-                  </span>
-                  {h}
-                </li>
-              ))}
-            </ul>
+        <div className="gap-x-group grid grid-cols-[minmax(0,1fr)_auto]">
+          <Field label="Role">
+            <p>{project.role}</p>
           </Field>
-
-          <Field label="Stack">
-            <p>{project.stack.join(", ")}</p>
+          <Field label="Period">
+            <p>{project.period}</p>
           </Field>
-
-          <a
-            href={project.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-quiet text-trim w-max"
-          >
-            {project.linkLabel} ↗
-          </a>
         </div>
-      </Column>
-    </Frame>
+      </div>
+
+      {/* full bleed — only the text needs the side padding */}
+      <div className="relative overflow-hidden border-y border-(--np-rule) pb-[50%]">
+        <Shot
+          project={project}
+          priority
+          sizes="(min-width: 768px) 50vw, 100vw"
+        />
+      </div>
+
+      <div className="gap-y-group px-pad grid">
+        <p>{project.intro}</p>
+
+        <Field label="What I did">
+          <ul className="gap-y-item grid">
+            {project.highlights.map((h) => (
+              <li key={h} className="text-trim relative pl-[1.4em]">
+                <span aria-hidden className="absolute left-0 text-(--np-mute)">
+                  →
+                </span>
+                {h}
+              </li>
+            ))}
+          </ul>
+        </Field>
+
+        <Field label="Stack">
+          <p>{project.stack.join(", ")}</p>
+        </Field>
+
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-quiet text-trim w-max"
+        >
+          {project.linkLabel} ↗
+        </a>
+      </div>
+    </Column>
   );
 }
