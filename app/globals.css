@@ -149,6 +149,36 @@
   object-position: top;
 }
 
+/* Content entrance (.enter on the Column article): each block fades in
+   from 8px below, 50ms apart, 300ms ease-out. @starting-style applies
+   whenever an element first renders, so it runs on load and on every
+   navigation; transitions (not keyframes) retarget if you click on
+   quickly. Blocks holding a project screenshot are skipped, because the
+   screenshot arrives through its own morph. Reduced motion: fade only. */
+.enter > :not(:has(img[data-shot])) {
+  transition:
+    opacity 300ms var(--ease-out),
+    translate 300ms var(--ease-out);
+  transition-delay: var(--enter-delay, 0ms);
+}
+.enter > :nth-child(2) { --enter-delay: 50ms; }
+.enter > :nth-child(3) { --enter-delay: 100ms; }
+.enter > :nth-child(4) { --enter-delay: 150ms; }
+.enter > :nth-child(5) { --enter-delay: 200ms; }
+.enter > :nth-child(n + 6) { --enter-delay: 250ms; }
+@starting-style {
+  .enter > :not(:has(img[data-shot])) {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    .enter > :not(:has(img[data-shot])) {
+      translate: 0 8px;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),

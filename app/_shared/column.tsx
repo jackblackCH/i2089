@@ -35,7 +35,7 @@ export function Column({
       <Text
         as="article"
         variant="body"
-        className="flex flex-col gap-y-group pt-pad"
+        className="enter flex flex-col gap-y-group pt-pad"
       >
         <Text as="h1" variant="title" className="px-pad">
           <span className="text-trim block">{title}</span>
