@@ -9,9 +9,9 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
-// Top-left of the frame, mirroring the copyright bottom-left. Absolute,
-// not fixed: on mobile the frame scrolls, and the nav scrolls away with
-// the wordmark instead of sitting on top of the content.
+// Bottom-right of the wordmark column, on one line with the copyright
+// bottom-left. Lives inside the wordmark section, so on mobile it sits
+// at the foot of the wordmark row and scrolls away with it.
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -19,7 +19,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute left-0 top-0 z-10 flex gap-x-[1.6em] p-pad-tight"
+      className="absolute bottom-0 right-0 z-10 flex gap-x-[1.6em] p-pad-tight"
     >
       {links.map(({ href, label }) => {
         const active = pathname === href || pathname.startsWith(`${href}/`);

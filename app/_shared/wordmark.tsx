@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Text } from "./text";
+import { Nav } from "./nav";
 
 // Wordmark — full height of the left column. The subline is hung off the
 // wordmark's baseline out of flow, so place-items-center sees the
@@ -12,23 +13,25 @@ export function Wordmark({ home = false }: { home?: boolean }) {
       <Text as={home ? "h1" : "span"} variant="logo">
         i2089
       </Text>
+      {/* one line from the stem of the "i" to the edge of the "9"
+          (inset-x-[0.45em] skips the glyphs' side bearings) */}
       <Text
         as="div"
         variant="signature"
-        className="absolute left-1/2 top-full grid w-max -translate-x-1/2 justify-items-center gap-y-[0.35em] mt-[clamp(6px,0.9vw,18px)]"
+        className="absolute inset-x-[0.45em] top-full mt-[1.6em]"
       >
-        <span>Digital Experiences</span>
-        <span>by Marc Illien</span>
+        Digital Experiences by Marc Illien
       </Text>
     </>
   );
 
   return (
-    <section className="grid place-items-center p-pad">
+    <section className="relative grid place-items-center p-pad">
+      <Nav />
       {home ? (
-        <div className="relative grid justify-items-center">{mark}</div>
+        <div className="relative grid">{mark}</div>
       ) : (
-        <Link href="/" className="link-quiet relative grid justify-items-center">
+        <Link href="/" className="link-mark relative grid">
           {mark}
         </Link>
       )}

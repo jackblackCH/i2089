@@ -17,9 +17,10 @@ const variants = {
      tracking stays legible */
   footer:
     "text-[clamp(11px,0.8vw,13px)] uppercase tracking-[0.08em] text-(--np-mute)",
-  /* subline under the wordmark — small caps, tight vertical rhythm */
-  signature:
-    "text-[clamp(7px,0.725vw,22px)] font-bold uppercase leading-none tracking-[0.06em] text-(--np-fg)",
+  /* subline under the wordmark — spread to the logo's full width; size
+     and tracking live in .np-signature (shared.css), since the tracking
+     is computed from the logo size */
+  signature: "np-signature font-normal uppercase leading-none text-(--np-mute)",
 } as const;
 
 type Variant = keyof typeof variants;

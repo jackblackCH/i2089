@@ -88,6 +88,20 @@
   }
 }
 
+/* the wordmark link home — a big mark needs only a small dim to read as
+   hovered; 0.6 made the whole lockup flicker. Focus gets an outline,
+   since an underline under an outlined logo reads as part of the mark. */
+@utility link-mark {
+  transition: opacity 160ms ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:focus-visible {
+    outline: 1px solid var(--np-fg);
+    outline-offset: 0.5em;
+  }
+}
+
 /* for links set in the label colour — brighten to the foreground */
 @utility link-label {
   transition: color 160ms ease;

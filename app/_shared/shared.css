@@ -25,6 +25,34 @@
   color: var(--np-fg);
 }
 
+/* Wordmark subline, set to the full width of i2089. Letter spacing is
+   computed from the logo size, not fixed: the text keeps a 9px floor, so
+   a fixed tracking would overflow the logo on small screens. --logo
+   mirrors the logo sizes in text.tsx (logo variant) — change both.
+   The constants are measured on Helvetica Neue LT Pro Extended: i2089
+   (Bold) is 3.36em of the logo wide (3.3 keeps a safety margin), and
+   the 34-character subline (Regular) is 21.4em of its own size at zero
+   tracking, plus 0.9em for the 0.45em inset on each side. Tracking
+   fills what is left across 33 gaps; text-align-last: justify absorbs
+   the rounding. Change the subline's weight and this must be remeasured. */
+.np-signature {
+  --logo: clamp(72px, 16vw, 180px);
+  --sig: clamp(9px, 1.37vw, 15px);
+  --track: max(0px, calc((var(--logo) * 3.3 - var(--sig) * 22.3) / 33));
+  font-size: var(--sig);
+  letter-spacing: var(--track);
+  text-align: justify;
+  text-align-last: justify;
+  /* tracking also trails the last letter; pull it back to the edge */
+  margin-right: calc(-1 * var(--track));
+}
+@media (width >= 48rem) {
+  .np-signature {
+    --logo: clamp(56px, 9vw, 180px);
+    --sig: clamp(9px, 0.77vw, 15px);
+  }
+}
+
 /* outline-only wordmark — transparent fill, hairline-proportioned stroke */
 .np-outline {
   color: transparent;
