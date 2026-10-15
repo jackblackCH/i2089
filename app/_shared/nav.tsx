@@ -22,12 +22,15 @@ export function Nav() {
       className="absolute bottom-0 right-0 z-10 flex gap-x-[1.6em] p-pad-tight"
     >
       {links.map(({ href, label }) => {
-        const active = pathname === href || pathname.startsWith(`${href}/`);
+        // exact match is the page itself; a deeper path (a project under
+        // Projects) is still "here" for sighted and screen-reader users
+        const exact = pathname === href;
+        const active = exact || pathname.startsWith(`${href}/`);
         return (
           <Link
             key={href}
             href={href}
-            aria-current={pathname === href ? "page" : undefined}
+            aria-current={exact ? "page" : active ? "true" : undefined}
             className={`link-label hit-area ${active ? "text-(--np-fg)" : ""}`}
           >
             {label}
