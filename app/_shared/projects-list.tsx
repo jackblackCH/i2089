@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Text } from "./text";
 import { Shot } from "./shot";
 import type { Project } from "./content";
+import { Arrow } from "./arrow";
 
 // One column of large cards: the screenshot with title + date overlaid
 // on a bottom gradient scrim. Cards are a group-step apart, like every
@@ -46,12 +47,7 @@ export function ProjectsList({
                       {p.period}
                     </Text>
                   </div>
-                  <span
-                    aria-hidden
-                    className="text-trim transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
+                  <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
             </Link>

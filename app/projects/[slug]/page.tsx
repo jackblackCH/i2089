@@ -6,6 +6,7 @@ import { pageMeta } from "../../_shared/seo";
 import { Text } from "../../_shared/text";
 import { Column } from "../../_shared/column";
 import { Shot } from "../../_shared/shot";
+import { Arrow } from "../../_shared/arrow";
 
 export function generateStaticParams() {
   return allWork.map((p) => ({ slug: p.slug }));
@@ -88,10 +89,10 @@ export default async function ProjectPage({
         <Field label="What I did">
           <ul className="gap-y-item grid">
             {project.highlights.map((h) => (
-              <li key={h} className="text-trim relative pl-[1.4em]">
-                <span aria-hidden className="absolute left-0 text-(--np-mute)">
-                  →
-                </span>
+              <li key={h} className="text-trim relative pl-item">
+                {/* text-trim puts the first baseline at cap height
+                    (0.714em); the arrow box is 0.76em tall */}
+                <Arrow className="absolute left-0 top-[-0.046em] text-(--np-mute)" />
                 {h}
               </li>
             ))}
@@ -108,7 +109,7 @@ export default async function ProjectPage({
           rel="noopener noreferrer"
           className="link-quiet hit-area text-trim w-max"
         >
-          {project.linkLabel} ↗
+          {project.linkLabel} <Arrow dir="up-right" />
         </a>
       </div>
     </Column>

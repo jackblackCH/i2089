@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Column } from "../_shared/column";
+import { WithArrow } from "../_shared/arrow";
 
 // The old-design /services page lives on as a redirect. next.config.mjs
 // sends a 308 to /ai-solutions on Vercel; the static export
@@ -14,7 +15,7 @@ export default function Services() {
       <Column title="This page moved">
         <div className="gap-y-item px-pad grid justify-items-start">
           <Link href="/ai-solutions" className="link-quiet text-trim">
-            Consulting & AI solutions →
+            <WithArrow text="Consulting & AI solutions" />
           </Link>
         </div>
       </Column>

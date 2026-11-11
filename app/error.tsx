@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Column } from "./_shared/column";
+import { Arrow } from "./_shared/arrow";
 
 export default function Error({ reset }: { reset: () => void }) {
   return (
@@ -13,10 +14,10 @@ export default function Error({ reset }: { reset: () => void }) {
           onClick={reset}
           className="link-quiet text-trim cursor-pointer"
         >
-          ↻ Try again
+          Try again
         </button>
         <Link href="/" className="link-quiet text-trim">
-          ← Back to start
+          <Arrow dir="left" /> Back to start
         </Link>
       </div>
     </Column>
