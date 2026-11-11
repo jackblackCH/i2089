@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Text } from "./text";
 import { clients } from "./content";
+import { Arrow } from "./arrow";
 
 export const EMAIL = "hi@i2089.com";
 
@@ -23,27 +24,36 @@ export function Contact({ className = "" }: { className?: string }) {
         className="text-trim inline-flex items-center gap-x-label bg-(--np-fg) px-item py-label text-(--np-surface) transition-opacity duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg)"
       >
         {EMAIL}
-        <span aria-hidden>→</span>
+        <Arrow />
       </a>
     </Text>
   );
 }
 
-// The client line (PFD R4, L1 trust signal): names in the label style,
-// each linking to the page that proves it.
+// The client line (PFD R4, L1 trust signal): a label over one line of
+// names, like every other entry on the page, so it reads as content and
+// not as a footer block. Each name links to the page that proves it.
 export function Clients({ label = "Clients" }: { label?: string }) {
   return (
-    <Text as="div" variant="footer" className="gap-y-label grid">
-      <h2 className="text-trim">{label}</h2>
-      <ul className="flex flex-wrap gap-x-item gap-y-label">
-        {clients.map((c) => (
-          <li key={c.name}>
-            <Link href={c.href} className="link-label hit-area text-trim block">
+    <div className="gap-y-label grid">
+      <Text as="h2" variant="footer" className="text-trim">
+        {label}
+      </Text>
+      {/* wraps between names, never inside one */}
+      <Text as="ul" variant="body" className="flex flex-wrap gap-y-label text-(--np-mute)">
+        {clients.map((c, i) => (
+          <li key={c.name} className="text-trim whitespace-nowrap">
+            <Link href={c.href} className="link-label hit-area">
               {c.name}
             </Link>
+            {i < clients.length - 1 && (
+              <span aria-hidden className="px-[0.45em]">
+                ·
+              </span>
+            )}
           </li>
         ))}
-      </ul>
-    </Text>
+      </Text>
+    </div>
   );
 }

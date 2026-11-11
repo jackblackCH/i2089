@@ -226,11 +226,11 @@ export const projectBySlug = Object.fromEntries(
 /* PFD R4: the client line. Each name links to the page that proves it,
    so a buyer can check the claim. */
 export const clients: { name: string; href: string }[] = [
-  { name: "AXA Switzerland", href: "/projects/axa" },
+  { name: "AXA", href: "/projects/axa" },
   { name: "air up®", href: "/projects/air-up" },
   { name: "Talentir", href: "/projects/talentir" },
   { name: "Branded Goods", href: "/projects/branded-goods" },
-  { name: "OST, lecturer since 2014", href: "/about" },
+  { name: "OST", href: "/about" },
 ];
 
 /* the home bands: one fixed label each (PFD R1, nothing a visitor
