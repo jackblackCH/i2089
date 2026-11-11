@@ -4,6 +4,16 @@ import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { Frame } from "./_shared/frame";
+import { CompareToggle } from "./_compare/compare-toggle";
+
+// PFD before/after toggle: on localhost and Vercel previews only, never
+// on i2089.com. Remove with app/_compare after merge.
+const COMPARE_BEFORE =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:2223"
+    : process.env.VERCEL_ENV === "preview"
+      ? "https://i2089.com"
+      : null;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
@@ -16,7 +26,7 @@ export const metadata: Metadata = {
     "AI coaching for dev teams and frontend engineering in React and Next.js. Marc Illien, independent software engineer in Zürich.",
 };
 
-// The wordmark subline reveals once per session (see .np-signature in
+// The wordmark byline reveals once per session (see .np-byline in
 // shared.css). Runs before paint: if the reveal already played, mark the
 // root so CSS skips it; otherwise remember it and mark the root after the
 // reveal has finished, so later navigations show the line at rest.
@@ -98,6 +108,7 @@ export default function RootLayout({
             </div>
           </div>
         </PostHogProvider>
+        {COMPARE_BEFORE && <CompareToggle beforeOrigin={COMPARE_BEFORE} />}
         <Analytics />
       </body>
     </html>
