@@ -143,19 +143,18 @@
   }
 }
 
-/* First impression: the byline (name + offer) draws in left to right
-   under the logo, 700ms ease-in-out after a 250ms beat — once per session
-   (layout.tsx sets data-signature-seen). Off under reduced motion. The
-   byline is readable body text (PFD R2), so it never wraps past the
-   column: max-content up to the panel's width. */
-.np-byline {
-  width: max-content;
-  max-width: calc(50vw - 2 * var(--spacing-pad));
-}
-@media (width < 48rem) {
-  .np-byline {
-    max-width: calc(100vw - 2 * var(--spacing-pad));
-  }
+/* First impression: the byline draws in left to right under the logo,
+   700ms ease-in-out after a 250ms beat — once per session (layout.tsx
+   sets data-signature-seen). Off under reduced motion.
+   The xl line is justified to the logo's width: "Marc Illien · AI
+   coaching & frontend engineering" measures 24.9em, the box is 3.27
+   logo-ems (3.36 minus the side bearings), so 0.128 of the logo size
+   fits with ~3% left for the word gaps to absorb. Remeasure if the
+   text or the weight changes. */
+.np-byline-justified {
+  font-size: calc(var(--logo) * 0.128);
+  text-align: justify;
+  text-align-last: justify;
 }
 @keyframes signature-reveal {
   from {
