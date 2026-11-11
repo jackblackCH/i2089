@@ -235,20 +235,32 @@ No caps. Spread 58–85. The weakest layer is still L3, because the lead offer h
 | Fix | Before | After |
 |---|---|---|
 | Contact on subpages (desktop) | text link, 13 px tall, y 791–1372 px (below the fold on 6 of 7 subpages) | filled button, 45 px tall, y 203–249 px (in the first screen on every subpage) |
-| Contact on home | none | filled button, y 727 px desktop; y 938 px mobile (below the first screen) |
+| Contact on home | none | filled button, y 785 px desktop; y 934 px mobile (below the first screen) |
 | Offer pages in the nav | 0 | 2 (AI coaching, Engineering) |
 | Multipliers in visible copy | 1–5 per page ("10x", "50x", "5x to 10x") | 0, also in meta descriptions |
-| Name size | 11.1 px desktop, 9 px mobile, tracked caps | 17.6 px desktop, 15 px mobile home |
+| Name size | 11.1 px desktop, 9 px mobile, tracked caps | 16.6 px desktop (justified to the logo), 15 px mobile home |
 | Home bands | text changes within 6 s (typewriter) | static |
 | Client line | none | 5 names, each linked to its proof, on home, `/ai-solutions`, `/engineering` |
+| Arrows | → ← ↗ drawn by a fallback system font (not in Helvetica Neue LT Pro) | one SVG arrow drawn to the font's measured stem, crossbar and dash axis |
+| Contact address on a page | twice (top and foot) | once |
 | AXA case | hidden (404) | `/projects/axa` |
 | Mobile body text | 13 px | 15 px |
-| Smallest tap target | 9 px (mobile) | 24 px (mobile), 25 px (desktop) |
+| Smallest tap target | 9 px (mobile) | 33 px (mobile), 35 px (desktop) |
 | Title weight | `500` requested, only 400/700 loaded | `400`, as rendered |
 | Card text colour | `#fff` (ΔE 5.4 off `--np-fg`) | `--np-fg` |
 | Selection colour | `#ededed` / `#222` (near-misses) | `--np-fg` / `--np-surface` |
 | Share image on subpages | none | all 9 pages |
 | Mobile subpage first row | 210 px | 150 px |
+
+### Round 2 (review feedback, 2026-11-12)
+
+- **One address per page:** the foot no longer repeats hi@i2089.com. The foot shows LinkedIn on About only.
+- **Arrows:** Helvetica Neue LT Pro has no arrow glyphs, so →, ← and ↗ came from a system font. `app/_shared/arrow.tsx` draws them to the font's own metrics (per 1000 units: crossbar 92, en dash axis 280 above the baseline, x-height 524), with square ends and a sharp tip. The ↻ on the error page went for the same reason.
+- **Lockup:** from 1280 px the byline is one line, justified from the stem of the "i" to the edge of the "9" ("Marc Illien · AI coaching & frontend engineering", 0.128 of the logo size). Below 1280 px that size would drop under 14 px, so the name alone sits centred under the mark.
+- **Footer weight:** the client line is a label over one line of names in body type with "·" separators, like every other entry, instead of three lines of tracked capitals. The copyright is shorter ("©2026 Marc Illien, Zürich") and hides between 768 and 1280 px, where it collided with the four nav links.
+- **Home rows:** each row takes at least its content (no more overflow through the groove lines at 1024 and 1280 px).
+
+Scores are unchanged by round 2: the changes remove noise the rubric did not score, so I do not claim points for them. The interactive count in `evidence-after.json` includes the three dev-only toggle buttons.
 
 ### Decisions
 

@@ -1,9 +1,9 @@
 {
  "desktop /": {
-  "interactive": 12,
+  "interactive": 15,
   "contact": {
-   "top": 727,
-   "w": 197,
+   "top": 785,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -14,7 +14,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -29,9 +29,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 25,
+  "minTap": 35,
   "titleWeights": [
    "700",
    "400"
@@ -44,10 +47,10 @@
   "scrollH": 900
  },
  "desktop /ai-solutions": {
-  "interactive": 12,
+  "interactive": 14,
   "contact": {
    "top": 249,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -58,11 +61,11 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
-  "bodyFs": 11.52,
+  "bodyFs": 17.568,
   "nav": [
    "AI coaching",
    "Engineering",
@@ -73,9 +76,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 25,
+  "minTap": 35,
   "titleWeights": [
    "400"
   ],
@@ -87,10 +93,10 @@
   "scrollH": 900
  },
  "desktop /engineering": {
-  "interactive": 12,
+  "interactive": 14,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -101,11 +107,11 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
-  "bodyFs": 11.52,
+  "bodyFs": 17.568,
   "nav": [
    "AI coaching",
    "Engineering",
@@ -116,9 +122,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 25,
+  "minTap": 35,
   "titleWeights": [
    "400"
   ],
@@ -130,10 +139,10 @@
   "scrollH": 900
  },
  "desktop /about": {
-  "interactive": 8,
+  "interactive": 10,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -144,7 +153,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -174,10 +183,10 @@
   "scrollH": 900
  },
  "desktop /projects": {
-  "interactive": 11,
+  "interactive": 13,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -188,7 +197,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -219,10 +228,10 @@
   "scrollH": 900
  },
  "desktop /projects/axa": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -233,7 +242,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -261,10 +270,10 @@
   "scrollH": 900
  },
  "desktop /projects/branded-goods": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -275,7 +284,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -303,10 +312,10 @@
   "scrollH": 900
  },
  "desktop /projects/air-up": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -317,7 +326,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -345,10 +354,10 @@
   "scrollH": 900
  },
  "desktop /projects/talentir": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 203,
-   "w": 197,
+   "w": 195,
    "h": 45,
    "inFold": true,
    "tap": 45,
@@ -359,7 +368,7 @@
    "fs": 129.6
   },
   "name": {
-   "fs": 17.568,
+   "fs": 16.5888,
    "inFold": true,
    "top": 517
   },
@@ -387,10 +396,10 @@
   "scrollH": 900
  },
  "mobile /": {
-  "interactive": 12,
+  "interactive": 15,
   "contact": {
-   "top": 938,
-   "w": 168,
+   "top": 934,
+   "w": 167,
    "h": 39,
    "inFold": false,
    "tap": 39,
@@ -416,9 +425,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 24,
+  "minTap": 33,
   "titleWeights": [
    "700",
    "400"
@@ -428,13 +440,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1061
+  "scrollH": 1058
  },
  "mobile /ai-solutions": {
-  "interactive": 12,
+  "interactive": 14,
   "contact": {
    "top": 319,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -445,7 +457,7 @@
    "fs": 72
   },
   "name": null,
-  "bodyFs": 11,
+  "bodyFs": 15,
   "nav": [
    "AI coaching",
    "Engineering",
@@ -456,9 +468,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 24,
+  "minTap": 33,
   "titleWeights": [
    "400"
   ],
@@ -467,13 +482,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1297
+  "scrollH": 1235
  },
  "mobile /engineering": {
-  "interactive": 12,
+  "interactive": 14,
   "contact": {
    "top": 319,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -484,7 +499,7 @@
    "fs": 72
   },
   "name": null,
-  "bodyFs": 11,
+  "bodyFs": 15,
   "nav": [
    "AI coaching",
    "Engineering",
@@ -495,9 +510,12 @@
   "multipliers": [],
   "clientsVisible": [
    "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods",
    "OST"
   ],
-  "minTap": 24,
+  "minTap": 33,
   "titleWeights": [
    "400"
   ],
@@ -506,13 +524,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1151
+  "scrollH": 1089
  },
  "mobile /about": {
-  "interactive": 8,
+  "interactive": 10,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -550,13 +568,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1245
+  "scrollH": 1218
  },
  "mobile /projects": {
-  "interactive": 11,
+  "interactive": 13,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -591,13 +609,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1365
+  "scrollH": 1306
  },
  "mobile /projects/axa": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -629,13 +647,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1186
+  "scrollH": 1127
  },
  "mobile /projects/branded-goods": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -667,13 +685,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1136
+  "scrollH": 1078
  },
  "mobile /projects/air-up": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -705,13 +723,13 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1346
+  "scrollH": 1267
  },
  "mobile /projects/talentir": {
-  "interactive": 9,
+  "interactive": 11,
   "contact": {
    "top": 287,
-   "w": 168,
+   "w": 167,
    "h": 39,
    "inFold": true,
    "tap": 39,
@@ -743,11 +761,11 @@
    "700"
   ],
   "ogImage": true,
-  "scrollH": 1186
+  "scrollH": 1127
  },
  "motion": {
   "homeBandsChangeWithin6s": false,
-  "t0": "AI coaching for dev teams → | Frontend engineering → | for startups, SMEs and corporates | CLIENTS",
-  "t1": "AI coaching for dev teams → | Frontend engineering → | for startups, SMEs and corporates | CLIENTS"
+  "t0": "AI coaching for dev teams  | Frontend engineering  | for startups, SMEs and corporates | CLIENTS",
+  "t1": "AI coaching for dev teams  | Frontend engineering  | for startups, SMEs and corporates | CLIENTS"
  }
 }
