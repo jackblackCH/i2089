@@ -1,0 +1,753 @@
+{
+ "desktop /": {
+  "interactive": 12,
+  "contact": {
+   "top": 727,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": null,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 25,
+  "titleWeights": [
+   "700",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /ai-solutions": {
+  "interactive": 12,
+  "contact": {
+   "top": 249,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 11.52,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 25,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /engineering": {
+  "interactive": 12,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 11.52,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 25,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /about": {
+  "interactive": 8,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "OST"
+  ],
+  "minTap": 35,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /projects": {
+  "interactive": 11,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods"
+  ],
+  "minTap": 35,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /projects/axa": {
+  "interactive": 9,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA"
+  ],
+  "minTap": 31,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /projects/branded-goods": {
+  "interactive": 9,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "Branded Goods"
+  ],
+  "minTap": 31,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /projects/air-up": {
+  "interactive": 9,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "air up"
+  ],
+  "minTap": 31,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /projects/talentir": {
+  "interactive": 9,
+  "contact": {
+   "top": 203,
+   "w": 197,
+   "h": 45,
+   "inFold": true,
+   "tap": 45,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 17.568,
+   "inFold": true,
+   "top": 517
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "Talentir"
+  ],
+  "minTap": 31,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "mobile /": {
+  "interactive": 12,
+  "contact": {
+   "top": 938,
+   "w": 168,
+   "h": 39,
+   "inFold": false,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 15,
+   "inFold": true,
+   "top": 204
+  },
+  "bodyFs": null,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 24,
+  "titleWeights": [
+   "700",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1061
+ },
+ "mobile /ai-solutions": {
+  "interactive": 12,
+  "contact": {
+   "top": 319,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 11,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 24,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1297
+ },
+ "mobile /engineering": {
+  "interactive": 12,
+  "contact": {
+   "top": 319,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 11,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "OST"
+  ],
+  "minTap": 24,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1151
+ },
+ "mobile /about": {
+  "interactive": 8,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 30,
+   "inFold": true,
+   "top": 201
+  },
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "OST"
+  ],
+  "minTap": 33,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1245
+ },
+ "mobile /projects": {
+  "interactive": 11,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "Talentir",
+   "Branded Goods"
+  ],
+  "minTap": 33,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1365
+ },
+ "mobile /projects/axa": {
+  "interactive": 9,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "AXA"
+  ],
+  "minTap": 30,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1186
+ },
+ "mobile /projects/branded-goods": {
+  "interactive": 9,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "Branded Goods"
+  ],
+  "minTap": 30,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1136
+ },
+ "mobile /projects/air-up": {
+  "interactive": 9,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "air up"
+  ],
+  "minTap": 30,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1346
+ },
+ "mobile /projects/talentir": {
+  "interactive": 9,
+  "contact": {
+   "top": 287,
+   "w": 168,
+   "h": 39,
+   "inFold": true,
+   "tap": 39,
+   "filled": true
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": null,
+  "bodyFs": 15,
+  "nav": [
+   "AI coaching",
+   "Engineering",
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 2,
+  "multipliers": [],
+  "clientsVisible": [
+   "Talentir"
+  ],
+  "minTap": 30,
+  "titleWeights": [
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 1186
+ },
+ "motion": {
+  "homeBandsChangeWithin6s": false,
+  "t0": "AI coaching for dev teams → | Frontend engineering → | for startups, SMEs and corporates | CLIENTS",
+  "t1": "AI coaching for dev teams → | Frontend engineering → | for startups, SMEs and corporates | CLIENTS"
+ }
+}

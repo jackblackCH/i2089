@@ -1,0 +1,685 @@
+{
+ "desktop /": {
+  "interactive": 4,
+  "contact": null,
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": null,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [],
+  "clientsVisible": [],
+  "minTap": 31,
+  "titleWeights": [
+   "700",
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 900
+ },
+ "desktop /ai-solutions": {
+  "interactive": 4,
+  "contact": {
+   "top": 936,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x",
+   "50x",
+   "5x",
+   "10x",
+   "10x"
+  ],
+  "clientsVisible": [],
+  "minTap": 13,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /engineering": {
+  "interactive": 4,
+  "contact": {
+   "top": 791,
+   "w": 127,
+   "h": 13,
+   "inFold": true,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "AXA"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /about": {
+  "interactive": 5,
+  "contact": {
+   "top": 967,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 44,
+   "inFold": true,
+   "top": 96
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x",
+   "10x"
+  ],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "OST"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /projects": {
+  "interactive": 7,
+  "contact": {
+   "top": 1372,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "air up",
+   "Talentir",
+   "Branded Goods"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /projects/axa": {
+  "status": 404
+ },
+ "desktop /projects/branded-goods": {
+  "interactive": 6,
+  "contact": {
+   "top": 1094,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "Branded Goods"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /projects/air-up": {
+  "interactive": 6,
+  "contact": {
+   "top": 1244,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "air up"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "desktop /projects/talentir": {
+  "interactive": 6,
+  "contact": {
+   "top": 1128,
+   "w": 127,
+   "h": 13,
+   "inFold": false,
+   "tap": 13,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 129.6
+  },
+  "name": {
+   "fs": 11.088,
+   "inFold": true,
+   "top": 514
+  },
+  "bodyFs": 17.568,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "Talentir"
+  ],
+  "minTap": 13,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 900
+ },
+ "mobile /": {
+  "interactive": 4,
+  "contact": null,
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 200
+  },
+  "bodyFs": null,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [],
+  "clientsVisible": [],
+  "minTap": 21,
+  "titleWeights": [
+   "700",
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": true,
+  "scrollH": 844
+ },
+ "mobile /ai-solutions": {
+  "interactive": 4,
+  "contact": {
+   "top": 969,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x",
+   "50x",
+   "5x",
+   "10x",
+   "10x"
+  ],
+  "clientsVisible": [],
+  "minTap": 9,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1063
+ },
+ "mobile /engineering": {
+  "interactive": 4,
+  "contact": {
+   "top": 877,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "AXA"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 971
+ },
+ "mobile /about": {
+  "interactive": 5,
+  "contact": {
+   "top": 996,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 30,
+   "inFold": true,
+   "top": 259
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x",
+   "10x"
+  ],
+  "clientsVisible": [
+   "AXA",
+   "air up",
+   "OST"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1090
+ },
+ "mobile /projects": {
+  "interactive": 7,
+  "contact": {
+   "top": 1016,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "air up",
+   "Talentir",
+   "Branded Goods"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1110
+ },
+ "mobile /projects/axa": {
+  "status": 404
+ },
+ "mobile /projects/branded-goods": {
+  "interactive": 6,
+  "contact": {
+   "top": 979,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "Branded Goods"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1073
+ },
+ "mobile /projects/air-up": {
+  "interactive": 6,
+  "contact": {
+   "top": 1089,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "air up"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1183
+ },
+ "mobile /projects/talentir": {
+  "interactive": 6,
+  "contact": {
+   "top": 1022,
+   "w": 94,
+   "h": 9,
+   "inFold": false,
+   "tap": 9,
+   "filled": false
+  },
+  "biggest": {
+   "t": "i2089",
+   "fs": 72
+  },
+  "name": {
+   "fs": 9,
+   "inFold": true,
+   "top": 145
+  },
+  "bodyFs": 13,
+  "nav": [
+   "Projects",
+   "About"
+  ],
+  "offerLinksInNav": 0,
+  "multipliers": [
+   "10x"
+  ],
+  "clientsVisible": [
+   "Talentir"
+  ],
+  "minTap": 9,
+  "titleWeights": [
+   "500",
+   "400"
+  ],
+  "loadedWeights": [
+   "400",
+   "700"
+  ],
+  "ogImage": false,
+  "scrollH": 1115
+ },
+ "motion": {
+  "homeBandsChangeWithin6s": true,
+  "t0": "Consulting | Frontend engineering | for startups, SMEs and corporates\nfor startups, SMEs and corporates",
+  "t1": "AI solutions | Software e | for startups, SMEs and corporates\nfor startups, SMEs and corporates"
+ }
+}

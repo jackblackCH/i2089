@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>i2089 PFD fixes</title>
+<!--
+  PFD evaluate, step 8: the top 3 fixes, rebuilt in the site's own visual
+  language (np tokens from app/_shared/shared.css, one grotesk, one hue).
+  Only the fixed sections. "Now" on the left, "Fixed" on the right.
+  Text in [brackets] is a placeholder for a real fact. Do not ship a
+  bracket with an invented number: that breaks the Sincerity test.
+-->
+<style>
+  :root {
+    --np-surface: rgb(4 5 7);
+    --np-glow: rgb(18 21 28);
+    --np-fg: rgb(231 233 239);
+    --np-mute: color-mix(in oklab, var(--np-fg) 75%, transparent);
+    --np-line: color-mix(in oklab, var(--np-fg) 12%, transparent);
+    --pad: clamp(24px, 5vw, 56px);
+    --label: 0.6em; --item: 1.2em; --group: 2.4em;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--np-surface); color: var(--np-fg);
+    font-family: "Helvetica Neue LT Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-stretch: expanded; line-height: 1.35; padding: var(--pad);
+  }
+  h1.doc { font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.02em; margin-bottom: 0.4em; }
+  .intro { color: var(--np-mute); max-width: 60ch; margin-bottom: var(--group); }
+  section.fix { border-top: 1px solid var(--np-line); padding-block: var(--group); }
+  .fix > h2 { font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.01em; margin-bottom: 0.3em; }
+  .why { color: var(--np-mute); max-width: 70ch; margin-bottom: var(--item); font-size: 15px; }
+  .pair { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .panel {
+    background: radial-gradient(120% 80% at 0% 0%, var(--np-glow), var(--np-surface) 60%);
+    border: 1px solid var(--np-line); border-radius: 4px; padding: var(--pad);
+    min-height: 360px; display: flex; flex-direction: column; gap: var(--group);
+  }
+  .tag {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--np-mute);
+  }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--np-mute); }
+  .title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -0.02em; }
+  .band { font-size: clamp(26px, 2.8vw, 38px); line-height: 1.05; letter-spacing: -0.02em; }
+  .band.mute { color: var(--np-mute); }
+  .body { font-size: clamp(15px, 1.22vw, 19px); }
+  .stack { display: grid; gap: var(--label); }
+  .quiet { color: var(--np-fg); text-decoration: none; border-bottom: 1px solid var(--np-line); }
+  .nav { display: flex; gap: 1.6em; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .nav a { color: var(--np-mute); text-decoration: none; padding-block: 12px; } /* 44px hit area */
+  .nav a[aria-current] { color: var(--np-fg); }
+  /* The one primary action. Inverted fg on surface = 16.8:1. One per view. */
+  .cta {
+    display: inline-flex; align-items: center; gap: 0.6em; align-self: flex-start;
+    background: var(--np-fg); color: var(--np-surface); text-decoration: none;
+    padding: 14px 20px; font-size: 15px; font-weight: 700; border-radius: 2px;
+  }
+  .cta:focus-visible { outline: 1px solid var(--np-fg); outline-offset: 4px; }
+  .clients { display: flex; flex-wrap: wrap; gap: 0.4em 1.2em; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.08em; }
+  .clients a { color: var(--np-mute); text-decoration: none; }
+  .clients a:hover { color: var(--np-fg); }
+  .claim { display: grid; gap: var(--label); }
+  .proof { font-size: 13px; color: var(--np-mute); }
+  .strike { text-decoration: line-through; text-decoration-color: rgb(220 90 90); }
+  code { font-size: 13px; color: var(--np-mute); }
+</style>
+</head>
+<body>
+  <h1 class="doc">i2089: top 3 PFD fixes</h1>
+  <p class="intro">Each fix shows the page now and the page fixed. Only the changed part is shown. Text in [brackets] is a slot for a real fact.</p>
+
+  <!-- ───────────── FIX 1 ───────────── -->
+  <section class="fix">
+    <h2>1. One visible next step on every page</h2>
+    <p class="why">L4 + L1. Now the home page has no contact at all. On the service pages, the contact is a 13 px text link below the fold. The nav has no link to the two offer pages. Signal detection (Green &amp; Swets 1966): the action does not stand out from the noise. Information scent (Pirolli &amp; Card 1999): "Projects" and "About" do not lead to the offer. Expected: L4 35 → ~58, L1 +5.</p>
+    <div class="pair">
+      <div class="panel">
+        <span class="tag">Now: /ai-solutions, desktop fold</span>
+        <nav class="nav"><a href="#">Projects</a><a href="#">About</a></nav>
+        <div class="title">AI consulting &amp; coaching</div>
+        <div class="stack"><span class="label">AI &amp; LLMs since day one</span>
+          <p class="body">I help your team and engineers work 10x faster with Claude Code…</p></div>
+        <p class="proof">(contact: below the fold, after 5 blocks)</p>
+      </div>
+      <div class="panel">
+        <span class="tag">Fixed</span>
+        <!-- L4: the offer pages are in the nav, so every subpage has a path back to the offer -->
+        <nav class="nav" aria-label="Main">
+          <a href="#" aria-current="page">AI coaching</a><a href="#">Engineering</a><a href="#">Projects</a><a href="#">About</a>
+        </nav>
+        <div class="title">AI consulting &amp; coaching</div>
+        <!-- L4: concrete, near-term register (book a call) for a near-term action.
+             One primary action per view. Under the H1, so it is above the fold on desktop and mobile. -->
+        <a class="cta" href="mailto:hi@i2089.com?subject=Intro%20call">Book a 30-min intro call →</a>
+        <div class="stack"><span class="label">AI &amp; LLMs since day one</span>
+          <p class="body">I coach your team with Claude Code on its real tickets…</p></div>
+      </div>
+    </div>
+    <p class="why" style="margin-top:var(--item)">Code: <code>app/_shared/nav.tsx:7</code> add the two offer links. <code>app/_shared/column.tsx</code> add an optional <code>cta</code> under the H1 for service pages, keep the quiet contact at the foot. <code>app/page.tsx</code> add the same CTA to home.</p>
+  </section>
+
+  <!-- ───────────── FIX 2 ───────────── -->
+  <section class="fix">
+    <h2>2. Claims a buyer can check</h2>
+    <p class="why">L3 + ethics. "10x", "up to 50x", "everyone ships 5x to 10x", "your backlog melts" and "we ship in a day" have no referent. The page also shows no client and no AI case. The design is very fluent, so the claims look more true than the evidence allows (Reber &amp; Schwarz 1999): a fluency-trap flag. Proof is the strongest signal for a buyer in doubt (Cialdini 2001, social proof and authority). Expected: L3 38 → ~62, ethics flag cleared.</p>
+    <div class="pair">
+      <div class="panel">
+        <span class="tag">Now</span>
+        <div class="claim"><span class="label">AI &amp; LLMs since day one</span>
+          <p class="body"><span class="strike">I help your team and engineers work 10x faster</span> with Claude Code and modern agentic workflows. <span class="strike">With agents running in parallel, it's up to 50x.</span></p></div>
+        <div class="claim"><span class="label">Team enablement</span>
+          <p class="body">In a few weeks, <span class="strike">everyone ships 5x to 10x and your backlog melts.</span></p></div>
+        <p class="proof">No client name, no case, no quote on this page.</p>
+      </div>
+      <div class="panel">
+        <span class="tag">Fixed</span>
+        <!-- L3 falsifiability triad: specific (named team, named metric), falsifiable
+             (the buyer can ask the client), user-controllable (a pilot with a set end) -->
+        <div class="claim"><span class="label">What changes</span>
+          <p class="body">At [client], a team of [n] went from [n] to [n] merged PRs a week in [n] weeks, on its own tickets.</p>
+          <p class="proof">[Name, role at client]: "[one sentence on what changed]"</p></div>
+        <div class="claim"><span class="label">How we start</span>
+          <p class="body">A 2-week pilot with one team. We measure lead time before and after. You keep the setup either way.</p></div>
+        <!-- L1/L3: trust signal in the label type, each name links to its proof -->
+        <div class="clients" aria-label="Clients">
+          <a href="#">AXA Switzerland</a><a href="#">air up®</a><a href="#">Talentir</a><a href="#">Branded Goods</a><a href="#">OST · lecturer since 2014</a>
+        </div>
+      </div>
+    </div>
+    <p class="why" style="margin-top:var(--item)">Code: <code>app/_shared/content.ts:24-45</code> for the copy. If no measured number exists yet, keep the claim qualitative ("faster reviews, fewer hand-offs") and say how you will measure it in the pilot. Re-enable the AXA case at <code>app/projects/page.tsx:18</code>.</p>
+  </section>
+
+  <!-- ───────────── FIX 3 ───────────── -->
+  <section class="fix">
+    <h2>3. The offer, not the code name, wins the first 50 ms</h2>
+    <p class="why">L1 + L0. On home the largest element is "i2089" at 130 px. The words that say what Marc does are in 11 px tracked caps. The bands name categories, not an outcome, and the typewriter erases the link text every 10 s. The 50 ms verdict (Lindgaard 2006) forms on what is biggest. Constant motion costs attention even when nobody watches it (Cowan 2010; Hassin 2009 in the framework). Expected: L1 58 → ~70, Foundation +3.</p>
+    <div class="pair">
+      <div class="panel">
+        <span class="tag">Now: home, right column</span>
+        <div class="band">Consulting▍</div>
+        <div class="band">Frontend engineering</div>
+        <div class="band mute">for startups, SMEs and corporates</div>
+      </div>
+      <div class="panel">
+        <span class="tag">Fixed</span>
+        <!-- L1: one proposition with the person in it; the bands stay, but static
+             (no erase), and each is a clear link with an arrow -->
+        <div class="body" style="color:var(--np-mute)">Marc Illien · Zürich</div>
+        <a class="band quiet" style="border:0" href="#">AI coaching for dev teams →</a>
+        <a class="band quiet" style="border:0" href="#">Frontend engineering →</a>
+        <div class="band mute">for startups, SMEs and corporates</div>
+        <a class="cta" href="mailto:hi@i2089.com?subject=Intro%20call">Book a 30-min intro call →</a>
+      </div>
+    </div>
+    <p class="why" style="margin-top:var(--item)">Code: <code>app/page.tsx</code> pass one word per band to <code>TypeCycle</code> (it already skips the loop for a single word), or drop it. <code>app/_shared/frame.tsx:25</code> lower the mobile subpage row to about <code>max(16svh,140px)</code>.</p>
+  </section>
+</body>
+</html>
