@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Text } from "./text";
+import { Contact, Clients, EMAIL } from "./contact";
 
 // The right column of every content page: one flowing column — title,
-// content, contact — spaced by the group step. It scrolls as a whole on
-// md+ (never a box inside a box), and contact sits at the bottom when
-// the content is short.
+// the contact action, content, client line — spaced by the group step.
+// The contact sits right under the title, so every page shows its next
+// step in the first screen (PFD R2, R5). It scrolls as a whole on md+
+// (never a box inside a box); the quiet links close the page at the foot.
 export function Column({
   title,
   back,
   linkedin = false,
+  clients,
   children,
 }: {
   title: string;
@@ -17,6 +20,8 @@ export function Column({
       title lands exactly where it does on every other page */
   back?: { href: string; label: string };
   linkedin?: boolean;
+  /** label for the client line under the content; omit to hide it */
+  clients?: string;
   children?: ReactNode;
 }) {
   return (
@@ -40,15 +45,21 @@ export function Column({
         <Text as="h1" variant="title" className="px-pad">
           <span className="text-trim block">{title}</span>
         </Text>
+        <Contact className="px-pad" />
         {children}
+        {clients && (
+          <div className="px-pad">
+            <Clients label={clients} />
+          </div>
+        )}
       </Text>
 
-      <Contact linkedin={linkedin} />
+      <Foot linkedin={linkedin} />
     </section>
   );
 }
 
-function Contact({ linkedin }: { linkedin: boolean }) {
+function Foot({ linkedin }: { linkedin: boolean }) {
   return (
     <Text
       as="div"
@@ -60,7 +71,7 @@ function Contact({ linkedin }: { linkedin: boolean }) {
           href="https://www.linkedin.com/in/marcillien/"
           target="_blank"
           rel="noopener noreferrer"
-          className="link-quiet text-trim inline-flex items-center gap-x-[0.5em]"
+          className="link-quiet hit-area text-trim inline-flex items-center gap-x-label"
         >
           <svg
             viewBox="0 0 24 24"
@@ -73,9 +84,8 @@ function Contact({ linkedin }: { linkedin: boolean }) {
           LinkedIn
         </a>
       )}
-      <p>I help make your team 10x faster. Let&apos;s talk.</p>
-      <a href="mailto:hi@i2089.com" className="link-quiet text-trim">
-        hi@i2089.com
+      <a href={`mailto:${EMAIL}`} className="link-quiet hit-area text-trim">
+        {EMAIL}
       </a>
     </Text>
   );

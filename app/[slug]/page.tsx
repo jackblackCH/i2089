@@ -5,6 +5,14 @@ import { pageMeta } from "../_shared/seo";
 import { Text } from "../_shared/text";
 import { Column } from "../_shared/column";
 
+// PFD R4: the client line on the two offer pages. On the AI page the
+// label says what the work was, since none of these clients is an AI
+// engagement yet (Sincerity test).
+const CLIENT_LABEL: Record<string, string> = {
+  "ai-solutions": "Engineering clients",
+  engineering: "Clients",
+};
+
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -42,7 +50,11 @@ export default async function ContentPage({
   if (!service) notFound();
 
   return (
-    <Column title={service.title} linkedin={slug === "about"}>
+    <Column
+      title={service.title}
+      linkedin={slug === "about"}
+      clients={CLIENT_LABEL[slug]}
+    >
       {/* each entry is a label over its text, one label-step apart;
             entries are a group-step apart, like sections on a project */}
       <ul className="gap-y-group px-pad grid">

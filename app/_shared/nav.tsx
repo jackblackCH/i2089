@@ -4,7 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Text } from "./text";
 
+// PFD R5: both offers are one step away from every page
 const links = [
+  { href: "/ai-solutions", label: "AI coaching" },
+  { href: "/engineering", label: "Engineering" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
 ];
@@ -19,7 +22,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute bottom-0 right-0 z-10 flex gap-x-[1.6em] p-pad-tight"
+      className="absolute bottom-0 right-0 z-10 flex flex-wrap justify-end gap-x-item p-pad-tight"
     >
       {links.map(({ href, label }) => {
         // exact match is the page itself; a deeper path (a project under
