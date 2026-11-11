@@ -15,7 +15,7 @@
   --np-mute: color-mix(in srgb, var(--np-fg) 75%, transparent);
   --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
   /* the i2089 logo size — one source for the logo text variant and the
-     subline's tracking (.np-signature) */
+     byline's left offset (wordmark.tsx) */
   --logo: clamp(72px, 16vw, 180px);
 
   font-family:
@@ -115,7 +115,9 @@
     inset 0 1px 0 var(--np-light-strong);
 }
 
-/* Wordmark subline, set to the full width of i2089. Letter spacing is
+/* Tracked subline, set to the full width of i2089. The site now uses
+   the readable .np-byline; this stays for app/proto, which still renders
+   the old subline. Letter spacing is
    computed from the logo size, not fixed: the text keeps a 9px floor, so
    a fixed tracking would overflow the logo on small screens. --logo is
    the logo's own size (set on .np).
@@ -141,9 +143,20 @@
   }
 }
 
-/* First impression: the subline draws in left to right under the logo,
-   700ms ease-in-out after a 250ms beat — once per session (layout.tsx
-   sets data-signature-seen). Off under reduced motion. */
+/* First impression: the byline (name + offer) draws in left to right
+   under the logo, 700ms ease-in-out after a 250ms beat — once per session
+   (layout.tsx sets data-signature-seen). Off under reduced motion. The
+   byline is readable body text (PFD R2), so it never wraps past the
+   column: max-content up to the panel's width. */
+.np-byline {
+  width: max-content;
+  max-width: calc(50vw - 2 * var(--spacing-pad));
+}
+@media (width < 48rem) {
+  .np-byline {
+    max-width: calc(100vw - 2 * var(--spacing-pad));
+  }
+}
 @keyframes signature-reveal {
   from {
     clip-path: inset(0 100% 0 0);
@@ -153,7 +166,7 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  :root:not([data-signature-seen]) .np-signature {
+  :root:not([data-signature-seen]) .np-byline {
     animation: signature-reveal 700ms var(--ease-in-out) 250ms both;
   }
 }
