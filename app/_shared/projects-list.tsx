@@ -37,12 +37,12 @@ export function ProjectsList({
                   className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                 />
 
-                {/* white, not the label colour — the text sits on the
-                    dark scrim, not on the page */}
-                <div className="p-item absolute inset-0 flex items-end justify-between gap-4 text-white">
+                {/* the foreground token at full strength, not the label
+                    colour — the text sits on the dark scrim, not on the page */}
+                <div className="p-item absolute inset-0 flex items-end justify-between gap-x-item text-(--np-fg)">
                   <div className="gap-y-label grid">
-                    <span className="text-trim font-medium">{p.title}</span>
-                    <Text variant="footer" className="text-trim text-white/80!">
+                    <span className="text-trim">{p.title}</span>
+                    <Text variant="footer" className="text-trim text-(--np-fg)/80!">
                       {p.period}
                     </Text>
                   </div>

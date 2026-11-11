@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { alt as ogAlt, size as ogSize } from "../opengraph-image";
 
 const NAME = "Marc Illien";
 
@@ -7,8 +8,11 @@ const NAME = "Marc Illien";
    description is written for the result snippet (~150 characters), and
    each page declares its canonical URL. Open Graph and Twitter repeat the
    same title and description, since a page-level openGraph object
-   replaces the layout's rather than merging with it. The share image
-   comes from opengraph-image.tsx for every route. */
+   replaces the layout's rather than merging with it. That replacement
+   also dropped the share image on every subpage, so each page names the
+   one from opengraph-image.tsx explicitly (links pasted in Slack or
+   Teams show a picture, PFD compound C). */
+const SHARE_IMAGE = { url: "/opengraph-image", ...ogSize, alt: ogAlt };
 export function pageMeta({
   title,
   description,
@@ -33,7 +37,13 @@ export function pageMeta({
       siteName: "i2089",
       locale: "en_CH",
       type: "website",
+      images: [SHARE_IMAGE],
     },
-    twitter: { card: "summary_large_image", title: full, description },
+    twitter: {
+      card: "summary_large_image",
+      title: full,
+      description,
+      images: [SHARE_IMAGE],
+    },
   };
 }
