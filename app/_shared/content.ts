@@ -21,27 +21,36 @@ export const services: Service[] = [
     title: "AI consulting & coaching",
     seoTitle: "AI consulting & coaching for dev teams, Zürich",
     description:
-      "I help make your dev team 10x faster with AI. Hands-on coaching with Claude Code, Codex and agentic workflows, on your real tickets.",
+      "AI coaching for dev teams in Zürich. A workshop day with your team, then hands-on coaching with Claude Code and Codex on your real tickets.",
+    /* PFD R4 (docs/pfd/2026-11-11): claims a buyer can check. No
+       multipliers; the measured result below carries the claim. */
     items: [
       {
-        term: "AI & LLMs since day one",
-        text: "I help your team and engineers work 10x faster with Claude Code and modern agentic workflows. With agents running in parallel, it's up to 50x. I've done the practice, so your team skips the slop.",
+        term: "Experience",
+        text: "I've been engineering software for sixteen years, usually as a lead, and coaching has been part of that. For the last year, I've used Claude Code, Codex and the modern LLM tools daily.",
       },
+      /* TODO(marc): the measured result, anonymous for now. Fill in and
+         uncomment; keep every value checkable.
       {
-        term: "Team enablement",
-        text: "I coach your team on its real tickets, in 1:1s, workshops and pair programming. In a few weeks, everyone ships 5x to 10x and your backlog melts.",
+        term: "A result",
+        text: "At a Swiss SME, a team of [n] developers went from [n] to [n] tickets per sprint in [n] weeks.",
+      },
+      */
+      {
+        term: "How we start",
+        text: "We start with a workshop day with your team. After that, I coach on your real tickets, in 1:1s and pair programming.",
       },
       {
         term: "Agentic workflows",
-        text: "I set up AI workflows that plan, write, test and review code. Your team stays in charge and makes the final call. I build them on Claude Code, Codex or whatever your company already uses. Boring tickets are yesterday.",
+        text: "I set up AI workflows that plan, write, test and review code. Your team stays in charge and makes the final call. I build them on Claude Code, Codex or whatever your company already uses.",
       },
       {
         term: "Hands-on delivery",
-        text: "I also join your team as an engineer. We ship in a day. Your reviews, tests and handover stay as they are.",
+        text: "I can also join your team as engineer and coach at the same time. Your reviews, tests and handover stay as they are.",
       },
       {
-        term: "No disruption",
-        text: "I work inside your compliance rules, LLM and codebase. I roll out in weeks, and your team keeps shipping.",
+        term: "Your rules",
+        text: "I work inside your compliance rules, your LLM and your codebase, and your team keeps working while we roll it out.",
       },
     ],
   },
@@ -77,7 +86,7 @@ export const services: Service[] = [
     description:
       "I'm a frontend engineer and AI coach in Zürich. I've taught at OST since 2014 and worked with AXA Switzerland, air up® and more.",
     items: [
-      "Hi, I'm Marc, a frontend engineer in Zürich. I build web products and help make teams 10x faster with AI.",
+      "Hi, I'm Marc, a frontend engineer in Zürich. I build web products and coach dev teams in working with AI tools.",
       {
         term: "since 2023",
         text: "I run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
@@ -207,28 +216,28 @@ export const projects: Project[] = [
   },
 ];
 
+/* every case with a detail page: projects first, then the AXA contracts */
+export const allWork: Project[] = [...projects, ...contracts];
+
 export const projectBySlug = Object.fromEntries(
-  projects.map((p) => [p.slug, p]),
+  allWork.map((p) => [p.slug, p]),
 );
 
-/* the home typewriter — bands only clarify, never introduce new
-   concepts: each cycles names for the same offer. The third band
-   is the static audience line. */
+/* PFD R4: the client line. Each name links to the page that proves it,
+   so a buyer can check the claim. */
+export const clients: { name: string; href: string }[] = [
+  { name: "AXA Switzerland", href: "/projects/axa" },
+  { name: "air up®", href: "/projects/air-up" },
+  { name: "Talentir", href: "/projects/talentir" },
+  { name: "Branded Goods", href: "/projects/branded-goods" },
+  { name: "OST, lecturer since 2014", href: "/about" },
+];
+
+/* the home bands: one fixed label each (PFD R1, nothing a visitor
+   clicks may move while they read). The third band is the static
+   audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
-  {
-    words: ["Consulting", "AI solutions", "AI workshops"],
-    slugs: ["ai-solutions", "ai-solutions", "ai-solutions"],
-  },
-  {
-    words: [
-      "Frontend engineering",
-      "Software engineering",
-      "Digital experiences",
-    ],
-    slugs: ["engineering", "engineering", "engineering"],
-  },
-  {
-    words: ["for startups, SMEs and corporates"],
-    slugs: [],
-  },
+  { words: ["AI coaching for dev teams"], slugs: ["ai-solutions"] },
+  { words: ["Frontend engineering"], slugs: ["engineering"] },
+  { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];

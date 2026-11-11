@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { projects, projectBySlug } from "../../_shared/content";
+import { allWork, projectBySlug } from "../../_shared/content";
 import { pageMeta } from "../../_shared/seo";
 import { Text } from "../../_shared/text";
 import { Column } from "../../_shared/column";
 import { Shot } from "../../_shared/shot";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return allWork.map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;
@@ -106,7 +106,7 @@ export default async function ProjectPage({
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="link-quiet text-trim w-max"
+          className="link-quiet hit-area text-trim w-max"
         >
           {project.linkLabel} ↗
         </a>

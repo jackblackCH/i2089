@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { projects, services } from "./_shared/content";
+import { allWork, services } from "./_shared/content";
 
 const BASE_URL = "https://i2089.com";
 
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
-    ...projects.map((p) => ({
+    ...allWork.map((p) => ({
       url: `${BASE_URL}/projects/${p.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,

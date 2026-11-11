@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: "Marc Illien · AI consulting & frontend engineering, Zürich",
   },
   description:
-    "I help make dev teams 10x faster with AI, and build fast web apps in React and Next.js. AI consulting, coaching and frontend engineering, Zürich.",
+    "AI coaching for dev teams and frontend engineering in React and Next.js. Marc Illien, independent software engineer in Zürich.",
 };
 
 // The wordmark subline reveals once per session (see .np-signature in

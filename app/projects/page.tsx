@@ -15,8 +15,7 @@ export default function ProjectsPage() {
   return (
     <Column title="Projects">
       <ProjectsList projects={projects} />
-      {/* Contracts section hidden for now — re-enable when ready:
-        <ProjectsList projects={contracts} label="Contracts" /> */}
+      <ProjectsList projects={contracts} label="Contracts" />
     </Column>
   );
 }
