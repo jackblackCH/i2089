@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
   // keywords first, name last — Google shows ~60 characters
   title: {
-    template: "%s · Marc Illien",
-    default: "Marc Illien · Frontend / UX and Agentic Engineering, Zürich",
+    template: "%s :: Marc Illien",
+    default: "Marc Illien :: Frontend / UX and Agentic Engineering, Zürich",
   },
   description:
     "Frontend and UX for web and mobile apps in React, Next.js and React Native, and Agentic Engineering for teams. Marc Illien, Zürich.",

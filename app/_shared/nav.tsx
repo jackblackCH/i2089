@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Text } from "./text";
 
-// Work · About · Blog, centred under the wordmark. The two offers are not
+// Work :: About :: Blog, centred under the wordmark. The two offers are not
 // repeated here: on home they are the big bands, and on every other page
 // the logo leads back to them (one more click; Marc's call, 2026-11-12).
 const LINKS = [
@@ -51,7 +51,8 @@ export function Nav() {
             <NavLink {...l} />
             {i < LINKS.length - 1 && (
               <span aria-hidden className="text-(--np-mute)">
-                ·
+                {/* Marc's spacer, his mark: "::" instead of a dot */}
+                ::
               </span>
             )}
           </li>

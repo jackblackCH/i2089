@@ -20,7 +20,7 @@ export function Wordmark({ home = false }: { home?: boolean }) {
   // are drawn twice (the flap halves), so as text they read
   // "ii22008899…" to search engines. The h1 on home and the home link
   // elsewhere carry only this clean line.
-  const name = `i2089 · ${BYLINE.name}`;
+  const name = `i2089 :: ${BYLINE.name}`;
   const mark = (
     <Text as="div" variant="logo" className="np-logo-host">
       <LogoMark />

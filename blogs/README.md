@@ -17,7 +17,7 @@ title: The title
 date: 2026-11-12
 description: One or two sentences for the blog list and search results.
 tldr: Optional. Shown in italics under the byline.
-seoTitle: Optional. A short title for search results, about 45 characters (" · Marc Illien" is added, Google shows about 60).
+seoTitle: Optional. A short title for search results, about 45 characters (" :: Marc Illien" is added, Google shows about 60).
 draft: true
 ---
 

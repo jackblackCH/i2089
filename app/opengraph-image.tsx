@@ -68,7 +68,7 @@ export default async function Image() {
             color: mute,
           }}
         >
-          Marc Illien · Frontend / UX · Agentic Engineering
+          Marc Illien :: Frontend / UX :: Agentic Engineering
         </div>
       </div>
 

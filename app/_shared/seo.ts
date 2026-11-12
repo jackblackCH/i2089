@@ -4,7 +4,7 @@ import { alt as ogAlt, size as ogSize } from "../opengraph-image";
 const NAME = "Marc Illien";
 
 /* Every page's metadata in one shape: the search keywords lead the title
-   and the name closes it (layout.tsx template "%s · Marc Illien"), the
+   and the name closes it (layout.tsx template "%s :: Marc Illien"), the
    description is written for the result snippet (~150 characters), and
    each page declares its canonical URL. Open Graph and Twitter repeat the
    same title and description, since a page-level openGraph object
@@ -22,10 +22,10 @@ export function pageMeta({
   title: string;
   description: string;
   path: string;
-  /** use the title as-is, without "· Marc Illien" (home, About) */
+  /** use the title as-is, without ":: Marc Illien" (home, About) */
   absolute?: boolean;
 }): Metadata {
-  const full = absolute ? title : `${title} · ${NAME}`;
+  const full = absolute ? title : `${title} :: ${NAME}`;
   return {
     title: absolute ? { absolute: title } : title,
     description,

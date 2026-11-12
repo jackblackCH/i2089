@@ -29,7 +29,7 @@ export function GET() {
     "";
 
   const lines: string[] = [];
-  lines.push(`# i2089 · Marc Illien`);
+  lines.push(`# i2089 :: Marc Illien`);
   lines.push("");
   lines.push(`> ${intro}`);
   lines.push("");
