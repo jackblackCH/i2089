@@ -35,7 +35,7 @@ export const SCORES: Record<string, PageScore> = {
     evidence: [
       "Arrows: fallback system glyphs → drawn to the font's metrics",
       "Bands: text changed every 10 s → fixed labels with arrows",
-      "Name: 11 px tracked caps → 16.6 px, one line justified to the logo",
+      "Name: 11 px tracked caps → the logo itself turns into MARC ILLIEN",
       "Contact: none → filled button at y 785 px (desktop)",
       "Client line: 0 → 5 names, each linked to its proof",
       "Nav: 0 → 2 offer links",

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "AI coaching for dev teams and frontend engineering in React and Next.js. Marc Illien, independent software engineer in Zürich.",
 };
 
-// The wordmark byline reveals once per session (see .np-byline in
+// The app/proto subline reveals once per session (see .np-signature in
 // shared.css). Runs before paint: if the reveal already played, mark the
 // root so CSS skips it; otherwise remember it and mark the root after the
 // reveal has finished, so later navigations show the line at rest.

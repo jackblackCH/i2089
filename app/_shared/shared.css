@@ -115,9 +115,9 @@
     inset 0 1px 0 var(--np-light-strong);
 }
 
-/* Tracked subline, set to the full width of i2089. The site now uses
-   the readable .np-byline; this stays for app/proto, which still renders
-   the old subline. Letter spacing is
+/* Tracked subline, set to the full width of i2089. The site no longer
+   uses it (the logo itself turns into the name, logo-mark.tsx); it stays
+   for app/proto, which still renders it. Letter spacing is
    computed from the logo size, not fixed: the text keeps a 9px floor, so
    a fixed tracking would overflow the logo on small screens. --logo is
    the logo's own size (set on .np).
@@ -143,19 +143,9 @@
   }
 }
 
-/* First impression: the byline draws in left to right under the logo,
-   700ms ease-in-out after a 250ms beat — once per session (layout.tsx
-   sets data-signature-seen). Off under reduced motion.
-   The xl line is justified to the logo's width: "Marc Illien · AI
-   coaching & frontend engineering" measures 24.9em, the box is 3.27
-   logo-ems (3.36 minus the side bearings), so 0.128 of the logo size
-   fits with ~3% left for the word gaps to absorb. Remeasure if the
-   text or the weight changes. */
-.np-byline-justified {
-  font-size: calc(var(--logo) * 0.128);
-  text-align: justify;
-  text-align-last: justify;
-}
+/* app/proto: the subline draws in left to right under the logo, 700ms
+   ease-in-out after a 250ms beat — once per session (layout.tsx sets
+   data-signature-seen). Off under reduced motion. */
 @keyframes signature-reveal {
   from {
     clip-path: inset(0 100% 0 0);
@@ -165,7 +155,7 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  :root:not([data-signature-seen]) .np-byline {
+  :root:not([data-signature-seen]) .np-signature {
     animation: signature-reveal 700ms var(--ease-in-out) 250ms both;
   }
 }
@@ -299,12 +289,6 @@
 :root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
   visibility: visible;
 }
-/* the name is in the logo itself, so the byline goes when the logo rests
-   on it; the other timings rest on i2089 and keep the byline (PFD R2) */
-:root[data-timing="once"] .np-byline {
-  display: none;
-}
-
 /* ── Labels as selected text (variants.ts "labels") ───────────────────
    The fg box with surface text, like a text selection: tight to the cap
    height with a little air. "outline" turns the contact button into a
