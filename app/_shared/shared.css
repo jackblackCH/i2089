@@ -340,7 +340,48 @@
   box-shadow: inset 0 0 0 1px var(--np-fg);
 }
 
-/* ── Calm labels (variants.ts labels "calm", the default) ─────────────
+/* ── Selected labels (variants.ts labels "selected", the default) ─────
+   The same fg box, made coherent. One rule for every heading label (the
+   offer entries, About, Role/Period/What I did/Stack, the client and
+   project list labels):
+   - the box edge sits on the content edge; the text moves in by the
+     padding, so the left edge of the column stays one straight line
+     (the old "fill" box hung 0.35em out of it);
+   - the label is trimmed to cap height, so its padding would overlap the
+     text around it; a margin of the same size gives the box its own room
+     above, and a full label step below (the box never touches the copy);
+   - a hairline splits the entries with the space shared evenly, so each
+     entry reads as one chunk (PFD L0/L2);
+   - the contact button is outlined: filled means heading, outlined with
+     an arrow means action, so the action stays the clearest signal (R5). */
+:root[data-labels="selected"] .np-label .np-label-text {
+  background: var(--np-fg);
+  color: var(--np-surface);
+  font-weight: 700;
+  padding: 0.3em 0.45em 0.25em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+:root[data-labels="selected"] .np-label {
+  margin-block: 0.3em 0.5em;
+}
+:root[data-labels="selected"] .np-list {
+  row-gap: calc(var(--spacing-group) / 2);
+}
+:root[data-labels="selected"] .np-item + .np-item {
+  border-top: 1px solid var(--np-rule);
+  padding-top: calc(var(--spacing-group) / 2);
+}
+:root[data-labels="selected"] .np-list > :not(.np-item) + .np-item {
+  margin-top: calc(var(--spacing-group) / 2);
+}
+:root[data-labels="selected"] .np-cta {
+  background: transparent;
+  color: var(--np-fg);
+  box-shadow: inset 0 0 0 1px var(--np-fg);
+}
+
+/* ── Calm labels (variants.ts labels "calm") ──────────────────────────
    No boxes: the label stays small caps in the label colour, the offer
    pages number their entries, and a hairline splits the entries with the
    space shared evenly above and below it. Hierarchy comes from position,
