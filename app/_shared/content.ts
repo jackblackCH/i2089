@@ -23,41 +23,30 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "frontend",
-    /* Frontend & Apps: Marc's main offer, first everywhere. One offer
-       for web and mobile interfaces (an app buyer must see "app" at first
-       glance; a third offer would split attention, PFD L0). User
-       interfaces lead; each web example is a case on the site. UX lives
-       in "UX and design in code". */
-    title: "Frontend & Apps",
-    seoTitle: "Frontend & apps: React, Next.js & React Native, Zürich",
+    /* Marc's main offer, first everywhere. Nav and home band say
+       "Frontend & Apps"; the page title says "Frontend / UX" (Marc,
+       2026-11-12). One offer for web and mobile interfaces (a third offer
+       would split attention, PFD L0); each example is a case on the
+       site. */
+    title: "Frontend / UX",
+    seoTitle: "Frontend & UX: React, Next.js & React Native, Zürich",
     description:
       "I design and build web and mobile app interfaces in React, Next.js, React Native, Expo and SwiftUI. Fast, and easy to change. From Zürich.",
+    /* Three entries, only what a buyer needs (Marc, 2026-11-12): what
+       they get, where it runs, one proof each. TODO(marc): a mobile app
+       case (name, store link) once one can be shown. */
     items: [
       {
-        term: "User interfaces",
-        text: "Design and build the interfaces people work with every day: forms, calculators, product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
+        term: "Interfaces and UX",
+        text: "Design and build the interfaces people use every day, right in code. Like the SME calculator on axa.ch or the air up® shop.",
       },
       {
-        term: "Web apps",
-        text: "Build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. Performance is planned from the start, so Core Web Vitals and Lighthouse scores stay green.",
-      },
-      /* Marc designs and builds apps (2026-11-12). TODO(marc): add a case
-         (app name, store link) once one can be shown. */
-      {
-        term: "Mobile apps",
-        text: "Design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
+        term: "Web and mobile apps",
+        text: "Build fast apps that stay easy to change: Next.js and React on the web, React Native, Expo or SwiftUI on phones.",
       },
       {
-        term: "UX and design in code",
-        text: "Design interfaces, these days right in code: Claude Design, or Figma connected to Claude via MCP.",
-      },
-      {
-        term: "Custom business software",
-        text: "Build software tailored to how your business works: internal tools, customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
-      },
-      {
-        term: "Backend and DevOps",
-        text: "Keep backends small, usually on Node.js, and set them up so they are easy to run and deploy anywhere.",
+        term: "Business software",
+        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like AXA's consultant messenger.",
       },
     ],
   },
