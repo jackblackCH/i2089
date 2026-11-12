@@ -74,27 +74,34 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "engineering",
-    title: "UX / Frontend Engineering",
-    seoTitle: "UX / frontend engineering, React & Next.js, Zürich",
+    slug: "frontend",
+    /* Frontend & User Interfaces: user interfaces lead, each example is a
+       case on the site (axa, talentir, air-up). UX lives in entry 03. */
+    // non-breaking space: "User Interfaces" stays on one line
+    title: "Frontend & User\u00a0Interfaces",
+    seoTitle: "Frontend & user interfaces in React & Next.js, Zürich",
     description:
-      "I design and build fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. UX / frontend engineering from Zürich.",
+      "I design and build user interfaces and fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. From Zürich.",
     items: [
       {
-        term: "Custom business software",
-        text: "My specialty. I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like the SME calculator on axa.ch or AXA's consultant messenger.",
+        term: "User interfaces",
+        text: "I design and build the interfaces people work with every day, from forms and calculators to product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
       },
       {
-        term: "Frontend",
-        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind.",
+        term: "Frontend engineering",
+        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
+      },
+      {
+        term: "UX and design in code",
+        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP.",
+      },
+      {
+        term: "Custom business software",
+        text: "I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
       },
       {
         term: "Backend and DevOps",
         text: "My backends are usually small and run on Node.js. With my DevOps skills, they're easy to run and deploy anywhere.",
-      },
-      {
-        term: "UI/UX design",
-        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
       },
     ],
   },
@@ -257,6 +264,6 @@ export const clients: { name: string; href: string }[] = [
    audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   { words: ["Agentic Engineering for your dev team"], slugs: ["ai"] },
-  { words: ["UX / Frontend Engineering"], slugs: ["engineering"] },
+  { words: ["Frontend & User\u00a0Interfaces"], slugs: ["frontend"] },
   { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];

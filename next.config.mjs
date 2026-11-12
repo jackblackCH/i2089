@@ -5,7 +5,8 @@ const nextConfig = {
     ? { output: "export", images: { unoptimized: true }, trailingSlash: true }
     : {
         // /services was the old-design services page, /ai-solutions the
-        // AI page's first URL; both now point to /ai
+        // AI page's first URL; both now point to /ai. /engineering became
+        // /frontend.
         async redirects() {
           return [
             {
@@ -16,6 +17,11 @@ const nextConfig = {
             {
               source: "/ai-solutions",
               destination: "/ai",
+              permanent: true,
+            },
+            {
+              source: "/engineering",
+              destination: "/frontend",
               permanent: true,
             },
           ];

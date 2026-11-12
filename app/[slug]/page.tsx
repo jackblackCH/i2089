@@ -10,7 +10,7 @@ import { Column } from "../_shared/column";
 // engagement yet (Sincerity test).
 const CLIENT_LABEL: Record<string, string> = {
   ai: "Engineering clients",
-  engineering: "Clients",
+  frontend: "Clients",
 };
 
 export function generateStaticParams() {

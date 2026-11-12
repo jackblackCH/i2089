@@ -61,7 +61,7 @@ export const SCORES: Record<string, PageScore> = {
       "Calendar link, own-work links (TODO(marc))",
     ],
   },
-  "/engineering": {
+  "/frontend": {
     before: { L0: 78, L1: 60, L2: 82, L3: 45, L4: 35 },
     after: { L0: 84, L1: 74, L2: 86, L3: 62, L4: 76 },
     evidence: [

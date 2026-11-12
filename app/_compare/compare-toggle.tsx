@@ -14,7 +14,10 @@ import { REPLAY_EVENT } from "../_shared/variants";
 // design variants, "r" replays the logo motion. Remove this folder after
 // merge.
 // pages that moved: the old build only knows their first URL
-const BEFORE_PATH: Record<string, string> = { "/ai": "/ai-solutions" };
+const BEFORE_PATH: Record<string, string> = {
+  "/ai": "/ai-solutions",
+  "/frontend": "/engineering",
+};
 
 export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
   const pathname = usePathname();
