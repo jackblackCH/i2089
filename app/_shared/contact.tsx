@@ -35,11 +35,10 @@ export function Contact({ className = "" }: { className?: string }) {
   );
 }
 
-// The client line (PFD R4, L3 trust signal): a label over one line of
-// names, right under the contact action (column.tsx), so the proof sits
-// next to the decision. The names are bright links like body text; each
-// one opens the page that proves it.
-export function Clients({ label = "Clients" }: { label?: string }) {
+// The selected work (PFD R4, L3 trust signal): a label over one line of
+// names, closing the offer pages (column.tsx). The names are bright links
+// like body text; each one opens the case that proves it.
+export function Clients({ label = "Selected work" }: { label?: string }) {
   return (
     <div className="gap-y-label grid">
       <Text as="h2" variant="footer" className="np-label text-trim">

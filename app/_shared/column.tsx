@@ -5,10 +5,15 @@ import { Contact, Clients } from "./contact";
 import { Arrow } from "./arrow";
 
 // The right column of every content page: one flowing column — title,
-// the contact action, the client line, content — spaced by the group step.
+// the contact action, content, selected work — spaced by the group step.
 // The contact sits right under the title, so every page shows its next
 // step in the first screen (PFD R2, R5). It scrolls as a whole on md+
 // (never a box inside a box); the quiet links close the page at the foot.
+// one page padding minus the group step the column already adds; written
+// out in full so Tailwind finds the classes
+const PAD_Y = "my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
+const PAD_TOP = "mt-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
+
 export function Column({
   title,
   back,
@@ -46,17 +51,19 @@ export function Column({
         <Text as="h1" variant="title" className="px-pad">
           <span className="text-trim block">{title}</span>
         </Text>
-        {/* Three groups, one page padding apart (the same space as the
-            panel's top edge to the title, so it scales with
-            --spacing-pad): the title; the contact with its proof (the
-            client line, PFD L3), one item step apart inside the group;
-            the content. The column already spaces blocks by the group
-            step, so the margins add the difference (never below zero). */}
-        <div className="px-pad gap-y-item grid my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]">
-          <Contact />
-          {clients && <Clients label={clients} />}
-        </div>
+        {/* Groups one page padding apart (the same space as the panel's
+            top edge to the title, so it scales with --spacing-pad): the
+            title; the contact, one clean action; the content; and on
+            the offer pages the selected work, closing the page as proof
+            (PFD L3). The column already spaces blocks by the group step,
+            so the margins add the difference (never below zero). */}
+        <Contact className={`px-pad ${PAD_Y}`} />
         {children}
+        {clients && (
+          <div className={`px-pad ${PAD_TOP}`}>
+            <Clients label={clients} />
+          </div>
+        )}
       </Text>
 
       {linkedin && <Foot />}

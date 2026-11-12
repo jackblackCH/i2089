@@ -252,14 +252,14 @@ export const projectBySlug = Object.fromEntries(
   allWork.map((p) => [p.slug, p]),
 );
 
-/* PFD R4: the client line. Each name links to the page that proves it,
-   so a buyer can check the claim. */
+/* PFD R4: "Selected work" at the end of the offer pages. Each name links
+   to its case page, so a buyer can check the claim. OST (teaching, not a
+   case) lives on About (Marc, 2026-11-12). */
 export const clients: { name: string; href: string }[] = [
   { name: "AXA", href: "/projects/axa" },
   { name: "air up®", href: "/projects/air-up" },
   { name: "Talentir", href: "/projects/talentir" },
   { name: "Branded Goods", href: "/projects/branded-goods" },
-  { name: "OST", href: "/about" },
 ];
 
 /* the home: three equal bands, each a big title with an arrow and one

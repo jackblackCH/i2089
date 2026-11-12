@@ -6,12 +6,12 @@ import { Text } from "../_shared/text";
 import { RichText } from "../_shared/rich-text";
 import { Column } from "../_shared/column";
 
-// PFD R4: the client line on the two offer pages. On the AI page the
-// label says what the work was, since none of these clients is an AI
-// engagement yet (Sincerity test).
+// PFD R4: the selected cases at the end of the two offer pages. On the
+// AI page the label says what the work was, since none of these cases is
+// an AI engagement yet (Sincerity test).
 const CLIENT_LABEL: Record<string, string> = {
-  ai: "Engineering clients",
-  frontend: "Clients",
+  ai: "Selected engineering work",
+  frontend: "Selected work",
 };
 
 export function generateStaticParams() {
