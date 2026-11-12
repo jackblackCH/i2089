@@ -1,6 +1,8 @@
-/* An item is either a plain sentence (rendered as a highlight line)
-   or a term/text pair (rendered as a definition row with an arrow). */
-export type Item = string | { term: string; text: string };
+/* An item is a plain sentence (a highlight line), a term/text pair (a
+   label over its text), or a term with numbered steps (a format, read in
+   order). */
+export type Item =
+  string | { term: string; text: string } | { term: string; steps: string[] };
 
 export type Service = {
   slug: string;
@@ -18,13 +20,21 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-solutions",
-    title: "AI consulting & coaching",
-    seoTitle: "AI consulting & coaching for dev teams, Zürich",
+    /* "Agentic Engineering": the name peers use for disciplined work with
+       coding agents (ti8m, INNOQ, Caylent); "AI integration" reads as
+       product/RAG work, "AI transformation" as C-level change. The first
+       item explains the term in plain words. Research 2026-11-12. */
+    title: "Agentic Engineering for your dev team",
+    seoTitle: "Agentic engineering & AI coaching for dev teams, Zürich",
     description:
-      "AI coaching for dev teams in Zürich. A workshop day with your team, then hands-on coaching with Claude Code and Codex on your real tickets.",
+      "Agentic engineering for dev teams in Zürich: a workshop day, then hands-on coaching with Claude Code and Codex on your real tickets.",
     /* PFD R4 (docs/pfd/2026-11-11): claims a buyer can check. No
        multipliers; the measured result below carries the claim. */
     items: [
+      {
+        term: "What it is",
+        text: "AI coding agents like Claude Code and Codex plan, write, test and review code. Your engineers stay in charge and make the final call on every change. I set them up on the tools your company already uses.",
+      },
       {
         term: "Experience",
         text: "I've been engineering software for sixteen years, usually as a lead, and coaching has been part of that. For the last year, I've used Claude Code, Codex and the modern LLM tools daily.",
@@ -36,17 +46,16 @@ export const services: Service[] = [
         text: "At a Swiss SME, a team of [n] developers went from [n] to [n] tickets per sprint in [n] weeks.",
       },
       */
+      /* PFD L4: the format, in order, so a lead can plan it.
+         TODO(marc): add the real length of step 2 (weeks) and the team
+         size it fits; do not show numbers until they are real. */
       {
-        term: "How we start",
-        text: "We start with a workshop day with your team. After that, I coach on your real tickets, in 1:1s and pair programming.",
-      },
-      {
-        term: "Agentic workflows",
-        text: "I set up AI workflows that plan, write, test and review code. Your team stays in charge and makes the final call. I build them on Claude Code, Codex or whatever your company already uses.",
-      },
-      {
-        term: "Hands-on delivery",
-        text: "I can also join your team as engineer and coach at the same time. Your reviews, tests and handover stay as they are.",
+        term: "How we work",
+        steps: [
+          "A workshop day with your team.",
+          "Coaching on your real tickets, in 1:1s and pair programming.",
+          "If you want, I join the team as engineer and coach at the same time. Your reviews, tests and handover stay as they are.",
+        ],
       },
       {
         term: "Your rules",
@@ -237,7 +246,7 @@ export const clients: { name: string; href: string }[] = [
    clicks may move while they read). The third band is the static
    audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
-  { words: ["AI coaching for dev teams"], slugs: ["ai-solutions"] },
+  { words: ["Agentic Engineering for your dev team"], slugs: ["ai-solutions"] },
   { words: ["UX / Frontend Engineering"], slugs: ["engineering"] },
   { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];

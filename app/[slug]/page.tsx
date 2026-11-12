@@ -68,7 +68,25 @@ export default async function ContentPage({
               <Text variant="footer" className="np-label np-term text-trim">
                 <span className="np-label-text">{item.term}</span>
               </Text>
-              <p>{item.text}</p>
+              {"steps" in item ? (
+                // a format, read in order: numbers in the label colour,
+                // hung in the gutter like the project list arrows
+                <ol className="gap-y-item grid">
+                  {item.steps.map((step, i) => (
+                    <li key={step} className="text-trim pl-item relative">
+                      <span
+                        aria-hidden
+                        className="absolute left-0 text-(--np-mute) tabular-nums"
+                      >
+                        {i + 1}
+                      </span>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p>{item.text}</p>
+              )}
             </li>
           ),
         )}

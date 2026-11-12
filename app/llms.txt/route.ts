@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  type Item,
   services,
   projects,
   contracts,
@@ -13,6 +14,12 @@ const BASE_URL = "https://i2089.com";
 // llms.txt — https://llmstxt.org
 // Generated from the same content.ts that drives the site so the two
 // stay in sync. Served as text/plain, no HTML.
+// a step list reads as one numbered sentence in plain text
+const itemText = (item: Exclude<Item, string>) =>
+  "text" in item
+    ? item.text
+    : item.steps.map((step, i) => `${i + 1}. ${step}`).join(" ");
+
 export function GET() {
   const about = bySlug["about"];
   const intro =
@@ -35,7 +42,7 @@ export function GET() {
     lines.push(`- [${s.title}](${BASE_URL}/${s.slug})`);
     for (const item of s.items) {
       if (typeof item !== "string") {
-        lines.push(`  - **${item.term}**: ${item.text}`);
+        lines.push(`  - **${item.term}**: ${itemText(item)}`);
       }
     }
   }
@@ -61,7 +68,7 @@ export function GET() {
   lines.push("");
   for (const item of about?.items ?? []) {
     if (typeof item !== "string") {
-      lines.push(`- **${item.term}** — ${item.text}`);
+      lines.push(`- **${item.term}** — ${itemText(item)}`);
     }
   }
   lines.push("");

@@ -6,7 +6,7 @@ import { Text } from "./text";
 
 // PFD R5: both offers are one step away from every page
 const links = [
-  { href: "/ai-solutions", label: "AI coaching" },
+  { href: "/ai-solutions", label: "Agentic Engineering" },
   { href: "/engineering", label: "UX / Frontend Engineering" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
@@ -20,7 +20,9 @@ const links = [
 // need ~420px). Half a block step above and below, a group step between
 // the rows, so the taller tap areas (shared.css) never overlap.
 // md+: pinned to the foot of the column, spread with equal space around
-// each link, each centred; a 2x2 grid until lg, one row from lg.
+// each link, each centred; a 2x2 grid until xl, one row from xl (the
+// two long offer labels need ~370px together; at lg the row would have
+// no gaps left).
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -28,7 +30,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly lg:grid-cols-[repeat(4,auto)]"
+      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly xl:grid-cols-[repeat(4,auto)]"
     >
       {links.map(({ href, label }, i) => {
         // exact match is the page itself; a deeper path (a project under

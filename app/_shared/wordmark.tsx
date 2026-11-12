@@ -11,7 +11,7 @@ import { LogoMark } from "./logo-mark";
 // feeds the hidden text that assistive tech reads instead.
 export const BYLINE = {
   name: "Marc Illien",
-  offer: "AI coaching & UX / frontend engineering",
+  offer: "Agentic engineering & UX / frontend engineering",
 };
 
 export function Wordmark({ home = false }: { home?: boolean }) {
