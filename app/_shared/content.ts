@@ -44,7 +44,7 @@ export const services: Service[] = [
       },
       {
         term: "Web and mobile apps",
-        text: "Design and develop fast apps that stay easy to change: Next.js and React on the web, React Native, Expo or SwiftUI on phones.",
+        text: "Design and develop performant web apps, mobile-first and responsive. Ship iOS and Android apps end to end, from the code to the App Store and Google Play.",
       },
       {
         term: "Business software",
