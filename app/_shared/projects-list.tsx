@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Text } from "./text";
 import { Shot } from "./shot";
-import type { Project } from "./content";
+import { contracts, type Project } from "./content";
 import { Arrow } from "./arrow";
 
 // Large cards: the screenshot with title + date overlaid on a bottom
@@ -47,7 +47,9 @@ export function ProjectsList({
                   <div className="grid gap-y-[0.6em]">
                     <span className="text-trim">{p.title}</span>
                     <Text variant="footer" className="text-trim text-(--np-fg)/80!">
-                      {p.period}
+                      {/* contract work is marked, since the Work page
+                          lists it in one grid with the projects */}
+                      {contracts.includes(p) ? `Contract · ${p.period}` : p.period}
                     </Text>
                   </div>
                   <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />

@@ -1,11 +1,9 @@
-/* Design variants under test: the logo motion (i2089 → MARC ILLIEN) and
-   the label style. The chosen values live as data attributes
-   on <html> (set before paint by the script in layout.tsx), so CSS and
-   the logo read one source. On localhost and Vercel previews the
-   switcher (app/_compare) changes them and stores them in localStorage;
-   production always gets DEFAULTS. Once a variant is chosen, fold it in
-   and delete the others. */
-
+/* The chosen design variants (Marc, 2026-11-12): the logo motion (i2089
+   → MARC ILLIEN), its timing and fit, the label style and the blog look.
+   They live as data attributes on <html>, set before paint by the script
+   in layout.tsx, so CSS and the logo read one source. The before/after
+   switcher (app/_compare) is gone; every visitor gets DEFAULTS. The other
+   options stay listed until their CSS branches are pruned. */
 export const AXES = {
   motion: {
     label: "Motion",
@@ -66,26 +64,16 @@ export const DEFAULTS: Variants = {
   blog: "dark",
 };
 
-export const VARIANTS_KEY = "i2089-variants";
 /** sessionStorage flag: the logo motion has played this session */
 export const LOGO_SEEN_KEY = "i2089-logo";
 export const VARIANTS_EVENT = "i2089-variants";
 export const REPLAY_EVENT = "i2089-logo-replay";
 
-/* Inline, before paint: apply the variants (stored ones only where the
-   switcher exists) and mark a logo motion that already played, so a
-   "rest on the name" page never flashes i2089 first. */
-export function variantsScript(allowStored: boolean) {
-  // only values that still exist: a stored option that was removed
-  // (e.g. an old label style) falls back to the default
-  const options = Object.fromEntries(
-    Object.entries(AXES).map(([k, a]) => [k, Object.keys(a.options)]),
-  );
-  return `try{var d=document.documentElement,v=${JSON.stringify(DEFAULTS)};${
-    allowStored
-      ? `try{var o=${JSON.stringify(options)},s=JSON.parse(localStorage.getItem(${JSON.stringify(VARIANTS_KEY)})||"{}");for(var k in v)if(s[k]&&o[k].indexOf(s[k])>-1)v[k]=s[k]}catch(e){}`
-      : ""
-  }for(var k in v)d.dataset[k]=v[k];d.dataset.page=location.pathname==="/"?"home":"sub";if(sessionStorage.getItem(${JSON.stringify(LOGO_SEEN_KEY)}))d.dataset.logoSeen=""}catch(e){}`;
+/* Inline, before paint: apply the variants and mark a logo motion that
+   already played, so a "rest on the name" page never flashes i2089
+   first. */
+export function variantsScript() {
+  return `try{var d=document.documentElement,v=${JSON.stringify(DEFAULTS)};for(var k in v)d.dataset[k]=v[k];d.dataset.page=location.pathname==="/"?"home":"sub";if(sessionStorage.getItem(${JSON.stringify(LOGO_SEEN_KEY)}))d.dataset.logoSeen=""}catch(e){}`;
 }
 
 export function readVariants(): Variants {
@@ -97,13 +85,4 @@ export function readVariants(): Variants {
     labels: (d.labels as Variants["labels"]) ?? DEFAULTS.labels,
     blog: (d.blog as Variants["blog"]) ?? DEFAULTS.blog,
   };
-}
-
-export function writeVariants(next: Variants) {
-  const d = document.documentElement.dataset;
-  for (const k of Object.keys(next) as Axis[]) d[k] = next[k];
-  try {
-    localStorage.setItem(VARIANTS_KEY, JSON.stringify(next));
-  } catch {}
-  window.dispatchEvent(new Event(VARIANTS_EVENT));
 }

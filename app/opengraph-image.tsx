@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 export const dynamic = "force-static";
 
 export const alt =
-  "i2089, Marc Illien. Frontend and apps, agentic engineering for dev teams, Zürich.";
+  "i2089, Marc Illien. Frontend / UX and agentic engineering for teams, Zürich.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -68,7 +68,7 @@ export default async function Image() {
             color: mute,
           }}
         >
-          Marc Illien · Frontend & apps · Agentic engineering
+          Marc Illien · Frontend / UX · Agentic engineering
         </div>
       </div>
 

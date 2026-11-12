@@ -7,7 +7,7 @@ import { Column } from "../_shared/column";
 export const metadata: Metadata = pageMeta({
   title: "Projects: Next.js, Shopify & Saleor work",
   description:
-    "My work: Branded Goods on Saleor, air up® on Shopify and Talentir's product UI, all on Next.js. What I did, my role and the stack.",
+    "Selected work: Branded Goods on Saleor, air up® on Shopify, Talentir's product and AXA's SME calculator. Role, work and stack for each case.",
   path: "/projects",
 });
 

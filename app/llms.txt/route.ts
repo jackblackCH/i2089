@@ -34,7 +34,7 @@ export function GET() {
   lines.push(`> ${intro}`);
   lines.push("");
   lines.push(
-    `Independent software engineer in Zürich, Switzerland, working on Agentic Engineering and frontend software engineering for startups, SMEs and corporates.`,
+    `Independent software engineer in Zürich, Switzerland: frontend and UX for web and mobile apps, and Agentic Engineering for teams.`,
   );
   lines.push("");
 

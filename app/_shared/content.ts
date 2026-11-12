@@ -27,9 +27,9 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "frontend",
-    /* Marc's main offer, first everywhere. Nav and home band say
-       "Frontend & Apps"; the page title says "Frontend / UX" (Marc,
-       2026-11-12). One offer for web and mobile interfaces (a third offer
+    /* Marc's main offer, first everywhere, one name in every place:
+       "Frontend / UX" (Marc, 2026-11-12; home band, title, blog nav,
+       share image), so the link and the page it opens agree (PFD L4). One offer for web and mobile interfaces (a third offer
        would split attention, PFD L0); each example is a case on the
        site. */
     title: "Frontend / UX",
@@ -248,14 +248,14 @@ export const clients: { name: string; href: string }[] = [
 ];
 
 /* the home: three equal bands, each a big title with an arrow and one
-   small line under it. Frontend & Apps (Marc's main offer) first, then
+   small line under it. Frontend / UX (Marc's main offer) first, then
    Agentic Engineering, then the contact. PFD: three chunks (L0), one
    style for all rows (L2), the offers first and the contact last (L4),
    nothing moves while people read (R1). Kept as word lists, since
    app/proto still reads bands[0] and bands[1]. */
 export const bands: { words: string[]; slugs: string[]; sub: string }[] = [
   {
-    words: ["Frontend & Apps"],
+    words: ["Frontend / UX"],
     slugs: ["frontend"],
     sub: "Web and mobile apps. UX, design and development.",
   },

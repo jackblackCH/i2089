@@ -4,24 +4,14 @@ import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { Frame } from "./_shared/frame";
-import { CompareToggle } from "./_compare/compare-toggle";
 import { variantsScript } from "./_shared/variants";
-
-// PFD before/after toggle: on localhost and Vercel previews only, never
-// on i2089.com. Remove with app/_compare after merge.
-const COMPARE_BEFORE =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:2223"
-    : process.env.VERCEL_ENV === "preview"
-      ? "https://i2089.com"
-      : null;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
   // keywords first, name last — Google shows ~60 characters
   title: {
     template: "%s · Marc Illien",
-    default: "Marc Illien · Frontend & apps, agentic engineering, Zürich",
+    default: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
   },
   description:
     "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
@@ -100,7 +90,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: SIGNATURE_ONCE }} />
         <script
-          dangerouslySetInnerHTML={{ __html: variantsScript(!!COMPARE_BEFORE) }}
+          dangerouslySetInnerHTML={{ __html: variantsScript() }}
         />
         <script
           type="application/ld+json"
@@ -115,7 +105,6 @@ export default function RootLayout({
             </div>
           </div>
         </PostHogProvider>
-        {COMPARE_BEFORE && <CompareToggle beforeOrigin={COMPARE_BEFORE} />}
         <Analytics />
       </body>
     </html>

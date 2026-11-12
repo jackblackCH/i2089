@@ -53,11 +53,22 @@ export function Column({
         <Text as="h1" variant="title">
           <span className="text-trim block">{title}</span>
         </Text>
+        {/* the contact sits at the foot; on a long page or a phone it is
+            below the first screen, so the head points to it (PFD R5)
+            without repeating the address */}
+        <Text variant="footer" className="text-trim">
+          <a href="#contact" className="link-label hit-area">
+            Contact <Arrow dir="down" />
+          </a>
+        </Text>
       </div>
       {children && (
         <div className={`${BAND} np-groove-t gap-y-group`}>{children}</div>
       )}
-      <div className={`${BAND} np-groove-t gap-y-group px-pad`}>
+      <div
+        id="contact"
+        className={`${BAND} np-groove-t gap-y-group px-pad scroll-mt-pad`}
+      >
         {clients && <Clients label={clients} />}
         {linkedin && <LinkedIn />}
         <Contact />

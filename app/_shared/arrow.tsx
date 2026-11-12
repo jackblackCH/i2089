@@ -6,12 +6,13 @@
 // 45° arms a touch heavier (like the font's diagonals), square ends and a
 // sharp tip. The box is 0.88em wide and sits on the baseline, so it sets
 // like a glyph and scales with the text around it.
-type Dir = "right" | "left" | "up-right";
+type Dir = "right" | "left" | "up-right" | "down";
 
 const PATHS: Record<Dir, { shaft: string; head: string }> = {
   right: { shaft: "M50 -280H800", head: "M560 -530L800 -280L560 -30" },
   left: { shaft: "M830 -280H80", head: "M320 -530L80 -280L320 -30" },
   "up-right": { shaft: "M130 -70L730 -670", head: "M400 -700H760V-340" },
+  down: { shaft: "M440 -740V-40", head: "M190 -290L440 -40L690 -290" },
 };
 
 export function Arrow({

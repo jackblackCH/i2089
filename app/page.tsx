@@ -7,7 +7,7 @@ import { WithArrow } from "./_shared/arrow";
 import { pageMeta } from "./_shared/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Marc Illien · Frontend & apps, agentic engineering, Zürich",
+  title: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
   description:
     "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
   path: "/",
@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMeta({
 });
 
 // Right column, three equal bands in one style: a big title with an arrow
-// and one small line under it. Frontend & Apps first (the main offer),
+// and one small line under it. Frontend / UX first (the main offer),
 // then Agentic Engineering, then the contact as a band of its own, so
 // the page reads as one pattern three times (PFD L0: three chunks; L2:
 // one style, no mixed box). Proof (clients, audience) lives on the offer
@@ -24,7 +24,7 @@ export const metadata: Metadata = pageMeta({
 // takes at least its content and shares the rest of the height evenly;
 // the bands enter like every page (.enter, 50ms apart).
 const ROW =
-  "group grid content-center gap-y-item p-pad md:py-[calc(var(--spacing-pad)/2)] focus-visible:outline-1 focus-visible:outline-offset-[-12px] focus-visible:outline-(--np-fg)";
+  "group grid content-center gap-y-item px-pad py-[calc(var(--spacing-pad)/2)] focus-visible:outline-1 focus-visible:outline-offset-[-12px] focus-visible:outline-(--np-fg)";
 
 const ARROW =
   "transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none";

@@ -15,7 +15,7 @@ export default function Engineering() {
       <Column title="This page moved">
         <div className="gap-y-item px-pad grid justify-items-start">
           <Link href="/frontend" className="link-quiet text-trim">
-            <WithArrow text="Frontend & Apps" />
+            <WithArrow text="Frontend / UX" />
           </Link>
         </div>
       </Column>
