@@ -19,9 +19,11 @@ export type Service = {
 
 /* Copy follows the precision-copy rules: objective language, short
    complete sentences, concrete and checkable, no sales adjectives.
-   Entries about Marc's work are front-loaded accomplishment lines in the
-   implied first person: a verb first, present tense for offers and
-   current roles, past tense for finished work (swiss-engineer-voice). */
+   Finished work (project Work lines, past About entries) is written as
+   front-loaded accomplishment lines in the implied first person ("Led
+   the frontend…"). Offers and current roles keep "I" ("I design and
+   build…"): without it a present-tense verb reads as an order to the
+   reader (PFD 2026-11-12, swiss-engineer-voice). */
 export const services: Service[] = [
   {
     slug: "frontend",
@@ -40,15 +42,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Interfaces and UX",
-        text: "Design and build interfaces that are easy to use, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
+        text: "I design and build interfaces that are easy to use, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
       },
       {
         term: "Web and mobile apps",
-        text: "Design and develop performant web apps, mobile-first and responsive. Ship iOS and Android apps end to end, from the code to the App Store and Google Play.",
+        text: "I design and develop performant web apps, mobile-first and responsive. I ship iOS and Android apps end to end, from the code to the App Store and Google Play.",
       },
       {
         term: "Business software",
-        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like a [custom WhatsApp-like consultant messenger](/projects/axa) for insurers.",
+        text: "I build software that fits how your business works: internal tools, customer portals, SaaS. Like a [custom WhatsApp-like consultant messenger](/projects/axa) for insurers.",
       },
     ],
   },
@@ -57,53 +59,36 @@ export const services: Service[] = [
     /* "Agentic Engineering": the name peers use for disciplined work with
        coding agents (ti8m, INNOQ, Caylent); "AI integration" reads as
        product/RAG work, "AI transformation" as C-level change. The first
-       item explains the term in plain words. Research 2026-11-12. */
+       item says in plain words what the team gets. Research 2026-11-12. */
     title: "Agentic Engineering for teams",
     seoTitle: "Agentic engineering & AI coaching for dev teams, Zürich",
     description:
       "Agentic engineering for dev teams in Zürich: a workshop day, then hands-on coaching with Claude Code and Codex on your real tickets.",
-    /* PFD R4 (docs/pfd/2026-11-11): claims a buyer can check. No
-       multipliers; the measured result below carries the claim. */
+    /* PFD run 2026-11-12 (docs/pfd/2026-11-12-ai-page.md): three entries,
+       about 110 words. The outcome and the safety rule first (R2, R4),
+       the format as the path to the contact (R5), one name for the tool
+       (R3). Checkable claims only (R4): "faster" is not claimed until a
+       measured result exists.
+       TODO(marc): the measured result, anonymous for now ("At a Swiss SME,
+       a team of [n] developers went from [n] to [n] tickets per sprint in
+       [n] weeks."), and the real length of the coaching step and the team
+       size it fits; do not show numbers until they are real. */
     items: [
       {
-        term: "What it is",
-        text: "AI coding agents like Claude Code and Codex plan, write, test and review code. Your engineers stay in charge and make the final call on every change.",
-      },
-      /* Marc's method, in his words (2026-11-12): rules and skills in the
-         existing project, prompting strategies, design and code connected.
-         "Faster" stays a goal, not a number (PFD R4). */
-      {
-        term: "What I teach",
-        text: "Set up Claude Code in your existing projects, with rules and skills that fit your codebase. Show your team how to prompt, which strategy fits which task, and how to connect design and code. The goal: your team uses LLMs in the projects it already has, and delivers faster.",
+        term: "The result",
+        text: "Your team works with AI coding agents like Claude Code and Codex in the projects it already has. Your engineers decide, and every change still goes through your code review and tests.",
       },
       {
-        term: "Experience",
-        text: "Sixteen years of engineering software, usually as a lead, with coaching as part of the work. Claude Code, Codex and the modern LLM tools every day for the last year.",
-      },
-      /* TODO(marc): the measured result, anonymous for now. Fill in and
-         uncomment; keep every value checkable.
-      {
-        term: "A result",
-        text: "At a Swiss SME, a team of [n] developers went from [n] to [n] tickets per sprint in [n] weeks.",
-      },
-      */
-      /* PFD L4: the format, in order, so a lead can plan it.
-         TODO(marc): add the real length of step 2 (weeks) and the team
-         size it fits; do not show numbers until they are real. */
-      {
-        term: "How we work",
+        term: "How it works",
         steps: [
-          "A workshop day with your team.",
-          "Coaching on your real tickets, in 1:1s and pair programming.",
-          "Optional: engineer and coach in your team at the same time. Your reviews, tests and handover stay as they are.",
+          "A workshop day: I set up Claude Code in your codebase, with rules and skills that fit it.",
+          "Coaching on your real tickets, in 1:1s and pair programming: which prompts and workflows fit which task.",
+          "Optional: I join your team as engineer and coach.",
         ],
       },
-      /* Checkable, confirmed by Marc (2026-11-12). Not claimed: a
-         client's own LLM gateway, or that providers never train on the
-         code. TODO(marc): add those only once they are true. */
       {
-        term: "Review and tests",
-        text: "Every change the AI writes goes through your normal code review and tests before it is merged.",
+        term: "Who coaches",
+        text: "I have engineered software for sixteen years, usually as a lead, and coaching has been part of it. I have used Claude Code and Codex every day for the last year.",
       },
     ],
   },
@@ -117,15 +102,15 @@ export const services: Service[] = [
       "Hi, I'm Marc, a frontend engineer in Zürich. I build web and mobile products and coach dev teams in working with AI tools.",
       {
         term: "since 2023",
-        text: "Run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
+        text: "I run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
       },
       {
         term: "since 2014",
-        text: "Teach Frontend Engineering (CAS) at OST in Rapperswil.",
+        text: "I teach Frontend Engineering (CAS) at OST in Rapperswil.",
       },
       {
         term: "2025 — 2026",
-        text: "Build frontends for [AXA Switzerland's](/projects/axa) WebHub. Contract, Zürich.",
+        text: "I build frontends for [AXA Switzerland's](/projects/axa) WebHub. Contract, Zürich.",
       },
       {
         term: "2024",
