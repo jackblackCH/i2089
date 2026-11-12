@@ -5,6 +5,7 @@ import { PostHogProvider } from "../components/PostHogProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { Frame } from "./_shared/frame";
 import { CompareToggle } from "./_compare/compare-toggle";
+import { variantsScript } from "./_shared/variants";
 
 // PFD before/after toggle: on localhost and Vercel previews only, never
 // on i2089.com. Remove with app/_compare after merge.
@@ -95,6 +96,9 @@ export default function RootLayout({
     <html lang="en" className="h-svh" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: SIGNATURE_ONCE }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: variantsScript(!!COMPARE_BEFORE) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

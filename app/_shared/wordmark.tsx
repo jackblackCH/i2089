@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Text } from "./text";
 import { Nav } from "./nav";
+import { LogoMark } from "./logo-mark";
 
 // Wordmark — full height of the left column. The byline is hung off the
 // wordmark's baseline out of flow, so place-items-center sees the
@@ -23,17 +24,15 @@ export const BYLINE = {
 export function Wordmark({ home = false }: { home?: boolean }) {
   const mark = (
     <>
-      <Text as={home ? "h1" : "span"} variant="logo">
-        i2089
-        {/* on home the logo is the h1; the hidden suffix reads the
-            byline as part of it, and the visible byline is hidden from
-            assistive tech so it is not read twice */}
-        {home && (
-          <span className="sr-only">
-            {" "}
-            · {BYLINE.name}, {BYLINE.offer}, Zürich
-          </span>
-        )}
+      <Text as={home ? "h1" : "span"} variant="logo" className="np-logo-host">
+        {/* the visible logo (i2089 turning into MARC ILLIEN) is hidden
+            from assistive tech; this line reads instead. On home it is
+            the h1, so it carries the offer too. */}
+        <span className="sr-only">
+          i2089 · {BYLINE.name}
+          {home && `, ${BYLINE.offer}, Zürich`}
+        </span>
+        <LogoMark />
       </Text>
       <Text
         as="div"
@@ -53,7 +52,11 @@ export function Wordmark({ home = false }: { home?: boolean }) {
   );
 
   return (
-    <section className="p-pad relative grid place-items-center">
+    <section
+      className={`p-pad relative grid place-items-center ${
+        home ? "max-md:min-h-[max(38svh,210px)]" : "max-md:min-h-[max(18svh,150px)]"
+      }`}
+    >
       <Nav />
       {home ? (
         <div className="relative grid">{mark}</div>
