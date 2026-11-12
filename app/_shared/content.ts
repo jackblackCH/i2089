@@ -150,8 +150,9 @@ export type Project = {
   text: string;
   href: string;
   linkLabel: string;
-  /** screenshot under public/projects/ */
-  image: string;
+  /** screenshots under public/projects/, shown in this order; with more
+      than one, the card and the case page fade slowly through them */
+  images: string[];
   /** detail page — the role I held, in plain words */
   role: string;
   /** detail page — what the project is, one or two sentences */
@@ -169,7 +170,8 @@ export const contracts: Project[] = [
     text: "Recurring frontend contracts at Switzerland's largest insurer since 2018. Custom React apps: an SME calculator, an internal-agent communication tool, and pattern library design.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
-    image: "/projects/axa.jpg",
+    // the SME calculator I led first, then the axa.ch homepage
+    images: ["/projects/axa-calculator.jpg", "/projects/axa.jpg"],
     role: "Frontend Architect and Engineer",
     intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
@@ -192,7 +194,7 @@ export const projects: Project[] = [
     text: "I built the frontend and designed parts of the UI for branded-goods.ch, using Next.js and Tailwind on Saleor, an open-source e-commerce platform. I worked as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
-    image: "/projects/branded-goods.jpg",
+    images: ["/projects/branded-goods.jpg"],
     role: "Frontend Engineer and UI Designer",
     intro:
       "branded-goods.ch is an online shop built on Saleor, an open-source e-commerce platform. I worked on it as a partner of Avolut.",
@@ -209,7 +211,7 @@ export const projects: Project[] = [
     text: "I built headless e-commerce on Next.js and Shopify, set up a design system with Tailwind and shadcn/ui, moved the team to trunk-based delivery and led the frontend.",
     href: "https://air-up.com",
     linkLabel: "air-up.com",
-    image: "/projects/air-up.jpg",
+    images: ["/projects/air-up.jpg"],
     role: "Frontend Consultant and Lead Frontend",
     intro:
       "air up® sells its scent-flavoured drinking bottles online. I joined the team in Munich as a freelance frontend consultant.",
@@ -229,7 +231,7 @@ export const projects: Project[] = [
     text: "I designed the UX and UI for Talentir, which handles payouts for agencies, brands, labels and platforms, and built the product in Next.js and Tailwind with modern development methods.",
     href: "https://talentir.com",
     linkLabel: "talentir.com",
-    image: "/projects/talentir.jpg",
+    images: ["/projects/talentir.jpg"],
     role: "UX/UI Designer and Frontend Engineer",
     intro:
       "Talentir handles payouts for agencies, brands, labels and platforms. I designed and built the product that its customers work in.",
