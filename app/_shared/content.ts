@@ -3,6 +3,8 @@
    order). */
 export type Item =
   string | { term: string; text: string } | { term: string; steps: string[] };
+// In an item's text, [words](/projects/slug) links a project that has a
+// page (rich-text.tsx renders it; llms.txt makes the URL absolute).
 
 export type Service = {
   slug: string;
@@ -38,15 +40,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Interfaces and UX",
-        text: "Design and build the interfaces people use every day, right in code. Like the SME calculator on axa.ch or the air up® shop.",
+        text: "Design and build the interfaces people use every day, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
       },
       {
         term: "Web and mobile apps",
-        text: "Build fast apps that stay easy to change: Next.js and React on the web, React Native, Expo or SwiftUI on phones.",
+        text: "Design and develop fast apps that stay easy to change: Next.js and React on the web, React Native, Expo or SwiftUI on phones.",
       },
       {
         term: "Business software",
-        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like AXA's consultant messenger.",
+        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like [AXA's consultant messenger](/projects/axa).",
       },
     ],
   },
@@ -123,19 +125,19 @@ export const services: Service[] = [
       },
       {
         term: "2025 — 2026",
-        text: "Build frontends for AXA Switzerland's WebHub. Contract, Zürich.",
+        text: "Build frontends for [AXA Switzerland's](/projects/axa) WebHub. Contract, Zürich.",
       },
       {
         term: "2024",
-        text: "Led the frontend for AXA's SME wizard and calculator, a React microfrontend on axa.ch. Contract, Zürich.",
+        text: "Led the frontend for [AXA's SME wizard and calculator](/projects/axa), a React microfrontend on axa.ch. Contract, Zürich.",
       },
       {
         term: "2023 — 2024",
-        text: "Built air up®'s headless shop on Next.js and Shopify, plus its design system. Freelance, Munich.",
+        text: "Built [air up®'s headless shop](/projects/air-up) on Next.js and Shopify, plus its design system. Freelance, Munich.",
       },
       {
         term: "2022 — 2023",
-        text: "Architected AXA's consultant messenger in TypeScript and React. Contract, Winterthur.",
+        text: "Architected [AXA's consultant messenger](/projects/axa) in TypeScript and React. Contract, Winterthur.",
       },
     ],
   },

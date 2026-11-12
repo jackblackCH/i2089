@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { services, bySlug } from "../_shared/content";
 import { pageMeta } from "../_shared/seo";
 import { Text } from "../_shared/text";
+import { RichText } from "../_shared/rich-text";
 import { Column } from "../_shared/column";
 
 // PFD R4: the client line on the two offer pages. On the AI page the
@@ -99,7 +100,9 @@ export default async function ContentPage({
                   ))}
                 </ol>
               ) : (
-                <p className="text-trim">{item.text}</p>
+                <p className="text-trim">
+                  <RichText text={item.text} />
+                </p>
               )}
             </li>
           ),

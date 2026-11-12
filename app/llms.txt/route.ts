@@ -16,9 +16,10 @@ const BASE_URL = "https://i2089.com";
 // Generated from the same content.ts that drives the site so the two
 // stay in sync. Served as text/plain, no HTML.
 // a step list reads as one numbered sentence in plain text
+// site links in the text ([words](/path)) become absolute URLs
 const itemText = (item: Exclude<Item, string>) =>
   "text" in item
-    ? item.text
+    ? item.text.replace(/\]\(\//g, `](${BASE_URL}/`)
     : item.steps.map((step, i) => `${i + 1}. ${step}`).join(" ");
 
 export function GET() {

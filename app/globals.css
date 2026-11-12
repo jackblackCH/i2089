@@ -136,6 +136,27 @@
   }
 }
 
+/* A link inside a sentence: the text colour with a quiet underline, so
+   it is visible as a link at rest; hover brightens the line (rich-text.tsx). */
+@utility link-inline {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--np-mute);
+  transition: text-decoration-color 160ms ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+  &:focus-visible {
+    outline: none;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 2px;
+  }
+}
+
 /* for links set in the label colour — brighten to the foreground */
 @utility link-label {
   transition: color 160ms ease;
