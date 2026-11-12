@@ -4,10 +4,12 @@ import { Shot } from "./shot";
 import type { Project } from "./content";
 import { Arrow } from "./arrow";
 
-// One column of large cards: the screenshot with title + date overlaid
-// on a bottom gradient scrim. Cards are a group-step apart, like every
-// other block in the column. Card height is locked by pb-[62.5%] (10/16)
-// so images always render at full aspect regardless of parent height.
+// Large cards: the screenshot with title + date overlaid on a bottom
+// gradient scrim. One column, a group step apart; when the list itself
+// is at least 60rem wide (a very wide screen), two columns, so four
+// cases form a 2x2 grid instead of a narrow strip (container query, so
+// it follows the column, not the window). Card height is locked by
+// pb-[62.5%] (10/16), so images keep their aspect at any width.
 export function ProjectsList({
   projects,
   label,
@@ -16,15 +18,16 @@ export function ProjectsList({
   label?: string;
 }) {
   return (
-    <div className="gap-y-label px-pad grid">
+    <div className="gap-y-label px-pad @container grid">
       {label && (
         <Text variant="footer" as="h2" className="np-label text-trim">
           <span className="np-label-text">{label}</span>
         </Text>
       )}
-      <ul className="gap-y-group grid min-w-0">
+      <ul className="gap-y-group grid min-w-0 gap-x-group @min-[60rem]:grid-cols-2">
         {projects.map((p) => (
-          <li key={p.slug} className="min-w-0">
+          // a card, not text: free of the 60ch text measure (globals.css)
+          <li key={p.slug} className="min-w-0 max-w-none">
             <Link
               href={`/projects/${p.slug}`}
               aria-label={`${p.title}, ${p.period}`}
