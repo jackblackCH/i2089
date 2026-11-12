@@ -72,14 +72,17 @@ test('project work lines start with a verb, not "I"', () => {
   }
 });
 
-// PFD 2026-11-12: without "I" a present-tense offer reads as an order to
-// the reader ("Set up Claude Code in your projects…")
-test('offer entries in the present tense keep "I"', () => {
-  const ORDER = /^(Design|Build|Set up|Show|Ship|Run|Teach|Keep)\b/;
+// PFD 2026-11-12: offer entries are noun phrases. A present-tense verb
+// without a subject reads as an order to the reader ("Set up Claude Code
+// in your projects…"), and "I" made the offer pages read as self-talk.
+test("offer entries and steps are noun phrases, not orders or I-sentences", () => {
+  const BAD = /^(I |Design|Build|Develop|Set up|Show|Ship|Run|Teach|Keep)\b/;
   for (const s of services.filter((s) => s.slug !== "about")) {
     for (const item of s.items) {
-      if (typeof item !== "string" && "text" in item) {
-        assert.doesNotMatch(item.text, ORDER, `${s.slug} / ${item.term}`);
+      if (typeof item === "string") continue;
+      const lines = "text" in item ? [item.text] : item.steps;
+      for (const line of lines) {
+        assert.doesNotMatch(line, BAD, `${s.slug} / ${item.term}: "${line}"`);
       }
     }
   }

@@ -21,9 +21,10 @@ export type Service = {
    complete sentences, concrete and checkable, no sales adjectives.
    Finished work (project Work lines, past About entries) is written as
    front-loaded accomplishment lines in the implied first person ("Led
-   the frontend…"). Offers and current roles keep "I" ("I design and
-   build…"): without it a present-tense verb reads as an order to the
-   reader (PFD 2026-11-12, swiss-engineer-voice). */
+   the frontend…"). Offer entries are noun phrases ("Interfaces that are
+   easy to use…"): a present-tense verb without a subject reads as an
+   order to the reader (PFD 2026-11-12). Current roles on About keep "I"
+   ("I run i2089…"). See swiss-engineer-voice. */
 export const services: Service[] = [
   {
     slug: "frontend",
@@ -42,15 +43,15 @@ export const services: Service[] = [
     items: [
       {
         term: "Interfaces and UX",
-        text: "I design and build interfaces that are easy to use, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
+        text: "Interfaces that are easy to use, designed and built right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
       },
       {
         term: "Web and mobile apps",
-        text: "I design and develop performant web apps, mobile-first and responsive. I ship iOS and Android apps end to end, from the code to the App Store and Google Play.",
+        text: "Performant web apps, mobile-first and responsive. iOS and Android apps, end to end from the code to the App Store and Google Play.",
       },
       {
         term: "Business software",
-        text: "I build software that fits how your business works: internal tools, customer portals, SaaS. Like a [custom WhatsApp-like consultant messenger](/projects/axa) for insurers.",
+        text: "Software that fits how your business works: internal tools, customer portals, SaaS. Like a [custom WhatsApp-like consultant messenger](/projects/axa) for insurers.",
       },
     ],
   },
@@ -76,19 +77,19 @@ export const services: Service[] = [
     items: [
       {
         term: "The result",
-        text: "Your team works with AI coding agents like Claude Code and Codex in the projects it already has. Your engineers decide, and every change still goes through your code review and tests.",
+        text: "AI coding agents like Claude Code and Codex, in the projects your team already has. Your engineers decide, and every change still goes through your code review and tests.",
       },
       {
         term: "How it works",
         steps: [
-          "A workshop day: I set up Claude Code in your codebase, with rules and skills that fit it.",
+          "A workshop day: Claude Code set up in your codebase, with rules and skills that fit it.",
           "Coaching on your real tickets, in 1:1s and pair programming: which prompts and workflows fit which task.",
-          "Optional: I join your team as engineer and coach.",
+          "Optional: an engineer and coach inside your team.",
         ],
       },
       {
         term: "Who coaches",
-        text: "I have engineered software for sixteen years, usually as a lead, and coaching has been part of it. I have used Claude Code and Codex every day for the last year.",
+        text: "Sixteen years of engineering software, usually as a lead, with coaching as part of it. Claude Code and Codex in daily use for the last year.",
       },
     ],
   },
