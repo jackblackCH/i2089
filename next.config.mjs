@@ -4,13 +4,18 @@ const nextConfig = {
   ...(process.env.BUILD_STATIC
     ? { output: "export", images: { unoptimized: true }, trailingSlash: true }
     : {
-        // /services was the old-design services page; its content now
-        // lives on /ai-solutions
+        // /services was the old-design services page, /ai-solutions the
+        // AI page's first URL; both now point to /ai
         async redirects() {
           return [
             {
               source: "/services",
-              destination: "/ai-solutions",
+              destination: "/ai",
+              permanent: true,
+            },
+            {
+              source: "/ai-solutions",
+              destination: "/ai",
               permanent: true,
             },
           ];

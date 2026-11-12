@@ -19,7 +19,7 @@ export type Service = {
    complete sentences, concrete and checkable, no sales adjectives. */
 export const services: Service[] = [
   {
-    slug: "ai-solutions",
+    slug: "ai",
     /* "Agentic Engineering": the name peers use for disciplined work with
        coding agents (ti8m, INNOQ, Caylent); "AI integration" reads as
        product/RAG work, "AI transformation" as C-level change. The first
@@ -256,7 +256,7 @@ export const clients: { name: string; href: string }[] = [
    clicks may move while they read). The third band is the static
    audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
-  { words: ["Agentic Engineering for your dev team"], slugs: ["ai-solutions"] },
+  { words: ["Agentic Engineering for your dev team"], slugs: ["ai"] },
   { words: ["UX / Frontend Engineering"], slugs: ["engineering"] },
   { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];

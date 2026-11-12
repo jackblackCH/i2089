@@ -6,7 +6,7 @@ import { Text } from "./text";
 
 // PFD R5: both offers are one step away from every page
 const links = [
-  { href: "/ai-solutions", label: "Agentic Engineering" },
+  { href: "/ai", label: "Agentic Engineering" },
   { href: "/engineering", label: "UX / Frontend Engineering" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },

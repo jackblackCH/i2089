@@ -13,6 +13,9 @@ import { REPLAY_EVENT } from "../_shared/variants";
 // preview. Key "b" switches, "s" shows or hides the scores, "v" the
 // design variants, "r" replays the logo motion. Remove this folder after
 // merge.
+// pages that moved: the old build only knows their first URL
+const BEFORE_PATH: Record<string, string> = { "/ai": "/ai-solutions" };
+
 export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
   const pathname = usePathname();
   const [before, setBefore] = useState(false);
@@ -39,8 +42,8 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
 
   return (
     <>
-      {before && (
-        missingBefore ? (
+      {before &&
+        (missingBefore ? (
           <div className="fixed inset-0 z-[100] grid place-items-center bg-black text-sm text-neutral-300">
             This page is new. It has no &ldquo;before&rdquo;.
           </div>
@@ -48,11 +51,10 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
           <iframe
             key={pathname}
             title="Before"
-            src={beforeOrigin + pathname}
+            src={beforeOrigin + (BEFORE_PATH[pathname] ?? pathname)}
             className="fixed inset-0 z-[100] h-full w-full border-0 bg-black"
           />
-        )
-      )}
+        ))}
 
       <div className="fixed right-3 bottom-3 z-[101] grid max-w-[min(26rem,calc(100vw-1.5rem))] justify-items-end gap-2 font-mono text-[12px] leading-snug text-neutral-100">
         {variants && <VariantPanel />}
@@ -83,7 +85,8 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
               </>
             )}
             <div className="mt-3 text-neutral-500">
-              Site: {overall(SITE.before)} → {overall(SITE.after)} · keys: b, s, v, r
+              Site: {overall(SITE.before)} → {overall(SITE.after)} · keys: b, s,
+              v, r
             </div>
           </div>
         )}
@@ -124,11 +127,19 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
   );
 }
 
-const signed = (d: number | null) => (d === null ? "" : d > 0 ? `+${d}` : `${d}`);
+const signed = (d: number | null) =>
+  d === null ? "" : d > 0 ? `+${d}` : `${d}`;
 
-function ScoreTable({ before, after }: { before: Layers | null; after: Layers }) {
+function ScoreTable({
+  before,
+  after,
+}: {
+  before: Layers | null;
+  after: Layers;
+}) {
   const keys = ["L0", "L1", "L2", "L3", "L4"] as const;
-  const delta = (k: (typeof keys)[number]) => (before ? after[k] - before[k] : null);
+  const delta = (k: (typeof keys)[number]) =>
+    before ? after[k] - before[k] : null;
   return (
     <table className="w-full tabular-nums">
       <thead className="text-neutral-400">
@@ -145,9 +156,7 @@ function ScoreTable({ before, after }: { before: Layers | null; after: Layers })
             <td>{k}</td>
             <td className="text-right">{before ? before[k] : "–"}</td>
             <td className="text-right">{after[k]}</td>
-            <td className="text-right text-emerald-300">
-              {signed(delta(k))}
-            </td>
+            <td className="text-right text-emerald-300">{signed(delta(k))}</td>
           </tr>
         ))}
         <tr className="border-t border-white/15 font-bold">

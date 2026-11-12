@@ -9,7 +9,7 @@ import { Column } from "../_shared/column";
 // label says what the work was, since none of these clients is an AI
 // engagement yet (Sincerity test).
 const CLIENT_LABEL: Record<string, string> = {
-  "ai-solutions": "Engineering clients",
+  ai: "Engineering clients",
   engineering: "Clients",
 };
 

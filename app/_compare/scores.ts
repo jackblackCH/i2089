@@ -45,7 +45,7 @@ export const SCORES: Record<string, PageScore> = {
       "Anonymous AI result (TODO(marc))",
     ],
   },
-  "/ai-solutions": {
+  "/ai": {
     before: { L0: 78, L1: 55, L2: 75, L3: 30, L4: 35 },
     after: { L0: 85, L1: 78, L2: 86, L3: 52, L4: 80 },
     evidence: [
