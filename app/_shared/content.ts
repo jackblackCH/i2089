@@ -58,7 +58,7 @@ export const services: Service[] = [
        coding agents (ti8m, INNOQ, Caylent); "AI integration" reads as
        product/RAG work, "AI transformation" as C-level change. The first
        item explains the term in plain words. Research 2026-11-12. */
-    title: "Agentic Engineering for your dev team",
+    title: "Agentic Engineering for teams",
     seoTitle: "Agentic engineering & AI coaching for dev teams, Zürich",
     description:
       "Agentic engineering for dev teams in Zürich: a workshop day, then hands-on coaching with Claude Code and Codex on your real tickets.",

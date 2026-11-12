@@ -13,10 +13,9 @@ const variants = {
     "text-[clamp(30px,6.6vw,72px)] font-normal leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,33px)]",
   /* body copy on detail pages — exactly half the title scale */
   /* 15px floor on phones (PFD L0: 13px cost reading effort); above
-     that it scales with the viewport. md+: 14px floor, 1.022vw (about
-     14.7px at 1440), 22px cap, so the copy stays calm next to the
-     title */
-  body: "text-[clamp(15px,2.2vw,36px)] leading-snug md:text-[clamp(14px,1.022vw,22px)]",
+     that it scales with the viewport. md+: held at 14px (Marc,
+     2026-11-12), so the copy stays calm next to the title */
+  body: "text-[clamp(15px,2.2vw,36px)] leading-snug md:text-[clamp(14px,1.022vw,14px)]",
   /* labels, small links and the colophon — 11px floor so uppercase
      tracking stays legible */
   footer:
