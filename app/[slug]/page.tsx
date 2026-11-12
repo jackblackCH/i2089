@@ -6,11 +6,10 @@ import { Text } from "../_shared/text";
 import { RichText } from "../_shared/rich-text";
 import { Column } from "../_shared/column";
 
-// PFD R4: the selected cases at the end of the two offer pages. On the
-// AI page the label says what the work was, since none of these cases is
-// an AI engagement yet (Sincerity test).
+// PFD R4: the selected cases at the end of the two offer pages, one label
+// on both (Marc, 2026-11-12).
 const CLIENT_LABEL: Record<string, string> = {
-  ai: "Selected engineering work",
+  ai: "Selected work",
   frontend: "Selected work",
 };
 
