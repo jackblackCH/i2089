@@ -31,7 +31,7 @@ const detail = (title: string): PageScore => ({
 export const SCORES: Record<string, PageScore> = {
   "/": {
     before: { L0: 80, L1: 55, L2: 80, L3: 30, L4: 30 },
-    after: { L0: 84, L1: 70, L2: 85, L3: 55, L4: 68 },
+    after: { L0: 82, L1: 78, L2: 86, L3: 58, L4: 78 },
     evidence: [
       "Arrows: fallback system glyphs → drawn to the font's metrics",
       "Bands: text changed every 10 s → fixed labels with arrows",
@@ -47,12 +47,13 @@ export const SCORES: Record<string, PageScore> = {
   },
   "/ai-solutions": {
     before: { L0: 78, L1: 55, L2: 75, L3: 30, L4: 35 },
-    after: { L0: 84, L1: 72, L2: 85, L3: 48, L4: 76 },
+    after: { L0: 85, L1: 78, L2: 86, L3: 52, L4: 80 },
     evidence: [
       "Multipliers: 5 (10x, 50x, 5x to 10x) → 0",
       "Pitch words (slop, backlog melts, boring tickets) → calm, checkable facts",
       "Contact: y 936 px, 13 px link → y 249 px, filled, 45 px tall",
-      "First step stated: workshop day, then coaching on real tickets",
+      "Name: one term everywhere, \"Agentic Engineering\", explained in plain words first",
+      "Format: three numbered steps (workshop day, coaching on real tickets, optional joining)",
       "Client line labelled \"Engineering clients\" (Sincerity: none is an AI case)",
     ],
     open: [
@@ -101,5 +102,5 @@ export const SCORES: Record<string, PageScore> = {
 
 export const SITE = {
   before: { L0: 78, L1: 55, L2: 80, L3: 38, L4: 35 },
-  after: { L0: 84, L1: 72, L2: 85, L3: 58, L4: 74 },
+  after: { L0: 84, L1: 78, L2: 86, L3: 62, L4: 79 },
 };
