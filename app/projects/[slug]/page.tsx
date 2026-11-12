@@ -100,7 +100,7 @@ export default async function ProjectPage({
       <div className="np-list gap-y-group px-pad grid">
         <p className="text-trim">{project.intro}</p>
 
-        <Field label="What I did">
+        <Field label="Work">
           <ul className="gap-y-item grid">
             {project.highlights.map((h) => (
               <li key={h} className="text-trim relative pl-item">
