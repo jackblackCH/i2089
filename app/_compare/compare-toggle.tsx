@@ -3,17 +3,21 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SCORES, SITE, overall, type Layers } from "./scores";
+import { VariantPanel } from "./variant-panel";
+import { REPLAY_EVENT } from "../_shared/variants";
 
 // Before/after switch for the PFD fixes. Rendered only on localhost and
 // Vercel previews (layout.tsx), never on i2089.com. "Before" lays the
 // same path from the old build over the page in a full-screen frame:
 // localhost:2223 (a worktree at 01eff2d) in dev, the live site on a
-// preview. Key "b" switches, "s" shows or hides the scores. Remove this
-// folder after merge.
+// preview. Key "b" switches, "s" shows or hides the scores, "v" the
+// design variants, "r" replays the logo motion. Remove this folder after
+// merge.
 export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
   const pathname = usePathname();
   const [before, setBefore] = useState(false);
   const [panel, setPanel] = useState(false);
+  const [variants, setVariants] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -22,6 +26,8 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
       if (t?.closest("input,textarea,[contenteditable]")) return;
       if (e.key === "b") setBefore((v) => !v);
       if (e.key === "s") setPanel((v) => !v);
+      if (e.key === "v") setVariants((v) => !v);
+      if (e.key === "r") window.dispatchEvent(new Event(REPLAY_EVENT));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -49,6 +55,7 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
       )}
 
       <div className="fixed right-3 bottom-3 z-[101] grid max-w-[min(26rem,calc(100vw-1.5rem))] justify-items-end gap-2 font-mono text-[12px] leading-snug text-neutral-100">
+        {variants && <VariantPanel />}
         {panel && (
           <div className="max-h-[70svh] w-full overflow-y-auto rounded-md border border-white/15 bg-neutral-950/95 p-3 shadow-2xl backdrop-blur">
             <div className="mb-2 text-neutral-400">
@@ -76,7 +83,7 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
               </>
             )}
             <div className="mt-3 text-neutral-500">
-              Site: {overall(SITE.before)} → {overall(SITE.after)} · keys: b, s
+              Site: {overall(SITE.before)} → {overall(SITE.after)} · keys: b, s, v, r
             </div>
           </div>
         )}
@@ -95,6 +102,14 @@ export function CompareToggle({ beforeOrigin }: { beforeOrigin: string }) {
               </button>
             );
           })}
+          <button
+            type="button"
+            aria-pressed={variants}
+            onClick={() => setVariants((v) => !v)}
+            className={`border-l border-white/15 px-3 py-2 ${variants ? "text-white" : "text-neutral-300 hover:text-white"}`}
+          >
+            Variants
+          </button>
           <button
             type="button"
             aria-pressed={panel}
