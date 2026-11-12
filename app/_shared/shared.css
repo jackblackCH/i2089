@@ -339,3 +339,32 @@
   color: var(--np-fg);
   box-shadow: inset 0 0 0 1px var(--np-fg);
 }
+
+/* ── Calm labels (variants.ts labels "calm", the default) ─────────────
+   No boxes: the label stays small caps in the label colour, the offer
+   pages number their entries, and a hairline splits the entries with the
+   space shared evenly above and below it. Hierarchy comes from position,
+   size and space; the filled contact button is the only filled shape, so
+   it stays the clearest signal (PFD R5). The design-audit verdict: five
+   filled boxes out-shouted the content and broke the left edge. */
+.np-num {
+  display: none;
+}
+:root[data-labels="calm"] .np-num {
+  display: inline-block;
+  min-width: 2.6em;
+  color: var(--np-fg);
+  font-variant-numeric: tabular-nums;
+}
+:root[data-labels="calm"] .np-list {
+  row-gap: calc(var(--spacing-group) / 2);
+}
+:root[data-labels="calm"] .np-item + .np-item {
+  border-top: 1px solid var(--np-rule);
+  padding-top: calc(var(--spacing-group) / 2);
+}
+/* after a plain sentence (About's intro) there is no hairline, so the
+   first entry keeps the full group step */
+:root[data-labels="calm"] .np-list > :not(.np-item) + .np-item {
+  margin-top: calc(var(--spacing-group) / 2);
+}

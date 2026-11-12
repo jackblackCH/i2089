@@ -27,6 +27,7 @@ export const AXES = {
   labels: {
     label: "Labels",
     options: {
+      calm: "Calm: numbers + hairlines, button filled",
       fill: "Selected, button filled",
       outline: "Selected, button outlined",
       terms: "Service terms only",
@@ -39,14 +40,15 @@ export type Axis = keyof typeof AXES;
 export type Variants = { [A in Axis]: keyof (typeof AXES)[A]["options"] };
 
 // Chosen by Marc on 2026-11-12. The loop runs on home only; reading
-// pages play the motion once and rest on the name (PFD R1). Labels bold
-// on the selected box, the contact button outlined (R5). See
-// docs/pfd/2026-11-12-variants.md.
+// pages play the motion once and rest on the name (PFD R1). Labels calm:
+// plain small caps, numbered on the offer pages, hairlines between
+// entries, so the filled contact button is the only filled shape (R5).
+// See docs/pfd/2026-11-12-variants.md.
 export const DEFAULTS: Variants = {
   motion: "blur",
   timing: "loop",
   fit: "same",
-  labels: "outline",
+  labels: "calm",
 };
 
 export const VARIANTS_KEY = "i2089-variants";

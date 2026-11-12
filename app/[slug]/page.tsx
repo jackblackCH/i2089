@@ -40,6 +40,12 @@ export async function generateMetadata({
   });
 }
 
+// the entry's number among the term entries (plain sentences don't count)
+const numberOf = (items: { length: number }[] | unknown[], index: number) =>
+  (items as unknown[])
+    .slice(0, index + 1)
+    .filter((it) => typeof it !== "string").length;
+
 export default async function ContentPage({
   params,
 }: {
@@ -56,16 +62,24 @@ export default async function ContentPage({
       clients={CLIENT_LABEL[slug]}
     >
       {/* each entry is a label over its text, one label-step apart;
-            entries are a group-step apart, like sections on a project */}
-      <ul className="gap-y-group px-pad grid">
-        {service.items.map((item) =>
+            entries are a group-step apart, like sections on a project.
+            The "calm" labels variant numbers the offer entries and puts a
+            hairline between entries (shared.css, .np-item). */}
+      <ul className="np-list gap-y-group px-pad grid">
+        {service.items.map((item, i) =>
           typeof item === "string" ? (
             <li key={item} className="text-trim">
               {item}
             </li>
           ) : (
-            <li key={item.term} className="gap-y-label grid">
+            <li key={item.term} className="np-item gap-y-label grid">
               <Text variant="footer" className="np-label np-term text-trim">
+                {/* About lists dates, so only the offer pages number */}
+                {slug !== "about" && (
+                  <span aria-hidden className="np-num">
+                    {String(numberOf(service.items, i)).padStart(2, "0")}
+                  </span>
+                )}
                 <span className="np-label-text">{item.term}</span>
               </Text>
               {"steps" in item ? (
