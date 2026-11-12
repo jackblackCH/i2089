@@ -41,7 +41,7 @@ export function ProjectsList({
                 {/* the foreground token at full strength, not the label
                     colour — the text sits on the dark scrim, not on the page */}
                 <div className="p-item absolute inset-0 flex items-end justify-between gap-x-item text-(--np-fg)">
-                  <div className="gap-y-label grid">
+                  <div className="grid gap-y-[0.6em]">
                     <span className="text-trim">{p.title}</span>
                     <Text variant="footer" className="text-trim text-(--np-fg)/80!">
                       {p.period}

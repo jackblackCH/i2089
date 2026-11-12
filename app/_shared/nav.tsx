@@ -45,9 +45,9 @@ export function Nav() {
       aria-label="Main"
       className="md:p-pad-tight z-10 flex justify-center self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0"
     >
-      <ul className="gap-x-label flex">
+      <ul className="flex gap-x-[0.6em]">
         {LINKS.map((l, i) => (
-          <li key={l.href} className="gap-x-label flex">
+          <li key={l.href} className="flex gap-x-[0.6em]">
             <NavLink {...l} />
             {i < LINKS.length - 1 && (
               <span aria-hidden className="text-(--np-mute)">

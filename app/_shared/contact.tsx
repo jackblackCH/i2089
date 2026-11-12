@@ -26,7 +26,7 @@ export function Contact({ className = "" }: { className?: string }) {
       <p className="text-trim">Let&apos;s talk. Zürich or remote.</p>
       <a
         href={`mailto:${EMAIL}`}
-        className="np-cta text-trim gap-x-label px-item py-label inline-flex items-center bg-(--np-fg) text-(--np-surface) transition-[transform,opacity] duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg) active:scale-[0.97] motion-reduce:active:scale-100"
+        className="np-cta text-trim gap-x-[0.6em] px-item py-[0.6em] inline-flex items-center bg-(--np-fg) text-(--np-surface) transition-[transform,opacity] duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg) active:scale-[0.97] motion-reduce:active:scale-100"
       >
         {EMAIL}
         <Arrow />
@@ -48,7 +48,7 @@ export function Clients({ label = "Selected work" }: { label?: string }) {
       <Text
         as="ul"
         variant="body"
-        className="gap-y-label flex flex-wrap text-(--np-mute)"
+        className="flex flex-wrap gap-y-[0.6em] text-(--np-mute)"
       >
         {clients.map((c, i) => (
           <li key={c.name} className="text-trim whitespace-nowrap">

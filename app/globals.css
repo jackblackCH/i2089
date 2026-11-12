@@ -43,14 +43,15 @@
   --spacing-pad: clamp(48px, 12vw, 96px);
   --spacing-pad-tight: clamp(10px, 0.9vw, 16px);
 
-  /* Content rhythm — one 0.6em unit, doubled per level, in em so it
-     scales with the body text it spaces. Use on body-sized containers
-     with trimmed text (text-trim), so each gap is the visible gap.
-     - label: a label to its content
+  /* Content rhythm, in em so it scales with the body text it spaces.
+     Use on body-sized containers with trimmed text (text-trim), so each
+     gap is the visible gap.
+     - label: a label to its content (1.22em, Marc 2026-11-12; only for
+              label-to-content gaps, small UI gaps use a fixed 0.6em)
      - item:  sibling items in a list (wider than the line gap, so
               items read as separate)
      - group: one block to the next (title, image, sections) */
-  --spacing-label: 0.6em;
+  --spacing-label: 1.22em;
   --spacing-item: 1.2em;
   --spacing-group: 2.4em;
 
@@ -112,6 +113,24 @@
   &:focus-visible {
     outline: 1px solid var(--np-fg);
     outline-offset: 0.5em;
+  }
+}
+
+/* Typesetting (web-typography skill): body text wraps "pretty" (no lone
+   last word, more even rag), headings "balance"; text in the content
+   column stops at 60ch: in this extended face a "0" is wider than the
+   average letter, so 60ch holds about 72 characters, inside the 45–75
+   character measure, so lines never get
+   too long on a wide screen. Base layer, so utilities win. */
+@layer base {
+  :is(p, li, dd, figcaption, blockquote) {
+    text-wrap: pretty;
+  }
+  :is(h1, h2, h3, h4) {
+    text-wrap: balance;
+  }
+  .np-panel :is(p, li) {
+    max-width: 60ch;
   }
 }
 

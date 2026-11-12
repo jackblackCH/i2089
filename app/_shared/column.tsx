@@ -77,7 +77,7 @@ function LinkedIn() {
         href="https://www.linkedin.com/in/marcillien/"
         target="_blank"
         rel="noopener noreferrer"
-        className="link-quiet hit-area text-trim gap-x-label inline-flex items-center"
+        className="link-quiet hit-area text-trim gap-x-[0.6em] inline-flex items-center"
       >
         <svg
           viewBox="0 0 24 24"
