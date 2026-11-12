@@ -41,7 +41,7 @@ function Field({
 }: {
   label: string;
   children: ReactNode;
-  /** an entry in the page's list (hairline between entries) */
+  /** an entry in the page's list (a group step between entries) */
   entry?: boolean;
 }) {
   return (
@@ -96,7 +96,7 @@ export default async function ProjectPage({
       </div>
 
       {/* the same entry pattern as the offer pages: the intro, then
-          labelled entries split by a hairline (shared.css, .np-list) */}
+          labelled entries a group step apart (shared.css, .np-list) */}
       <div className="np-list gap-y-group px-pad grid">
         <p className="text-trim">{project.intro}</p>
 

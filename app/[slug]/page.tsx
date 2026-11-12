@@ -65,7 +65,7 @@ export default async function ContentPage({
       {/* each entry is a label over its text, one label-step apart;
             entries are a group-step apart, like sections on a project.
             The "calm" labels variant numbers the offer entries and puts a
-            hairline between entries (shared.css, .np-item). */}
+            group step between entries (shared.css, .np-item). */}
       <ul className="np-list gap-y-group px-pad grid">
         {service.items.map((item, i) =>
           typeof item === "string" ? (

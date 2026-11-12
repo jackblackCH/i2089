@@ -311,8 +311,11 @@
   }
 }
 
+/* labels in the copy colour: small caps and size already mark them, so
+   grey added no meaning and cost contrast (Marc, 2026-11-12) */
 .np-label {
   justify-self: start;
+  color: var(--np-fg);
 }
 
 /* ── Calm labels (variants.ts labels "calm", the default) ─────────────
@@ -351,7 +354,8 @@
   row-gap: calc(var(--spacing-group) / 2);
 }
 :root[data-labels="calm"] .np-item + .np-item {
-  border-top: 1px solid var(--np-rule);
+  /* no hairline (Marc, 2026-11-12): the entries are a group step
+     apart, which is enough to read them as separate */
   padding-top: calc(var(--spacing-group) / 2);
 }
 /* next to a plain block (About's intro, a project's intro or link)

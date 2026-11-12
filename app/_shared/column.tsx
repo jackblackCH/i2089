@@ -4,14 +4,15 @@ import { Text } from "./text";
 import { Contact, Clients } from "./contact";
 import { Arrow } from "./arrow";
 
-// The right column of every content page, built like home: up to three
+// The right column of every content page, built like home: three
 // bands, split by the same groove, each centred in its own share of the
 // height (PFD L2: one pattern on every page).
-//   1. the head: back link, title and the contact, so every page shows
-//      its next step in the first screen (PFD R2, R5);
+//   1. the head: back link and title;
 //   2. the content;
-//   3. the foot: the selected work on the offer pages (proof, L3) or
-//      LinkedIn on About.
+//   3. the foot: the selected work (offer pages) or LinkedIn (About),
+//      then the contact, so the page ends on its next step (Marc,
+//      2026-11-12; PFD R5 trade: on a long page the contact is now below
+//      the first screen, the address stays in reach via scrolling).
 // md+: every band takes at least its content and the bands share the
 // rest of the height evenly, so the column fills the screen, grows and
 // shrinks with it, and the content band sits on the logo's midline when
@@ -34,42 +35,38 @@ export function Column({
   clients?: string;
   children?: ReactNode;
 }) {
-  const foot = clients ? (
-    <Clients label={clients} />
-  ) : linkedin ? (
-    <LinkedIn />
-  ) : null;
+
   return (
     <Text
       as="section"
       variant="body"
       className="np-panel enter grid md:auto-rows-[minmax(min-content,1fr)] md:overflow-y-auto"
     >
-      <div className={`${BAND} gap-y-group px-pad`}>
-        <div className="gap-y-item grid">
-          {back && (
-            <Text variant="footer" className="text-trim">
-              <Link href={back.href} className="link-label hit-area">
-                <Arrow dir="left" /> {back.label}
-              </Link>
-            </Text>
-          )}
-          <Text as="h1" variant="title">
-            <span className="text-trim block">{title}</span>
+      <div className={`${BAND} gap-y-item px-pad`}>
+        {back && (
+          <Text variant="footer" className="text-trim">
+            <Link href={back.href} className="link-label hit-area">
+              <Arrow dir="left" /> {back.label}
+            </Link>
           </Text>
-        </div>
-        <Contact />
+        )}
+        <Text as="h1" variant="title">
+          <span className="text-trim block">{title}</span>
+        </Text>
       </div>
       {children && (
         <div className={`${BAND} np-groove-t gap-y-group`}>{children}</div>
       )}
-      {foot && <div className={`${BAND} np-groove-t px-pad`}>{foot}</div>}
+      <div className={`${BAND} np-groove-t gap-y-group px-pad`}>
+        {clients && <Clients label={clients} />}
+        {linkedin && <LinkedIn />}
+        <Contact />
+      </div>
     </Text>
   );
 }
 
-// The foot on About: LinkedIn. The address is not repeated here; it sits
-// under the title on every page.
+// LinkedIn, in the foot on About, above the contact.
 function LinkedIn() {
   return (
     <div>
