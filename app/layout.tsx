@@ -4,19 +4,20 @@ import "./playground.css";
 import { PostHogProvider } from "../components/PostHogProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { Frame } from "./_shared/frame";
+import { variantsScript } from "./_shared/variants";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://i2089.com"),
   // keywords first, name last — Google shows ~60 characters
   title: {
-    template: "%s · Marc Illien",
-    default: "Marc Illien · AI consulting & frontend engineering, Zürich",
+    template: "%s :: Marc Illien",
+    default: "Marc Illien :: Frontend / UX and Agentic Engineering, Zürich",
   },
   description:
-    "I help make dev teams 10x faster with AI, and build fast web apps in React and Next.js. AI consulting, coaching and frontend engineering, Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and Agentic Engineering for teams. Marc Illien, Zürich.",
 };
 
-// The wordmark subline reveals once per session (see .np-signature in
+// The app/proto subline reveals once per session (see .np-signature in
 // shared.css). Runs before paint: if the reveal already played, mark the
 // root so CSS skips it; otherwise remember it and mark the root after the
 // reveal has finished, so later navigations show the line at rest.
@@ -35,7 +36,7 @@ const JSON_LD = {
       email: "hi@i2089.com",
       jobTitle: "Independent Software Engineer",
       description:
-        "Independent software engineer in Zürich, working on Agentic Engineering, frontend engineering and digital products.",
+        "Independent software engineer in Zürich: frontend and UX for web and mobile apps, and Agentic Engineering for teams.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Zürich",
@@ -44,12 +45,17 @@ const JSON_LD = {
       sameAs: ["https://www.linkedin.com/in/marcillien/"],
       knowsAbout: [
         "Agentic Engineering",
-        "Large Language Models",
+        "Claude Code",
         "Frontend Engineering",
+        "User Experience Design",
         "React",
         "Next.js",
         "TypeScript",
         "Tailwind CSS",
+        "React Native",
+        "Expo",
+        "SwiftUI",
+        "Three.js",
       ],
       worksFor: { "@id": "https://i2089.com/#org" },
     },
@@ -85,6 +91,9 @@ export default function RootLayout({
     <html lang="en" className="h-svh" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: SIGNATURE_ONCE }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: variantsScript() }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

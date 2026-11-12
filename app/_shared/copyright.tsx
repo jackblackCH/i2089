@@ -1,15 +1,15 @@
 import { Text } from "./text";
 
-// Bottom-left of the frame on md+, deliberately out of flow — no column
-// reserves a row for it. On mobile the frame scrolls, so a pinned line
-// would sit on top of the content; there it closes the page in flow.
+// Closes the page on mobile, in flow. On md+ the foot row of the
+// wordmark column belongs to the nav (four equal columns, full width),
+// so the copyright does not show there; the name is in the logo.
 export function Copyright() {
   return (
     <Text
       variant="footer"
-      className="p-pad-tight md:absolute md:bottom-0 md:left-0 md:z-10"
+      className="px-pad py-[calc(var(--spacing-pad)/2)] md:hidden"
     >
-      ©2026 Marc Illien :: i2089 :: Zürich
+      ©2026 Marc Illien, Zürich
     </Text>
   );
 }

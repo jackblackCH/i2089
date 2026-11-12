@@ -4,39 +4,60 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Text } from "./text";
 
-const links = [
-  { href: "/projects", label: "Projects" },
+// Work :: About :: Blog, centred under the wordmark. The two offers are not
+// repeated here: on home they are the big bands, and on every other page
+// the logo leads back to them (one more click; Marc's call, 2026-11-12).
+const LINKS = [
+  { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
 ];
 
-// Bottom-right of the wordmark column, on one line with the copyright
-// bottom-left. Lives inside the wordmark section, so on mobile it sits
-// at the foot of the wordmark row and scrolls away with it.
-export function Nav() {
+function NavLink({ href, label }: { href: string; label: string }) {
   const pathname = usePathname();
+  // exact match is the page itself; a deeper path (a project under
+  // Work) is still "here" for sighted and screen-reader users
+  const exact = pathname === href;
+  const active = exact || pathname.startsWith(`${href}/`);
+  return (
+    <Link
+      href={href}
+      aria-current={exact ? "page" : active ? "true" : undefined}
+      // "you are here": bright with a thin underline
+      className={`link-label hit-area whitespace-nowrap ${
+        active
+          ? "text-(--np-fg) underline decoration-1 underline-offset-[0.4em]"
+          : ""
+      }`}
+    >
+      {label}
+    </Link>
+  );
+}
+
+// Phones: in flow under the logo; md+: pinned to the foot of the
+// wordmark column. Centred in both, like the logo above it.
+export function Nav() {
   return (
     <Text
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute bottom-0 right-0 z-10 flex gap-x-[1.6em] p-pad-tight"
+      className="md:p-pad-tight z-10 flex justify-center self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0"
     >
-      {links.map(({ href, label }) => {
-        // exact match is the page itself; a deeper path (a project under
-        // Projects) is still "here" for sighted and screen-reader users
-        const exact = pathname === href;
-        const active = exact || pathname.startsWith(`${href}/`);
-        return (
-          <Link
-            key={href}
-            href={href}
-            aria-current={exact ? "page" : active ? "true" : undefined}
-            className={`link-label hit-area ${active ? "text-(--np-fg)" : ""}`}
-          >
-            {label}
-          </Link>
-        );
-      })}
+      <ul className="flex gap-x-[0.6em]">
+        {LINKS.map((l, i) => (
+          <li key={l.href} className="flex gap-x-[0.6em]">
+            <NavLink {...l} />
+            {i < LINKS.length - 1 && (
+              <span aria-hidden className="text-(--np-mute)">
+                {/* Marc's spacer, his mark: "::" instead of a dot */}
+                ::
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
     </Text>
   );
 }

@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import {
+  type Item,
   services,
   projects,
   contracts,
   bySlug,
 } from "../_shared/content";
+import { allPosts } from "../blog/posts";
 
 export const dynamic = "force-static";
 
@@ -13,6 +15,13 @@ const BASE_URL = "https://i2089.com";
 // llms.txt — https://llmstxt.org
 // Generated from the same content.ts that drives the site so the two
 // stay in sync. Served as text/plain, no HTML.
+// a step list reads as one numbered sentence in plain text
+// site links in the text ([words](/path)) become absolute URLs
+const itemText = (item: Exclude<Item, string>) =>
+  "text" in item
+    ? item.text.replace(/\]\(\//g, `](${BASE_URL}/`)
+    : item.steps.map((step, i) => `${i + 1}. ${step}`).join(" ");
+
 export function GET() {
   const about = bySlug["about"];
   const intro =
@@ -20,12 +29,12 @@ export function GET() {
     "";
 
   const lines: string[] = [];
-  lines.push(`# i2089 — Marc Illien`);
+  lines.push(`# i2089 :: Marc Illien`);
   lines.push("");
   lines.push(`> ${intro}`);
   lines.push("");
   lines.push(
-    `Independent software engineer in Zürich, Switzerland, working on Agentic Engineering and frontend software engineering for startups, SMEs and corporates.`,
+    `Independent software engineer in Zürich, Switzerland: frontend and UX for web and mobile apps, and Agentic Engineering for teams.`,
   );
   lines.push("");
 
@@ -35,7 +44,7 @@ export function GET() {
     lines.push(`- [${s.title}](${BASE_URL}/${s.slug})`);
     for (const item of s.items) {
       if (typeof item !== "string") {
-        lines.push(`  - **${item.term}**: ${item.text}`);
+        lines.push(`  - **${item.term}**: ${itemText(item)}`);
       }
     }
   }
@@ -45,7 +54,7 @@ export function GET() {
   lines.push("");
   for (const p of projects) {
     lines.push(
-      `- [${p.title}](${BASE_URL}/projects/${p.slug}) — ${p.period}. ${p.role}. ${p.text} Live: ${p.href}`,
+      `- [${p.title}](${BASE_URL}/projects/${p.slug}): ${p.period}. ${p.role}. ${p.text} Live: ${p.href}`,
     );
   }
   lines.push("");
@@ -53,7 +62,10 @@ export function GET() {
   lines.push(`## Contracts`);
   lines.push("");
   for (const c of contracts) {
-    lines.push(`- [${c.title}](${c.href}) — ${c.period}. ${c.text}`);
+    // like the projects: the case page on the site, then the live site
+    lines.push(
+      `- [${c.title}](${BASE_URL}/projects/${c.slug}): ${c.period}. ${c.role}. ${c.text} Live: ${c.href}`,
+    );
   }
   lines.push("");
 
@@ -61,10 +73,22 @@ export function GET() {
   lines.push("");
   for (const item of about?.items ?? []) {
     if (typeof item !== "string") {
-      lines.push(`- **${item.term}** — ${item.text}`);
+      lines.push(`- **${item.term}**: ${itemText(item)}`);
     }
   }
   lines.push("");
+
+  const posts = allPosts().filter((p) => !p.draft);
+  if (posts.length) {
+    lines.push(`## Blog`);
+    lines.push("");
+    for (const p of posts) {
+      lines.push(
+        `- [${p.title}](${BASE_URL}/blog/${p.slug}): ${p.date}. ${p.description}`,
+      );
+    }
+    lines.push("");
+  }
 
   lines.push(`## Contact`);
   lines.push("");

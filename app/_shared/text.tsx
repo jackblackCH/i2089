@@ -5,23 +5,23 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
    identical across pages. */
 const variants = {
   /* outlined display wordmark (i2089). Size comes from --logo
-     (shared.css), which the subline's tracking also reads, so the two
+     (shared.css), which the byline's offset also reads, so the two
      can't drift apart */
   logo: "np-outline text-trim text-(length:--logo) font-bold leading-none tracking-[-0.04em]",
   /* page titles and homepage bands */
   title:
-    "text-[clamp(30px,6.6vw,72px)] font-medium leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,44px)]",
+    "text-[clamp(30px,6.6vw,72px)] font-normal leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,33px)]",
   /* body copy on detail pages — exactly half the title scale */
-  /* mobile middle = 8vw × (1.22 / 3.4) so the title:body ratio matches
-     the md/lg proportion (~2.8:1) at every viewport */
-  body: "text-[clamp(13px,2.2vw,36px)] leading-snug md:text-[clamp(15px,1.22vw,22px)]",
+  /* 15px floor on phones (PFD L0: 13px cost reading effort); above
+     that it scales with the viewport. md+: held at 14px (Marc,
+     2026-11-12), so the copy stays calm next to the title */
+  body: "text-[clamp(15px,2.2vw,36px)] leading-snug md:text-[clamp(14px,1.022vw,14px)]",
   /* labels, small links and the colophon — 11px floor so uppercase
      tracking stays legible */
   footer:
     "text-[clamp(11px,0.8vw,13px)] uppercase tracking-[0.08em] text-(--np-mute)",
-  /* subline under the wordmark — spread to the logo's full width; size
-     and tracking live in .np-signature (shared.css), since the tracking
-     is computed from the logo size */
+  /* tracked subline — app/proto only; the site uses the byline in
+     wordmark.tsx */
   signature: "np-signature font-normal uppercase leading-none text-(--np-mute)",
 } as const;
 

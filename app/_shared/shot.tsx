@@ -1,12 +1,13 @@
 /// <reference types="react/canary" />
 import { ViewTransition } from "react";
-import Image from "next/image";
 import type { Project } from "./content";
+import { FadeImages } from "./fade-images";
 
-// A project's screenshot. The card and the detail page render it under
+// A project's screenshots. The card and the detail page render them under
 // the same transition name, so navigating between them morphs one into
-// the other instead of cutting. Cropped from the top, so the site's
-// header and hero always show. Motion lives in globals.css (.shot).
+// the other instead of cutting. Cropped from the top, so each site's
+// header and hero always show. Motion lives in globals.css (.shot); more
+// than one screenshot fades slowly through them (fade-images.tsx).
 export function Shot({
   project,
   sizes,
@@ -20,13 +21,14 @@ export function Shot({
 }) {
   return (
     <ViewTransition name={`shot-${project.slug}`} share="shot">
-      <Image
-        src={project.image}
-        alt={`${project.title} — screenshot`}
-        fill
-        priority={priority}
+      <FadeImages
+        images={project.images.map((src) => ({
+          src,
+          alt: `${project.title}, screenshot`,
+        }))}
         sizes={sizes}
-        className={`object-cover object-top ${className}`}
+        priority={priority}
+        className={className}
       />
     </ViewTransition>
   );

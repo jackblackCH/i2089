@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { projects, services } from "./_shared/content";
+import { allWork, services } from "./_shared/content";
+import { allPosts } from "./blog/posts";
 
 const BASE_URL = "https://i2089.com";
 
@@ -21,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
-    ...projects.map((p) => ({
+    ...allWork.map((p) => ({
       url: `${BASE_URL}/projects/${p.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
@@ -33,5 +34,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: s.slug === "about" ? 0.9 : 0.8,
     })),
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    // drafts never reach production (posts.ts)
+    ...allPosts()
+      .filter((p) => !p.draft)
+      .map((p) => ({
+        url: `${BASE_URL}/blog/${p.slug}`,
+        lastModified: new Date(p.date),
+        changeFrequency: "yearly" as const,
+        priority: 0.6,
+      })),
   ];
 }

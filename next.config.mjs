@@ -4,13 +4,30 @@ const nextConfig = {
   ...(process.env.BUILD_STATIC
     ? { output: "export", images: { unoptimized: true }, trailingSlash: true }
     : {
-        // /services was the old-design services page; its content now
-        // lives on /ai-solutions
+        // /services was the old-design services page, /ai-solutions the
+        // AI page's first URL; both now point to /ai. /engineering became
+        // /frontend.
         async redirects() {
           return [
             {
               source: "/services",
-              destination: "/ai-solutions",
+              destination: "/ai",
+              permanent: true,
+            },
+            {
+              source: "/ai-solutions",
+              destination: "/ai",
+              permanent: true,
+            },
+            {
+              source: "/engineering",
+              destination: "/frontend",
+              permanent: true,
+            },
+            // the first post's working title and URL
+            {
+              source: "/blog/everyone-can-build-a-ferrari",
+              destination: "/blog/taste-doesnt-compile",
               permanent: true,
             },
           ];

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Column } from "./_shared/column";
+import { Arrow } from "./_shared/arrow";
 
 export const metadata: Metadata = { title: "Page not found" };
 
@@ -10,7 +11,7 @@ export default function NotFound() {
       <div className="gap-y-item px-pad grid justify-items-start">
         <p>I couldn&apos;t find this page. It may have moved.</p>
         <Link href="/" className="link-quiet text-trim">
-          ← Back to start
+          <Arrow dir="left" /> Back to start
         </Link>
       </div>
     </Column>

@@ -15,7 +15,7 @@
   --np-mute: color-mix(in srgb, var(--np-fg) 75%, transparent);
   --np-rule: color-mix(in srgb, var(--np-fg) 14%, transparent);
   /* the i2089 logo size — one source for the logo text variant and the
-     subline's tracking (.np-signature) */
+     byline's left offset (wordmark.tsx) */
   --logo: clamp(72px, 16vw, 180px);
 
   font-family:
@@ -115,7 +115,9 @@
     inset 0 1px 0 var(--np-light-strong);
 }
 
-/* Wordmark subline, set to the full width of i2089. Letter spacing is
+/* Tracked subline, set to the full width of i2089. The site no longer
+   uses it (the logo itself turns into the name, logo-mark.tsx); it stays
+   for app/proto, which still renders it. Letter spacing is
    computed from the logo size, not fixed: the text keeps a 9px floor, so
    a fixed tracking would overflow the logo on small screens. --logo is
    the logo's own size (set on .np).
@@ -141,9 +143,9 @@
   }
 }
 
-/* First impression: the subline draws in left to right under the logo,
-   700ms ease-in-out after a 250ms beat — once per session (layout.tsx
-   sets data-signature-seen). Off under reduced motion. */
+/* app/proto: the subline draws in left to right under the logo, 700ms
+   ease-in-out after a 250ms beat — once per session (layout.tsx sets
+   data-signature-seen). Off under reduced motion. */
 @keyframes signature-reveal {
   from {
     clip-path: inset(0 100% 0 0);
@@ -186,4 +188,179 @@
 .np-invert::selection {
   background: var(--np-surface);
   color: var(--np-fg);
+}
+
+/* ── Logo: i2089 → MARC ILLIEN (logo-mark.tsx, variants.ts) ──────────
+   Both words share one grid cell, left-aligned on the i stem and centred
+   on the same midline. Measured in the logo face (bold, -0.04em):
+   i2089 3.36em, MARC 3.56em, ILLIEN 3.57em, MARC ILLIEN 7.46em. So two
+   lines at 0.942em match the i2089 width exactly; one line needs
+   0.4505em. The stroke is set per layer, so a smaller word keeps the
+   same hairline proportion instead of inheriting the big one. */
+/* the logo layers trim themselves, so the wrapper does not */
+.np-logo-host {
+  text-box: normal;
+}
+/* a block grid, not inline: inside the logo's trimmed line box an inline
+   grid would only count down to the first baseline, and the second line
+   (ILLIEN) would hang out of the row */
+.np-logo {
+  display: grid;
+  position: relative;
+  perspective: 6em;
+}
+.np-logo-src,
+.np-logo-dst {
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: start;
+  white-space: pre;
+  -webkit-text-stroke: max(1px, 0.016em) var(--np-fg);
+}
+.np-logo-src,
+.np-logo-line {
+  display: block;
+}
+.np-logo-dst {
+  display: grid;
+}
+.np-logo-src,
+.np-logo-line {
+  text-box: trim-both cap alphabetic;
+}
+.np-logo-dst {
+  row-gap: 0.2em;
+}
+.np-ch {
+  display: inline-block;
+  position: relative;
+}
+.np-half {
+  display: block;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+}
+.np-top {
+  clip-path: inset(-20% -20% 50% -20%);
+}
+.np-bot {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(50% -20% -20% -20%);
+}
+.np-logo-rule {
+  position: absolute;
+  top: -0.1em;
+  bottom: -0.1em;
+  left: 0;
+  width: 1px;
+  background: var(--np-fg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* fit */
+:root[data-fit="lines"] .np-logo-dst {
+  font-size: 0.942em;
+}
+:root[data-fit="lines"] .np-logo-gap {
+  display: none;
+}
+:root:not([data-fit="lines"]) .np-logo-dst {
+  grid-auto-flow: column;
+  justify-content: start;
+}
+:root[data-fit="scaled"] .np-logo-dst {
+  font-size: 0.4505em;
+}
+/* same size: MARC ILLIEN (7.46em) spans the column between its side
+   paddings — the full width on phones, the left half from md */
+:root[data-fit="same"] .np-logo {
+  font-size: calc((100vw - 2 * var(--spacing-pad)) / 7.46);
+}
+@media (width >= 48rem) {
+  :root[data-fit="same"] .np-logo {
+    font-size: calc((50vw - 2 * var(--spacing-pad)) / 7.46);
+  }
+}
+/* same size: MARC ILLIEN sets the box width, i2089 sits centred in it */
+:root[data-fit="same"] .np-logo-src {
+  justify-self: center;
+}
+
+/* rest: one word visible. A motion that already played this session
+   ("rest on the name") shows the name before paint, no flash of i2089. */
+.np-logo[data-rest="src"] .np-logo-dst,
+.np-logo[data-rest="dst"] .np-logo-src {
+  visibility: hidden;
+}
+:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src,
+:root[data-timing="loop"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src {
+  visibility: hidden;
+}
+:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst,
+:root[data-timing="loop"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
+  visibility: visible;
+}
+/* phone nav: 11px caps need taller tap areas than the shared hit-area
+   gives (it measured 23px; WCAG 2.5.8 asks for 24px, Apple 44pt). With
+   the group-step row gap the areas stay apart. */
+@media (width < 48rem) {
+  nav[aria-label="Main"] a::after {
+    inset: -1.1em -0.5em;
+  }
+}
+
+/* labels in the copy colour: small caps and size already mark them, so
+   grey added no meaning and cost contrast (Marc, 2026-11-12) */
+.np-label {
+  justify-self: start;
+  color: var(--np-fg);
+}
+
+/* ── Calm labels (variants.ts labels "calm", the default) ─────────────
+   No boxes: the label stays small caps in the label colour, the offer
+   pages number their entries, and a hairline splits the entries with the
+   space shared evenly above and below it. Hierarchy comes from position,
+   size and space; the filled contact button is the only filled shape, so
+   it stays the clearest signal (PFD R5). The design-audit verdict: five
+   filled boxes out-shouted the content and broke the left edge. */
+/* Markers hang in the gutter: list arrows, step numbers and entry
+   numbers sit left of the text column, right-aligned 10px from it, so
+   every line of text (title, contact, labels, copy) starts on one grid
+   line. The vertical position stays the marker's static one, on the
+   first line. The page padding (48px on phones) leaves room for them. */
+.np-hang {
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625rem;
+  color: var(--np-mute);
+}
+.np-term {
+  position: relative;
+}
+.np-num {
+  display: none;
+}
+:root[data-labels="calm"] .np-num {
+  display: inline;
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625rem;
+  color: var(--np-fg);
+  font-variant-numeric: tabular-nums;
+}
+:root[data-labels="calm"] .np-list {
+  row-gap: calc(var(--spacing-group) / 2);
+}
+:root[data-labels="calm"] .np-item + .np-item {
+  /* no hairline (Marc, 2026-11-12): the entries are a group step
+     apart, which is enough to read them as separate */
+  padding-top: calc(var(--spacing-group) / 2);
+}
+/* next to a plain block (About's intro, a project's intro or link)
+   there is no hairline, so the full group step stays */
+:root[data-labels="calm"] .np-list > :not(.np-item) + .np-item,
+:root[data-labels="calm"] .np-list > .np-item + :not(.np-item) {
+  margin-top: calc(var(--spacing-group) / 2);
 }

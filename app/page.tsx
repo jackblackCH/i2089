@@ -1,38 +1,67 @@
 import type { Metadata } from "next";
-import { TypeCycle } from "./_shared/type-cycle";
+import Link from "next/link";
+import type { ReactNode } from "react";
 import { bands } from "./_shared/content";
 import { Text } from "./_shared/text";
+import { WithArrow } from "./_shared/arrow";
 import { pageMeta } from "./_shared/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Marc Illien · AI consulting & frontend engineering, Zürich",
+  title: "Marc Illien :: Frontend / UX and Agentic Engineering, Zürich",
   description:
-    "I help make dev teams 10x faster with AI, and build fast web apps in React and Next.js. AI consulting, coaching and frontend engineering, Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and Agentic Engineering for teams. Marc Illien, Zürich.",
   path: "/",
   absolute: true,
 });
 
-// right column: three bands filling the full column height. The static
-// audience band is set in the label colour, so the two linked bands read
-// as the clickable ones.
+// Right column, three equal bands in one style: a big title with an arrow
+// and one small line under it. Frontend / UX first (the main offer),
+// then Agentic Engineering, then the contact as a band of its own, so
+// the page reads as one pattern three times (PFD L0: three chunks; L2:
+// one style, no mixed box). Proof (clients, audience) lives on the offer
+// pages, Work and About. Nothing on home moves while people read (R1);
+// the contact stays in the first screen on phones (R5). On md+ each band
+// takes at least its content and shares the rest of the height evenly;
+// the bands enter like every page (.enter, 50ms apart).
+const ROW =
+  "group grid content-center gap-y-item px-pad py-[calc(var(--spacing-pad)/2)] focus-visible:outline-1 focus-visible:outline-offset-[-12px] focus-visible:outline-(--np-fg)";
+
+const ARROW =
+  "transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none";
+
+function Band({ title, sub }: { title: string; sub: ReactNode }) {
+  return (
+    <>
+      <Text as="h2" variant="title" className="text-balance">
+        <span className="text-trim block">
+          <WithArrow text={title} arrowClassName={ARROW} />
+        </span>
+      </Text>
+      <Text as="p" variant="body" className="text-trim text-pretty text-(--np-mute)">
+        {sub}
+      </Text>
+    </>
+  );
+}
+
 export default function HomePage() {
   return (
-    <section className="np-panel grid grid-rows-[repeat(3,minmax(0,0.35fr))]">
+    <section className="np-panel enter grid md:grid-rows-[repeat(3,minmax(min-content,1fr))] md:overflow-y-auto">
+      {/* the whole band is the link: it looks like one target, so it is
+          one. Hover nudges the arrow toward the page instead of dimming
+          the text (dimming reads as disabled); focus outlines the band. */}
       {bands.map((band, i) => (
-        <Text
-          key={band.words[0]}
-          as="h2"
-          variant="title"
-          className={`np-line p-pad grid content-center ${
-            i > 0 ? "np-groove-t" : ""
-          } ${band.slugs.length ? "" : "text-(--np-mute)"}`}
+        <Link
+          key={band.slugs[0]}
+          href={`/${band.slugs[0]}`}
+          className={`${ROW} ${i > 0 ? "np-groove-t" : ""}`}
         >
-          <TypeCycle
-            words={band.words}
-            hrefs={band.slugs.map((slug) => `/${slug}`)}
-          />
-        </Text>
+          <Band title={band.words[0]} sub={band.sub} />
+        </Link>
       ))}
+      <a href="mailto:hi@i2089.com" className={`${ROW} np-groove-t`}>
+        <Band title="Let's talk" sub="hi@i2089.com · Zürich or remote" />
+      </a>
     </section>
   );
 }

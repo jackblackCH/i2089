@@ -74,9 +74,11 @@
   }
 }
 
+/* selection inverts the site's own tokens (PFD L2: #ededed/#222 were
+   near-misses of --np-fg/--np-surface) */
 .new-root ::selection {
-  background: var(--sheet-fg);
-  color: #222;
+  background: var(--np-fg, var(--sheet-fg));
+  color: var(--np-surface, #222);
 }
 
 /* typewriter caret */
