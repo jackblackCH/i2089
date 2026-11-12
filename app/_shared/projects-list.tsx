@@ -19,7 +19,7 @@ export function ProjectsList({
     <div className="gap-y-label px-pad grid">
       {label && (
         <Text variant="footer" as="h2" className="np-label text-trim">
-          {label}
+          <span className="np-label-text">{label}</span>
         </Text>
       )}
       <ul className="gap-y-group grid min-w-0">

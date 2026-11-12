@@ -38,7 +38,7 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="gap-y-label grid content-start">
       <Text variant="footer" as="h2" className="np-label text-trim">
-        {label}
+        <span className="np-label-text">{label}</span>
       </Text>
       {children}
     </div>

@@ -39,13 +39,15 @@ export default function HomePage() {
           </Link>
         </Text>
       ))}
-      <div className={`np-groove-t ${ROW} gap-y-group`}>
+      <div className={`np-groove-t ${ROW} gap-y-group max-md:order-4`}>
         <Text as="h2" variant="title" className="text-(--np-mute)">
           <span className="text-trim block">{audience.words[0]}</span>
         </Text>
         <Clients />
       </div>
-      <Contact className={`np-groove-t ${ROW}`} />
+      {/* on phones the contact comes right after the two offers, so it
+          lands in the first screen (PFD R5); md+ keeps it last */}
+      <Contact className={`np-groove-t ${ROW} max-md:order-3`} />
     </section>
   );
 }

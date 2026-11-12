@@ -66,7 +66,7 @@ export default async function ContentPage({
           ) : (
             <li key={item.term} className="gap-y-label grid">
               <Text variant="footer" className="np-label np-term text-trim">
-                {item.term}
+                <span className="np-label-text">{item.term}</span>
               </Text>
               <p>{item.text}</p>
             </li>

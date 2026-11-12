@@ -17,8 +17,8 @@ const links = [
 // its edges line up with the content below. Two columns read top to
 // bottom: the offers on the left edge, Projects and About on the right
 // edge (282px, fits the 294px a 390px phone leaves; four in a row would
-// need ~420px). Half a block step above and below, one item step
-// between the rows.
+// need ~420px). Half a block step above and below, a group step between
+// the rows, so the taller tap areas (shared.css) never overlap.
 // md+: pinned to the foot of the column, spread with equal space around
 // each link, each centred; a 2x2 grid until lg, one row from lg.
 export function Nav() {
@@ -28,7 +28,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="gap-y-item md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly lg:grid-cols-[repeat(4,auto)]"
+      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly lg:grid-cols-[repeat(4,auto)]"
     >
       {links.map(({ href, label }, i) => {
         // exact match is the page itself; a deeper path (a project under

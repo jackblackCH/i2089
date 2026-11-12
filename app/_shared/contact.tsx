@@ -18,7 +18,9 @@ export function Contact({ className = "" }: { className?: string }) {
       variant="body"
       className={`grid content-center justify-items-start gap-y-item ${className}`}
     >
-      <p>Let&apos;s talk.</p>
+      {/* the location next to the action: for Swiss buyers it is a
+          relevance cue (PFD L3) */}
+      <p>Let&apos;s talk. Zürich or remote.</p>
       <a
         href={`mailto:${EMAIL}`}
         className="np-cta text-trim inline-flex items-center gap-x-label bg-(--np-fg) px-item py-label text-(--np-surface) transition-opacity duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg)"
@@ -37,7 +39,7 @@ export function Clients({ label = "Clients" }: { label?: string }) {
   return (
     <div className="gap-y-label grid">
       <Text as="h2" variant="footer" className="np-label text-trim">
-        {label}
+        <span className="np-label-text">{label}</span>
       </Text>
       {/* wraps between names, never inside one */}
       <Text as="ul" variant="body" className="flex flex-wrap gap-y-label text-(--np-mute)">
