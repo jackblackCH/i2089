@@ -209,6 +209,8 @@ export const projects: Project[] = [
     highlights: [
       "I built the frontend in Next.js and Tailwind, on Saleor's API.",
       "I designed parts of the interface, right in code.",
+      "I built and integrated custom components.",
+      "I custom-built complex form components to filter products by their custom attributes.",
     ],
     stack: ["Next.js", "Saleor", "Tailwind", "TypeScript"],
   },

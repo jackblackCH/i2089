@@ -115,6 +115,27 @@
   }
 }
 
+/* A link inside body text or a list of names: bright like the text, so
+   it reads as content. Hover draws a thin underline instead of dimming
+   (dimming reads as disabled); the line fades in, colour only. */
+@utility link-body {
+  color: var(--np-fg);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 160ms ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+  &:focus-visible {
+    outline: none;
+    text-decoration-color: currentColor;
+  }
+}
+
 /* for links set in the label colour — brighten to the foreground */
 @utility link-label {
   transition: color 160ms ease;

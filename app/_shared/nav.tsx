@@ -54,6 +54,9 @@ function NavLink({
 // both groups on one line. md+: pinned to the foot of the column, both
 // groups on one line, wrapping only when the column is narrow.
 export function Nav() {
+  // on home the offers are the big bands on the same page, so the foot
+  // does not repeat them; every other page keeps them one click away (R5)
+  const home = usePathname() === "/";
   return (
     <Text
       as="nav"
@@ -61,13 +64,15 @@ export function Nav() {
       aria-label="Main"
       className="md:gap-x-group gap-y-item md:p-pad-tight z-10 grid justify-items-start self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:flex md:flex-wrap md:items-baseline md:justify-between"
     >
-      <ul className="gap-x-group flex">
-        {OFFERS.map((l) => (
-          <li key={l.href}>
-            <NavLink {...l} offer />
-          </li>
-        ))}
-      </ul>
+      {!home && (
+        <ul className="gap-x-group flex">
+          {OFFERS.map((l) => (
+            <li key={l.href}>
+              <NavLink {...l} offer />
+            </li>
+          ))}
+        </ul>
+      )}
       <ul className="gap-x-label md:gap-x-item flex">
         {MORE.map((l, i) => (
           <li key={l.href} className="gap-x-label flex">

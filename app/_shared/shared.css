@@ -344,10 +344,3 @@
 :root[data-labels="calm"] .np-list > .np-item + :not(.np-item) {
   margin-top: calc(var(--spacing-group) / 2);
 }
-/* the client line under a list: one more entry, with the same hairline
-   in the middle of the group step (the column spaces blocks by it) */
-:root[data-labels="calm"] .np-after-list {
-  margin-top: calc(var(--spacing-group) / -2);
-  border-top: 1px solid var(--np-rule);
-  padding-top: calc(var(--spacing-group) / 2);
-}

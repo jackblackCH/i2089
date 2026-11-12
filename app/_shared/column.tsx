@@ -5,10 +5,14 @@ import { Contact, Clients } from "./contact";
 import { Arrow } from "./arrow";
 
 // The right column of every content page: one flowing column — title,
-// the contact action, content, client line — spaced by the group step.
+// the contact action, the client line, content — spaced by the group step.
 // The contact sits right under the title, so every page shows its next
 // step in the first screen (PFD R2, R5). It scrolls as a whole on md+
 // (never a box inside a box); the quiet links close the page at the foot.
+// one page padding below the contact block, minus the group step the
+// column already adds (never below zero)
+const PAD_BELOW = "mb-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
+
 export function Column({
   title,
   back,
@@ -51,17 +55,19 @@ export function Column({
             the title, so it scales with --spacing-pad on every screen.
             The column already spaces blocks by the group step, so the
             margin adds the difference (never below zero). */}
-        <Contact className="px-pad my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]" />
-        {children}
-        {/* the client line is one more entry: under the "calm" labels it
-            gets the same hairline and spacing as the entries above it */}
+        {/* the client line sits right under the action: proof next to
+            the decision (PFD L3), one group step below the button. The
+            page padding then comes after the pair, so the content starts
+            where it does on a page without clients. */}
+        <Contact
+          className={`px-pad mt-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))] ${clients ? "" : PAD_BELOW}`}
+        />
         {clients && (
-          <div className="px-pad">
-            <div className="np-after-list">
-              <Clients label={clients} />
-            </div>
+          <div className={`px-pad ${PAD_BELOW}`}>
+            <Clients label={clients} />
           </div>
         )}
+        {children}
       </Text>
 
       {linkedin && <Foot />}

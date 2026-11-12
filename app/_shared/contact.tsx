@@ -35,9 +35,10 @@ export function Contact({ className = "" }: { className?: string }) {
   );
 }
 
-// The client line (PFD R4, L1 trust signal): a label over one line of
-// names, like every other entry on the page, so it reads as content and
-// not as a footer block. Each name links to the page that proves it.
+// The client line (PFD R4, L3 trust signal): a label over one line of
+// names, right under the contact action (column.tsx), so the proof sits
+// next to the decision. The names are bright links like body text; each
+// one opens the page that proves it.
 export function Clients({ label = "Clients" }: { label?: string }) {
   return (
     <div className="gap-y-label grid">
@@ -52,11 +53,11 @@ export function Clients({ label = "Clients" }: { label?: string }) {
       >
         {clients.map((c, i) => (
           <li key={c.name} className="text-trim whitespace-nowrap">
-            <Link href={c.href} className="link-label hit-area">
+            <Link href={c.href} className="link-body hit-area">
               {c.name}
             </Link>
             {i < clients.length - 1 && (
-              <span aria-hidden className="px-[0.45em]">
+              <span aria-hidden className="px-[0.45em] text-(--np-mute)">
                 ·
               </span>
             )}
