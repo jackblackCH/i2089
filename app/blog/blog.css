@@ -298,10 +298,15 @@
 }
 
 /* the index */
-.blog-list {
+/* more specific than the article list rule above, which indents lists */
+.blog-article .blog-list {
   margin: -24px 0 0;
   padding: 0;
   list-style: none;
+}
+.blog-article .blog-list li {
+  margin: 0;
+  color: inherit;
 }
 .blog-list li + li {
   margin-top: 48px;

@@ -90,9 +90,11 @@ export function postBySlug(slug: string): Post | undefined {
   return allPosts().find((p) => p.slug === slug);
 }
 
+// Swiss German date format: 12.11.2026
 export const formatDate = (iso: string) =>
-  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "long",
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("de-CH", {
+    day: "2-digit",
+    month: "2-digit",
     year: "numeric",
+    timeZone: "Europe/Zurich",
   });
