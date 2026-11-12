@@ -22,12 +22,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = projectBySlug[slug];
   if (!project) return {};
-  // lead with the role when the snippet still fits Google's ~158
-  // characters; otherwise the intro alone
-  const withRole = `${project.role}. ${project.intro}`;
   return pageMeta({
     title: `${project.title} case study: ${project.stack.slice(0, 2).join(" & ")}`,
-    description: withRole.length <= 158 ? withRole : project.intro,
+    description: project.seo,
     path: `/projects/${slug}`,
   });
 }
@@ -66,7 +63,7 @@ export default async function ProjectPage({
   return (
     <Column
       title={project.title}
-      back={{ href: "/projects", label: "All projects" }}
+      back={{ href: "/projects", label: "All work" }}
     >
       {/* role and period first — they answer "what did he do?" before
             the screenshot takes the fold */}

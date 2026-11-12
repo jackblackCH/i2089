@@ -5,9 +5,9 @@ import { BlogShell } from "./blog-shell";
 import { allPosts, formatDate } from "./posts";
 
 export const metadata: Metadata = pageMeta({
-  title: "Blog: frontend, UX and agentic engineering",
+  title: "Blog: frontend, UX and Agentic Engineering",
   description:
-    "Notes on frontend, UX and agentic engineering, from an independent software engineer in Zürich.",
+    "Notes on frontend, UX and Agentic Engineering, from an independent software engineer in Zürich.",
   path: "/blog",
 });
 

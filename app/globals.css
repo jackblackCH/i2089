@@ -116,6 +116,17 @@
   }
 }
 
+/* the home link lies over the logo (wordmark.tsx); hovering it dims the
+   mark under it, with the same 0.8 as link-mark */
+.np-mark > .np-logo-host {
+  transition: opacity 160ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .np-mark:has(> a:hover) > .np-logo-host {
+    opacity: 0.8;
+  }
+}
+
 /* Typesetting (web-typography skill): body text wraps "pretty" (no lone
    last word, more even rag), headings "balance"; text in the content
    column stops at 60ch: in this extended face a "0" is wider than the

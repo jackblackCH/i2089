@@ -24,7 +24,7 @@ export function Shot({
       <FadeImages
         images={project.images.map((src) => ({
           src,
-          alt: `${project.title} — screenshot`,
+          alt: `${project.title}, screenshot`,
         }))}
         sizes={sizes}
         priority={priority}

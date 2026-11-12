@@ -62,7 +62,7 @@ export const services: Service[] = [
        product/RAG work, "AI transformation" as C-level change. The first
        item says in plain words what the team gets. Research 2026-11-12. */
     title: "Agentic Engineering for teams",
-    seoTitle: "Agentic engineering coaching for teams, Zürich",
+    seoTitle: "Agentic Engineering coaching for teams, Zürich",
     description:
       "AI coding agents like Claude Code and Codex in your team's projects: a workshop day, then coaching on real tickets. Every change still goes through review.",
     /* PFD run 2026-11-12 (docs/pfd/2026-11-12-ai-page.md): three entries,
@@ -110,7 +110,7 @@ export const services: Service[] = [
         text: "I teach Frontend Engineering (CAS) at OST in Rapperswil.",
       },
       {
-        term: "2025 — 2026",
+        term: "2025–2026",
         text: "I build frontends for [AXA Switzerland's](/projects/axa) WebHub. Contract, Zürich.",
       },
       {
@@ -118,11 +118,11 @@ export const services: Service[] = [
         text: "Led the frontend for [AXA's SME wizard and calculator](/projects/axa), a React microfrontend on axa.ch. Contract, Zürich.",
       },
       {
-        term: "2023 — 2024",
+        term: "2023–2024",
         text: "Built [air up®'s headless shop](/projects/air-up) on Next.js and Shopify, plus its design system. Freelance, Munich.",
       },
       {
-        term: "2022 — 2023",
+        term: "2022–2023",
         text: "Architected a [WhatsApp-like custom messenger](/projects/axa) for internal communications, in TypeScript and React. Contract, Winterthur.",
       },
     ],
@@ -143,6 +143,9 @@ export type Project = {
   images: string[];
   /** detail page — the role I held, in plain words */
   role: string;
+  /** search snippet (~150 characters): the role and the work, keywords
+      first; the page itself leads with the intro */
+  seo: string;
   /** detail page — what the project is, one or two sentences */
   intro: string;
   /** detail page — what I did and what came of it, one idea per line */
@@ -161,6 +164,7 @@ export const contracts: Project[] = [
     // the SME calculator I led first, then the axa.ch homepage
     images: ["/projects/axa-calculator.jpg", "/projects/axa.jpg"],
     role: "Frontend Architect and Engineer",
+    seo: "Frontend architect and engineer at AXA Switzerland since 2018: the SME wizard and calculator on axa.ch, a WhatsApp-like messenger and the pattern library.",
     intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
       "Led the frontend for the SME wizard and calculator, published on axa.ch as a microfrontend.",
@@ -178,12 +182,13 @@ export const projects: Project[] = [
   {
     slug: "branded-goods",
     title: "Branded Goods",
-    period: "2025 — 2026",
+    period: "2025–2026",
     text: "I designed and built the product filters and the shop frontend of branded-goods.ch, in Next.js and Tailwind on Saleor, an open-source e-commerce platform. I worked as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
     images: ["/projects/branded-goods.jpg"],
     role: "Frontend Engineer and UI Designer",
+    seo: "Frontend engineer and UI designer for branded-goods.ch: product filters for custom attributes and the shop frontend in Next.js and Tailwind on Saleor.",
     intro:
       "branded-goods.ch is an online shop built on Saleor, an open-source e-commerce platform. I worked on it as a partner of Avolut.",
     highlights: [
@@ -196,12 +201,13 @@ export const projects: Project[] = [
   {
     slug: "air-up",
     title: "air up®",
-    period: "2023 — 2024",
+    period: "2023–2024",
     text: "I built headless e-commerce on Next.js and Shopify, with a 3D model viewer and a custom 3D configurator in Three.js, set up a design system with Tailwind and shadcn/ui and led the frontend.",
     href: "https://air-up.com",
     linkLabel: "air-up.com",
     images: ["/projects/air-up.jpg"],
     role: "Frontend Consultant and Lead Frontend",
+    seo: "Lead frontend for air up®: a headless shop on Next.js and Shopify, a custom 3D configurator, a Three.js model viewer and a design system.",
     intro:
       "air up® sells its scent-flavoured drinking bottles online. I joined the team in Munich as a freelance frontend consultant.",
     highlights: [
@@ -221,6 +227,7 @@ export const projects: Project[] = [
     linkLabel: "talentir.com",
     images: ["/projects/talentir.jpg"],
     role: "UX/UI Designer and Frontend Engineer",
+    seo: "UX/UI designer and frontend engineer for Talentir, the payout platform for agencies, brands and labels: the product designed and built in Next.js.",
     intro:
       "Talentir handles payouts for agencies, brands, labels and platforms. I designed and built the product that its customers work in.",
     highlights: [

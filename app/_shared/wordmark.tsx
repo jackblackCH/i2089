@@ -11,19 +11,18 @@ import { LogoMark } from "./logo-mark";
 // feeds the hidden text that assistive tech reads instead.
 export const BYLINE = {
   name: "Marc Illien",
-  offer: "Frontend / UX and agentic engineering",
+  offer: "Frontend / UX and Agentic Engineering",
 };
 
 export function Wordmark({ home = false }: { home?: boolean }) {
+  // The visible logo (i2089 turning into MARC ILLIEN) is hidden from
+  // assistive tech and kept OUT of the h1 and the link text: its letters
+  // are drawn twice (the flap halves), so as text they read
+  // "ii22008899…" to search engines. The h1 on home and the home link
+  // elsewhere carry only this clean line.
+  const name = `i2089 · ${BYLINE.name}`;
   const mark = (
-    <Text as={home ? "h1" : "span"} variant="logo" className="np-logo-host">
-      {/* the visible logo (i2089 turning into MARC ILLIEN) is hidden
-            from assistive tech; this line reads instead. On home it is
-            the h1, so it carries the offer too. */}
-      <span className="sr-only">
-        i2089 · {BYLINE.name}
-        {home && `, ${BYLINE.offer}, Zürich`}
-      </span>
+    <Text as="div" variant="logo" className="np-logo-host">
       <LogoMark />
     </Text>
   );
@@ -37,11 +36,19 @@ export function Wordmark({ home = false }: { home?: boolean }) {
       }`}
     >
       {home ? (
-        <div className="relative grid">{mark}</div>
-      ) : (
-        <Link href="/" className="link-mark relative grid">
+        <div className="relative grid">
+          <h1 className="sr-only">{`${name}, ${BYLINE.offer}, Zürich`}</h1>
           {mark}
-        </Link>
+        </div>
+      ) : (
+        // the link covers the logo, so the whole mark stays the target;
+        // hovering it dims the mark (np-mark in globals.css)
+        <div className="np-mark relative grid">
+          {mark}
+          <Link href="/" className="link-mark absolute inset-0">
+            <span className="sr-only">{name}</span>
+          </Link>
+        </div>
       )}
       {/* after the mark: on phones it is the second row, in flow */}
       <Nav />

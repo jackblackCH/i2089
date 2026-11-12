@@ -10,7 +10,9 @@ import { Marked, type Tokens } from "marked";
 //       demo.jpg        images and other files, linked as ./demo.jpg
 //
 // The folder name is the URL slug (/blog/taste-doesnt-compile). Front
-// matter: title, date (YYYY-MM-DD), description, optional tldr, draft.
+// matter: title, date (YYYY-MM-DD), description, optional tldr, draft,
+// optional seoTitle (a short title for search results, about 45
+// characters, since " · Marc Illien" is added and Google shows ~60).
 // Drafts show on localhost and Vercel previews only, never on i2089.com,
 // in the sitemap or in llms.txt.
 //
@@ -22,6 +24,8 @@ import { Marked, type Tokens } from "marked";
 export type Post = {
   slug: string;
   title: string;
+  /** short title for search results; falls back to the title */
+  seoTitle?: string;
   /** ISO date, YYYY-MM-DD */
   date: string;
   description: string;
@@ -124,6 +128,7 @@ function parse(slug: string): Post {
   return {
     slug,
     title: meta.title,
+    seoTitle: meta.seoTitle || undefined,
     date: meta.date,
     description: meta.description,
     tldr: meta.tldr || undefined,

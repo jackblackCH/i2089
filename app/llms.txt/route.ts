@@ -29,7 +29,7 @@ export function GET() {
     "";
 
   const lines: string[] = [];
-  lines.push(`# i2089 — Marc Illien`);
+  lines.push(`# i2089 · Marc Illien`);
   lines.push("");
   lines.push(`> ${intro}`);
   lines.push("");
@@ -54,7 +54,7 @@ export function GET() {
   lines.push("");
   for (const p of projects) {
     lines.push(
-      `- [${p.title}](${BASE_URL}/projects/${p.slug}) — ${p.period}. ${p.role}. ${p.text} Live: ${p.href}`,
+      `- [${p.title}](${BASE_URL}/projects/${p.slug}): ${p.period}. ${p.role}. ${p.text} Live: ${p.href}`,
     );
   }
   lines.push("");
@@ -64,7 +64,7 @@ export function GET() {
   for (const c of contracts) {
     // like the projects: the case page on the site, then the live site
     lines.push(
-      `- [${c.title}](${BASE_URL}/projects/${c.slug}) — ${c.period}. ${c.role}. ${c.text} Live: ${c.href}`,
+      `- [${c.title}](${BASE_URL}/projects/${c.slug}): ${c.period}. ${c.role}. ${c.text} Live: ${c.href}`,
     );
   }
   lines.push("");
@@ -73,7 +73,7 @@ export function GET() {
   lines.push("");
   for (const item of about?.items ?? []) {
     if (typeof item !== "string") {
-      lines.push(`- **${item.term}** — ${itemText(item)}`);
+      lines.push(`- **${item.term}**: ${itemText(item)}`);
     }
   }
   lines.push("");
@@ -84,7 +84,7 @@ export function GET() {
     lines.push("");
     for (const p of posts) {
       lines.push(
-        `- [${p.title}](${BASE_URL}/blog/${p.slug}) — ${p.date}. ${p.description}`,
+        `- [${p.title}](${BASE_URL}/blog/${p.slug}): ${p.date}. ${p.description}`,
       );
     }
     lines.push("");

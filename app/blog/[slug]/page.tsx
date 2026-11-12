@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!post) return {};
   return {
     ...pageMeta({
-      title: post.title,
+      title: post.seoTitle ?? post.title,
       description: post.description,
       path: `/blog/${slug}`,
     }),

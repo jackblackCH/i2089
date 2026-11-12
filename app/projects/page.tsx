@@ -5,7 +5,7 @@ import { ProjectsList } from "../_shared/projects-list";
 import { Column } from "../_shared/column";
 
 export const metadata: Metadata = pageMeta({
-  title: "Projects: Next.js, Shopify & Saleor work",
+  title: "Work: Next.js, Shopify & Saleor projects",
   description:
     "Selected work: Branded Goods on Saleor, air up® on Shopify, Talentir's product and AXA's SME calculator. Role, work and stack for each case.",
   path: "/projects",
@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMeta({
 
 export default function ProjectsPage() {
   return (
-    <Column title="Projects">
+    <Column title="Work">
       {/* one list, so four cases can form a 2x2 grid on a wide screen:
           the projects first, then the AXA contracts */}
       <ProjectsList projects={allWork} />

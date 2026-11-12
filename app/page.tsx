@@ -7,9 +7,9 @@ import { WithArrow } from "./_shared/arrow";
 import { pageMeta } from "./_shared/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
+  title: "Marc Illien · Frontend / UX and Agentic Engineering, Zürich",
   description:
-    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and agentic engineering for teams. Marc Illien, Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and Agentic Engineering for teams. Marc Illien, Zürich.",
   path: "/",
   absolute: true,
 });

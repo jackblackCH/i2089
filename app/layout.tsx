@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   // keywords first, name last — Google shows ~60 characters
   title: {
     template: "%s · Marc Illien",
-    default: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
+    default: "Marc Illien · Frontend / UX and Agentic Engineering, Zürich",
   },
   description:
-    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and agentic engineering for teams. Marc Illien, Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and Agentic Engineering for teams. Marc Illien, Zürich.",
 };
 
 // The app/proto subline reveals once per session (see .np-signature in
