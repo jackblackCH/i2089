@@ -30,13 +30,12 @@ export function Wordmark({ home = false }: { home?: boolean }) {
 
   return (
     <section
-      className={`p-pad relative grid place-items-center ${
+      className={`p-pad relative grid place-items-center max-md:grid-rows-[1fr_auto] max-md:pb-[calc(var(--spacing-pad)/2)] ${
         home
           ? "max-md:min-h-[max(38svh,210px)]"
           : "max-md:min-h-[max(18svh,150px)]"
       }`}
     >
-      <Nav />
       {home ? (
         <div className="relative grid">{mark}</div>
       ) : (
@@ -44,6 +43,8 @@ export function Wordmark({ home = false }: { home?: boolean }) {
           {mark}
         </Link>
       )}
+      {/* after the mark: on phones it is the second row, in flow */}
+      <Nav />
     </section>
   );
 }

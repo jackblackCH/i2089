@@ -12,13 +12,15 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
-// The foot of the wordmark column, spread across its full width with
-// equal space around each link, each centred in its column. From lg the
-// four links share one row. Below lg "UX / Frontend Engineering" (~210px
-// in the label type) does not fit one row with the others, so they form
-// a 2x2 grid: the two offers on top, Projects and About below. Lives
-// inside the wordmark section, so on mobile it sits at the foot of the
-// wordmark row and scrolls away with it.
+// The foot of the wordmark column.
+// Phones: in flow under the logo, inside the section's side padding, so
+// its edges line up with the content below. Two columns read top to
+// bottom: the offers on the left edge, Projects and About on the right
+// edge (282px, fits the 294px a 390px phone leaves; four in a row would
+// need ~420px). Half a block step above and below, one item step
+// between the rows.
+// md+: pinned to the foot of the column, spread with equal space around
+// each link, each centred; a 2x2 grid until lg, one row from lg.
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -26,9 +28,9 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-[repeat(2,auto)] justify-evenly gap-y-label p-pad-tight lg:grid-cols-[repeat(4,auto)]"
+      className="gap-y-item md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly lg:grid-cols-[repeat(4,auto)]"
     >
-      {links.map(({ href, label }) => {
+      {links.map(({ href, label }, i) => {
         // exact match is the page itself; a deeper path (a project under
         // Projects) is still "here" for sighted and screen-reader users
         const exact = pathname === href;
@@ -38,7 +40,9 @@ export function Nav() {
             key={href}
             href={href}
             aria-current={exact ? "page" : active ? "true" : undefined}
-            className={`link-label hit-area justify-self-center text-center whitespace-nowrap ${active ? "text-(--np-fg)" : ""}`}
+            className={`link-label hit-area whitespace-nowrap md:justify-self-center md:text-center ${
+              i < 2 ? "justify-self-start" : "justify-self-end"
+            } ${active ? "text-(--np-fg)" : ""}`}
           >
             {label}
           </Link>

@@ -7,7 +7,7 @@ export function Copyright() {
   return (
     <Text
       variant="footer"
-      className="p-pad-tight md:hidden"
+      className="px-pad py-[calc(var(--spacing-pad)/2)] md:hidden"
     >
       ©2026 Marc Illien, Zürich
     </Text>
