@@ -38,10 +38,13 @@ export const AXES = {
 export type Axis = keyof typeof AXES;
 export type Variants = { [A in Axis]: keyof (typeof AXES)[A]["options"] };
 
+// Chosen by Marc on 2026-11-12. Slow loop goes against PFD R1 (nothing
+// moves while people read); kept by his decision, see
+// docs/pfd/2026-11-12-variants.md.
 export const DEFAULTS: Variants = {
-  motion: "wipe",
-  timing: "once",
-  fit: "lines",
+  motion: "blur",
+  timing: "loop",
+  fit: "same",
   labels: "fill",
 };
 

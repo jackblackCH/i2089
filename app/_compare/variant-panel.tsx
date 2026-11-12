@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import {
   AXES,
+  DEFAULTS,
   REPLAY_EVENT,
   VARIANTS_EVENT,
   readVariants,
@@ -53,13 +54,25 @@ export function VariantPanel() {
           </div>
         </div>
       ))}
-      <button
-        type="button"
-        onClick={replay}
-        className="w-full rounded border border-white/25 px-2 py-1.5 text-neutral-100 hover:bg-white/10"
-      >
-        Replay logo motion (r)
-      </button>
+      <div className="grid grid-cols-2 gap-1">
+        <button
+          type="button"
+          onClick={replay}
+          className="rounded border border-white/25 px-2 py-1.5 text-neutral-100 hover:bg-white/10"
+        >
+          Replay motion (r)
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            writeVariants(DEFAULTS);
+            replay();
+          }}
+          className="rounded border border-white/25 px-2 py-1.5 text-neutral-100 hover:bg-white/10"
+        >
+          Reset to defaults
+        </button>
+      </div>
     </div>
   );
 }

@@ -276,6 +276,10 @@
 :root[data-fit="same"] .np-logo {
   font-size: 0.4505em;
 }
+/* same size: MARC ILLIEN sets the box width, i2089 sits centred in it */
+:root[data-fit="same"] .np-logo-src {
+  justify-self: center;
+}
 
 /* rest: one word visible. A motion that already played this session
    ("rest on the name") shows the name before paint, no flash of i2089. */
