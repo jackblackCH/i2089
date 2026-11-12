@@ -273,8 +273,15 @@
 :root[data-fit="scaled"] .np-logo-dst {
   font-size: 0.4505em;
 }
+/* same size: MARC ILLIEN (7.46em) spans the column between its side
+   paddings — the full width on phones, the left half from md */
 :root[data-fit="same"] .np-logo {
-  font-size: 0.4505em;
+  font-size: calc((100vw - 2 * var(--spacing-pad)) / 7.46);
+}
+@media (width >= 48rem) {
+  :root[data-fit="same"] .np-logo {
+    font-size: calc((50vw - 2 * var(--spacing-pad)) / 7.46);
+  }
 }
 /* same size: MARC ILLIEN sets the box width, i2089 sits centred in it */
 :root[data-fit="same"] .np-logo-src {
@@ -287,28 +294,45 @@
 .np-logo[data-rest="dst"] .np-logo-src {
   visibility: hidden;
 }
-:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src {
+:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src,
+:root[data-timing="loop"][data-page="sub"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src {
   visibility: hidden;
 }
-:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
+:root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst,
+:root[data-timing="loop"][data-page="sub"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
   visibility: visible;
 }
+/* phone nav: 11px caps need taller tap areas than the shared hit-area
+   gives (it measured 23px; WCAG 2.5.8 asks for 24px, Apple 44pt). With
+   the group-step row gap the areas stay apart. */
+@media (width < 48rem) {
+  nav[aria-label="Main"] a::after {
+    inset: -1.1em -0.5em;
+  }
+}
+
 /* ── Labels as selected text (variants.ts "labels") ───────────────────
-   The fg box with surface text, like a text selection: tight to the cap
-   height with a little air. "outline" turns the contact button into a
-   1px outlined box, so filled means label and outlined means action
-   (PFD R5: the action must stay the clearest signal). */
+   The fg box with surface text, like a text selection. The box sits on
+   an inline span (.np-label-text) and is cloned per line, so a wrapped
+   label hugs each line like a real selection instead of filling the
+   column. Text in the bold face: at 11.5px, dark-on-light regular
+   strokes read thin and grey although the contrast is 16.8:1. "outline"
+   turns the contact button into a 1px outlined box, so filled means
+   label and outlined means action (PFD R5: the action must stay the
+   clearest signal). */
 .np-label {
   justify-self: start;
-  width: fit-content;
 }
-:root[data-labels="fill"] .np-label,
-:root[data-labels="outline"] .np-label,
-:root[data-labels="terms"] .np-term {
+:root[data-labels="fill"] .np-label .np-label-text,
+:root[data-labels="outline"] .np-label .np-label-text,
+:root[data-labels="terms"] .np-term .np-label-text {
   background: var(--np-fg);
   color: var(--np-surface);
-  padding: 0.3em 0.35em 0.25em;
+  font-weight: 700;
+  padding: 0.2em 0.35em 0.15em;
   margin-inline-start: -0.35em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 :root[data-labels="outline"] .np-cta {
   background: transparent;

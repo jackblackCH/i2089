@@ -17,7 +17,7 @@ export const AXES = {
       once: "Once, rest on name",
       hover: "Hover / focus",
       back: "Once, back to i2089",
-      loop: "Slow loop",
+      loop: "Slow loop on home, once elsewhere",
     },
   },
   fit: {
@@ -38,14 +38,15 @@ export const AXES = {
 export type Axis = keyof typeof AXES;
 export type Variants = { [A in Axis]: keyof (typeof AXES)[A]["options"] };
 
-// Chosen by Marc on 2026-11-12. Slow loop goes against PFD R1 (nothing
-// moves while people read); kept by his decision, see
+// Chosen by Marc on 2026-11-12. The loop runs on home only; reading
+// pages play the motion once and rest on the name (PFD R1). Labels bold
+// on the selected box, the contact button outlined (R5). See
 // docs/pfd/2026-11-12-variants.md.
 export const DEFAULTS: Variants = {
   motion: "blur",
   timing: "loop",
   fit: "same",
-  labels: "fill",
+  labels: "outline",
 };
 
 export const VARIANTS_KEY = "i2089-variants";
@@ -62,7 +63,7 @@ export function variantsScript(allowStored: boolean) {
     allowStored
       ? `try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(VARIANTS_KEY)})||"{}");for(var k in v)if(s[k])v[k]=s[k]}catch(e){}`
       : ""
-  }for(var k in v)d.dataset[k]=v[k];if(sessionStorage.getItem(${JSON.stringify(LOGO_SEEN_KEY)}))d.dataset.logoSeen=""}catch(e){}`;
+  }for(var k in v)d.dataset[k]=v[k];d.dataset.page=location.pathname==="/"?"home":"sub";if(sessionStorage.getItem(${JSON.stringify(LOGO_SEEN_KEY)}))d.dataset.logoSeen=""}catch(e){}`;
 }
 
 export function readVariants(): Variants {

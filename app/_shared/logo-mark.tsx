@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useLayoutEffect, useRef, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 import {
   LOGO_SEEN_KEY,
   REPLAY_EVENT,
@@ -64,12 +65,19 @@ function Letters({ text }: { text: string }) {
 export function LogoMark() {
   const root = useRef<HTMLSpanElement>(null);
   const key = useSyncExternalStore(subscribe, snapshot, () => "");
+  const home = usePathname() === "/";
 
-  useEffect(() => {
+  // a layout effect: the rest state (i2089 or the name) is set before
+  // paint, so a client navigation never flashes the wrong word
+  useLayoutEffect(() => {
     const node = root.current;
     if (!node || !key) return;
     const el: HTMLSpanElement = node;
-    const [motion, timing] = key.split("|") as [Variants["motion"], Variants["timing"]];
+    const [motion, chosen] = key.split("|") as [Variants["motion"], Variants["timing"]];
+    // the loop runs on home only; reading pages play once and rest on the
+    // name (PFD R1: nothing moves while people read)
+    const timing: Variants["timing"] = chosen === "loop" && !home ? "once" : chosen;
+    document.documentElement.dataset.page = home ? "home" : "sub";
     let alive = true;
     const running: Animation[] = [];
     const layer = (s: Side) => el.querySelector<HTMLElement>(`.np-logo-${s}`)!;
@@ -206,6 +214,7 @@ export function LogoMark() {
         while (alive) {
           const next: Side = side === "src" ? "dst" : "src";
           await play(side, next);
+          if (alive && next === "dst") seen();
           side = next;
           await wait(6000);
         }
@@ -250,7 +259,7 @@ export function LogoMark() {
         stage.removeEventListener("focusout", off);
       }
     };
-  }, [key]);
+  }, [key, home]);
 
   return (
     <span ref={root} className="np-logo" data-rest="src" aria-hidden>
