@@ -4,15 +4,20 @@ import { Text } from "./text";
 import { Contact, Clients } from "./contact";
 import { Arrow } from "./arrow";
 
-// The right column of every content page: one flowing column — title,
-// the contact action, content, selected work — spaced by the group step.
-// The contact sits right under the title, so every page shows its next
-// step in the first screen (PFD R2, R5). It scrolls as a whole on md+
-// (never a box inside a box); the quiet links close the page at the foot.
-// one page padding minus the group step the column already adds; written
-// out in full so Tailwind finds the classes
-const PAD_Y = "my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
-const PAD_TOP = "mt-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
+// The right column of every content page, built like home: up to three
+// bands, split by the same groove, each centred in its own share of the
+// height (PFD L2: one pattern on every page).
+//   1. the head: back link, title and the contact, so every page shows
+//      its next step in the first screen (PFD R2, R5);
+//   2. the content;
+//   3. the foot: the selected work on the offer pages (proof, L3) or
+//      LinkedIn on About.
+// md+: every band takes at least its content and the bands share the
+// rest of the height evenly, so the column fills the screen, grows and
+// shrinks with it, and the content band sits on the logo's midline when
+// it fits; a taller page scrolls as a whole (never a box inside a box).
+// Phones: the bands stack, half a page padding above and below each.
+const BAND = "grid content-center py-[calc(var(--spacing-pad)/2)]";
 
 export function Column({
   title,
@@ -22,60 +27,52 @@ export function Column({
   children,
 }: {
   title: string;
-  /** small back link, out of flow in the title's top padding so the
-      title lands exactly where it does on every other page */
+  /** small back link above the title */
   back?: { href: string; label: string };
   linkedin?: boolean;
-  /** label for the client line under the content; omit to hide it */
+  /** label for the selected work at the foot; omit to hide it */
   clients?: string;
   children?: ReactNode;
 }) {
+  const foot = clients ? (
+    <Clients label={clients} />
+  ) : linkedin ? (
+    <LinkedIn />
+  ) : null;
   return (
-    <section className="np-panel relative flex flex-col md:overflow-y-auto">
-      {back && (
-        <Text
-          variant="footer"
-          className="left-pad absolute top-[calc(var(--spacing-pad)/2)] -translate-y-1/2"
-        >
-          <Link href={back.href} className="link-label hit-area">
-            <Arrow dir="left" /> {back.label}
-          </Link>
-        </Text>
+    <Text
+      as="section"
+      variant="body"
+      className="np-panel enter grid md:auto-rows-[minmax(min-content,1fr)] md:overflow-y-auto"
+    >
+      <div className={`${BAND} gap-y-group px-pad`}>
+        <div className="gap-y-item grid">
+          {back && (
+            <Text variant="footer" className="text-trim">
+              <Link href={back.href} className="link-label hit-area">
+                <Arrow dir="left" /> {back.label}
+              </Link>
+            </Text>
+          )}
+          <Text as="h1" variant="title">
+            <span className="text-trim block">{title}</span>
+          </Text>
+        </div>
+        <Contact />
+      </div>
+      {children && (
+        <div className={`${BAND} np-groove-t gap-y-group`}>{children}</div>
       )}
-
-      <Text
-        as="article"
-        variant="body"
-        className="enter gap-y-group py-pad flex flex-col"
-      >
-        <Text as="h1" variant="title" className="px-pad">
-          <span className="text-trim block">{title}</span>
-        </Text>
-        {/* Groups one page padding apart (the same space as the panel's
-            top edge to the title, so it scales with --spacing-pad): the
-            title; the contact, one clean action; the content; and on
-            the offer pages the selected work, closing the page as proof
-            (PFD L3). The column already spaces blocks by the group step,
-            so the margins add the difference (never below zero). */}
-        <Contact className={`px-pad ${PAD_Y}`} />
-        {children}
-        {clients && (
-          <div className={`px-pad ${PAD_TOP}`}>
-            <Clients label={clients} />
-          </div>
-        )}
-      </Text>
-
-      {linkedin && <Foot />}
-    </section>
+      {foot && <div className={`${BAND} np-groove-t px-pad`}>{foot}</div>}
+    </Text>
   );
 }
 
-// The page foot: LinkedIn on About. The address is not repeated here;
-// it sits under the title on every page.
-function Foot() {
+// The foot on About: LinkedIn. The address is not repeated here; it sits
+// under the title on every page.
+function LinkedIn() {
   return (
-    <Text as="div" variant="body" className="px-pad pb-pad mt-auto">
+    <div>
       <a
         href="https://www.linkedin.com/in/marcillien/"
         target="_blank"
@@ -92,6 +89,6 @@ function Foot() {
         </svg>
         LinkedIn
       </a>
-    </Text>
+    </div>
   );
 }
