@@ -7,17 +7,18 @@ import { Text } from "./text";
 // PFD R5: both offers are one step away from every page
 const links = [
   { href: "/ai-solutions", label: "AI coaching" },
-  { href: "/engineering", label: "Engineering" },
+  { href: "/engineering", label: "UX / Frontend Engineering" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
 ];
 
-// The foot of the wordmark column: four equal columns across its full
-// width, each link centred in its cell. Phones are too narrow for four
-// equal cells ("AI COACHING" and "ENGINEERING" would touch), so there
-// the links sit at equal gaps from edge to edge. Lives inside the wordmark
-// section, so on mobile it sits at the foot of the wordmark row and
-// scrolls away with it.
+// The foot of the wordmark column, spread across its full width with
+// equal space around each link, each centred in its column. From lg the
+// four links share one row. Below lg "UX / Frontend Engineering" (~210px
+// in the label type) does not fit one row with the others, so they form
+// a 2x2 grid: the two offers on top, Projects and About below. Lives
+// inside the wordmark section, so on mobile it sits at the foot of the
+// wordmark row and scrolls away with it.
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -25,7 +26,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-[repeat(4,auto)] justify-between p-pad-tight md:grid-cols-4 md:justify-normal"
+      className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-[repeat(2,auto)] justify-evenly gap-y-label p-pad-tight lg:grid-cols-[repeat(4,auto)]"
     >
       {links.map(({ href, label }) => {
         // exact match is the page itself; a deeper path (a project under

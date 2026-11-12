@@ -56,10 +56,10 @@ export const services: Service[] = [
   },
   {
     slug: "engineering",
-    title: "Frontend engineering",
-    seoTitle: "Frontend engineer for React & Next.js, Zürich",
+    title: "UX / Frontend Engineering",
+    seoTitle: "UX / frontend engineering, React & Next.js, Zürich",
     description:
-      "I design and build fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. Frontend engineering from Zürich.",
+      "I design and build fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. UX / frontend engineering from Zürich.",
     items: [
       {
         term: "Custom business software",
@@ -238,6 +238,6 @@ export const clients: { name: string; href: string }[] = [
    audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   { words: ["AI coaching for dev teams"], slugs: ["ai-solutions"] },
-  { words: ["Frontend engineering"], slugs: ["engineering"] },
+  { words: ["UX / Frontend Engineering"], slugs: ["engineering"] },
   { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];

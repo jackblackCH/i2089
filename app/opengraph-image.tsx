@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 export const dynamic = "force-static";
 
 export const alt =
-  "i2089, Marc Illien. AI coaching for dev teams and frontend engineering, Zürich.";
+  "i2089, Marc Illien. AI coaching for dev teams and UX / frontend engineering, Zürich.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -68,7 +68,7 @@ export default async function Image() {
             color: mute,
           }}
         >
-          Marc Illien · AI coaching & frontend engineering
+          Marc Illien · AI coaching & UX / frontend engineering
         </div>
       </div>
 

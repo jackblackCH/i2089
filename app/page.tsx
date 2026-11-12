@@ -7,9 +7,9 @@ import { pageMeta } from "./_shared/seo";
 import { WithArrow } from "./_shared/arrow";
 
 export const metadata: Metadata = pageMeta({
-  title: "Marc Illien · AI consulting & frontend engineering, Zürich",
+  title: "Marc Illien · AI consulting & UX / frontend engineering, Zürich",
   description:
-    "AI coaching for dev teams and frontend engineering in React and Next.js. Marc Illien, independent software engineer in Zürich.",
+    "AI coaching for dev teams and UX / frontend engineering in React and Next.js. Marc Illien, independent software engineer in Zürich.",
   path: "/",
   absolute: true,
 });
