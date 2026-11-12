@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   // keywords first, name last — Google shows ~60 characters
   title: {
     template: "%s · Marc Illien",
-    default: "Marc Illien · Agentic engineering, web & app interfaces, Zürich",
+    default: "Marc Illien · Frontend & apps, agentic engineering, Zürich",
   },
   description:
-    "Agentic engineering for dev teams, and web and app interfaces in React, Next.js and React Native. Marc Illien, independent software engineer in Zürich.",
+    "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
 };
 
 // The app/proto subline reveals once per session (see .np-signature in
@@ -46,7 +46,7 @@ const JSON_LD = {
       email: "hi@i2089.com",
       jobTitle: "Independent Software Engineer",
       description:
-        "Independent software engineer in Zürich, working on Agentic Engineering and on web and mobile app interfaces.",
+        "Independent software engineer in Zürich, working on frontend and mobile apps, and on Agentic Engineering.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Zürich",

@@ -19,6 +19,46 @@ export type Service = {
    complete sentences, concrete and checkable, no sales adjectives. */
 export const services: Service[] = [
   {
+    slug: "frontend",
+    /* Frontend & Apps: Marc's main offer, first everywhere. One offer
+       for web and mobile interfaces (an app buyer must see "app" at first
+       glance; a third offer would split attention, PFD L0). User
+       interfaces lead; each web example is a case on the site. UX lives
+       in "UX and design in code". */
+    title: "Frontend & Apps",
+    seoTitle: "Frontend & apps: React, Next.js & React Native, Zürich",
+    description:
+      "I design and build web and mobile app interfaces in React, Next.js, React Native, Expo and SwiftUI. Fast, and easy to change. From Zürich.",
+    items: [
+      {
+        term: "User interfaces",
+        text: "I design and build the interfaces people work with every day, from forms and calculators to product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
+      },
+      {
+        term: "Web apps",
+        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
+      },
+      /* Marc designs and builds apps (2026-11-12). TODO(marc): add a case
+         (app name, store link) once one can be shown. */
+      {
+        term: "Mobile apps",
+        text: "I design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
+      },
+      {
+        term: "UX and design in code",
+        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP.",
+      },
+      {
+        term: "Custom business software",
+        text: "I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
+      },
+      {
+        term: "Backend and DevOps",
+        text: "My backends are usually small and run on Node.js. With my DevOps skills, they're easy to run and deploy anywhere.",
+      },
+    ],
+  },
+  {
     slug: "ai",
     /* "Agentic Engineering": the name peers use for disciplined work with
        coding agents (ti8m, INNOQ, Caylent); "AI integration" reads as
@@ -70,46 +110,6 @@ export const services: Service[] = [
       {
         term: "Review and tests",
         text: "Every change the AI writes goes through your normal code review and tests before it is merged.",
-      },
-    ],
-  },
-  {
-    slug: "frontend",
-    /* Web & App Interfaces: one offer for web and mobile interfaces (an
-       app buyer must see "app" at first glance; a third offer would split
-       attention, PFD L0). User interfaces lead; each web example is a
-       case on the site. UX lives in "UX and design in code". */
-    // non-breaking space: "App Interfaces" stays on one line
-    title: "Web & App\u00a0Interfaces",
-    seoTitle: "Web & app interfaces: React, Next.js & React Native, Zürich",
-    description:
-      "I design and build web and mobile app interfaces in React, Next.js, React Native, Expo and SwiftUI. Fast, and easy to change. From Zürich.",
-    items: [
-      {
-        term: "User interfaces",
-        text: "I design and build the interfaces people work with every day, from forms and calculators to product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
-      },
-      {
-        term: "Web apps",
-        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
-      },
-      /* Marc designs and builds apps (2026-11-12). TODO(marc): add a case
-         (app name, store link) once one can be shown. */
-      {
-        term: "Mobile apps",
-        text: "I design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
-      },
-      {
-        term: "UX and design in code",
-        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP.",
-      },
-      {
-        term: "Custom business software",
-        text: "I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
-      },
-      {
-        term: "Backend and DevOps",
-        text: "My backends are usually small and run on Node.js. With my DevOps skills, they're easy to run and deploy anywhere.",
       },
     ],
   },
@@ -269,13 +269,21 @@ export const clients: { name: string; href: string }[] = [
   { name: "OST", href: "/about" },
 ];
 
-/* the home: two offer bands (one fixed label each; PFD R1, nothing a
-   visitor clicks moves while they read), then the audience claim, which
-   home shows as the label over the client names, not as a third band
-   (it is a claim, not an offer). Kept as word lists, since app/proto
-   still cycles them. */
-export const bands: { words: string[]; slugs: string[] }[] = [
-  { words: ["Agentic Engineering for your dev team"], slugs: ["ai"] },
-  { words: ["Web & App\u00a0Interfaces"], slugs: ["frontend"] },
-  { words: ["for startups, SMEs and corporates"], slugs: [] },
+/* the home: three equal bands, each a big title with an arrow and one
+   small line under it. Frontend & Apps (Marc's main offer) first, then
+   Agentic Engineering, then the contact. PFD: three chunks (L0), one
+   style for all rows (L2), the offers first and the contact last (L4),
+   nothing moves while people read (R1). Kept as word lists, since
+   app/proto still reads bands[0] and bands[1]. */
+export const bands: { words: string[]; slugs: string[]; sub: string }[] = [
+  {
+    words: ["Frontend & Apps"],
+    slugs: ["frontend"],
+    sub: "Web and mobile apps, designed and built.",
+  },
+  {
+    words: ["Agentic Engineering"],
+    slugs: ["ai"],
+    sub: "AI coding workflows for your dev team.",
+  },
 ];

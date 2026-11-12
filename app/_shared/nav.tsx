@@ -9,8 +9,8 @@ import { Text } from "./text";
 // page (PFD R5), in the bright colour with short names; the rest sits
 // beside them in the label grey.
 const OFFERS = [
+  { href: "/frontend", label: "Frontend & Apps" },
   { href: "/ai", label: "Agentic" },
-  { href: "/frontend", label: "Web & Apps" },
 ];
 const MORE = [
   { href: "/projects", label: "Work" },
@@ -47,22 +47,21 @@ function NavLink({
   );
 }
 
-// The foot of the wordmark column: offers on the left, Work · About ·
-// Blog on the right. Phones: in flow under the logo, inside the section's
-// side padding, so both edges line up with the content below; two auto
-// columns (the offers stacked, the rest on one line), the free space
-// between them. md+: pinned to the foot of the
-// column, both groups on one line, wrapping only when the column is
-// narrow.
+// The foot of the wordmark column: the offers first, then Work · About ·
+// Blog. Phones: in flow under the logo, inside the section's side
+// padding, so the left edge lines up with the content below; two rows
+// (the offers, then the rest), since "Frontend & Apps" leaves no room for
+// both groups on one line. md+: pinned to the foot of the column, both
+// groups on one line, wrapping only when the column is narrow.
 export function Nav() {
   return (
     <Text
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="md:gap-x-group md:gap-y-item md:p-pad-tight z-10 grid grid-cols-[auto_auto] items-start justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:flex md:flex-wrap md:items-baseline"
+      className="md:gap-x-group gap-y-item md:p-pad-tight z-10 grid justify-items-start self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:flex md:flex-wrap md:items-baseline md:justify-between"
     >
-      <ul className="gap-y-group md:gap-x-group grid md:flex">
+      <ul className="gap-x-group flex">
         {OFFERS.map((l) => (
           <li key={l.href}>
             <NavLink {...l} offer />

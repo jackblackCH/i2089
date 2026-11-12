@@ -1,57 +1,67 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { bands } from "./_shared/content";
 import { Text } from "./_shared/text";
-import { Contact, Clients } from "./_shared/contact";
 import { WithArrow } from "./_shared/arrow";
 import { pageMeta } from "./_shared/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Marc Illien · Agentic engineering, web & app interfaces, Zürich",
+  title: "Marc Illien · Frontend & apps, agentic engineering, Zürich",
   description:
-    "Agentic engineering for dev teams, and web and app interfaces in React, Next.js and React Native. Marc Illien, independent software engineer in Zürich.",
+    "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
   path: "/",
   absolute: true,
 });
 
-// Right column, three calm rows: the two offers as whole-row links, then
-// one closing row with the audience and its proof (who it is for, and
-// the clients that show it) right above the contact action. PFD: three
-// chunks (L0); the audience is a claim, not a third offer, so it does not
-// get an offer-sized band (L2/L4); proof sits next to the decision (L3);
-// the contact stays in the first screen on phones (R5). Nothing on home
-// moves while people read (R1). On md+ each row takes at least its
-// content and shares the rest of the height evenly; the rows enter like
-// every page (.enter, 50ms apart).
-const ROW = "grid content-center p-pad md:py-[calc(var(--spacing-pad)/2)]";
+// Right column, three equal bands in one style: a big title with an arrow
+// and one small line under it. Frontend & Apps first (the main offer),
+// then Agentic Engineering, then the contact as a band of its own, so
+// the page reads as one pattern three times (PFD L0: three chunks; L2:
+// one style, no mixed box). Proof (clients, audience) lives on the offer
+// pages, Work and About. Nothing on home moves while people read (R1);
+// the contact stays in the first screen on phones (R5). On md+ each band
+// takes at least its content and shares the rest of the height evenly;
+// the bands enter like every page (.enter, 50ms apart).
+const ROW =
+  "group grid content-center gap-y-item p-pad md:py-[calc(var(--spacing-pad)/2)] focus-visible:outline-1 focus-visible:outline-offset-[-12px] focus-visible:outline-(--np-fg)";
+
+const ARROW =
+  "transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none";
+
+function Band({ title, sub }: { title: string; sub: ReactNode }) {
+  return (
+    <>
+      <Text as="h2" variant="title" className="text-balance">
+        <span className="text-trim block">
+          <WithArrow text={title} arrowClassName={ARROW} />
+        </span>
+      </Text>
+      <Text as="p" variant="body" className="text-trim text-pretty text-(--np-mute)">
+        {sub}
+      </Text>
+    </>
+  );
+}
 
 export default function HomePage() {
-  const [ai, apps, audience] = bands;
   return (
     <section className="np-panel enter grid md:grid-rows-[repeat(3,minmax(min-content,1fr))] md:overflow-y-auto">
-      {/* the whole row is the link: it looks like one target, so it is
+      {/* the whole band is the link: it looks like one target, so it is
           one. Hover nudges the arrow toward the page instead of dimming
-          the text (dimming reads as disabled); focus outlines the row. */}
-      {[ai, apps].map((band, i) => (
+          the text (dimming reads as disabled); focus outlines the band. */}
+      {bands.map((band, i) => (
         <Link
-          key={band.words[0]}
+          key={band.slugs[0]}
           href={`/${band.slugs[0]}`}
-          className={`group ${ROW} ${i > 0 ? "np-groove-t" : ""} focus-visible:outline-1 focus-visible:outline-offset-[-12px] focus-visible:outline-(--np-fg)`}
+          className={`${ROW} ${i > 0 ? "np-groove-t" : ""}`}
         >
-          <Text as="h2" variant="title" className="text-balance">
-            <span className="text-trim block">
-              <WithArrow
-                text={band.words[0]}
-                arrowClassName="transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none"
-              />
-            </span>
-          </Text>
+          <Band title={band.words[0]} sub={band.sub} />
         </Link>
       ))}
-      <div className={`np-groove-t ${ROW} gap-y-group`}>
-        <Clients label={audience.words[0]} />
-        <Contact />
-      </div>
+      <a href="mailto:hi@i2089.com" className={`${ROW} np-groove-t`}>
+        <Band title="Let's talk" sub="hi@i2089.com · Zürich or remote" />
+      </a>
     </section>
   );
 }
