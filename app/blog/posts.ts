@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { marked, type Tokens } from "marked";
+import { Marked, type Tokens } from "marked";
 
 // Blog posts are Markdown files in content/blog/, with a small front
 // matter block (title, date, description, optional tldr, draft). Drafts
@@ -31,21 +31,18 @@ const escapeHtml = (s: string) =>
     .replace(/"/g, "&quot;");
 
 // An image alone in a paragraph becomes a <figure>; its Markdown title
-// ("…") becomes the caption.
-marked.use({
+// ("…") becomes the caption. Rules are the reference's pattern: one under
+// the title, one after the tl;dr (blog-shell), and "---" in the Markdown
+// only between chapters, never before every heading.
+// its own instance: the global `marked` keeps renderers across dev
+// reloads, so an old renderer would stay active
+const marked = new Marked({
   renderer: {
     paragraph({ tokens }: Tokens.Paragraph) {
       const inner = this.parser.parseInline(tokens);
       return tokens.length === 1 && tokens[0].type === "image"
         ? `${inner}\n`
         : `<p>${inner}</p>\n`;
-    },
-    // every section (h2) opens with a full-width rule, like the reference
-    heading({ tokens, depth }: Tokens.Heading) {
-      const inner = this.parser.parseInline(tokens);
-      return depth === 2
-        ? `<hr />\n<h2>${inner}</h2>\n`
-        : `<h${depth}>${inner}</h${depth}>\n`;
     },
     image({ href, title, text }: Tokens.Image) {
       const caption = title

@@ -8,6 +8,8 @@
 .blog {
   --blog-bg: #fff;
   --blog-fg: rgb(20, 20, 19);
+  /* text on a filled fg shape (the contact button) */
+  --blog-on-fg: #fff;
   --blog-head: rgba(0, 0, 0, 0.8);
   --blog-soft: rgba(0, 0, 0, 0.8);
   --blog-mute: rgba(0, 0, 0, 0.6);
@@ -334,7 +336,7 @@
 }
 .blog-contact .np-cta {
   background: var(--blog-fg);
-  color: var(--blog-bg);
+  color: var(--blog-on-fg);
 }
 .blog-colophon {
   color: var(--blog-mute);
@@ -347,6 +349,7 @@
 :root[data-blog="dark"] .blog,
 :root[data-blog="site"] .blog {
   --blog-bg: transparent;
+  --blog-on-fg: var(--np-surface);
   --blog-fg: var(--np-fg);
   --blog-head: var(--np-fg);
   --blog-soft: var(--np-fg);
