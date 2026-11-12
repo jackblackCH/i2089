@@ -135,16 +135,22 @@ function parse(slug: string): Post {
 /** newest first; drafts only where SHOW_DRAFTS */
 export function allPosts(): Post[] {
   if (!fs.existsSync(BLOGS_DIR)) return [];
-  return fs
-    .readdirSync(BLOGS_DIR, { withFileTypes: true })
-    .filter(
-      (d) =>
-        d.isDirectory() &&
-        fs.existsSync(path.join(BLOGS_DIR, d.name, "index.md")),
-    )
-    .map((d) => parse(d.name))
-    .filter((p) => SHOW_DRAFTS || !p.draft)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  return (
+    fs
+      .readdirSync(BLOGS_DIR, { withFileTypes: true })
+      .filter(
+        (d) =>
+          d.isDirectory() &&
+          fs.existsSync(path.join(BLOGS_DIR, d.name, "index.md")),
+      )
+      .map((d) => parse(d.name))
+      .filter((p) => SHOW_DRAFTS || !p.draft)
+      // newest first; on the same day, published posts before drafts
+      .sort(
+        (a, b) =>
+          b.date.localeCompare(a.date) || Number(a.draft) - Number(b.draft),
+      )
+  );
 }
 
 export function postBySlug(slug: string): Post | undefined {

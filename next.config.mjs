@@ -24,6 +24,12 @@ const nextConfig = {
               destination: "/frontend",
               permanent: true,
             },
+            // the first post's working title and URL
+            {
+              source: "/blog/everyone-can-build-a-ferrari",
+              destination: "/blog/taste-doesnt-compile",
+              permanent: true,
+            },
           ];
         },
         async rewrites() {
