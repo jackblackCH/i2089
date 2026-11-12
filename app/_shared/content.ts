@@ -183,9 +183,9 @@ export const contracts: Project[] = [
     role: "Frontend Architect and Engineer",
     intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
-      "I led the frontend for an SME wizard and calculator, published on axa.ch as a microfrontend.",
-      "I built the UI and frontend for a WhatsApp-like messenger that lets agents talk with their clients.",
-      "I worked on the design of the pattern library.",
+      "Led the frontend for the SME wizard and calculator, published on axa.ch as a microfrontend.",
+      "Built the UI and frontend for a WhatsApp-like messenger that lets agents talk with their clients.",
+      "Helped design the pattern library.",
     ],
     stack: ["TypeScript", "React"],
   },
@@ -207,10 +207,9 @@ export const projects: Project[] = [
     intro:
       "branded-goods.ch is an online shop built on Saleor, an open-source e-commerce platform. I worked on it as a partner of Avolut.",
     highlights: [
-      "I built the frontend in Next.js and Tailwind, on Saleor's API.",
-      "I designed parts of the interface, right in code.",
-      "I built and integrated custom components.",
-      "I custom-built complex form components to filter products by their custom attributes.",
+      "Designed and built the product filters: complex form components for each product's custom attributes.",
+      "Developed the shop frontend in Next.js and Tailwind, on Saleor's API.",
+      "Designed parts of the interface right in code, as custom components integrated into the shop.",
     ],
     stack: ["Next.js", "Saleor", "Tailwind", "TypeScript"],
   },
@@ -226,11 +225,10 @@ export const projects: Project[] = [
     intro:
       "air up® sells its scent-flavoured drinking bottles online. I joined the team in Munich as a freelance frontend consultant.",
     highlights: [
-      "I built the headless shop on Next.js and Shopify.",
-      "I set up a design system, so the team builds from one set of components.",
-      "I added 3D and motion.",
-      "I moved the team to trunk-based delivery, with small changes going straight to main.",
-      "I led the frontend across the team.",
+      "Led the frontend and built the headless shop on Next.js and Shopify.",
+      "Set up a design system, so the team builds from one set of components.",
+      "Added 3D and motion to the shop.",
+      "Moved the team to trunk-based delivery, with small changes going straight to main.",
     ],
     stack: ["Next.js", "Shopify", "Tailwind", "shadcn/ui", "TypeScript"],
   },
@@ -246,9 +244,8 @@ export const projects: Project[] = [
     intro:
       "Talentir handles payouts for agencies, brands, labels and platforms. I designed and built the product that its customers work in.",
     highlights: [
-      "I designed how the product works and looks.",
-      "I built the frontend in Next.js and Tailwind.",
-      "I brought in modern dev methods, so the team moved faster.",
+      "Designed the product's UX and UI, then built its frontend in Next.js and Tailwind.",
+      "Introduced modern dev methods, so the team moved faster.",
     ],
     stack: ["Next.js", "Tailwind", "TypeScript"],
   },
