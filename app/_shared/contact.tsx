@@ -21,7 +21,7 @@ export function Contact({ className = "" }: { className?: string }) {
       <p>Let&apos;s talk.</p>
       <a
         href={`mailto:${EMAIL}`}
-        className="text-trim inline-flex items-center gap-x-label bg-(--np-fg) px-item py-label text-(--np-surface) transition-opacity duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg)"
+        className="np-cta text-trim inline-flex items-center gap-x-label bg-(--np-fg) px-item py-label text-(--np-surface) transition-opacity duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg)"
       >
         {EMAIL}
         <Arrow />
@@ -36,7 +36,7 @@ export function Contact({ className = "" }: { className?: string }) {
 export function Clients({ label = "Clients" }: { label?: string }) {
   return (
     <div className="gap-y-label grid">
-      <Text as="h2" variant="footer" className="text-trim">
+      <Text as="h2" variant="footer" className="np-label text-trim">
         {label}
       </Text>
       {/* wraps between names, never inside one */}

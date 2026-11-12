@@ -37,7 +37,7 @@ export async function generateMetadata({
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="gap-y-label grid content-start">
-      <Text variant="footer" as="h2" className="text-trim">
+      <Text variant="footer" as="h2" className="np-label text-trim">
         {label}
       </Text>
       {children}
