@@ -33,7 +33,14 @@ export const services: Service[] = [
     items: [
       {
         term: "What it is",
-        text: "AI coding agents like Claude Code and Codex plan, write, test and review code. Your engineers stay in charge and make the final call on every change. I set them up on the tools your company already uses.",
+        text: "AI coding agents like Claude Code and Codex plan, write, test and review code. Your engineers stay in charge and make the final call on every change.",
+      },
+      /* Marc's method, in his words (2026-11-12): rules and skills in the
+         existing project, prompting strategies, design and code connected.
+         "Faster" stays a goal, not a number (PFD R4). */
+      {
+        term: "What I teach",
+        text: "I set up Claude Code in your existing projects, with rules and skills that fit your codebase. I show your team how to prompt, which strategies work for which task, and how to connect design and code. The goal: your team uses LLMs in the projects it already has, and delivers faster.",
       },
       {
         term: "Experience",
@@ -57,9 +64,12 @@ export const services: Service[] = [
           "If you want, I join the team as engineer and coach at the same time. Your reviews, tests and handover stay as they are.",
         ],
       },
+      /* Checkable, confirmed by Marc (2026-11-12). Not claimed: a
+         client's own LLM gateway, or that providers never train on the
+         code. TODO(marc): add those only once they are true. */
       {
-        term: "Your rules",
-        text: "I work inside your compliance rules, your LLM and your codebase, and your team keeps working while we roll it out.",
+        term: "Review and tests",
+        text: "Every change the AI writes goes through your normal code review and tests before it is merged.",
       },
     ],
   },
