@@ -32,7 +32,7 @@ export function Wordmark({ home = false }: { home?: boolean }) {
     <section
       className={`p-pad relative grid place-items-center max-md:grid-rows-[1fr_auto] max-md:pb-[calc(var(--spacing-pad)/2)] ${
         home
-          ? "max-md:min-h-[max(38svh,210px)]"
+          ? "max-md:min-h-[max(32svh,210px)]"
           : "max-md:min-h-[max(18svh,150px)]"
       }`}
     >

@@ -269,9 +269,11 @@ export const clients: { name: string; href: string }[] = [
   { name: "OST", href: "/about" },
 ];
 
-/* the home bands: one fixed label each (PFD R1, nothing a visitor
-   clicks may move while they read). The third band is the static
-   audience line. Kept as word lists, since app/proto still cycles them. */
+/* the home: two offer bands (one fixed label each; PFD R1, nothing a
+   visitor clicks moves while they read), then the audience claim, which
+   home shows as the label over the client names, not as a third band
+   (it is a claim, not an offer). Kept as word lists, since app/proto
+   still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   { words: ["Agentic Engineering for your dev team"], slugs: ["ai"] },
   { words: ["Web & App\u00a0Interfaces"], slugs: ["frontend"] },

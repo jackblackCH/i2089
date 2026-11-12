@@ -28,7 +28,7 @@ export function Frame({ children }: { children: ReactNode }) {
   }
   return (
     // on mobile the wordmark row is shorter on subpages, so their content
-    // starts higher (PFD R1); home keeps the full stage. Home's 210px floor
+    // starts higher (PFD R1); home keeps the full stage. Home's (32svh, at least 210px)
     // fits the padding, logo, hanging byline and nav. Subpages hide the
     // byline on mobile, so 150px fits the padding, logo and nav. Those
     // floors are min-heights on the wordmark section (wordmark.tsx), and
