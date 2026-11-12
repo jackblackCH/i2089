@@ -94,6 +94,10 @@ function render(slug: string, markdown: string) {
       },
     },
   });
+  // like the reference, a post starts with a chapter, not loose text
+  if (process.env.NODE_ENV === "development" && !/^\s*##\s/.test(markdown)) {
+    console.warn(`blogs/${slug}/index.md: start the body with a "## " chapter`);
+  }
   let html = marked.parse(markdown, { async: false }) as string;
   // the intro always ends with a rule, also when the body starts with
   // plain text; a "---" next to a chapter rule collapses into one

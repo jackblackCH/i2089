@@ -6,13 +6,11 @@ tldr: This is a layout test, not a real post. It shows headings, paragraphs, lis
 draft: true
 ---
 
-This first paragraph sits under the tl;dr. A post starts with plain text like this one: a few sentences that set the scene. The line length, the line height and the space between paragraphs are what make long text easy to read.
+## Introduction
 
-A second paragraph shows the space between two paragraphs. It is one line of the body size, so the text reads as one calm column without extra gaps.
+Like the reference, the post starts with a chapter right after the tl;dr. Every chapter opens with a rule across the full page, then its heading with a thin line under it, as wide as the text. A post has a few long chapters, not many short ones.
 
-## A chapter heading
-
-Every chapter opens with a rule across the full page, then this heading with a thin line under it, as wide as the text. A post has a few long chapters, not many short ones.
+A second paragraph shows the space between two paragraphs: one empty line of the body size, so the text reads as one calm column.
 
 ### A smaller heading
 
