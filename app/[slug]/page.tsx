@@ -85,14 +85,11 @@ export default async function ContentPage({
               </Text>
               {"steps" in item ? (
                 // a format, read in order: numbers in the label colour,
-                // hung in the gutter like the project list arrows
+                // hung in the gutter, so the text keeps the column edge
                 <ol className="gap-y-item grid">
                   {item.steps.map((step, i) => (
-                    <li key={step} className="text-trim pl-item relative">
-                      <span
-                        aria-hidden
-                        className="absolute left-0 text-(--np-mute) tabular-nums"
-                      >
+                    <li key={step} className="text-trim relative">
+                      <span aria-hidden className="np-hang tabular-nums">
                         {i + 1}
                       </span>
                       {step}

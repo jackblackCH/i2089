@@ -103,10 +103,11 @@ export default async function ProjectPage({
         <Field label="Work">
           <ul className="gap-y-item grid">
             {project.highlights.map((h) => (
-              <li key={h} className="text-trim relative pl-item">
-                {/* text-trim puts the first baseline at cap height
-                    (0.714em); the arrow box is 0.76em tall */}
-                <Arrow className="absolute left-0 top-[-0.046em] text-(--np-mute)" />
+              <li key={h} className="text-trim relative">
+                {/* hung in the gutter, so the text keeps the column edge;
+                    text-trim puts the first baseline at cap height
+                    (0.714em) and the arrow box is 0.76em tall */}
+                <Arrow className="np-hang top-[-0.046em]" />
                 {h}
               </li>
             ))}

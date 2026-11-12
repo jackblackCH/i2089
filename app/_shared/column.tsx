@@ -9,10 +9,6 @@ import { Arrow } from "./arrow";
 // The contact sits right under the title, so every page shows its next
 // step in the first screen (PFD R2, R5). It scrolls as a whole on md+
 // (never a box inside a box); the quiet links close the page at the foot.
-// one page padding below the contact block, minus the group step the
-// column already adds (never below zero)
-const PAD_BELOW = "mb-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]";
-
 export function Column({
   title,
   back,
@@ -50,23 +46,16 @@ export function Column({
         <Text as="h1" variant="title" className="px-pad">
           <span className="text-trim block">{title}</span>
         </Text>
-        {/* the contact sits one page padding below the title and one
-            above the content: the same space as the panel's top edge to
-            the title, so it scales with --spacing-pad on every screen.
-            The column already spaces blocks by the group step, so the
-            margin adds the difference (never below zero). */}
-        {/* the client line sits right under the action: proof next to
-            the decision (PFD L3), one group step below the button. The
-            page padding then comes after the pair, so the content starts
-            where it does on a page without clients. */}
-        <Contact
-          className={`px-pad mt-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))] ${clients ? "" : PAD_BELOW}`}
-        />
-        {clients && (
-          <div className={`px-pad ${PAD_BELOW}`}>
-            <Clients label={clients} />
-          </div>
-        )}
+        {/* Three groups, one page padding apart (the same space as the
+            panel's top edge to the title, so it scales with
+            --spacing-pad): the title; the contact with its proof (the
+            client line, PFD L3), one item step apart inside the group;
+            the content. The column already spaces blocks by the group
+            step, so the margins add the difference (never below zero). */}
+        <div className="px-pad gap-y-item grid my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]">
+          <Contact />
+          {clients && <Clients label={clients} />}
+        </div>
         {children}
       </Text>
 

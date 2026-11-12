@@ -322,12 +322,28 @@
    size and space; the filled contact button is the only filled shape, so
    it stays the clearest signal (PFD R5). The design-audit verdict: five
    filled boxes out-shouted the content and broke the left edge. */
+/* Markers hang in the gutter: list arrows, step numbers and entry
+   numbers sit left of the text column, right-aligned 10px from it, so
+   every line of text (title, contact, labels, copy) starts on one grid
+   line. The vertical position stays the marker's static one, on the
+   first line. The page padding (48px on phones) leaves room for them. */
+.np-hang {
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625rem;
+  color: var(--np-mute);
+}
+.np-term {
+  position: relative;
+}
 .np-num {
   display: none;
 }
 :root[data-labels="calm"] .np-num {
-  display: inline-block;
-  min-width: 2.6em;
+  display: inline;
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625rem;
   color: var(--np-fg);
   font-variant-numeric: tabular-nums;
 }
