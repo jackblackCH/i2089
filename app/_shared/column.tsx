@@ -30,7 +30,7 @@ export function Column({
       {back && (
         <Text
           variant="footer"
-          className="absolute left-pad top-[calc(var(--spacing-pad)/2)] -translate-y-1/2"
+          className="left-pad absolute top-[calc(var(--spacing-pad)/2)] -translate-y-1/2"
         >
           <Link href={back.href} className="link-label hit-area">
             <Arrow dir="left" /> {back.label}
@@ -41,12 +41,17 @@ export function Column({
       <Text
         as="article"
         variant="body"
-        className="enter flex flex-col gap-y-group py-pad"
+        className="enter gap-y-group py-pad flex flex-col"
       >
         <Text as="h1" variant="title" className="px-pad">
           <span className="text-trim block">{title}</span>
         </Text>
-        <Contact className="px-pad" />
+        {/* the contact sits one page padding below the title and one
+            above the content: the same space as the panel's top edge to
+            the title, so it scales with --spacing-pad on every screen.
+            The column already spaces blocks by the group step, so the
+            margin adds the difference (never below zero). */}
+        <Contact className="px-pad my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]" />
         {children}
         {clients && (
           <div className="px-pad">
@@ -64,12 +69,12 @@ export function Column({
 // it sits under the title on every page.
 function Foot() {
   return (
-    <Text as="div" variant="body" className="mt-auto px-pad pb-pad">
+    <Text as="div" variant="body" className="px-pad pb-pad mt-auto">
       <a
         href="https://www.linkedin.com/in/marcillien/"
         target="_blank"
         rel="noopener noreferrer"
-        className="link-quiet hit-area text-trim inline-flex items-center gap-x-label"
+        className="link-quiet hit-area text-trim gap-x-label inline-flex items-center"
       >
         <svg
           viewBox="0 0 24 24"
