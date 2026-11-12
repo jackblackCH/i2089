@@ -12,9 +12,12 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
-// Bottom-right of the wordmark column, on one line with the copyright
-// bottom-left. Lives inside the wordmark section, so on mobile it sits
-// at the foot of the wordmark row and scrolls away with it.
+// The foot of the wordmark column: four equal columns across its full
+// width, each link centred in its cell. Phones are too narrow for four
+// equal cells ("AI COACHING" and "ENGINEERING" would touch), so there
+// the links sit at equal gaps from edge to edge. Lives inside the wordmark
+// section, so on mobile it sits at the foot of the wordmark row and
+// scrolls away with it.
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -22,7 +25,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="absolute bottom-0 right-0 z-10 flex flex-wrap justify-end gap-x-item p-pad-tight"
+      className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-[repeat(4,auto)] justify-between p-pad-tight md:grid-cols-4 md:justify-normal"
     >
       {links.map(({ href, label }) => {
         // exact match is the page itself; a deeper path (a project under
@@ -34,7 +37,7 @@ export function Nav() {
             key={href}
             href={href}
             aria-current={exact ? "page" : active ? "true" : undefined}
-            className={`link-label hit-area ${active ? "text-(--np-fg)" : ""}`}
+            className={`link-label hit-area justify-self-center text-center whitespace-nowrap ${active ? "text-(--np-fg)" : ""}`}
           >
             {label}
           </Link>
