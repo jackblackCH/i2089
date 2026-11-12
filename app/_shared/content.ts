@@ -123,7 +123,7 @@ export const services: Service[] = [
       },
       {
         term: "2022 — 2023",
-        text: "Architected [AXA's consultant messenger](/projects/axa) in TypeScript and React. Contract, Winterthur.",
+        text: "Architected a [WhatsApp-like custom messenger](/projects/axa) for internal communications, in TypeScript and React. Contract, Winterthur.",
       },
     ],
   },
