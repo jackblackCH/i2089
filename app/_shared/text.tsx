@@ -10,7 +10,7 @@ const variants = {
   logo: "np-outline text-trim text-(length:--logo) font-bold leading-none tracking-[-0.04em]",
   /* page titles and homepage bands */
   title:
-    "text-[clamp(30px,6.6vw,72px)] font-normal leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,44px)]",
+    "text-[clamp(30px,6.6vw,72px)] font-normal leading-[1.05] tracking-[-0.02em] md:text-[clamp(30px,3.4vw,33px)]",
   /* body copy on detail pages — exactly half the title scale */
   /* 15px floor on phones (PFD L0: 13px cost reading effort); above
      that it scales with the viewport, and md+ keeps the ~2.8:1
