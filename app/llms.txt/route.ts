@@ -6,6 +6,7 @@ import {
   contracts,
   bySlug,
 } from "../_shared/content";
+import { allPosts } from "../blog/posts";
 
 export const dynamic = "force-static";
 
@@ -72,6 +73,18 @@ export function GET() {
     }
   }
   lines.push("");
+
+  const posts = allPosts().filter((p) => !p.draft);
+  if (posts.length) {
+    lines.push(`## Blog`);
+    lines.push("");
+    for (const p of posts) {
+      lines.push(
+        `- [${p.title}](${BASE_URL}/blog/${p.slug}) — ${p.date}. ${p.description}`,
+      );
+    }
+    lines.push("");
+  }
 
   lines.push(`## Contact`);
   lines.push("");

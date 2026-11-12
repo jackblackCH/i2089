@@ -13,7 +13,19 @@ import "./shared.css";
 // md+ locks the frame to the viewport and the right column scrolls; on
 // mobile the whole frame scrolls.
 export function Frame({ children }: { children: ReactNode }) {
-  const home = usePathname() === "/";
+  const pathname = usePathname();
+  const home = pathname === "/";
+  // the blog has its own one-column page (app/blog/blog-shell.tsx): no
+  // wordmark column, no pinned copyright. It still scrolls inside the
+  // fixed .np layer, which keeps the page above the sheet styles of
+  // playground.css.
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+    return (
+      <main className="np fixed inset-0 overflow-y-auto">
+        <ViewTransition default="page">{children}</ViewTransition>
+      </main>
+    );
+  }
   return (
     // on mobile the wordmark row is shorter on subpages, so their content
     // starts higher (PFD R1); home keeps the full stage. Home's 210px floor
@@ -24,9 +36,7 @@ export function Frame({ children }: { children: ReactNode }) {
     // over ILLIEN). An auto or minmax(…, auto) row would not: in a
     // fixed-height grid whose content overflows, auto rows only get the
     // item's min-height, with no free space left to grow into.
-    <main
-      className="np fixed inset-0 grid grid-cols-1 grid-rows-[min-content_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1"
-    >
+    <main className="np fixed inset-0 grid grid-cols-1 grid-rows-[min-content_1fr] overflow-y-auto md:grid-cols-2 md:grid-rows-1">
       <Wordmark home={home} />
       {/* the page is one transition boundary: when a navigation swaps it,
           React runs a view transition and the column cross-fades

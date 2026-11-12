@@ -9,7 +9,12 @@
 export const AXES = {
   motion: {
     label: "Motion",
-    options: { flap: "Split-flap", decode: "Decode", wipe: "Wipe", blur: "Blur" },
+    options: {
+      flap: "Split-flap",
+      decode: "Decode",
+      wipe: "Wipe",
+      blur: "Blur",
+    },
   },
   timing: {
     label: "Timing",
@@ -22,7 +27,18 @@ export const AXES = {
   },
   fit: {
     label: "Fit",
-    options: { lines: "Two lines", scaled: "One line, scaled", same: "One line, same size" },
+    options: {
+      lines: "Two lines",
+      scaled: "One line, scaled",
+      same: "One line, same size",
+    },
+  },
+  blog: {
+    label: "Blog",
+    options: {
+      clone: "Clone (system font, light)",
+      site: "Site (Helvetica, dark)",
+    },
   },
   labels: {
     label: "Labels",
@@ -49,6 +65,7 @@ export const DEFAULTS: Variants = {
   timing: "loop",
   fit: "same",
   labels: "calm",
+  blog: "clone",
 };
 
 export const VARIANTS_KEY = "i2089-variants";
@@ -75,6 +92,7 @@ export function readVariants(): Variants {
     timing: (d.timing as Variants["timing"]) ?? DEFAULTS.timing,
     fit: (d.fit as Variants["fit"]) ?? DEFAULTS.fit,
     labels: (d.labels as Variants["labels"]) ?? DEFAULTS.labels,
+    blog: (d.blog as Variants["blog"]) ?? DEFAULTS.blog,
   };
 }
 
