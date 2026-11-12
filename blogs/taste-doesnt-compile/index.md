@@ -6,7 +6,7 @@ tldr: With AI, anyone can produce something impressive in minutes. Once everyone
 draft: false
 ---
 
-## A Ferrari in every garage
+## The Ferrari problem
 
 It's late, the coffee is cold, and I type one sentence into a chat window. Ninety seconds later there is a landing page on my screen. Gradients, and a hero that glows. Five years ago, that was a week of work.
 
@@ -16,15 +16,13 @@ Then I open another tab and see the same page again. Different product, same gra
 
 That's the catch. When everyone can build a Ferrari, nobody turns around when one drives by. The bar doesn't drop. It moves up, to a place a single prompt can't reach.
 
-## Where taste lives
+### Where taste lives
 
 That place is taste. Knowing what to leave out. Knowing when a thing is done.
 
 Taste lives in a designer's head, built from years of looking and failing. The machine has none of that. It has seen almost everything, and by default it hands you the average. Smooth, and easy to forget.
 
 So the job changes. Making the thing got cheap. Moving the picture from my head into the machine did not.
-
----
 
 ## A small experiment
 
@@ -35,6 +33,8 @@ Design a landing page for a Swiss law firm.
 ```
 
 You will most likely get the average: a dark hero, a gradient, three feature cards, a big button. Nothing wrong with it. Nothing you remember either.
+
+### The picture instead of the product
 
 Now give it the picture instead of the product:
 
@@ -48,6 +48,8 @@ Nothing moves unless the visitor asks for it.
 
 Same model, same minute. But now it has something to aim for. The words carry the taste.
 
+### Taste as a skill
+
 The next step is to stop typing that paragraph again and again. I put it into a skill, a small file the AI reads before it starts:
 
 ```markdown
@@ -60,9 +62,11 @@ The next step is to stop typing that paragraph again and again. I put it into a 
 
 Now the taste travels. To the next project, and to the next person on the team.
 
-## The words that match the picture
+## Skill engineering
 
 Here is what I've come to believe. The machine doesn't read English the way we do. It compiles our words into choices, and a sentence that is perfectly clear to me can compile into something I never meant.
+
+### Who wins the trophy
 
 Learning that compiler is a new craft. It sits somewhere between design and engineering, and it doesn't have a proper name yet. I call it skill engineering.
 

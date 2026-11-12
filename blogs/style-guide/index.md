@@ -10,11 +10,9 @@ This first paragraph sits under the tl;dr. A post starts with plain text like th
 
 A second paragraph shows the space between two paragraphs. It is one line of the body size, so the text reads as one calm column without extra gaps.
 
----
+## A chapter heading
 
-## A section heading
-
-Sections are split by a rule that runs across the full page, with generous space above and below. The heading then opens the new section.
+Every chapter opens with a rule across the full page, then this heading with a thin line under it, as wide as the text. A post has a few long chapters, not many short ones.
 
 ### A smaller heading
 
@@ -37,6 +35,10 @@ export function hello(name: string) {
 }
 ```
 
-![The AXA homepage, one of the project screenshots on this site.](/projects/axa.jpg "Figure 1: A figure spans the text column. Its caption sits right below it, smaller and lighter than the body text.")
+## A second chapter
+
+Images sit in the post's own folder and are linked relative to it, like ./calculator.jpg.
+
+![The SME calculator on axa.ch.](./calculator.jpg "Figure 1: A figure spans the text column. Its caption sits right below it, smaller and lighter than the body text.")
 
 The text continues after the figure with the normal paragraph spacing.

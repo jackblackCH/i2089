@@ -189,14 +189,24 @@
 .blog-article p {
   margin: 0 0 1em;
 }
+/* the reference puts an empty paragraph between paragraphs (and before a
+   figure): one more line, 32px (28 on phones); before a rule only 16 */
+.blog-body > p + p,
+.blog-body > p + figure {
+  margin-top: 1em;
+}
 @media (width >= 1000px) {
   .blog-article p,
   .blog-article li {
     line-height: 28.832px;
   }
 }
+/* a chapter heading: underlined across the text column, 1em of the
+   base size below the text (16px, 14 on phones), like the reference */
 .blog-article h2 {
   margin: 28px 0 21px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--blog-rule);
   font-size: 24px;
   line-height: 30px;
   font-weight: 600;
@@ -217,6 +227,7 @@
 @media (width >= 768px) {
   .blog-article h2 {
     margin: 32px 0 24px;
+    padding-bottom: 16px;
   }
 }
 @media (width >= 1000px) {
@@ -229,6 +240,13 @@
     font-size: 20px;
     line-height: 28px;
   }
+}
+.blog-article h4 {
+  margin: 18.62px 0;
+  font-size: 14px;
+  line-height: 19.6px;
+  font-weight: 700;
+  color: var(--blog-head);
 }
 .blog-article hr {
   grid-column: page;
@@ -319,6 +337,8 @@
 }
 .blog-list h2 {
   margin: 4px 0 12px !important;
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
 }
 .blog-list h2 a {
   text-decoration: none;
@@ -333,6 +353,9 @@
 /* the end: the site's contact, then the colophon */
 .blog-contact {
   margin-bottom: 48px;
+}
+.blog-contact a {
+  text-decoration: none;
 }
 .blog-contact .np-cta {
   background: var(--blog-fg);

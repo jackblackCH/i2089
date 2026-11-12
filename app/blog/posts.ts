@@ -2,10 +2,23 @@ import fs from "node:fs";
 import path from "node:path";
 import { Marked, type Tokens } from "marked";
 
-// Blog posts are Markdown files in content/blog/, with a small front
-// matter block (title, date, description, optional tldr, draft). Drafts
-// show on localhost and Vercel previews only, never on i2089.com, and
-// never in the sitemap or llms.txt there.
+// Blog posts live in /blogs, one folder per post:
+//
+//   blogs/
+//     taste-doesnt-compile/
+//       index.md        the post: front matter + Markdown
+//       demo.jpg        images and other files, linked as ./demo.jpg
+//
+// The folder name is the URL slug (/blog/taste-doesnt-compile). Front
+// matter: title, date (YYYY-MM-DD), description, optional tldr, draft.
+// Drafts show on localhost and Vercel previews only, never on i2089.com,
+// in the sitemap or in llms.txt.
+//
+// Structure, 1:1 with the reference post: the intro (byline, tl;dr) is
+// followed by a full-width rule; every "## Heading" opens a chapter with a
+// full-width rule and an underlined heading; "### Heading" structures a
+// chapter without lines. So a post is a few long chapters, not many
+// short ones.
 export type Post = {
   slug: string;
   title: string;
@@ -17,11 +30,24 @@ export type Post = {
   html: string;
 };
 
-const DIR = path.join(process.cwd(), "content/blog");
+export const BLOGS_DIR = path.join(process.cwd(), "blogs");
 
 export const SHOW_DRAFTS =
   process.env.NODE_ENV === "development" ||
   process.env.VERCEL_ENV === "preview";
+
+/** files a post folder may serve next to its index.md */
+export const ASSET_TYPES: Record<string, string> = {
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".png": "image/png",
+  ".webp": "image/webp",
+  ".avif": "image/avif",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+  ".mp4": "video/mp4",
+  ".pdf": "application/pdf",
+};
 
 const escapeHtml = (s: string) =>
   s
@@ -30,33 +56,56 @@ const escapeHtml = (s: string) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-// An image alone in a paragraph becomes a <figure>; its Markdown title
-// ("…") becomes the caption. Rules are the reference's pattern: one under
-// the title, one after the tl;dr (blog-shell), and "---" in the Markdown
-// only between chapters, never before every heading.
-// its own instance: the global `marked` keeps renderers across dev
-// reloads, so an old renderer would stay active
-const marked = new Marked({
-  renderer: {
-    paragraph({ tokens }: Tokens.Paragraph) {
-      const inner = this.parser.parseInline(tokens);
-      return tokens.length === 1 && tokens[0].type === "image"
-        ? `${inner}\n`
-        : `<p>${inner}</p>\n`;
-    },
-    image({ href, title, text }: Tokens.Image) {
-      const caption = title
-        ? `<figcaption>${escapeHtml(title)}</figcaption>`
-        : "";
-      return `<figure><img src="${escapeHtml(href)}" alt="${escapeHtml(text)}" loading="lazy" />${caption}</figure>`;
-    },
-  },
-});
+// a relative link (./demo.jpg) points into the post's own folder, served
+// at /blog/<slug>/demo.jpg (app/blog/[slug]/[file]/route.ts)
+const resolve = (slug: string, href: string) =>
+  /^(?:[a-z]+:|\/|#)/i.test(href)
+    ? href
+    : `/blog/${slug}/${href.replace(/^\.\//, "")}`;
 
-function parse(file: string): Post {
-  const raw = fs.readFileSync(path.join(DIR, file), "utf8");
+function render(slug: string, markdown: string) {
+  // its own instance: the global `marked` keeps renderers across dev
+  // reloads, so an old renderer would stay active
+  const marked = new Marked({
+    renderer: {
+      paragraph({ tokens }: Tokens.Paragraph) {
+        const inner = this.parser.parseInline(tokens);
+        // an image alone in a paragraph becomes a figure
+        return tokens.length === 1 && tokens[0].type === "image"
+          ? `${inner}\n`
+          : `<p>${inner}</p>\n`;
+      },
+      // a chapter: full-width rule, then the underlined heading
+      heading({ tokens, depth }: Tokens.Heading) {
+        const inner = this.parser.parseInline(tokens);
+        return depth === 2
+          ? `<hr />\n<h2>${inner}</h2>\n`
+          : `<h${depth}>${inner}</h${depth}>\n`;
+      },
+      image({ href, title, text }: Tokens.Image) {
+        const caption = title
+          ? `<figcaption>${escapeHtml(title)}</figcaption>`
+          : "";
+        return `<figure><img src="${escapeHtml(resolve(slug, href))}" alt="${escapeHtml(text)}" loading="lazy" />${caption}</figure>`;
+      },
+      link({ href, title, tokens }: Tokens.Link) {
+        const t = title ? ` title="${escapeHtml(title)}"` : "";
+        return `<a href="${escapeHtml(resolve(slug, href))}"${t}>${this.parser.parseInline(tokens)}</a>`;
+      },
+    },
+  });
+  let html = marked.parse(markdown, { async: false }) as string;
+  // the intro always ends with a rule, also when the body starts with
+  // plain text; a "---" next to a chapter rule collapses into one
+  if (!html.trimStart().startsWith("<hr")) html = `<hr />\n${html}`;
+  return html.replace(/(<hr \/>\s*){2,}/g, "<hr />\n");
+}
+
+function parse(slug: string): Post {
+  const file = path.join(BLOGS_DIR, slug, "index.md");
+  const raw = fs.readFileSync(file, "utf8");
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) throw new Error(`content/blog/${file}: front matter missing`);
+  if (!match) throw new Error(`blogs/${slug}/index.md: front matter missing`);
   const meta: Record<string, string> = {};
   for (const line of match[1].split("\n")) {
     const i = line.indexOf(":");
@@ -67,31 +116,43 @@ function parse(file: string): Post {
         .replace(/^"(.*)"$/, "$1");
   }
   for (const key of ["title", "date", "description"])
-    if (!meta[key]) throw new Error(`content/blog/${file}: "${key}" missing`);
+    if (!meta[key]) throw new Error(`blogs/${slug}/index.md: "${key}" missing`);
   return {
-    slug: file.replace(/\.md$/, ""),
+    slug,
     title: meta.title,
     date: meta.date,
     description: meta.description,
     tldr: meta.tldr || undefined,
     draft: meta.draft === "true",
-    html: marked.parse(match[2], { async: false }) as string,
+    html: render(slug, match[2]),
   };
 }
 
 /** newest first; drafts only where SHOW_DRAFTS */
 export function allPosts(): Post[] {
-  if (!fs.existsSync(DIR)) return [];
+  if (!fs.existsSync(BLOGS_DIR)) return [];
   return fs
-    .readdirSync(DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map(parse)
+    .readdirSync(BLOGS_DIR, { withFileTypes: true })
+    .filter(
+      (d) =>
+        d.isDirectory() &&
+        fs.existsSync(path.join(BLOGS_DIR, d.name, "index.md")),
+    )
+    .map((d) => parse(d.name))
     .filter((p) => SHOW_DRAFTS || !p.draft)
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export function postBySlug(slug: string): Post | undefined {
   return allPosts().find((p) => p.slug === slug);
+}
+
+/** the files next to a post's index.md that the blog serves */
+export function postAssets(slug: string): string[] {
+  const dir = path.join(BLOGS_DIR, slug);
+  return fs
+    .readdirSync(dir)
+    .filter((f) => ASSET_TYPES[path.extname(f).toLowerCase()]);
 }
 
 // Swiss German date format: 12.11.2026
