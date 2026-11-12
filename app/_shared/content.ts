@@ -184,7 +184,7 @@ export const contracts: Project[] = [
     intro: "Recurring contracts at Switzerland's largest insurer since 2018.",
     highlights: [
       "I led the frontend for an SME wizard and calculator, published on axa.ch as a microfrontend.",
-      "I built a messenger that lets agents talk with their clients, in TypeScript and React.",
+      "I built the UI and frontend for a WhatsApp-like messenger that lets agents talk with their clients.",
       "I worked on the design of the pattern library.",
     ],
     stack: ["TypeScript", "React"],
