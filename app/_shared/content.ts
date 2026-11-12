@@ -40,7 +40,7 @@ export const services: Service[] = [
     items: [
       {
         term: "Interfaces and UX",
-        text: "Design and build the interfaces people use every day, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
+        text: "Design and build interfaces that are easy to use, right in code. Like the [SME calculator on axa.ch](/projects/axa) or the [air up® shop](/projects/air-up).",
       },
       {
         term: "Web and mobile apps",
