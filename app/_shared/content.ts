@@ -272,11 +272,11 @@ export const bands: { words: string[]; slugs: string[]; sub: string }[] = [
   {
     words: ["Frontend & Apps"],
     slugs: ["frontend"],
-    sub: "Web and mobile apps, designed and built.",
+    sub: "Web and mobile apps. UX, design and development.",
   },
   {
     words: ["Agentic Engineering"],
     slugs: ["ai"],
-    sub: "AI coding workflows for your dev team.",
+    sub: "AI coding and design workflows.",
   },
 ];
