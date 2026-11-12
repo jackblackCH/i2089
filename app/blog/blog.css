@@ -148,8 +148,12 @@
   padding-top: 60px;
   padding-bottom: 60px;
 }
+/* byline to tl;dr: 32px + two body lines (64 at 16px, 60 at 14px) */
 .blog-meta {
-  margin: -24px 0 32px;
+  margin: -24px 0 calc(32px + 2em);
+}
+.blog-meta > :last-child {
+  margin-bottom: 0;
 }
 .blog-byline {
   display: flex;
@@ -170,7 +174,7 @@
   color: var(--blog-mute);
 }
 .blog-tldr {
-  margin-bottom: 32px;
+  margin-bottom: 0;
   font-size: 1.06em;
   line-height: 1.7;
   color: var(--blog-soft);
@@ -206,7 +210,7 @@
 /* h2 margins follow the base size (2em / 1.5em: 28/21 → 32/24), h3
    margins its own (2em / 1em); the large sizes start at 1000px */
 .blog-article h2 {
-  margin: 2em 0 1.5em;
+  margin: 28px 0 21px;
 }
 @media (width >= 768px) {
   .blog-article h2 {
@@ -337,7 +341,23 @@
   font-size: 0.8125em;
 }
 
-/* ── the site look: same layout, this site's face and palette ──────── */
+/* ── dark (default) and site: the site's palette on the cloned layout.
+   "dark" keeps the reference's system font, so the proportions stay;
+   "site" also swaps in Helvetica Neue LT Pro Extended (~25% wider). */
+:root[data-blog="dark"] .blog,
+:root[data-blog="site"] .blog {
+  --blog-bg: transparent;
+  --blog-fg: var(--np-fg);
+  --blog-head: var(--np-fg);
+  --blog-soft: var(--np-fg);
+  --blog-mute: var(--np-mute);
+  --blog-date: var(--np-mute);
+  --blog-rule: var(--np-rule);
+  --blog-code-bg: color-mix(in srgb, var(--np-fg) 6%, transparent);
+}
+:root[data-blog="dark"] .blog-name {
+  color: var(--np-fg);
+}
 :root[data-blog="site"] .blog {
   --blog-bg: transparent;
   --blog-fg: var(--np-fg);

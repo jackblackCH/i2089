@@ -10,19 +10,28 @@ const links = [
   { href: "/frontend", label: "Frontend & User Interfaces" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+];
+
+// below xl two columns: the offers on the left, the rest on the right
+// (static classes, so Tailwind sees them)
+const PLACE = [
+  "col-start-1 row-start-1",
+  "col-start-1 row-start-2",
+  "col-start-2 row-start-1",
+  "col-start-2 row-start-2",
+  "col-start-2 row-start-3",
 ];
 
 // The foot of the wordmark column.
 // Phones: in flow under the logo, inside the section's side padding, so
-// its edges line up with the content below. Two columns read top to
-// bottom: the offers on the left edge, Projects and About on the right
-// edge (282px, fits the 294px a 390px phone leaves; four in a row would
-// need ~420px). Half a block step above and below, a group step between
-// the rows, so the taller tap areas (shared.css) never overlap.
-// md+: pinned to the foot of the column, spread with equal space around
-// each link, each centred; a 2x2 grid until xl, one row from xl (the
-// two long offer labels need ~370px together; at lg the row would have
-// no gaps left).
+// its edges line up with the content below. Two columns: the two offers
+// on the left edge; Projects, About and Blog on the right edge (fits the
+// 294px a 390px phone leaves; five in a row would need ~460px). Half a
+// block step above and below, a group step between the rows, so the
+// taller tap areas (shared.css) never overlap.
+// md+: pinned to the foot of the column, the same two columns spread with
+// equal space around them, each link centred; one row of five from xl.
 export function Nav() {
   const pathname = usePathname();
   return (
@@ -30,7 +39,7 @@ export function Nav() {
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-flow-col grid-rows-2 justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:grid-flow-row md:grid-cols-[repeat(2,auto)] md:grid-rows-none md:justify-evenly xl:grid-cols-[repeat(4,auto)]"
+      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-cols-[repeat(2,auto)] justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:justify-evenly xl:grid-cols-[repeat(5,auto)]"
     >
       {links.map(({ href, label }, i) => {
         // exact match is the page itself; a deeper path (a project under
@@ -42,7 +51,7 @@ export function Nav() {
             key={href}
             href={href}
             aria-current={exact ? "page" : active ? "true" : undefined}
-            className={`link-label hit-area whitespace-nowrap md:justify-self-center md:text-center ${
+            className={`link-label hit-area whitespace-nowrap md:justify-self-center md:text-center xl:col-start-auto xl:row-start-auto ${PLACE[i]} ${
               i < 2 ? "justify-self-start" : "justify-self-end"
             } ${active ? "text-(--np-fg)" : ""}`}
           >

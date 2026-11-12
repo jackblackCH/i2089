@@ -36,6 +36,7 @@ export const AXES = {
   blog: {
     label: "Blog",
     options: {
+      dark: "Dark (system font, site colours)",
       clone: "Clone (system font, light)",
       site: "Site (Helvetica, dark)",
     },
@@ -65,7 +66,7 @@ export const DEFAULTS: Variants = {
   timing: "loop",
   fit: "same",
   labels: "calm",
-  blog: "clone",
+  blog: "dark",
 };
 
 export const VARIANTS_KEY = "i2089-variants";

@@ -10,8 +10,6 @@ This first paragraph sits under the tl;dr. A post starts with plain text like th
 
 A second paragraph shows the space between two paragraphs. It is one line of the body size, so the text reads as one calm column without extra gaps.
 
----
-
 ## A section heading
 
 Sections are split by a rule that runs across the full page, with generous space above and below. The heading then opens the new section.

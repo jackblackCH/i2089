@@ -40,6 +40,13 @@ marked.use({
         ? `${inner}\n`
         : `<p>${inner}</p>\n`;
     },
+    // every section (h2) opens with a full-width rule, like the reference
+    heading({ tokens, depth }: Tokens.Heading) {
+      const inner = this.parser.parseInline(tokens);
+      return depth === 2
+        ? `<hr />\n<h2>${inner}</h2>\n`
+        : `<h${depth}>${inner}</h${depth}>\n`;
+    },
     image({ href, title, text }: Tokens.Image) {
       const caption = title
         ? `<figcaption>${escapeHtml(title)}</figcaption>`

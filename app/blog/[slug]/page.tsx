@@ -53,10 +53,14 @@ export default async function PostPage({
       }
     >
       {post.tldr && (
-        <div className="blog-tldr">
-          tl;dr
-          <p>{post.tldr}</p>
-        </div>
+        <>
+          <div className="blog-tldr">
+            tl;dr
+            <p>{post.tldr}</p>
+          </div>
+          {/* the reference closes the tl;dr with a full-width rule */}
+          <hr />
+        </>
       )}
       {/* the post body, rendered from the Markdown at build time */}
       <div
