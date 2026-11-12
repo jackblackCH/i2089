@@ -4,61 +4,84 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Text } from "./text";
 
-// PFD R5: both offers are one step away from every page
-const links = [
-  { href: "/ai", label: "Agentic Engineering" },
-  { href: "/frontend", label: "Frontend & User Interfaces" },
-  { href: "/projects", label: "Projects" },
+// Two groups instead of five equal links, so the footer reads as two
+// chunks (Cowan: 3–5 chunks). The offers stay one click away from every
+// page (PFD R5), in the bright colour with short names; the rest sits
+// beside them in the label grey.
+const OFFERS = [
+  { href: "/ai", label: "Agentic" },
+  { href: "/frontend", label: "Frontend & UI" },
+];
+const MORE = [
+  { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
 ];
 
-// below xl two columns: the offers on the left, the rest on the right
-// (static classes, so Tailwind sees them)
-const PLACE = [
-  "col-start-1 row-start-1",
-  "col-start-1 row-start-2",
-  "col-start-2 row-start-1",
-  "col-start-2 row-start-2",
-  "col-start-2 row-start-3",
-];
-
-// The foot of the wordmark column.
-// Phones: in flow under the logo, inside the section's side padding, so
-// its edges line up with the content below. Two columns: the two offers
-// on the left edge; Projects, About and Blog on the right edge (fits the
-// 294px a 390px phone leaves; five in a row would need ~460px). Half a
-// block step above and below, a group step between the rows, so the
-// taller tap areas (shared.css) never overlap.
-// md+: pinned to the foot of the column, the same two columns spread with
-// equal space around them, each link centred; one row of five from xl.
-export function Nav() {
+function NavLink({
+  href,
+  label,
+  offer,
+}: {
+  href: string;
+  label: string;
+  offer: boolean;
+}) {
   const pathname = usePathname();
+  // exact match is the page itself; a deeper path (a project under
+  // Work) is still "here" for sighted and screen-reader users
+  const exact = pathname === href;
+  const active = exact || pathname.startsWith(`${href}/`);
+  return (
+    <Link
+      href={href}
+      aria-current={exact ? "page" : active ? "true" : undefined}
+      // "you are here" is a thin underline: the offers are always bright,
+      // so brightness alone can't mark the current page
+      className={`hit-area whitespace-nowrap ${
+        offer ? "link-quiet text-(--np-fg)" : "link-label"
+      } ${active ? "text-(--np-fg) underline decoration-1 underline-offset-[0.4em]" : ""}`}
+    >
+      {label}
+    </Link>
+  );
+}
+
+// The foot of the wordmark column: offers on the left, Work · About ·
+// Blog on the right. Phones: in flow under the logo, inside the section's
+// side padding, so both edges line up with the content below; two auto
+// columns (the offers stacked, the rest on one line), the free space
+// between them. md+: pinned to the foot of the
+// column, both groups on one line, wrapping only when the column is
+// narrow.
+export function Nav() {
   return (
     <Text
       as="nav"
       variant="footer"
       aria-label="Main"
-      className="gap-y-group md:gap-y-label md:p-pad-tight z-10 grid grid-cols-[repeat(2,auto)] justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:justify-evenly xl:grid-cols-[repeat(5,auto)]"
+      className="md:gap-x-group md:gap-y-item md:p-pad-tight z-10 grid grid-cols-[auto_auto] items-start justify-between self-end justify-self-stretch pt-[calc(var(--spacing-pad)/2)] md:absolute md:inset-x-0 md:bottom-0 md:flex md:flex-wrap md:items-baseline"
     >
-      {links.map(({ href, label }, i) => {
-        // exact match is the page itself; a deeper path (a project under
-        // Projects) is still "here" for sighted and screen-reader users
-        const exact = pathname === href;
-        const active = exact || pathname.startsWith(`${href}/`);
-        return (
-          <Link
-            key={href}
-            href={href}
-            aria-current={exact ? "page" : active ? "true" : undefined}
-            className={`link-label hit-area whitespace-nowrap md:justify-self-center md:text-center xl:col-start-auto xl:row-start-auto ${PLACE[i]} ${
-              i < 2 ? "justify-self-start" : "justify-self-end"
-            } ${active ? "text-(--np-fg)" : ""}`}
-          >
-            {label}
-          </Link>
-        );
-      })}
+      <ul className="gap-y-group md:gap-x-group grid md:flex">
+        {OFFERS.map((l) => (
+          <li key={l.href}>
+            <NavLink {...l} offer />
+          </li>
+        ))}
+      </ul>
+      <ul className="gap-x-label md:gap-x-item flex">
+        {MORE.map((l, i) => (
+          <li key={l.href} className="gap-x-label flex">
+            <NavLink {...l} offer={false} />
+            {/* a dot between the three on phones; md+ spaces them */}
+            {i < MORE.length - 1 && (
+              <span aria-hidden className="text-(--np-mute) md:hidden">
+                ·
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
     </Text>
   );
 }

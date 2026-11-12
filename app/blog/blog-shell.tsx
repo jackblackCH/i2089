@@ -8,9 +8,9 @@ import "./blog.css";
 // the two-column frame: a header with the name and the nav, the title
 // block with a rule under it, the article, and the contact at the end.
 const NAV = [
-  { href: "/ai", label: "Agentic Engineering" },
-  { href: "/frontend", label: "Frontend & User Interfaces" },
-  { href: "/projects", label: "Projects" },
+  { href: "/ai", label: "Agentic" },
+  { href: "/frontend", label: "Frontend & UI" },
+  { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
 ];
 
