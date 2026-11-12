@@ -9,7 +9,7 @@ import "./blog.css";
 // block with a rule under it, the article, and the contact at the end.
 const NAV = [
   { href: "/ai", label: "Agentic" },
-  { href: "/frontend", label: "Frontend & UI" },
+  { href: "/frontend", label: "Web & Apps" },
   { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
 ];

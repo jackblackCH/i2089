@@ -10,7 +10,7 @@ import { Text } from "./text";
 // beside them in the label grey.
 const OFFERS = [
   { href: "/ai", label: "Agentic" },
-  { href: "/frontend", label: "Frontend & UI" },
+  { href: "/frontend", label: "Web & Apps" },
 ];
 const MORE = [
   { href: "/projects", label: "Work" },

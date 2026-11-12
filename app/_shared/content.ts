@@ -75,21 +75,29 @@ export const services: Service[] = [
   },
   {
     slug: "frontend",
-    /* Frontend & User Interfaces: user interfaces lead, each example is a
-       case on the site (axa, talentir, air-up). UX lives in entry 03. */
-    // non-breaking space: "User Interfaces" stays on one line
-    title: "Frontend & User\u00a0Interfaces",
-    seoTitle: "Frontend & user interfaces in React & Next.js, Zürich",
+    /* Web & App Interfaces: one offer for web and mobile interfaces (an
+       app buyer must see "app" at first glance; a third offer would split
+       attention, PFD L0). User interfaces lead; each web example is a
+       case on the site. UX lives in "UX and design in code". */
+    // non-breaking space: "App Interfaces" stays on one line
+    title: "Web & App\u00a0Interfaces",
+    seoTitle: "Web & app interfaces: React, Next.js & React Native, Zürich",
     description:
-      "I design and build user interfaces and fast web apps that stay easy to change, in TypeScript, React, Next.js and Tailwind. From Zürich.",
+      "I design and build web and mobile app interfaces in React, Next.js, React Native, Expo and SwiftUI. Fast, and easy to change. From Zürich.",
     items: [
       {
         term: "User interfaces",
         text: "I design and build the interfaces people work with every day, from forms and calculators to product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
       },
       {
-        term: "Frontend engineering",
+        term: "Web apps",
         text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
+      },
+      /* Marc designs and builds apps (2026-11-12). TODO(marc): add a case
+         (app name, store link) once one can be shown. */
+      {
+        term: "Mobile apps",
+        text: "I design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
       },
       {
         term: "UX and design in code",
@@ -112,7 +120,7 @@ export const services: Service[] = [
     description:
       "I'm a frontend engineer and AI coach in Zürich. I've taught at OST since 2014 and worked with AXA Switzerland, air up® and more.",
     items: [
-      "Hi, I'm Marc, a frontend engineer in Zürich. I build web products and coach dev teams in working with AI tools.",
+      "Hi, I'm Marc, a frontend engineer in Zürich. I build web and mobile products and coach dev teams in working with AI tools.",
       {
         term: "since 2023",
         text: "I run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
@@ -266,6 +274,6 @@ export const clients: { name: string; href: string }[] = [
    audience line. Kept as word lists, since app/proto still cycles them. */
 export const bands: { words: string[]; slugs: string[] }[] = [
   { words: ["Agentic Engineering for your dev team"], slugs: ["ai"] },
-  { words: ["Frontend & User\u00a0Interfaces"], slugs: ["frontend"] },
+  { words: ["Web & App\u00a0Interfaces"], slugs: ["frontend"] },
   { words: ["for startups, SMEs and corporates"], slugs: [] },
 ];
