@@ -62,7 +62,10 @@ export function GET() {
   lines.push(`## Contracts`);
   lines.push("");
   for (const c of contracts) {
-    lines.push(`- [${c.title}](${c.href}) — ${c.period}. ${c.text}`);
+    // like the projects: the case page on the site, then the live site
+    lines.push(
+      `- [${c.title}](${BASE_URL}/projects/${c.slug}) — ${c.period}. ${c.role}. ${c.text} Live: ${c.href}`,
+    );
   }
   lines.push("");
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
   },
   description:
-    "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and agentic engineering for teams. Marc Illien, Zürich.",
 };
 
 // The app/proto subline reveals once per session (see .np-signature in
@@ -36,7 +36,7 @@ const JSON_LD = {
       email: "hi@i2089.com",
       jobTitle: "Independent Software Engineer",
       description:
-        "Independent software engineer in Zürich, working on frontend and mobile apps, and on Agentic Engineering.",
+        "Independent software engineer in Zürich: frontend and UX for web and mobile apps, and Agentic Engineering for teams.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Zürich",
@@ -45,8 +45,9 @@ const JSON_LD = {
       sameAs: ["https://www.linkedin.com/in/marcillien/"],
       knowsAbout: [
         "Agentic Engineering",
-        "Large Language Models",
+        "Claude Code",
         "Frontend Engineering",
+        "User Experience Design",
         "React",
         "Next.js",
         "TypeScript",
@@ -54,6 +55,7 @@ const JSON_LD = {
         "React Native",
         "Expo",
         "SwiftUI",
+        "Three.js",
       ],
       worksFor: { "@id": "https://i2089.com/#org" },
     },

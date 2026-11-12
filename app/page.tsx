@@ -9,7 +9,7 @@ import { pageMeta } from "./_shared/seo";
 export const metadata: Metadata = pageMeta({
   title: "Marc Illien · Frontend / UX and agentic engineering, Zürich",
   description:
-    "Frontend and mobile apps in React, Next.js and React Native, and agentic engineering for dev teams. Marc Illien, independent software engineer in Zürich.",
+    "Frontend and UX for web and mobile apps in React, Next.js and React Native, and agentic engineering for teams. Marc Illien, Zürich.",
   path: "/",
   absolute: true,
 });

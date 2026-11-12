@@ -34,9 +34,9 @@ export const services: Service[] = [
        would split attention, PFD L0); each example is a case on the
        site. */
     title: "Frontend / UX",
-    seoTitle: "Frontend & UX: React, Next.js & React Native, Zürich",
+    seoTitle: "Frontend / UX: web & mobile apps, Zürich",
     description:
-      "I design and build web and mobile app interfaces in React, Next.js, React Native, Expo and SwiftUI. Fast, and easy to change. From Zürich.",
+      "Interfaces that are easy to use, designed and built in code: web apps in React and Next.js, iOS and Android apps with React Native, Expo or SwiftUI. Zürich.",
     /* Three entries, only what a buyer needs (Marc, 2026-11-12): what
        they get, where it runs, one proof each. TODO(marc): a mobile app
        case (name, store link) once one can be shown. */
@@ -62,9 +62,9 @@ export const services: Service[] = [
        product/RAG work, "AI transformation" as C-level change. The first
        item says in plain words what the team gets. Research 2026-11-12. */
     title: "Agentic Engineering for teams",
-    seoTitle: "Agentic engineering & AI coaching for dev teams, Zürich",
+    seoTitle: "Agentic engineering coaching for teams, Zürich",
     description:
-      "Agentic engineering for dev teams in Zürich: a workshop day, then hands-on coaching with Claude Code and Codex on your real tickets.",
+      "AI coding agents like Claude Code and Codex in your team's projects: a workshop day, then coaching on real tickets. Every change still goes through review.",
     /* PFD run 2026-11-12 (docs/pfd/2026-11-12-ai-page.md): three entries,
        about 110 words. The outcome and the safety rule first (R2, R4),
        the format as the path to the contact (R5), one name for the tool
@@ -96,9 +96,9 @@ export const services: Service[] = [
   {
     slug: "about",
     title: "Marc Illien",
-    seoTitle: "Marc Illien, frontend engineer & AI coach in Zürich",
+    seoTitle: "Marc Illien, frontend & UX engineer and AI coach, Zürich",
     description:
-      "I'm a frontend engineer and AI coach in Zürich. I've taught at OST since 2014 and worked with AXA Switzerland, air up® and more.",
+      "Frontend and UX engineer and AI coach in Zürich. Teaching at OST since 2014; work for AXA Switzerland, air up®, Talentir and Branded Goods.",
     items: [
       "Hi, I'm Marc, a frontend engineer in Zürich. I build web and mobile products and coach dev teams in working with AI tools.",
       {
@@ -155,7 +155,7 @@ export const contracts: Project[] = [
     slug: "axa",
     title: "AXA Switzerland",
     period: "since 2018",
-    text: "Recurring frontend contracts at Switzerland's largest insurer since 2018. Custom React apps: an SME calculator, an internal-agent communication tool, and pattern library design.",
+    text: "Recurring frontend contracts at Switzerland's largest insurer since 2018. Custom React apps: the SME wizard and calculator on axa.ch, a WhatsApp-like messenger for internal communications, and the pattern library design.",
     href: "https://axa.ch",
     linkLabel: "axa.ch",
     // the SME calculator I led first, then the axa.ch homepage
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     slug: "branded-goods",
     title: "Branded Goods",
     period: "2025 — 2026",
-    text: "I built the frontend and designed parts of the UI for branded-goods.ch, using Next.js and Tailwind on Saleor, an open-source e-commerce platform. I worked as a partner of Avolut.",
+    text: "I designed and built the product filters and the shop frontend of branded-goods.ch, in Next.js and Tailwind on Saleor, an open-source e-commerce platform. I worked as a partner of Avolut.",
     href: "https://branded-goods.ch",
     linkLabel: "branded-goods.ch",
     images: ["/projects/branded-goods.jpg"],
