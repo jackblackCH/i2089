@@ -53,9 +53,13 @@ export function Column({
             margin adds the difference (never below zero). */}
         <Contact className="px-pad my-[max(0px,calc(var(--spacing-pad)-var(--spacing-group)))]" />
         {children}
+        {/* the client line is one more entry: under the "calm" labels it
+            gets the same hairline and spacing as the entries above it */}
         {clients && (
           <div className="px-pad">
-            <Clients label={clients} />
+            <div className="np-after-list">
+              <Clients label={clients} />
+            </div>
           </div>
         )}
       </Text>

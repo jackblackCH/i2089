@@ -1,5 +1,5 @@
 /* Design variants under test: the logo motion (i2089 → MARC ILLIEN) and
-   the "selected" label style. The chosen values live as data attributes
+   the label style. The chosen values live as data attributes
    on <html> (set before paint by the script in layout.tsx), so CSS and
    the logo read one source. On localhost and Vercel previews the
    switcher (app/_compare) changes them and stores them in localStorage;
@@ -44,11 +44,7 @@ export const AXES = {
   labels: {
     label: "Labels",
     options: {
-      selected: "Selected: boxes on the edge, hairlines, button outlined",
       calm: "Calm: numbers + hairlines, button filled",
-      fill: "Selected, button filled",
-      outline: "Selected, button outlined",
-      terms: "Service terms only",
       off: "Off",
     },
   },
@@ -58,16 +54,15 @@ export type Axis = keyof typeof AXES;
 export type Variants = { [A in Axis]: keyof (typeof AXES)[A]["options"] };
 
 // Chosen by Marc on 2026-11-12. The loop runs on home only; reading
-// pages play the motion once and rest on the name (PFD R1). Labels
-// "selected": every heading label is a filled box flush with the content
-// edge, a hairline splits the entries, and the contact button is
-// outlined, so filled means heading and outlined means action (R5).
+// pages play the motion once and rest on the name (PFD R1). Labels calm:
+// plain small caps, numbered on the offer pages, hairlines between
+// entries, so the filled contact button is the only filled shape (R5).
 // See docs/pfd/2026-11-12-variants.md.
 export const DEFAULTS: Variants = {
   motion: "blur",
   timing: "loop",
   fit: "same",
-  labels: "selected",
+  labels: "calm",
   blog: "dark",
 };
 
@@ -81,9 +76,14 @@ export const REPLAY_EVENT = "i2089-logo-replay";
    switcher exists) and mark a logo motion that already played, so a
    "rest on the name" page never flashes i2089 first. */
 export function variantsScript(allowStored: boolean) {
+  // only values that still exist: a stored option that was removed
+  // (e.g. an old label style) falls back to the default
+  const options = Object.fromEntries(
+    Object.entries(AXES).map(([k, a]) => [k, Object.keys(a.options)]),
+  );
   return `try{var d=document.documentElement,v=${JSON.stringify(DEFAULTS)};${
     allowStored
-      ? `try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(VARIANTS_KEY)})||"{}");for(var k in v)if(s[k])v[k]=s[k]}catch(e){}`
+      ? `try{var o=${JSON.stringify(options)},s=JSON.parse(localStorage.getItem(${JSON.stringify(VARIANTS_KEY)})||"{}");for(var k in v)if(s[k]&&o[k].indexOf(s[k])>-1)v[k]=s[k]}catch(e){}`
       : ""
   }for(var k in v)d.dataset[k]=v[k];d.dataset.page=location.pathname==="/"?"home":"sub";if(sessionStorage.getItem(${JSON.stringify(LOGO_SEEN_KEY)}))d.dataset.logoSeen=""}catch(e){}`;
 }

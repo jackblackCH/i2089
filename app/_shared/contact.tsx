@@ -21,7 +21,9 @@ export function Contact({ className = "" }: { className?: string }) {
     >
       {/* the location next to the action: for Swiss buyers it is a
           relevance cue (PFD L3) */}
-      <p>Let&apos;s talk. Zürich or remote.</p>
+      {/* trimmed like the title, so the space above the line equals the
+          space under the button: one page padding each (column.tsx) */}
+      <p className="text-trim">Let&apos;s talk. Zürich or remote.</p>
       <a
         href={`mailto:${EMAIL}`}
         className="np-cta text-trim gap-x-label px-item py-label inline-flex items-center bg-(--np-fg) text-(--np-surface) transition-[transform,opacity] duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg) active:scale-[0.97] motion-reduce:active:scale-100"

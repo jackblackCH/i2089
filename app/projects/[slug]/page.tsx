@@ -34,9 +34,18 @@ export async function generateMetadata({
 
 // A label over its content, one label-step apart. Both are trimmed to
 // cap height and baseline so the gap you set is the gap you see.
-function Field({ label, children }: { label: string; children: ReactNode }) {
+function Field({
+  label,
+  children,
+  entry = true,
+}: {
+  label: string;
+  children: ReactNode;
+  /** an entry in the page's list (hairline between entries) */
+  entry?: boolean;
+}) {
   return (
-    <div className="gap-y-label grid content-start">
+    <div className={`gap-y-label grid content-start ${entry ? "np-item" : ""}`}>
       <Text variant="footer" as="h2" className="np-label text-trim">
         <span className="np-label-text">{label}</span>
       </Text>
@@ -65,11 +74,11 @@ export default async function ProjectPage({
         {/* role takes what's left, period only its own width, so a
               narrow column wraps the role, not the year */}
         <div className="gap-x-group grid grid-cols-[minmax(0,1fr)_auto]">
-          <Field label="Role">
-            <p>{project.role}</p>
+          <Field label="Role" entry={false}>
+            <p className="text-trim">{project.role}</p>
           </Field>
-          <Field label="Period">
-            <p>{project.period}</p>
+          <Field label="Period" entry={false}>
+            <p className="text-trim">{project.period}</p>
           </Field>
         </div>
       </div>
@@ -86,8 +95,10 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      <div className="gap-y-group px-pad grid">
-        <p>{project.intro}</p>
+      {/* the same entry pattern as the offer pages: the intro, then
+          labelled entries split by a hairline (shared.css, .np-list) */}
+      <div className="np-list gap-y-group px-pad grid">
+        <p className="text-trim">{project.intro}</p>
 
         <Field label="What I did">
           <ul className="gap-y-item grid">
@@ -103,7 +114,7 @@ export default async function ProjectPage({
         </Field>
 
         <Field label="Stack">
-          <p>{project.stack.join(", ")}</p>
+          <p className="text-trim">{project.stack.join(", ")}</p>
         </Field>
 
         <a

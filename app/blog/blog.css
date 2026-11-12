@@ -364,12 +364,6 @@
   background: var(--blog-fg);
   color: var(--blog-on-fg);
 }
-/* outlined, like the rest of the site under the "selected" labels */
-:root[data-labels="selected"] .blog-contact .np-cta {
-  background: transparent;
-  color: var(--blog-fg);
-  box-shadow: inset 0 0 0 1px var(--blog-fg);
-}
 .blog-colophon {
   color: var(--blog-mute);
   font-size: 0.8125em;

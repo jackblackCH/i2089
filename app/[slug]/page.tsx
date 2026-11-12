@@ -99,7 +99,7 @@ export default async function ContentPage({
                   ))}
                 </ol>
               ) : (
-                <p>{item.text}</p>
+                <p className="text-trim">{item.text}</p>
               )}
             </li>
           ),
