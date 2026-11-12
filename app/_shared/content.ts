@@ -16,7 +16,10 @@ export type Service = {
 };
 
 /* Copy follows the precision-copy rules: objective language, short
-   complete sentences, concrete and checkable, no sales adjectives. */
+   complete sentences, concrete and checkable, no sales adjectives.
+   Entries about Marc's work are front-loaded accomplishment lines in the
+   implied first person: a verb first, present tense for offers and
+   current roles, past tense for finished work (swiss-engineer-voice). */
 export const services: Service[] = [
   {
     slug: "frontend",
@@ -32,29 +35,29 @@ export const services: Service[] = [
     items: [
       {
         term: "User interfaces",
-        text: "I design and build the interfaces people work with every day, from forms and calculators to product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
+        text: "Design and build the interfaces people work with every day: forms, calculators, product UIs and online shops. Like the SME calculator on axa.ch, Talentir's product or the air up® shop.",
       },
       {
         term: "Web apps",
-        text: "I build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. I build for performance from the start, so Core Web Vitals and Lighthouse scores stay green.",
+        text: "Build fast web apps that stay easy to change, mostly with TypeScript, React, Next.js and Tailwind. Performance is planned from the start, so Core Web Vitals and Lighthouse scores stay green.",
       },
       /* Marc designs and builds apps (2026-11-12). TODO(marc): add a case
          (app name, store link) once one can be shown. */
       {
         term: "Mobile apps",
-        text: "I design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
+        text: "Design and build mobile apps, from the first screen to the shipped app. Cross-platform with React Native and Expo, native on iOS with SwiftUI, or as a web app that installs and feels native.",
       },
       {
         term: "UX and design in code",
-        text: "I know how to design, and these days I also design right in code. I use Claude Design or Figma with Claude via MCP.",
+        text: "Design interfaces, these days right in code: Claude Design, or Figma connected to Claude via MCP.",
       },
       {
         term: "Custom business software",
-        text: "I build software tailored to how your business works, from internal tools to customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
+        text: "Build software tailored to how your business works: internal tools, customer portals and SaaS products, built to last. Like AXA's consultant messenger.",
       },
       {
         term: "Backend and DevOps",
-        text: "My backends are usually small and run on Node.js. With my DevOps skills, they're easy to run and deploy anywhere.",
+        text: "Keep backends small, usually on Node.js, and set them up so they are easy to run and deploy anywhere.",
       },
     ],
   },
@@ -80,11 +83,11 @@ export const services: Service[] = [
          "Faster" stays a goal, not a number (PFD R4). */
       {
         term: "What I teach",
-        text: "I set up Claude Code in your existing projects, with rules and skills that fit your codebase. I show your team how to prompt, which strategies work for which task, and how to connect design and code. The goal: your team uses LLMs in the projects it already has, and delivers faster.",
+        text: "Set up Claude Code in your existing projects, with rules and skills that fit your codebase. Show your team how to prompt, which strategy fits which task, and how to connect design and code. The goal: your team uses LLMs in the projects it already has, and delivers faster.",
       },
       {
         term: "Experience",
-        text: "I've been engineering software for sixteen years, usually as a lead, and coaching has been part of that. For the last year, I've used Claude Code, Codex and the modern LLM tools daily.",
+        text: "Sixteen years of engineering software, usually as a lead, with coaching as part of the work. Claude Code, Codex and the modern LLM tools every day for the last year.",
       },
       /* TODO(marc): the measured result, anonymous for now. Fill in and
          uncomment; keep every value checkable.
@@ -101,7 +104,7 @@ export const services: Service[] = [
         steps: [
           "A workshop day with your team.",
           "Coaching on your real tickets, in 1:1s and pair programming.",
-          "If you want, I join the team as engineer and coach at the same time. Your reviews, tests and handover stay as they are.",
+          "Optional: engineer and coach in your team at the same time. Your reviews, tests and handover stay as they are.",
         ],
       },
       /* Checkable, confirmed by Marc (2026-11-12). Not claimed: a
@@ -123,27 +126,27 @@ export const services: Service[] = [
       "Hi, I'm Marc, a frontend engineer in Zürich. I build web and mobile products and coach dev teams in working with AI tools.",
       {
         term: "since 2023",
-        text: "I run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
+        text: "Run i2089: AI consulting, AI design and Agentic Engineering. Self-employed, Zürich.",
       },
       {
         term: "since 2014",
-        text: "I teach Frontend Engineering (CAS) at OST in Rapperswil.",
+        text: "Teach Frontend Engineering (CAS) at OST in Rapperswil.",
       },
       {
         term: "2025 — 2026",
-        text: "I build frontends for AXA Switzerland's WebHub. Contract, Zürich.",
+        text: "Build frontends for AXA Switzerland's WebHub. Contract, Zürich.",
       },
       {
         term: "2024",
-        text: "I led the frontend for AXA's SME wizard and calculator, a React microfrontend on axa.ch. Contract, Zürich.",
+        text: "Led the frontend for AXA's SME wizard and calculator, a React microfrontend on axa.ch. Contract, Zürich.",
       },
       {
         term: "2023 — 2024",
-        text: "I built air up®'s headless shop on Next.js and Shopify, plus its design system. Freelance, Munich.",
+        text: "Built air up®'s headless shop on Next.js and Shopify, plus its design system. Freelance, Munich.",
       },
       {
         term: "2022 — 2023",
-        text: "I architected AXA's consultant messenger in TypeScript and React. Contract, Winterthur.",
+        text: "Architected AXA's consultant messenger in TypeScript and React. Contract, Winterthur.",
       },
     ],
   },
