@@ -211,7 +211,7 @@ export const projects: Project[] = [
     slug: "air-up",
     title: "air up®",
     period: "2023 — 2024",
-    text: "I built headless e-commerce on Next.js and Shopify, set up a design system with Tailwind and shadcn/ui, moved the team to trunk-based delivery and led the frontend.",
+    text: "I built headless e-commerce on Next.js and Shopify, with a 3D model viewer and a custom 3D configurator in Three.js, set up a design system with Tailwind and shadcn/ui and led the frontend.",
     href: "https://air-up.com",
     linkLabel: "air-up.com",
     images: ["/projects/air-up.jpg"],
@@ -220,11 +220,11 @@ export const projects: Project[] = [
       "air up® sells its scent-flavoured drinking bottles online. I joined the team in Munich as a freelance frontend consultant.",
     highlights: [
       "Led the frontend and built the headless shop on Next.js and Shopify.",
+      "Built a custom 3D configurator for special products.",
+      "Integrated a 3D model viewer into the shop frontend with Three.js.",
       "Set up a design system, so the team builds from one set of components.",
-      "Added 3D and motion to the shop.",
-      "Moved the team to trunk-based delivery, with small changes going straight to main.",
     ],
-    stack: ["Next.js", "Shopify", "Tailwind", "shadcn/ui", "TypeScript"],
+    stack: ["Next.js", "Shopify", "Three.js", "Tailwind", "shadcn/ui", "TypeScript"],
   },
   {
     slug: "talentir",
