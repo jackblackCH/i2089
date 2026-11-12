@@ -295,11 +295,11 @@
   visibility: hidden;
 }
 :root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src,
-:root[data-timing="loop"][data-page="sub"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src {
+:root[data-timing="loop"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-src {
   visibility: hidden;
 }
 :root[data-timing="once"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst,
-:root[data-timing="loop"][data-page="sub"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
+:root[data-timing="loop"][data-logo-seen] .np-logo[data-rest="src"] .np-logo-dst {
   visibility: visible;
 }
 /* phone nav: 11px caps need taller tap areas than the shared hit-area

@@ -81,11 +81,15 @@
 }
 
 /* Link states — one pair for the whole site. Hover dims or brightens;
-   keyboard focus underlines, so focus is visible without an outline box. */
+   keyboard focus underlines, so focus is visible without an outline box.
+   Hover only on a real pointer: on touch a tap would leave the link
+   stuck in its hover state. */
 @utility link-quiet {
   transition: opacity 160ms ease;
-  &:hover {
-    opacity: 0.6;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.6;
+    }
   }
   &:focus-visible {
     outline: none;
@@ -100,8 +104,10 @@
    since an underline under an outlined logo reads as part of the mark. */
 @utility link-mark {
   transition: opacity 160ms ease;
-  &:hover {
-    opacity: 0.8;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.8;
+    }
   }
   &:focus-visible {
     outline: 1px solid var(--np-fg);
@@ -112,9 +118,13 @@
 /* for links set in the label colour — brighten to the foreground */
 @utility link-label {
   transition: color 160ms ease;
-  &:hover,
   &:focus-visible {
     color: var(--np-fg);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--np-fg);
+    }
   }
   &:focus-visible {
     outline: none;

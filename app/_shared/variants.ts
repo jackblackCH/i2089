@@ -22,7 +22,7 @@ export const AXES = {
       once: "Once, rest on name",
       hover: "Hover / focus",
       back: "Once, back to i2089",
-      loop: "Slow loop on home, once elsewhere",
+      loop: "Loop on home (2 cycles), once elsewhere",
     },
   },
   fit: {

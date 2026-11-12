@@ -8,7 +8,8 @@ export const EMAIL = "hi@i2089.com";
 // The one primary action, on every page (PFD R5): a warm line and the
 // address as a filled button, so it stands out from the quiet text
 // around it (signal detection) and says exactly what happens on click
-// (information scent). One per view, no pressure, no sales verb.
+// (information scent). One per view, no pressure, no sales verb. It
+// presses in to 0.97 on :active, so the click feels heard.
 // TODO(marc): calendar link — add a quiet "or pick a time" link next to
 // the button once the booking URL exists.
 export function Contact({ className = "" }: { className?: string }) {
@@ -16,14 +17,14 @@ export function Contact({ className = "" }: { className?: string }) {
     <Text
       as="div"
       variant="body"
-      className={`grid content-center justify-items-start gap-y-item ${className}`}
+      className={`gap-y-item grid content-center justify-items-start ${className}`}
     >
       {/* the location next to the action: for Swiss buyers it is a
           relevance cue (PFD L3) */}
       <p>Let&apos;s talk. Zürich or remote.</p>
       <a
         href={`mailto:${EMAIL}`}
-        className="np-cta text-trim inline-flex items-center gap-x-label bg-(--np-fg) px-item py-label text-(--np-surface) transition-opacity duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg)"
+        className="np-cta text-trim gap-x-label px-item py-label inline-flex items-center bg-(--np-fg) text-(--np-surface) transition-[transform,opacity] duration-160 ease-out hover:opacity-85 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--np-fg) active:scale-[0.97] motion-reduce:active:scale-100"
       >
         {EMAIL}
         <Arrow />
@@ -42,7 +43,11 @@ export function Clients({ label = "Clients" }: { label?: string }) {
         <span className="np-label-text">{label}</span>
       </Text>
       {/* wraps between names, never inside one */}
-      <Text as="ul" variant="body" className="flex flex-wrap gap-y-label text-(--np-mute)">
+      <Text
+        as="ul"
+        variant="body"
+        className="gap-y-label flex flex-wrap text-(--np-mute)"
+      >
         {clients.map((c, i) => (
           <li key={c.name} className="text-trim whitespace-nowrap">
             <Link href={c.href} className="link-label hit-area">
