@@ -48,7 +48,7 @@ export const services: Service[] = [
       },
       {
         term: "Business software",
-        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like [AXA's consultant messenger](/projects/axa).",
+        text: "Build software that fits how your business works: internal tools, customer portals, SaaS. Like a [custom WhatsApp-like consultant messenger](/projects/axa) for insurers.",
       },
     ],
   },
