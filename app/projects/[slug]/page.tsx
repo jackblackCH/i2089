@@ -74,13 +74,16 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      {/* full bleed — only the text needs the side padding */}
-      <div className="np-card overflow-hidden pb-[50%]">
-        <Shot
-          project={project}
-          priority
-          sizes="(min-width: 768px) 50vw, 100vw"
-        />
+      {/* inside the same side padding as the text, so the image keeps
+          the content's edges */}
+      <div className="px-pad">
+        <div className="np-card relative overflow-hidden pb-[50%]">
+          <Shot
+            project={project}
+            priority
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
+        </div>
       </div>
 
       <div className="gap-y-group px-pad grid">
