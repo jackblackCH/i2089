@@ -145,17 +145,6 @@
   }
 }
 
-/* "Contact ↓" in a page head glides to the foot inside the scrolling
-   panel; reduced motion jumps. */
-.np-panel {
-  scroll-behavior: smooth;
-}
-@media (prefers-reduced-motion: reduce) {
-  .np-panel {
-    scroll-behavior: auto;
-  }
-}
-
 /* A link inside body text or a list of names: bright like the text, so
    it reads as content. Hover draws a thin underline instead of dimming
    (dimming reads as disabled); the line fades in, colour only. */
